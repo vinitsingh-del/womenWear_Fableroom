@@ -49,8 +49,6 @@ const Icon = ({ name }: { name: "search" | "user" | "heart" | "bag" | "menu" | "
 };
 
 export default function Home() {
-  const [heroSlide, setHeroSlide] = useState(0);
-  const heroVideo = useRef<HTMLVideoElement>(null);
   const [search, setSearch] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -78,20 +76,6 @@ export default function Home() {
     return () => { document.body.style.overflow = ""; };
   }, [quick, cartOpen, menuOpen, searchOpen]);
   useEffect(() => { if (!toast) return; const t = setTimeout(() => setToast(""), 2200); return () => clearTimeout(t); }, [toast]);
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setTimeout(() => setHeroSlide((slide) => slide === 0 ? 1 : 0), heroSlide === 0 ? 10000 : 7000);
-    return () => window.clearTimeout(timer);
-  }, [heroSlide]);
-  useEffect(() => {
-    if (!heroVideo.current) return;
-    if (heroSlide === 0) {
-      heroVideo.current.currentTime = 0;
-      heroVideo.current.play().catch(() => undefined);
-    } else {
-      heroVideo.current.pause();
-    }
-  }, [heroSlide]);
 
   const cartCount = Object.values(cart).reduce((a, b) => a + b, 0);
   const subtotal = products.reduce((sum, p) => sum + p.price * (cart[p.id] || 0), 0);
@@ -114,14 +98,12 @@ export default function Home() {
       </div>
     </header>
 
-    <section className={`hero hero-${heroSlide + 1}`} id="top">
+    <section className="hero" id="top">
       <div className="hero-media">
-        <video ref={heroVideo} className={`hero-slide hero-video ${heroSlide === 0 ? "active" : ""}`} src={`${A}/editorial/hero-women-slide-2.mp4`} poster={`${A}/editorial/hero-women-fashion-lifestyle.webp`} muted playsInline loop preload="auto" aria-label="FableRoom woman styling a suede bag, scarf and gemstone jewellery"/>
-        <img className={`hero-slide ${heroSlide === 1 ? "active" : ""}`} src={`${A}/editorial/hero-women-fashion-lifestyle.webp`} alt="Woman wearing a FableRoom scarf, jewellery and tan suede bag" fetchPriority="high"/>
+        <video className="hero-slide hero-video active" src={`${A}/editorial/hero-women-slide-2.mp4`} autoPlay muted playsInline loop preload="auto" aria-label="FableRoom woman styling a suede bag, scarf and gemstone jewellery"/>
       </div>
       <div className="hero-shade"/>
-      <div className="hero-copy" aria-live="polite">{heroSlide === 0 ? <><p className="eyebrow light">THE AUGUST DROP</p><h1>From your rooms<br/>to your wardrobe.</h1><p>Real gemstones, tactile cashmere and specialist-made leather. The FableRoom point of view, now in what you wear and carry.</p></> : <><p className="eyebrow light">MADE FOR EVERY DAY</p><h1>Beautifully considered.<br/>Naturally worn.</h1><p>A tactile bag, a generous scarf and real-stone jewellery—made to become part of everyday life.</p></>}</div>
-      <div className="hero-controls" aria-label="Hero slides"><button className={heroSlide === 0 ? "active" : ""} onClick={() => setHeroSlide(0)} aria-label="Play hero video 1">01</button><button className={heroSlide === 1 ? "active" : ""} onClick={() => setHeroSlide(1)} aria-label="Show hero image 2">02</button></div>
+      <div className="hero-copy"><p className="eyebrow light">THE AUGUST DROP</p><h1>From your rooms<br/>to your wardrobe.</h1><p>Real gemstones, tactile cashmere and specialist-made leather. The FableRoom point of view, now in what you wear and carry.</p></div>
     </section>
 
     <section className="look section"><div className="look-copy"><p className="eyebrow">A NEW WAY TO LIVE WITH FABLEROOM</p><h2>Designed to be wanted. Made to be lived in.</h2><p>A tactile leather bag, an easy cashmere-merino scarf and real-stone jewellery—considered separately, effortless together.</p><small className="look-hint">Tap a black marker to view the piece</small></div><div className="look-image"><img src={`${A}/editorial/hero-women-fashion-lifestyle.webp`} alt="FableRoom bag, scarf and jewellery styled for everyday wear"/><button className="hot h1" onClick={()=>setQuick(products[0])} aria-label="View Apollo Crescent Suede Bag"><span>Apollo suede bag</span></button><button className="hot h2" onClick={()=>setQuick(products[6])} aria-label="View Turquoise and Citrine Pendant"><span>Real-stone pendant</span></button><button className="hot h3" onClick={()=>setQuick(products[9])} aria-label="View Cashmere Merino Wrap"><span>Cashmere-merino wrap</span></button></div></section>
