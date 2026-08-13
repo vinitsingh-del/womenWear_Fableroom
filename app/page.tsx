@@ -14,7 +14,7 @@ type Product = {
   note: string;
 };
 
-const A = "/fr";
+const A = `${import.meta.env.BASE_URL}fr`;
 const bag = (group: string, ...files: string[]) =>
   files.map((file) => `${A}/bags/${group}/${file}.webp`);
 
