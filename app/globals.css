@@ -353,3 +353,165 @@ footer{padding-top:48px;padding-bottom:48px}
 }
 
 @media(prefers-reduced-motion:reduce){.hot:after{animation:none;opacity:.65}}
+
+/* Creative-direction update: restrained colour, material proof and varied edit layouts. */
+:root{--oxblood:#3a0b13;--plum:#5f2636;--cognac:#b66d32;--jewel:#2f756f;--warm-ivory:#f5f0e6}
+.category-intro{padding-top:68px;padding-bottom:68px;background:linear-gradient(180deg,#fcfaf6 0,#f4eee4 100%)}
+.category-intro .section-heading{max-width:820px;margin-left:auto;margin-right:auto}
+.category-intro-grid{gap:12px}
+.category-intro .category-card{height:470px;border-top:6px solid var(--cognac)}
+.category-intro .category-card.category-jewel{border-top-color:var(--jewel)}
+.category-intro .category-card.category-plum{border-top-color:var(--plum)}
+.category-intro .category-card img,.category-intro .category-card:nth-child(2) img{object-fit:cover;background:#e6dfd3}
+.category-intro .category-card.category-cognac img{object-fit:contain;background:#e9e2d7}
+.category-card div>span{display:block;margin-bottom:10px;font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff}
+
+.material-proof{max-width:none;padding:70px max(42px,calc((100% - 1236px)/2));background:var(--oxblood);color:var(--warm-ivory)}
+.material-proof-head{display:grid;grid-template-columns:minmax(420px,1fr) minmax(280px,.55fr);justify-content:space-between;align-items:end;gap:70px;margin:0 auto 34px;max-width:1236px}
+.material-proof-head h2{font-size:clamp(46px,5vw,68px);line-height:.98;margin:0;max-width:720px}
+.material-proof-head>p{max-width:470px;margin:0 0 4px;color:#d8cabe;font-size:13px;line-height:1.65}
+.material-proof .eyebrow{color:#d9a260}
+.material-proof-grid{max-width:1236px;margin:auto;display:grid;grid-template-columns:1.12fr .88fr;grid-template-rows:repeat(2,minmax(290px,1fr));gap:12px}
+.material-tile{min-height:290px;position:relative;overflow:hidden;background:#1f080c}
+.material-tile.leather{grid-row:1/3;min-height:592px}
+.material-tile img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.material-tile:hover img{transform:scale(1.025)}
+.material-tile:after{content:"";position:absolute;inset:28% 0 0;background:linear-gradient(transparent,rgba(22,7,10,.88))}
+.material-tile>div{position:absolute;left:30px;right:30px;bottom:28px;z-index:1}
+.material-tile span{display:block;margin-bottom:9px;color:#e0aa66;font-size:8.5px;font-weight:700;letter-spacing:.15em}
+.material-tile h3{font:32px/1.03 var(--serif);margin:0 0 10px;max-width:530px}
+.material-tile p{max-width:520px;margin:0 0 12px;color:#e7ddd3;font-size:11px;line-height:1.55}
+.material-tile .text-link{color:#fff}
+
+.edit{background:#fcfaf6}
+.category-edit{max-width:1320px;margin:0 auto;padding:64px 42px;scroll-margin-top:68px;border-top:1px solid var(--line)}
+.category-edit>header{display:grid;grid-template-columns:72px minmax(0,720px);align-items:start;margin-bottom:28px}
+.category-edit>header>span{font:44px/1 var(--serif);color:#b3a99b}
+.category-edit h2{font:clamp(44px,4vw,60px)/1 var(--serif);font-weight:400;letter-spacing:-.035em;margin:0 0 12px}
+.category-edit>header>div>p:last-child{max-width:670px;margin:0;color:#625c53;font-size:13px;line-height:1.6}
+.category-edit-layout{display:grid;gap:12px}
+.edit-feature{min-height:430px;position:relative;overflow:hidden;background:#d9d1c5}
+.edit-feature>img{width:100%;height:100%;object-fit:cover}
+.edit-feature:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.72))}
+.edit-feature>div{position:absolute;left:28px;right:28px;bottom:26px;color:#fff;z-index:1;display:grid;gap:8px}
+.edit-feature small{font-size:8.5px;letter-spacing:.15em}
+.edit-feature b{font:30px/1.06 var(--serif);font-weight:400;max-width:420px}
+.edit-product-grid{display:grid;gap:10px}
+.category-edit .product-copy{min-height:132px;padding:13px 3px 2px;display:flex;flex-direction:column}
+.category-edit .product-copy h3{margin:6px 0 4px}
+.category-edit .product-copy p{margin-bottom:9px}
+.category-edit .product-copy>div{margin-top:auto}
+.product-copy>div strong{font-size:12px}
+
+.category-edit-bags{background:#f2ede5}
+.category-edit-bags .category-edit-layout{grid-template-columns:minmax(320px,38%) minmax(0,62%)}
+.category-edit-bags .edit-feature{min-height:790px}
+.category-edit-bags .edit-feature>img{object-fit:contain;background:#e8e1d6}
+.category-edit-bags .edit-product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.category-edit-bags .product-image{height:305px}
+
+.category-edit-jewellery{background:var(--oxblood);color:var(--warm-ivory);max-width:none;padding-left:max(42px,calc((100% - 1236px)/2));padding-right:max(42px,calc((100% - 1236px)/2));border-top:0}
+.category-edit-jewellery>header>span{color:#b87955}
+.category-edit-jewellery>header>div>p:last-child{color:#d7c8bc}
+.category-edit-jewellery .eyebrow{color:#e4a85f}
+.category-edit-jewellery .category-edit-layout{grid-template-columns:1fr}
+.category-edit-jewellery .edit-feature{height:430px;min-height:0}
+.category-edit-jewellery .edit-feature>img{object-position:center 38%}
+.category-edit-jewellery .edit-product-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.category-edit-jewellery .product-card{background:var(--warm-ivory);color:var(--ink);padding:8px}
+.category-edit-jewellery .product-image{height:auto;aspect-ratio:4/4.5}
+.category-edit-jewellery .product-copy{padding-left:4px;padding-right:4px}
+
+.category-edit-scarves{background:#e8dece}
+.category-edit-scarves .category-edit-layout{grid-template-columns:minmax(0,54%) minmax(320px,46%)}
+.category-edit-scarves .edit-feature{order:2;min-height:680px}
+.category-edit-scarves .edit-feature>img{object-position:center}
+.category-edit-scarves .edit-product-grid{order:1;grid-template-columns:1fr}
+.category-edit-scarves .product-card{display:grid;grid-template-columns:190px minmax(0,1fr);gap:18px;padding:10px;background:rgba(252,250,246,.62);border:1px solid rgba(118,92,70,.16)}
+.category-edit-scarves .product-image{height:192px}
+.category-edit-scarves .product-copy{min-height:0;padding:18px 14px 14px 0}
+.category-edit-scarves .product-copy h3{font-size:24px}
+.category-edit-scarves .product-copy p{white-space:normal;line-height:1.45}
+
+.look{padding-top:54px;padding-bottom:54px}
+.look-copy{background:#efe4d4;border-top:6px solid var(--cognac)}
+.look-copy h2{font-size:48px}
+.home-proof{background:linear-gradient(135deg,#f2ece2,#e7ddcd);padding:76px 42px}
+.home-proof h2{max-width:850px;margin-left:auto;margin-right:auto}
+.home-proof>div{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;max-width:1040px;margin:34px auto 0;border-top:1px solid #c8b8a5;border-bottom:1px solid #c8b8a5}
+.home-proof span{min-height:96px;display:flex;align-items:center;justify-content:center;padding:12px;border-right:1px solid #c8b8a5}
+.home-proof span:last-child{border-right:0}
+.finder{padding-top:54px;padding-bottom:54px}
+.finder-card{background:var(--oxblood);color:var(--warm-ivory);border-top:6px solid #d39a58}
+.finder-card .eyebrow{color:#e3aa66}
+.finder-card .quiz-options button{color:var(--warm-ivory);border-color:#8d5960;background:rgba(255,255,255,.04)}
+.finder-card .quiz-options button:hover{color:var(--ink);background:var(--warm-ivory)}
+.finder-card .quiz-result .button{background:var(--warm-ivory);color:var(--ink);border-color:var(--warm-ivory)}
+.finder-card .reset{color:var(--warm-ivory)}
+
+@media(max-width:1000px){
+  .material-proof-head{grid-template-columns:1fr;gap:16px}
+  .category-edit-bags .category-edit-layout{grid-template-columns:36% 64%}
+  .category-edit-bags .edit-feature{min-height:700px}
+  .category-edit-bags .product-image{height:270px}
+  .category-edit-scarves .category-edit-layout{grid-template-columns:1fr 42%}
+  .category-edit-scarves .product-card{grid-template-columns:150px minmax(0,1fr)}
+}
+
+@media(max-width:760px){
+  .category-intro{padding:34px 16px}
+  .category-intro .section-heading{margin-bottom:18px}
+  .category-intro-grid{display:grid;grid-template-columns:1fr;overflow:visible;margin:0;padding:0;gap:9px}
+  .category-intro .category-card{height:320px;min-width:0;width:100%}
+  .category-intro .category-card div{left:18px;right:18px;bottom:18px}
+  .category-intro .category-card h3{font-size:28px}
+  .category-intro .category-card p{font-size:11px;margin-bottom:10px}
+  .category-intro .category-card button{min-height:40px;height:40px}
+
+  .material-proof{padding:40px 16px}
+  .material-proof-head{display:block;margin-bottom:20px}
+  .material-proof-head h2{font-size:38px;margin-bottom:12px}
+  .material-proof-head>p{font-size:11px;line-height:1.55}
+  .material-proof-grid{display:grid;grid-template-columns:1fr;grid-template-rows:none;gap:8px}
+  .material-tile,.material-tile.leather{grid-row:auto;min-height:0;height:380px}
+  .material-tile>div{left:20px;right:20px;bottom:18px}
+  .material-tile h3{font-size:28px}
+  .material-tile p{font-size:10px;line-height:1.5}
+
+  .edit{padding:30px 16px 24px}
+  .category-edit{padding:34px 16px;scroll-margin-top:55px}
+  .category-edit>header{grid-template-columns:1fr;margin-bottom:18px}
+  .category-edit>header>span{font-size:26px;margin-bottom:9px}
+  .category-edit h2{font-size:38px}
+  .category-edit>header>div>p:last-child{font-size:11.5px}
+  .category-edit-layout,.category-edit-bags .category-edit-layout,.category-edit-scarves .category-edit-layout{display:block}
+  .edit-feature,.category-edit-bags .edit-feature,.category-edit-jewellery .edit-feature,.category-edit-scarves .edit-feature{height:360px;min-height:0;margin-bottom:9px}
+  .edit-feature>div{left:20px;right:20px;bottom:18px}
+  .edit-feature b{font-size:26px}
+  .category-edit-bags .edit-product-grid,.category-edit-jewellery .edit-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .category-edit-bags .product-image,.category-edit-jewellery .product-image{height:auto;aspect-ratio:4/5}
+  .category-edit-jewellery{padding-left:16px;padding-right:16px}
+  .category-edit-jewellery .product-card{padding:5px}
+  .category-edit-jewellery .product-card:last-child{grid-column:1/-1;display:grid;grid-template-columns:44% 1fr;gap:10px}
+  .category-edit-jewellery .product-card:last-child .product-image{aspect-ratio:1/1}
+  .category-edit-scarves .edit-feature{order:initial}
+  .category-edit-scarves .edit-product-grid{display:grid;grid-template-columns:1fr;gap:7px}
+  .category-edit-scarves .product-card{grid-template-columns:126px minmax(0,1fr);gap:10px;padding:7px}
+  .category-edit-scarves .product-image{height:150px}
+  .category-edit-scarves .product-copy{padding:12px 8px 8px 0;min-height:0}
+  .category-edit-scarves .product-copy h3{font-size:20px;min-height:0}
+  .category-edit .product-copy{min-height:120px}
+  .category-edit .product-copy>div{justify-content:space-between}
+  .category-edit .product-copy>div strong{font-size:11px}
+
+  .look{padding:28px 16px 38px}
+  .look-copy{padding:30px 20px}
+  .look-copy h2{font-size:36px}
+  .home-proof{padding:42px 16px}
+  .home-proof>div{grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+  .home-proof span{min-height:84px;border-right:1px solid #c8b8a5;border-bottom:1px solid #c8b8a5}
+  .home-proof span:nth-child(2n){border-right:0}
+  .home-proof span:nth-last-child(-n+2){border-bottom:0}
+  .home-proof b{font-size:23px}
+  .finder{padding:0 16px 38px}
+}
