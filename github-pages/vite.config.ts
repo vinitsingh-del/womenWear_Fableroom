@@ -12,5 +12,11 @@ export default defineConfig({
   build: {
     outDir: fileURLToPath(new URL("../docs", import.meta.url)),
     emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        home: fileURLToPath(new URL("./index.html", import.meta.url)),
+        looks: fileURLToPath(new URL("./looks/index.html", import.meta.url)),
+      },
+    },
   },
 });
