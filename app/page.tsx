@@ -62,6 +62,42 @@ const verifiedReviews = [
   { quote:"Very pleased.", author:"Nicola T. · Verified buyer" },
 ];
 
+let cancelActiveScroll: null | (()=>void) = null;
+
+function smoothScrollTo(target:HTMLElement){
+  cancelActiveScroll?.();
+  const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const headerOffset=window.matchMedia("(max-width: 760px)").matches?55:68;
+  const start=window.scrollY;
+  const destination=Math.max(0,target.getBoundingClientRect().top+start-headerOffset);
+  const distance=destination-start;
+  if(reduce||Math.abs(distance)<2){window.scrollTo(0,destination);return}
+  const duration=Math.min(620,Math.max(260,Math.abs(distance)*.16));
+  const started=performance.now();
+  let frame=0;
+  const cleanup=()=>{
+    cancelAnimationFrame(frame);
+    window.removeEventListener("wheel",cancel);
+    window.removeEventListener("touchstart",cancel);
+    window.removeEventListener("pointerdown",cancel);
+    window.removeEventListener("keydown",cancel);
+    if(cancelActiveScroll===cancel)cancelActiveScroll=null;
+  };
+  const cancel=()=>cleanup();
+  const step=(now:number)=>{
+    const progress=Math.min((now-started)/duration,1);
+    const eased=1-Math.pow(1-progress,3);
+    window.scrollTo(0,start+distance*eased);
+    if(progress<1)frame=requestAnimationFrame(step);else cleanup();
+  };
+  window.addEventListener("wheel",cancel,{once:true,passive:true});
+  window.addEventListener("touchstart",cancel,{once:true,passive:true});
+  window.addEventListener("pointerdown",cancel,{once:true,passive:true});
+  window.addEventListener("keydown",cancel,{once:true});
+  cancelActiveScroll=cancel;
+  frame=requestAnimationFrame(step);
+}
+
 export default function Home(){
   const [search,setSearch]=useState("");
   const [searchOpen,setSearchOpen]=useState(false);
@@ -82,18 +118,34 @@ export default function Home(){
   useEffect(()=>{document.body.style.overflow=quick||cartOpen||menuOpen||searchOpen?"hidden":"";return()=>{document.body.style.overflow=""}},[quick,cartOpen,menuOpen,searchOpen]);
   useEffect(()=>{if(!toast)return;const t=setTimeout(()=>setToast(""),2200);return()=>clearTimeout(t)},[toast]);
   useEffect(()=>{
+    const onAnchorClick=(event:MouseEvent)=>{
+      if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+      const anchor=(event.target as Element|null)?.closest<HTMLAnchorElement>('a[href^="#"]');
+      if(!anchor)return;
+      const hash=anchor.getAttribute("href");
+      if(!hash||hash==="#")return;
+      const target=document.getElementById(decodeURIComponent(hash.slice(1)));
+      if(!target)return;
+      event.preventDefault();
+      history.replaceState(null,"",hash);
+      requestAnimationFrame(()=>smoothScrollTo(target));
+    };
+    document.addEventListener("click",onAnchorClick);
+    return()=>{document.removeEventListener("click",onAnchorClick);cancelActiveScroll?.()};
+  },[]);
+  useEffect(()=>{
     const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const coarse=window.matchMedia("(max-width: 760px), (pointer: coarse)").matches;
     const selectors=[
-      ".category-section .section-heading > *", ".category-card", ".trust-box span", ".material-head > *", ".material-card",
-      ".merch-category > header > span", ".merch-category > header .eyebrow", ".merch-category > header h2", ".merch-category > header div > p:last-child",
-      ".subcategories a", ".merch-feature", ".product-card", ".scarf-style-grid article", ".trending .section-heading > *", ".trend-grid > a",
-      ".looks .section-heading > *", ".look-tile", ".recommended .section-heading > *", ".reviews > *", ".out-about .section-heading > *",
-      ".ugc-rail figure", ".finder > *", ".faq > *", ".newsletter > *", ".site-footer > *"
+      ".category-section .section-heading", ".category-grid", ".trust-box", ".material-head", ".material-rail",
+      ".merch-category > header", ".subcategories", ".merch-feature", ".merch-category .product-grid", ".scarf-style-grid",
+      ".trending .section-heading", ".trend-grid", ".looks .section-heading", ".look-collage", ".recommended .section-heading",
+      ".recommended .product-grid", ".reviews", ".out-about .section-heading", ".ugc-rail", ".finder", ".faq", ".newsletter", ".site-footer"
     ];
     const nodes=Array.from(document.querySelectorAll<HTMLElement>(selectors.join(","))).filter(node=>!node.closest(".hero"));
     nodes.forEach((node,index)=>{node.classList.add("motion-reveal");node.style.setProperty("--reveal-delay",`${(index%4)*65}ms`)});
     document.documentElement.classList.add("motion-ready");
-    if(reduce){nodes.forEach(node=>node.classList.add("is-visible"));return()=>document.documentElement.classList.remove("motion-ready")}
+    if(reduce||coarse){nodes.forEach(node=>node.classList.add("is-visible"));return()=>document.documentElement.classList.remove("motion-ready")}
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("is-visible");observer.unobserve(entry.target)}}),{threshold:.1,rootMargin:"0px 0px -6% 0px"});
     nodes.forEach(node=>observer.observe(node));
     return()=>{observer.disconnect();document.documentElement.classList.remove("motion-ready")};
@@ -114,7 +166,7 @@ export default function Home(){
       <button className="mobile-only icon-button" onClick={()=>setMenuOpen(true)} aria-label="Open menu"><Icon name="menu"/></button>
       <a className="wordmark" href="#top">FABLEROOM</a>
       <nav className="desktop-nav"><a href="#top">Home</a><a className="active" href="#collection">Fashion & Lifestyle</a><a href="#collection">Collections</a><a href="#proof">Our craft</a><a href="#reviews">Reviews</a></nav>
-      <div className="header-actions"><button onClick={()=>setSearchOpen(true)} aria-label="Search"><Icon name="search"/></button><button className="desktop-icon" aria-label="Account"><Icon name="user"/></button><button className="desktop-icon" onClick={()=>document.getElementById("recommended")?.scrollIntoView()} aria-label="Wishlist"><Icon name="heart"/><b>{wish.length||""}</b></button><button onClick={()=>setCartOpen(true)} aria-label="Shopping bag"><Icon name="bag"/><b>{cartCount||""}</b></button></div>
+      <div className="header-actions"><button onClick={()=>setSearchOpen(true)} aria-label="Search"><Icon name="search"/></button><button className="desktop-icon" aria-label="Account"><Icon name="user"/></button><button className="desktop-icon" onClick={()=>{const target=document.getElementById("recommended");if(target)smoothScrollTo(target)}} aria-label="Wishlist"><Icon name="heart"/><b>{wish.length||""}</b></button><button onClick={()=>setCartOpen(true)} aria-label="Shopping bag"><Icon name="bag"/><b>{cartCount||""}</b></button></div>
     </header>
 
     <section className="hero" id="top">
@@ -179,13 +231,14 @@ export default function Home(){
   </main>;
 }
 
-function CategoryCard({href,title,copy,image,video}:{href:string;title:string;copy:string;image:string;video?:string}){return <a className={`category-card ${video?"category-motion":""}`} href={href}>{video?<video src={video} poster={image} autoPlay muted playsInline loop preload="metadata" aria-label={`${title} product film`}/>:<img src={image} alt={title}/>}<span><h3>{title}</h3><p>{copy}</p><u>Explore Collection</u></span></a>}
+function SmartVideo({src,poster,ariaLabel}:{src:string;poster:string;ariaLabel:string}){const ref=useRef<HTMLVideoElement>(null);useEffect(()=>{const video=ref.current;if(!video)return;const observer=new IntersectionObserver(([entry])=>{if(entry.isIntersecting){void video.play().catch(()=>{})}else video.pause()},{threshold:.05,rootMargin:"180px 0px"});observer.observe(video);return()=>{observer.disconnect();video.pause()}},[]);return <video ref={ref} src={src} poster={poster} muted playsInline loop preload="metadata" aria-label={ariaLabel}/>}
+function CategoryCard({href,title,copy,image,video}:{href:string;title:string;copy:string;image:string;video?:string}){return <a className={`category-card ${video?"category-motion":""}`} href={href}>{video?<SmartVideo src={video} poster={image} ariaLabel={`${title} product film`}/>:<img src={image} alt={title}/>}<span><h3>{title}</h3><p>{copy}</p><u>Explore Collection</u></span></a>}
 function CountUp({end,prefix="",suffix=""}:{end:number;prefix?:string;suffix?:string}){const ref=useRef<HTMLElement>(null);const [value,setValue]=useState(0);useEffect(()=>{const node=ref.current;if(!node)return;let frame=0;const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;if(reduce){frame=requestAnimationFrame(()=>setValue(end));return()=>cancelAnimationFrame(frame)}const observer=new IntersectionObserver(([entry])=>{if(!entry.isIntersecting)return;observer.disconnect();const started=performance.now();const run=(now:number)=>{const progress=Math.min((now-started)/1250,1);const eased=1-Math.pow(1-progress,3);setValue(Math.round(end*eased));if(progress<1)frame=requestAnimationFrame(run)};frame=requestAnimationFrame(run)},{threshold:.45});observer.observe(node);return()=>{observer.disconnect();cancelAnimationFrame(frame)}},[end]);return <b ref={ref}>{prefix}{value.toLocaleString("en-GB")}{suffix}</b>}
 function TrustStat({image,end,prefix,suffix,label}:{image:string;end:number;prefix?:string;suffix?:string;label:string}){return <span style={{backgroundImage:`linear-gradient(135deg,rgba(50,8,27,.88),rgba(89,45,33,.66)),url(${image})`}}><CountUp end={end} prefix={prefix} suffix={suffix}/>{label}</span>}
-function Material({image,video,index,title,copy}:{image:string;video?:string;index:string;title:string;copy:string}){return <article className={`material-card ${video?"material-motion":""}`}>{video?<video src={video} poster={image} autoPlay muted playsInline loop preload="metadata" aria-label={`${title} close-up film`}/>:<img src={image} alt=""/>}<div><small>{index} · MATERIAL NOTE</small><h3>{title}</h3><p>{copy}</p></div></article>}
-function CategoryEdit({id,variant,index,kicker,title,copy,category,subcategories,image,video,products:items,wish,onWish,onOpen}:{id:string;variant:"panorama"|"reverse"|"mosaic";index:string;kicker:string;title:string;copy:string;category:Category;subcategories:string[][];image:string;video?:string;products:Product[];wish:number[];onWish:(id:number)=>void;onOpen:(p:Product)=>void}){const [active,setActive]=useState<number|null>(null);const activeProduct=active===null?null:items[active];const modelFocus=id==="bags"&&active===0;return <section className={`merch-category merch-${id} merch-${variant}`} id={id}><header><span>{index}</span><div><p className="eyebrow">{kicker}</p><h2>{title}</h2><p>{copy}</p></div></header><nav className={`subcategories ${id==="bags"?"bag-subcategories":""}`} aria-label={`${category} subcategories`}>{subcategories.map(([label,href],i)=><a key={label} href={href}>{id==="bags"&&<span>{String(i+1).padStart(2,"0")}</span>}<b>{label}</b>{id==="bags"&&<Icon name="arrow"/>}</a>)}</nav><div className="merch-layout"><figure className={`merch-feature ${active!==null?"feature-active":""} ${modelFocus?"model-focus":""}`}>{video&&active===null?<video src={video} poster={image} autoPlay muted playsInline loop preload="metadata" aria-label={`${title} collection film`}/>:<img key={activeProduct?.id||"lifestyle"} className="feature-media" src={modelFocus?image:activeProduct?.images[0]||image} alt={activeProduct?`${activeProduct.name} close-up`:`${title} lifestyle`}/>}<figcaption><small>{activeProduct?"HOVERED PIECE":"COLLECTION VIEW"}</small><b>{activeProduct?.name||category}</b></figcaption></figure><div className="product-grid">{items.slice(0,4).map((p,i)=><ProductCard key={p.id} product={p} wished={wish.includes(p.id)} onWish={()=>onWish(p.id)} onOpen={()=>onOpen(p)} onPreview={()=>setActive(i)} onPreviewEnd={()=>setActive(null)}/>)}</div></div></section>}
+function Material({image,video,index,title,copy}:{image:string;video?:string;index:string;title:string;copy:string}){return <article className={`material-card ${video?"material-motion":""}`}>{video?<SmartVideo src={video} poster={image} ariaLabel={`${title} close-up film`}/>:<img src={image} alt=""/>}<div><small>{index} · MATERIAL NOTE</small><h3>{title}</h3><p>{copy}</p></div></article>}
+function CategoryEdit({id,variant,index,kicker,title,copy,category,subcategories,image,video,products:items,wish,onWish,onOpen}:{id:string;variant:"panorama"|"reverse"|"mosaic";index:string;kicker:string;title:string;copy:string;category:Category;subcategories:string[][];image:string;video?:string;products:Product[];wish:number[];onWish:(id:number)=>void;onOpen:(p:Product)=>void}){const [active,setActive]=useState<number|null>(null);const activeProduct=active===null?null:items[active];const modelFocus=id==="bags"&&active===0;return <section className={`merch-category merch-${id} merch-${variant}`} id={id}><header><span>{index}</span><div><p className="eyebrow">{kicker}</p><h2>{title}</h2><p>{copy}</p></div></header><nav className={`subcategories ${id==="bags"?"bag-subcategories":""}`} aria-label={`${category} subcategories`}>{subcategories.map(([label,href],i)=><a key={label} href={href}>{id==="bags"&&<span>{String(i+1).padStart(2,"0")}</span>}<b>{label}</b>{id==="bags"&&<Icon name="arrow"/>}</a>)}</nav><div className="merch-layout"><figure className={`merch-feature ${active!==null?"feature-active":""} ${modelFocus?"model-focus":""}`}>{video&&active===null?<SmartVideo src={video} poster={image} ariaLabel={`${title} collection film`}/>:<img key={activeProduct?.id||"lifestyle"} className="feature-media" src={modelFocus?image:activeProduct?.images[0]||image} alt={activeProduct?`${activeProduct.name} close-up`:`${title} lifestyle`}/>}<figcaption><small>{activeProduct?"HOVERED PIECE":"COLLECTION VIEW"}</small><b>{activeProduct?.name||category}</b></figcaption></figure><div className="product-grid">{items.slice(0,4).map((p,i)=><ProductCard key={p.id} product={p} wished={wish.includes(p.id)} onWish={()=>onWish(p.id)} onOpen={()=>onOpen(p)} onPreview={()=>setActive(i)} onPreviewEnd={()=>setActive(null)}/>)}</div></div></section>}
 function ScarfEdit({products:items,wish,onWish,onOpen}:{products:Product[];wish:number[];onWish:(id:number)=>void;onOpen:(p:Product)=>void}){const images=[`${A}/drive/scarf-1.webp`,`${A}/drive/scarf-4.webp`,`${A}/editorial/scarf-lifestyle.webp`,`${A}/lifestyle/look-cashmere-neutral.webp`];const [active,setActive]=useState<number|null>(null);return <section className="merch-category merch-scarves" id="scarves"><header><span>04</span><div><p className="eyebrow">CASHMERE & MERINO WOOL</p><h2>The Scarf Edit</h2><p>With a focused collection, discovery moves directly to four styled pieces rather than another broad L‑2 layer.</p></div></header><nav className="subcategories"><a href={CP.scarves}>All Scarves</a><a href={CP.scarves}>Cashmere</a><a href={CP.scarves}>Merino Wool</a></nav><figure className={`scarf-feature ${active!==null?"feature-active":""}`}><img src={active===null?`${A}/editorial/scarf-lifestyle.webp`:items[active].images[0]} alt={active===null?"Cashmere and merino wool scarf styling":`${items[active].name} close-up`}/><figcaption>{active===null?"THE SCARF EDIT":items[active].name}</figcaption></figure><div className="scarf-style-grid">{items.map((p,i)=><article key={p.id} onPointerEnter={()=>setActive(i)} onPointerLeave={()=>setActive(null)} onFocusCapture={()=>setActive(i)} onBlurCapture={()=>setActive(null)}><button className="scarf-image" onClick={()=>onOpen(p)}><img src={images[i]} alt={`${p.name} styled on a model`}/><span>View piece</span></button><div><small>{p.material}</small><h3>{p.name}</h3><b>£{p.price}.00</b><button className={`mini-wish ${wish.includes(p.id)?"wished":""}`} onClick={()=>onWish(p.id)} aria-label="Save scarf"><Icon name="heart"/></button></div></article>)}</div></section>}
-function ProductCard({product:p,wished,onWish,onOpen,onPreview,onPreviewEnd}:{product:Product;wished:boolean;onWish:()=>void;onOpen:()=>void;onPreview?:()=>void;onPreviewEnd?:()=>void}){return <article className="product-card" onPointerEnter={onPreview} onPointerLeave={onPreviewEnd} onPointerDown={onPreview} onFocusCapture={onPreview} onBlurCapture={onPreviewEnd}><button className="product-image" onClick={onOpen}><img className="primary" src={p.images[0]} alt={p.name} loading="lazy"/><img className="secondary" src={p.images[1]||p.images[0]} alt="" loading="lazy"/><span>Quick view</span></button><button className={`wish ${wished?"wished":""}`} onClick={onWish} aria-label="Save to wishlist"><Icon name="heart"/></button><div className="product-copy"><small>{p.category}</small><h3><button onClick={onOpen}>{p.name}</button></h3><p>{p.material}</p><div><b>£{p.price}.00</b><button onClick={onOpen}>View details</button></div></div></article>}
+function ProductCard({product:p,wished,onWish,onOpen,onPreview,onPreviewEnd}:{product:Product;wished:boolean;onWish:()=>void;onOpen:()=>void;onPreview?:()=>void;onPreviewEnd?:()=>void}){return <article className="product-card" onPointerEnter={onPreview} onPointerLeave={onPreviewEnd} onFocusCapture={onPreview} onBlurCapture={onPreviewEnd}><button className="product-image" onClick={onOpen}><img className="primary" src={p.images[0]} alt={p.name} loading="lazy"/><img className="secondary" src={p.images[1]||p.images[0]} alt="" loading="lazy"/><span>Quick view</span></button><button className={`wish ${wished?"wished":""}`} onClick={onWish} aria-label="Save to wishlist"><Icon name="heart"/></button><div className="product-copy"><small>{p.category}</small><h3><button onClick={onOpen}>{p.name}</button></h3><p>{p.material}</p><div><b>£{p.price}.00</b><button onClick={onOpen}>View details</button></div></div></article>}
 function Faq({q,children}:{q:string;children:React.ReactNode}){return <details><summary>{q}</summary><p>{children}</p></details>}
 function Overlay({children,close}:{children:React.ReactNode;close:()=>void}){useEffect(()=>{const k=(e:KeyboardEvent)=>e.key==="Escape"&&close();addEventListener("keydown",k);return()=>removeEventListener("keydown",k)},[close]);return <div className="overlay" onMouseDown={e=>e.currentTarget===e.target&&close()}>{children}</div>}
 function QuickView({p,onClose,onAdd,wished,onWish}:{p:Product;onClose:()=>void;onAdd:()=>void;wished:boolean;onWish:()=>void}){const [idx,setIdx]=useState(0);return <aside className="pdp-view"><button className="panel-close pdp-close" onClick={onClose}><Icon name="close"/></button><div className="pdp-main"><div className="pdp-gallery"><img src={p.images[idx]} alt={p.name}/><div>{p.images.map((im,i)=><button key={im} className={idx===i?"active":""} onClick={()=>setIdx(i)}><img src={im} alt=""/></button>)}</div></div><div className="pdp-copy"><p className="eyebrow">{p.category}</p><h2>{p.name}</h2><p>{p.material}</p><strong>£{p.price}.00</strong><p>{p.note}</p><div className="colour"><span>Colour: <b>{p.colour}</b></span><i style={{background:p.colour.toLowerCase()}}/></div><ul><li>Authentic materials, clearly identified</li><li>Direct from specialist makers</li><li>Delivery and returns confirmed at checkout</li></ul><div className="pdp-actions"><button className="button dark" onClick={onAdd}>Add to bag · £{p.price}.00</button><button className={`outline-heart ${wished?"wished":""}`} onClick={onWish}><Icon name="heart"/></button></div></div></div><section className="pdp-style"><img src={looks[0].image} alt={looks[0].alt}/><div><p className="eyebrow">STYLE IT YOUR WAY</p><h3>{looks[0].title}</h3><p>{looks[0].copy}</p><a className="underlink" href={LOOKS_PATH}>See all looks <Icon name="arrow"/></a></div></section></aside>}
