@@ -644,3 +644,22 @@ body,main,.trust-and-proof,.merch-category,.merch-mosaic,.merch-scarves,.recomme
   .review-track p{margin-top:7px;font-size:15px;line-height:1.2}
   .review-track footer{font-size:6px}
 }
+
+/* Final trust strip — a quiet editorial stat bar, not a set of generated-looking cards. */
+.trust-and-proof{padding:16px 0;background:var(--aubergine)}
+.trust-box{max-width:1260px;min-height:82px;gap:0;background:transparent}
+.trust-box>span{min-height:82px;padding:0 26px;display:flex;align-items:center;justify-content:flex-start;border:0;border-radius:0;background:transparent!important;color:#fff7eb}
+.trust-box>span+span{border-left:1px solid rgba(255,247,235,.22)}
+.trust-icon{display:none}
+.trust-box .trust-copy{gap:4px;color:#fff7eb}
+.trust-box b{color:#fff7eb;font:28px/.9 var(--serif);letter-spacing:-.055em}
+.trust-copy small{color:#e5d8d1;font:7px/1.2 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+
+@media(max-width:760px){
+  .trust-and-proof{padding:10px 0}
+  .trust-box{min-height:64px;gap:0;padding:0 14px;scroll-snap-type:x mandatory}
+  .trust-box>span{flex:0 0 48%;min-height:64px;padding:0 13px;scroll-snap-align:start}
+  .trust-box>span+span{border-left:1px solid rgba(255,247,235,.22)}
+  .trust-box b{font-size:20px}
+  .trust-copy small{font-size:6px;letter-spacing:.09em}
+}
