@@ -1688,6 +1688,26 @@ html.motion-ready .motion-reveal>*{transition-duration:.5s}
    scrolling. Sections and headings still move; children and media arrive with
    their parent. */
 html.motion-ready :is(.category-grid,.material-rail,.edit-category-grid,.product-grid,.scarf-style-grid,.trend-grid,.look-collage,.ugc-rail).motion-reveal>*{opacity:1!important;transform:none!important;transition:none!important}
-html.motion-ready .motion-reveal :is(img,video){transform:none!important;transition:none!important}
+html.motion-ready .motion-reveal :not(.feature-cutout)>:is(img,video),
+html.motion-ready .motion-reveal :not(.feature-cutout) :is(img,video){transform:none!important;transition:none!important}
 html.motion-ready .motion-reveal{transition:opacity .5s cubic-bezier(.22,.75,.25,1),transform .5s cubic-bezier(.22,.75,.25,1)}
 html.motion-ready .motion-reveal :is(.merch-feature,.scarf-feature,.look-stage,.finder-image,.reviews,.trust-box,.material-rail,.ugc-rail){transform:none}
+
+/* ── Round 14 ────────────────────────────────────────────────────────────── */
+
+/* Hero: a prominent continuous zoom rather than a turn. */
+@keyframes hero-pulse{0%,100%{transform:scale(.92)}50%{transform:scale(1.22)}}
+.merch-diamonds .feature-cutout img{animation:hero-pulse 4.2s cubic-bezier(.45,0,.55,1) infinite!important}
+@media(prefers-reduced-motion:reduce){.merch-diamonds .feature-cutout img{animation:none!important}}
+
+/* Mobile crops in the edit sections. A portrait shot in a near-square card
+   loses a third of the frame, so narrowing the card matches the source aspect
+   instead of adding height — the rail gets more compact, not less. */
+@media(max-width:760px){
+  .scarf-style-grid article{flex:0 0 min(50vw,182px)!important}
+  .scarf-image{height:252px!important}
+  .scarf-image img{object-position:center 22%}
+  .look-stage{height:228px}
+  .look-stage-slide img{object-position:center 40%}
+  .merch-gemstones .merch-feature .feature-media{object-position:center 44%}
+}
