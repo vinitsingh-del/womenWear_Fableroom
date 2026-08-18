@@ -1854,3 +1854,17 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
   .review-stars{font-size:6px;letter-spacing:.12em}
   .review-track footer{font-size:5px;letter-spacing:.09em}
 }
+
+/* ── Round 19 ────────────────────────────────────────────────────────────── */
+
+/* Only the cards were reduced last round, so the score panel stayed scaled for
+   the old size and dominated the block. Bring the whole thing down to the same
+   proportion the desktop uses (score ~2.5x the quote). */
+@media(max-width:760px){
+  .review-score{padding:13px 16px 11px}
+  .review-score .eyebrow{margin-bottom:6px;font-size:5.6px;letter-spacing:.16em}
+  .review-score strong{font-size:22px;line-height:.94}
+  .review-score>div{margin:3px 0;font-size:7px;letter-spacing:.2em}
+  .review-score>span{font-size:5.4px;line-height:1.5}
+  .review-score>a{margin-top:8px;font-size:5.4px;padding-bottom:2px}
+}
