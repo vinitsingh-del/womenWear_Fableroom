@@ -1414,3 +1414,19 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
   .trend-grid{display:flex!important;gap:8px!important}
   .trend-grid>a,.trend-grid .trend-lead{flex:0 0 min(76vw,250px)!important;height:340px!important}
 }
+
+/* ── Round 9 ─────────────────────────────────────────────────────────────── */
+
+/* The diamond hero is now a maroon-ground still, so the warm multiply that was
+   knocking back a white product shot is no longer needed. */
+.merch-diamonds .merch-feature{background:#2a0a18}
+.merch-diamonds .merch-feature img,
+.merch-diamonds .merch-feature video{mix-blend-mode:normal;object-position:center center}
+
+/* Another 30% off the gap either side of the trust band. */
+.category-section{padding-bottom:29px!important}
+.material-wrap{margin-top:29px!important}
+@media(max-width:760px){
+  .category-section{padding-bottom:19px!important}
+  .material-wrap{margin-top:19px!important}
+}
