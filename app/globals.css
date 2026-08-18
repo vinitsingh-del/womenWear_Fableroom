@@ -569,3 +569,78 @@ body,main,.trust-and-proof,.merch-category,.merch-mosaic,.merch-scarves,.recomme
   .trust-box b{font:22px/.9 var(--serif);letter-spacing:-.04em;margin:0;color:#fff7eb}
   .trust-copy small{font:7px/1.15 var(--sans);letter-spacing:.04em;color:#fff7eb;text-transform:uppercase}
 }
+
+/* Shared proof strip: compact reference-card rhythm on every screen. */
+.trust-and-proof{padding:14px 0;background:var(--aubergine);border:0}
+.trust-box{max-width:1260px;min-height:82px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;background:transparent;overflow:visible}
+.trust-box>span{min-height:82px;padding:12px 14px;display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:11px;border:1px solid rgba(36,27,24,.12);border-radius:13px;background:#fff!important;background-image:none!important;color:var(--ink);scroll-snap-align:none}
+.trust-box>span::after{display:none}
+.trust-box .trust-copy{position:relative;z-index:1;min-width:0;min-height:0;padding:0;border:0;background:transparent;display:flex;flex-direction:column;gap:3px;font:inherit}
+.trust-icon{display:grid;width:26px;height:26px;flex:0 0 26px;place-items:center;border:1px solid var(--line);border-radius:50%;color:var(--aubergine);font:16px/1 var(--serif)}
+.trust-box b{margin:0;color:var(--ink);font:22px/.92 var(--serif);letter-spacing:-.045em}
+.trust-copy small{font:7px/1.2 var(--sans);letter-spacing:.075em;color:#5e554d;text-transform:uppercase}
+
+/* Natural merchandising rhythm: aligned images and products, no staggered holes. */
+.section{padding-top:56px;padding-bottom:56px}
+.category-section{padding-top:52px;padding-bottom:54px}
+.material-wrap{padding-top:54px;padding-bottom:58px}
+.merch-category{padding-top:58px;padding-bottom:60px}
+.merch-category>header{margin-bottom:22px}
+.subcategories{margin-bottom:18px}
+.merch-panorama .merch-feature,.merch-reverse .merch-feature,.merch-mosaic .merch-feature{height:440px;margin:0 0 14px}
+.merch-panorama .merch-layout,.merch-reverse .merch-layout,.merch-mosaic .merch-layout{display:block}
+.merch-panorama .product-grid,.merch-reverse .product-grid,.merch-mosaic .product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;overflow:visible;padding:0;margin:0}
+.merch-panorama .product-card,.merch-reverse .product-card,.merch-mosaic .product-card:nth-child(n){grid-column:auto;flex:auto;margin:0}
+.merch-panorama .product-image,.merch-reverse .product-image,.merch-mosaic .product-image{height:auto;aspect-ratio:4/5}
+.merch-scarves{padding-bottom:60px}
+.scarf-feature{height:430px;margin-bottom:14px}
+.scarf-style-grid article:nth-child(2),.scarf-style-grid article:nth-child(4){margin-top:0}
+
+/* Reviews stay credible without consuming a full page section. */
+.reviews{max-width:1260px;grid-template-columns:24% 76%;min-height:178px}
+.review-score{padding:28px 32px}
+.review-score .eyebrow{margin-bottom:7px}
+.review-score strong{font-size:56px}
+.review-score>div{margin:5px 0;font-size:10px}
+.review-score>span{font-size:7px;line-height:1.35}
+.review-score>a{margin-top:12px;font-size:7px}
+.review-track blockquote{width:285px;min-height:178px;padding:24px 26px}
+.review-track blockquote>span{font-size:15px}
+.review-track p{margin:12px 0 auto;font-size:20px;line-height:1.22}
+.review-track footer{font-size:7px}
+
+@media(max-width:760px){
+  .trust-and-proof{padding:8px 0;background:var(--aubergine)}
+  .trust-box{display:flex;gap:7px;min-height:64px;margin:0;padding:0 12px;overflow-x:auto;scroll-snap-type:x mandatory}
+  .trust-box>span{flex:0 0 calc(50% - 10px);min-height:64px;padding:8px 9px;gap:7px;border-radius:10px;scroll-snap-align:start}
+  .trust-icon{width:21px;height:21px;flex-basis:21px;font-size:13px}
+  .trust-box b{font-size:18px}
+  .trust-copy small{font-size:6px;letter-spacing:.055em}
+
+  .section,.category-section{padding-top:36px;padding-bottom:38px}
+  .material-wrap{padding-top:36px;padding-bottom:40px}
+  .merch-category{padding-top:38px;padding-bottom:40px}
+  .merch-category>header{margin-bottom:14px}
+  .subcategories{margin-bottom:14px}
+  .merch-panorama .merch-feature,.merch-reverse .merch-feature,.merch-mosaic .merch-feature{height:274px;margin-bottom:11px}
+  .merch-panorama .product-grid,.merch-reverse .product-grid,.merch-mosaic .product-grid{display:flex;gap:8px;margin-right:-16px;padding-right:16px;overflow-x:auto;scroll-snap-type:x mandatory}
+  .merch-panorama .product-card,.merch-reverse .product-card,.merch-mosaic .product-card:nth-child(n){flex:0 0 min(70%,240px);scroll-snap-align:start}
+  .merch-scarves{padding-bottom:40px}
+  .scarf-feature{height:274px;margin-bottom:11px}
+  .trending,.out-about{padding-top:36px}
+  .looks-premium{padding-top:38px;padding-bottom:40px}
+  .recommended{padding-top:36px;padding-bottom:38px}
+
+  .reviews{display:grid;grid-template-columns:112px minmax(0,1fr);min-height:132px;margin:0}
+  .review-score{padding:18px 13px}
+  .review-score .eyebrow{font-size:6px;margin-bottom:5px}
+  .review-score strong{font-size:38px}
+  .review-score>div{font-size:7px;margin:3px 0}
+  .review-score>span{font-size:6px}
+  .review-score>a{display:none}
+  .review-window{border-top:0;border-left:1px solid rgba(255,255,255,.18)}
+  .review-track blockquote{width:210px;min-height:132px;padding:17px 16px}
+  .review-track blockquote>span{font-size:11px}
+  .review-track p{margin-top:7px;font-size:15px;line-height:1.2}
+  .review-track footer{font-size:6px}
+}
