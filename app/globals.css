@@ -809,3 +809,19 @@ html,body,#root{width:100%;max-width:100%;overflow-x:hidden}
   .premium-look-board .look-tile i{font-size:17px}
   .premium-look-board .look-tile em{display:none}
 }
+
+/* Edge-to-edge category imagery and final dead-space pass. */
+.edit-category-grid{gap:8px}
+.edit-category-grid>a{background:transparent}
+.edit-category-grid img,.merch-bags .edit-category-grid img{object-fit:cover;background:transparent}
+.merch-diamonds .edit-category-grid img,.merch-gemstones .edit-category-grid img{object-fit:cover;background:transparent}
+.section{padding-top:46px;padding-bottom:46px}
+.category-section{padding-top:44px;padding-bottom:46px}
+.material-wrap{padding-top:40px;padding-bottom:42px}
+.merch-category,.merch-reverse{padding-top:46px;padding-bottom:48px}
+.trending{padding-top:48px}
+.looks-premium{padding-top:48px;padding-bottom:50px}
+.recommended{padding-top:44px;padding-bottom:46px}
+.out-about{padding-top:46px}
+.faq{padding-top:48px;padding-bottom:48px}
+@media(max-width:760px){.section{padding-top:32px;padding-bottom:34px}.category-section{padding-top:32px;padding-bottom:34px}.material-wrap{padding-top:24px!important;padding-bottom:26px!important}.merch-category,.merch-reverse{padding-top:30px;padding-bottom:32px}.trending,.out-about{padding-top:34px}.looks-premium{padding-top:32px!important;padding-bottom:34px!important}.recommended{padding-top:32px;padding-bottom:34px}.faq{padding-top:34px;padding-bottom:34px}.edit-category-grid{gap:6px}.edit-category-grid>a{border:0}}
