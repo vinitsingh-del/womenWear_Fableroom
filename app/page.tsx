@@ -231,9 +231,62 @@ export default function Home(){
   </main>;
 }
 
-function SmartVideo({src,poster,ariaLabel,restartOnView=false}:{src:string;poster:string;ariaLabel:string;restartOnView?:boolean}){const ref=useRef<HTMLVideoElement>(null);useEffect(()=>{const video=ref.current;if(!video)return;const observer=new IntersectionObserver(([entry])=>{if(entry.isIntersecting){if(restartOnView)video.currentTime=0;void video.play().catch(()=>{})}else video.pause()},{threshold:.05,rootMargin:"180px 0px"});observer.observe(video);return()=>{observer.disconnect();video.pause()}},[restartOnView]);return <video ref={ref} src={src} poster={poster} muted playsInline loop preload="metadata" aria-label={ariaLabel}/>}
+function SmartVideo({src,poster,ariaLabel,restartOnView=false}:{src:string;poster:string;ariaLabel:string;restartOnView?:boolean}){
+  const ref=useRef<HTMLVideoElement>(null);
+  const hasPlayed=useRef(false);
+  const hasLeftView=useRef(false);
+  useEffect(()=>{
+    const video=ref.current;
+    if(!video)return;
+    const start=()=>{void video.play().catch(()=>{})};
+    const restart=()=>{
+      if(video.readyState>=1)video.currentTime=0;
+      else video.addEventListener("loadedmetadata",()=>{video.currentTime=0},{once:true});
+    };
+    const observer=new IntersectionObserver(([entry])=>{
+      if(entry.isIntersecting){
+        if(restartOnView&&hasPlayed.current&&hasLeftView.current)restart();
+        hasLeftView.current=false;
+        hasPlayed.current=true;
+        start();
+      }else if(hasPlayed.current){
+        hasLeftView.current=true;
+      }
+    },{threshold:.01,rootMargin:"320px 0px"});
+    observer.observe(video);
+    start();
+    return()=>{observer.disconnect();video.pause()};
+  },[restartOnView]);
+  return <video ref={ref} src={src} poster={poster} muted playsInline loop autoPlay preload="auto" aria-label={ariaLabel}/>;
+}
 function CategoryCard({href,title,copy,image,video}:{href:string;title:string;copy:string;image:string;video?:string}){return <a className={`category-card ${video?"category-motion":""}`} href={href}>{video?<SmartVideo src={video} poster={image} ariaLabel={`${title} product film`} restartOnView={title==="Diamond Jewellery"}/>:<img src={image} alt={title}/>}<span><h3>{title}</h3><p>{copy}</p><u>Explore Collection</u></span></a>}
-function CountUp({end,prefix="",suffix=""}:{end:number;prefix?:string;suffix?:string}){const ref=useRef<HTMLElement>(null);const [value,setValue]=useState(0);useEffect(()=>{const node=ref.current;if(!node)return;let frame=0;const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;if(reduce){frame=requestAnimationFrame(()=>setValue(end));return()=>cancelAnimationFrame(frame)}const observer=new IntersectionObserver(([entry])=>{if(!entry.isIntersecting)return;observer.disconnect();const started=performance.now();const run=(now:number)=>{const progress=Math.min((now-started)/1250,1);const eased=1-Math.pow(1-progress,3);setValue(Math.round(end*eased));if(progress<1)frame=requestAnimationFrame(run)};frame=requestAnimationFrame(run)},{threshold:.45});observer.observe(node);return()=>{observer.disconnect();cancelAnimationFrame(frame)}},[end]);return <b ref={ref}>{prefix}{value.toLocaleString("en-GB")}{suffix}</b>}
+function CountUp({end,prefix="",suffix=""}:{end:number;prefix?:string;suffix?:string}){
+  const ref=useRef<HTMLElement>(null);
+  const [value,setValue]=useState(0);
+  useEffect(()=>{
+    const node=ref.current;
+    if(!node)return;
+    let frame=0;
+    let ran=false;
+    const finish=()=>setValue(end);
+    const run=()=>{
+      if(ran)return;
+      ran=true;
+      if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){finish();return}
+      const started=performance.now();
+      const animate=(now:number)=>{
+        const progress=Math.min((now-started)/1100,1);
+        setValue(Math.round(end*(1-Math.pow(1-progress,3))));
+        if(progress<1)frame=requestAnimationFrame(animate);
+      };
+      frame=requestAnimationFrame(animate);
+    };
+    const observer=new IntersectionObserver(([entry])=>{if(entry.isIntersecting){run();observer.disconnect()}},{threshold:.08,rootMargin:"0px 0px -8%"});
+    observer.observe(node);
+    return()=>{observer.disconnect();cancelAnimationFrame(frame)};
+  },[end]);
+  return <b ref={ref}>{prefix}{value.toLocaleString("en-GB")}{suffix}</b>;
+}
 function TrustStat({icon,image,end,prefix,suffix,label}:{icon:string;image:string;end:number;prefix?:string;suffix?:string;label:string}){return <span style={{backgroundImage:`linear-gradient(135deg,rgba(50,8,27,.88),rgba(89,45,33,.66)),url(${image})`}}><i className="trust-icon" aria-hidden="true">{icon}</i><span className="trust-copy"><CountUp end={end} prefix={prefix} suffix={suffix}/><small>{label}</small></span></span>}
 function Material({image,images,video,index,title,copy}:{image?:string;images?:string[];video?:string;index:string;title:string;copy:string}){return <article className={`material-card ${video?"material-motion":""} ${images?.length?"material-card-pair":""}`}>{images?.length?<div className="material-visual-pair">{images.map((src,i)=><img key={src} src={src} alt={`${title} — ${i===0?"diamond setting in progress":"finished aligned diamonds"}`}/>)}</div>:video&&image?<SmartVideo src={video} poster={image} ariaLabel={`${title} close-up film`}/>:image?<img src={image} alt=""/>:null}<div className="material-copy"><small>{index} · MATERIAL NOTE</small><h3>{title}</h3><p>{copy}</p></div></article>}
 function CategoryEdit({id,variant,index,kicker,title,copy,category,subcategories,image,video,products:items,wish,onWish,onOpen}:{id:string;variant:"panorama"|"reverse"|"mosaic";index:string;kicker:string;title:string;copy:string;category:Category;subcategories:string[][];image:string;video?:string;products:Product[];wish:number[];onWish:(id:number)=>void;onOpen:(p:Product)=>void}){const [active,setActive]=useState<number|null>(null);const activeProduct=active===null?null:items[active];const modelFocus=id==="bags"&&active===0;return <section className={`merch-category merch-${id} merch-${variant}`} id={id}><header><span>{index}</span><div><p className="eyebrow">{kicker}</p><h2>{title}</h2><p>{copy}</p></div></header><nav className={`subcategories ${id==="bags"?"bag-subcategories":""}`} aria-label={`${category} subcategories`}>{subcategories.map(([label,href],i)=><a key={label} href={href}>{id==="bags"&&<span>{String(i+1).padStart(2,"0")}</span>}<b>{label}</b>{id==="bags"&&<Icon name="arrow"/>}</a>)}</nav><div className="merch-layout"><figure className={`merch-feature ${active!==null?"feature-active":""} ${modelFocus?"model-focus":""}`}>{video&&active===null?<SmartVideo src={video} poster={image} ariaLabel={`${title} collection film`}/>:<img key={activeProduct?.id||"lifestyle"} className="feature-media" src={modelFocus?image:activeProduct?.images[0]||image} alt={activeProduct?`${activeProduct.name} close-up`:`${title} lifestyle`}/>}<figcaption><small>{activeProduct?"HOVERED PIECE":"COLLECTION VIEW"}</small><b>{activeProduct?.name||category}</b></figcaption></figure><div className="product-grid">{items.slice(0,4).map((p,i)=><ProductCard key={p.id} product={p} wished={wish.includes(p.id)} onWish={()=>onWish(p.id)} onOpen={()=>onOpen(p)} onPreview={()=>setActive(i)} onPreviewEnd={()=>setActive(null)}/>)}</div></div></section>}
