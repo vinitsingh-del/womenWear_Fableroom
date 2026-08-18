@@ -663,3 +663,32 @@ body,main,.trust-and-proof,.merch-category,.merch-mosaic,.merch-scarves,.recomme
   .trust-box b{font-size:20px}
   .trust-copy small{font-size:6px;letter-spacing:.09em}
 }
+
+/* Playback, proof-strip and grid stability pass. */
+html,body,#root{width:100%;max-width:100%;overflow-x:hidden}
+.category-card video{display:block}
+
+.trust-and-proof{padding:0;background:var(--aubergine)}
+.trust-box{max-width:1260px;min-height:104px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;overflow:visible}
+.trust-box>span{min-width:0;min-height:104px;padding:20px 28px;background:transparent!important;border:0;border-radius:0;display:flex;align-items:center;justify-content:flex-start}
+.trust-box>span+span{border-left:1px solid rgba(255,247,235,.27)}
+.trust-box .trust-copy{min-width:0;gap:5px}
+.trust-box b{display:block;color:#fff7eb;font:34px/.9 var(--serif);font-variant-numeric:tabular-nums;letter-spacing:-.055em;white-space:nowrap}
+.trust-copy small{display:block;color:#eadfd8;font:8px/1.2 var(--sans);letter-spacing:.13em;text-transform:uppercase;white-space:nowrap}
+
+.merch-category,.merch-layout,.merch-feature,.product-grid,.product-card{min-width:0;max-width:100%}
+.product-image,.product-image img{max-width:100%}
+
+@media(max-width:760px){
+  .trust-box{min-height:74px;padding:0 12px;display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .trust-box::-webkit-scrollbar{display:none}
+  .trust-box>span{flex:0 0 50%;min-height:74px;padding:12px 13px;scroll-snap-align:start}
+  .trust-box>span+span{border-left:1px solid rgba(255,247,235,.25)}
+  .trust-box b{font-size:22px}
+  .trust-copy small{font-size:6px;letter-spacing:.09em}
+
+  .merch-panorama .product-grid,.merch-reverse .product-grid,.merch-mosaic .product-grid,.recommended .product-grid.compact,.scarf-style-grid,.trend-grid,.ugc-rail{width:100%;margin-right:0;padding-right:16px}
+  .merch-panorama .product-card,.merch-reverse .product-card,.merch-mosaic .product-card:nth-child(n),.recommended .product-grid.compact>.product-card{flex:0 0 min(76vw,250px);min-width:0}
+  .scarf-style-grid article{flex:0 0 min(76vw,250px);min-width:0}
+  .product-image{width:100%;overflow:hidden}
+}
