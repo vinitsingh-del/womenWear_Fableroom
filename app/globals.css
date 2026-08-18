@@ -1835,3 +1835,22 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
   .review-window{width:100%;border-top:0}
   .review-track{padding:12px 0}
 }
+
+/* ── Round 18 ────────────────────────────────────────────────────────────── */
+
+/* A single product stretched to the full rail, flattening the card into a
+   different shape from the two-up. Match the two-up column exactly and centre
+   it, so the card ratio never changes with the count. */
+.look-shop-rail[data-count="1"]{grid-template-columns:minmax(0,calc((100% - 14px) / 2));justify-content:center}
+@media(max-width:760px){
+  .look-shop-rail[data-count="1"]{grid-template-columns:minmax(0,calc((100% - 8px) / 2))}
+}
+
+/* Review cards 30% smaller on mobile. Card only, the score panel is unchanged. */
+@media(max-width:760px){
+  .review-track{gap:6px;padding:10px 0}
+  .review-track blockquote{width:134px;padding:9px 10px;gap:5px;border-radius:8px}
+  .review-track p{font-size:9.5px;line-height:1.3}
+  .review-stars{font-size:6px;letter-spacing:.12em}
+  .review-track footer{font-size:5px;letter-spacing:.09em}
+}
