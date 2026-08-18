@@ -385,6 +385,11 @@ const SCARF_FILTERS:[string,(p:Product)=>boolean][]=[
 function ScarfEdit({products:items,wish,onWish,onOpen}:{products:Product[];wish:number[];onWish:(id:number)=>void;onOpen:(p:Product)=>void}){
   const [filter,setFilter]=useState(0);
   const [active,setActive]=useState<number|null>(null);
+  // Touch devices fire pointerenter while scrolling the rail, which swapped the
+  // lifestyle banner for a product cutout. Only hover-capable pointers preview.
+  const [canHover,setCanHover]=useState(false);
+  useEffect(()=>{setCanHover(window.matchMedia("(hover: hover) and (pointer: fine)").matches)},[]);
+  const preview=(i:number|null)=>{if(canHover)setActive(i)};
   const shown=items.filter(SCARF_FILTERS[filter][1]);
   useEffect(()=>{setActive(null)},[filter]);
   return <section className="merch-category merch-scarves" id="scarves">
@@ -394,7 +399,7 @@ function ScarfEdit({products:items,wish,onWish,onOpen}:{products:Product[];wish:
       <img src={active!==null&&shown[active]?shown[active].images[0]:`${A}/editorial/scarf-lifestyle.webp`} alt={active!==null&&shown[active]?`${shown[active].name} close-up`:"Cashmere and merino wool scarf styling"}/>
       <a className="feature-cta" href={CP.scarves}>Explore now<Icon name="arrow"/></a>
     </figure>
-    <div className="scarf-style-grid">{shown.map((p,i)=><article key={p.id} onPointerEnter={()=>setActive(i)} onPointerLeave={()=>setActive(null)} onFocusCapture={()=>setActive(i)} onBlurCapture={()=>setActive(null)}><button className="scarf-image" onClick={()=>onOpen(p)}><img src={SCARF_SHOTS[p.id]||p.images[0]} alt={`${p.name} styled on a model`}/><span>View piece</span></button><div><small>{p.material}</small><h3>{p.name}</h3><b>£{p.price}.00</b><button className={`mini-wish ${wish.includes(p.id)?"wished":""}`} onClick={()=>onWish(p.id)} aria-label="Save scarf"><Icon name="heart"/></button></div></article>)}</div>
+    <div className="scarf-style-grid">{shown.map((p,i)=><article key={p.id} onPointerEnter={()=>preview(i)} onPointerLeave={()=>preview(null)} onFocusCapture={()=>preview(i)} onBlurCapture={()=>preview(null)}><button className="scarf-image" onClick={()=>onOpen(p)}><img src={SCARF_SHOTS[p.id]||p.images[0]} alt={`${p.name} styled on a model`}/><span>View piece</span></button><div><small>{p.material}</small><h3>{p.name}</h3><b>£{p.price}.00</b><button className={`mini-wish ${wish.includes(p.id)?"wished":""}`} onClick={()=>onWish(p.id)} aria-label="Save scarf"><Icon name="heart"/></button></div></article>)}</div>
   </section>;
 }
 function ProductCard({product:p,wished,onWish,onOpen,onPreview,onPreviewEnd}:{product:Product;wished:boolean;onWish:()=>void;onOpen:()=>void;onPreview?:()=>void;onPreviewEnd?:()=>void}){return <article className="product-card" onPointerEnter={onPreview} onPointerLeave={onPreviewEnd} onFocusCapture={onPreview} onBlurCapture={onPreviewEnd}><button className="product-image" onClick={onOpen}><img className="primary" src={p.images[0]} alt={p.name} loading="lazy"/><img className="secondary" src={p.images[1]||p.images[0]} alt="" loading="lazy"/><span>Quick view</span></button><button className={`wish ${wished?"wished":""}`} onClick={onWish} aria-label="Save to wishlist"><Icon name="heart"/></button><div className="product-copy"><small>{p.category}</small><h3><button onClick={onOpen}>{p.name}</button></h3><p>{p.material}</p><div><b>£{p.price}.00</b><button onClick={onOpen}>View details</button></div></div></article>}

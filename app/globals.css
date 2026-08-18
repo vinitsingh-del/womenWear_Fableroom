@@ -1711,3 +1711,25 @@ html.motion-ready .motion-reveal :is(.merch-feature,.scarf-feature,.look-stage,.
   .look-stage-slide img{object-position:center 40%}
   .merch-gemstones .merch-feature .feature-media{object-position:center 44%}
 }
+
+/* ── Round 15 ────────────────────────────────────────────────────────────── */
+
+/* Horizontal rails overran the section edge. Mandatory snapping with start
+   alignment pins the last card to the left at the end of the scroll, leaving a
+   wide empty strip, and a trailing pad stopped the rail short of the rail edge.
+   Proximity snapping plus an end-aligned last card lands it flush. */
+@media(max-width:760px){
+  .scarf-style-grid,.trend-grid,.ugc-rail,
+  .merch-category .product-grid,.recommended .product-grid,.look-collage{
+    scroll-snap-type:x proximity!important;
+    margin-right:0!important;
+    padding-right:0!important;
+    scroll-padding-right:0;
+  }
+  .scarf-style-grid>*:last-child,
+  .trend-grid>*:last-child,
+  .ugc-rail>*:last-child,
+  .merch-category .product-grid>*:last-child,
+  .recommended .product-grid>*:last-child,
+  .look-collage>*:last-child{scroll-snap-align:end}
+}
