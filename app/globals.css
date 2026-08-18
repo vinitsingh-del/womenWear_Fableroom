@@ -825,3 +825,11 @@ html,body,#root{width:100%;max-width:100%;overflow-x:hidden}
 .out-about{padding-top:46px}
 .faq{padding-top:48px;padding-bottom:48px}
 @media(max-width:760px){.section{padding-top:32px;padding-bottom:34px}.category-section{padding-top:32px;padding-bottom:34px}.material-wrap{padding-top:24px!important;padding-bottom:26px!important}.merch-category,.merch-reverse{padding-top:30px;padding-bottom:32px}.trending,.out-about{padding-top:34px}.looks-premium{padding-top:32px!important;padding-bottom:34px!important}.recommended{padding-top:32px;padding-bottom:34px}.faq{padding-top:34px;padding-bottom:34px}.edit-category-grid{gap:6px}.edit-category-grid>a{border:0}}
+
+/* Final mobile copy and title-motion refinement. */
+.edit-toggle{display:none!important}
+@keyframes title-emphasis{0%,100%{text-shadow:0 0 0 transparent;opacity:1}50%{text-shadow:0 0 18px rgba(184,131,66,.18);opacity:.92}}
+.hero h1,.section h2,.merch-category h2,.material-head h2,.newsletter h2,.finder h2,.faq h2,.scarf-feature figcaption,.look-tile b{animation:title-emphasis 4.8s ease-in-out infinite}
+@keyframes hero-subtitle{0%,12%,100%{opacity:.55;transform:translateY(4px)}24%,76%{opacity:1;transform:translateY(0)}}
+.hero-copy>p:not(.eyebrow){animation:hero-subtitle 4.2s ease-in-out infinite}
+@media(max-width:760px){.hero-copy{bottom:28px}.hero h1{font-size:35px;line-height:.98}.hero-copy>p:not(.eyebrow){max-width:310px;font-size:10px;line-height:1.38;margin-top:8px}.scarf-feature{height:178px!important;margin-bottom:8px!important}.scarf-feature figcaption{left:14px;bottom:14px;padding:8px 11px;font-size:14px}.merch-scarves{padding-bottom:26px!important}.scarf-style-grid{gap:7px}.scarf-style-grid article{flex-basis:min(62vw,210px)!important}.scarf-image{height:250px!important}.scarf-style-grid h3{font-size:16px}.scarf-style-grid article>div{padding-top:8px}}
