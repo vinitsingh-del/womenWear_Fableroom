@@ -449,3 +449,104 @@ video{contain:paint}
   .material-card .material-visual-pair img{height:230px!important}
   .material-card .material-copy{padding-top:15px}
 }
+
+/* Mobile density cleanup — one final responsive layer keeps every section compact. */
+@media(max-width:760px){
+  html{scroll-padding-top:55px}
+  body{font-size:13px}
+  .hero{height:min(72svh,560px);min-height:500px;max-height:none}
+  .hero-copy{bottom:34px}
+  .hero h1{font-size:36px;line-height:1}
+  .hero-copy>p:not(.eyebrow){max-width:330px;font-size:10.5px}
+
+  .section{padding:42px 16px}
+  .section-heading,.merch-category>header{margin-bottom:18px}
+  .section-heading h2,.material-head h2,.merch-category h2,.finder-card h2,.faq h2{font-size:33px;line-height:1.05}
+  .section-heading>p:last-child,.section-heading.split>div:last-child p{font-size:11px;line-height:1.55}
+  .category-section{padding-top:40px;padding-bottom:42px}
+  .category-grid{grid-template-rows:350px 220px 300px;gap:7px}
+  .category-card h3{font-size:25px}
+  .category-card:nth-child(2) h3,.category-card:nth-child(3) h3{font-size:18px}
+  .category-card>span{bottom:14px}
+  .category-card p{margin-bottom:8px}
+
+  .trust-box{min-height:148px}
+  .trust-box span{flex:0 0 78%;min-height:148px;padding:20px}
+  .trust-box b{font-size:39px;margin-bottom:6px}
+  .material-wrap{padding-top:42px;padding-bottom:46px}
+  .material-head{margin-bottom:18px}
+  .material-head>p{margin-top:10px;font-size:10.5px;line-height:1.55}
+  .material-rail{gap:24px}
+  .material-card:nth-child(1)>img,.material-card:nth-child(3)>img,.material-card:nth-child(4)>img{height:228px}
+  .material-card .material-visual-pair img{height:205px!important}
+  .material-card .material-copy{padding-top:12px}
+  .material-card h3{font-size:21px;margin:6px 0}
+  .material-card p{font-size:10px;line-height:1.5}
+
+  .merch-category{padding:42px 16px 46px}
+  .merch-category>header>span{font-size:25px;margin-bottom:7px}
+  .merch-category>header p:last-child{font-size:10.5px;line-height:1.5}
+  .subcategories{margin-bottom:18px;padding-top:12px;padding-bottom:12px}
+  .bag-subcategories{margin-bottom:18px}
+  .bag-subcategories a{min-height:74px;padding:12px;flex-basis:196px}
+  .bag-subcategories a b{font-size:14px}
+  .merch-panorama .merch-feature,.merch-mosaic .merch-feature{height:300px;margin-bottom:14px}
+  .merch-reverse .merch-layout{gap:14px}
+  .merch-reverse .merch-feature{height:320px}
+  .merch-panorama .product-grid,.merch-reverse .product-grid,.merch-mosaic .product-grid{gap:8px}
+  .merch-panorama .product-card,.merch-reverse .product-card,.merch-mosaic .product-card:nth-child(n){flex-basis:min(72%,250px)}
+  .product-copy{min-height:0;padding:11px 0 2px}
+  .product-copy h3{min-height:0;font-size:17px;line-height:1.15;margin:5px 0}
+  .product-copy>p{margin-bottom:8px;font-size:9px;line-height:1.4}
+  .product-copy>div>b{font-size:11px}
+  .wish{width:34px;height:34px}
+  .merch-scarves{padding-bottom:46px}
+  .scarf-feature{height:300px;margin-bottom:14px}
+  .scarf-style-grid{gap:8px}
+  .scarf-style-grid article:nth-child(2),.scarf-style-grid article:nth-child(4){margin-top:0}
+  .scarf-style-grid article{flex-basis:min(74%,260px)}
+  .scarf-image{height:355px}
+
+  .trending,.out-about{padding-top:42px}
+  .trend-grid>a,.trend-grid .trend-lead{height:390px;flex-basis:min(80%,305px)}
+  .trend-grid span{left:16px;right:16px;bottom:16px}
+  .look-collage.premium-look-board{gap:8px}
+  .premium-look-board .look-tile,.premium-look-board .look-1,.premium-look-board .look-2{height:385px;flex-basis:min(80%,305px)}
+  .premium-look-board .look-tile span{left:16px;right:16px;bottom:14px}
+  .looks-premium{padding-top:44px;padding-bottom:46px}
+  .recommended{padding-top:42px;padding-bottom:42px}
+  .recommended .product-grid.compact{padding-bottom:2px}
+  .recommended .product-grid.compact>.product-card{flex-basis:min(72%,250px)}
+
+  .review-score{padding:32px 20px}
+  .review-score strong{font-size:60px}
+  .review-track blockquote{width:80vw;min-height:230px;padding:28px 20px}
+  .review-track p{font-size:20px;line-height:1.25}
+  .ugc-rail figure{flex-basis:72%}
+  .ugc-rail img{height:340px}
+
+  .finder{padding:0 16px 42px}
+  .finder-image img{height:330px}
+  .finder-card{padding:28px 18px}
+  .quiz-progress{margin-bottom:20px}
+  .quiz-question{font-size:21px;margin-bottom:14px}
+  .quiz-options button{min-height:48px}
+  .faq{padding-top:42px;padding-bottom:42px}
+  .faq>div:first-child{margin-bottom:14px}
+  .faq-list summary{min-height:56px;padding-top:15px;padding-bottom:15px;font-size:17px}
+  .faq-list p{padding-bottom:18px}
+  .newsletter{padding:46px 20px}
+  .newsletter h2{font-size:36px}
+  .newsletter form{margin-top:18px}
+  .site-footer{padding:34px 20px;gap:20px 16px}
+
+  .looks-hero{padding:46px 16px 32px}
+  .looks-hero h1{font-size:42px}
+  .all-looks{padding-bottom:42px}
+  .full-look figure{height:360px}
+  .full-look>div{padding:24px 2px 30px}
+  .full-look h2{font-size:32px;margin:6px 0 10px}
+  .full-look ul{margin:14px 0}
+  .looks-end{padding:44px 20px}
+  .looks-end h2{font-size:36px;margin-bottom:18px}
+}
