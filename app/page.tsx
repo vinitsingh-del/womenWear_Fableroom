@@ -303,7 +303,8 @@ function ShopTheLook({onOpen}:{onOpen:(p:Product)=>void}){
       {lookBanners.map((banner,i)=><button key={banner.src} className={`look-stage-slide ${i===slide?"is-on":""}`} onClick={()=>setSlide(i)} tabIndex={i===slide?0:-1} aria-hidden={i!==slide} aria-label={banner.alt}><img src={`${A}/${banner.src}.webp`} alt={banner.alt}/></button>)}
       <div className="look-stage-dots">{lookBanners.map((banner,i)=><button key={banner.src} className={i===slide?"on":""} onClick={()=>setSlide(i)} aria-label={`Look ${i+1}`}/>)}</div>
     </div>
-    <div className="look-shop-rail" key={slide}>{shown.map(p=><button key={p.id} onClick={()=>onOpen(p)}><span className="look-shop-image"><img src={p.images[0]} alt={p.name} loading="lazy"/></span><b>{p.name}</b><em>£{p.price}.00</em></button>)}</div>
+    <div className="look-shop-rail" data-count={shown.length} key={slide}>{shown.map(p=><button key={p.id} className="look-shop-card" onClick={()=>onOpen(p)}><span className="look-shop-image"><img src={p.images[0]} alt={p.name} loading="lazy"/></span><b>{p.name}</b><em>£{p.price}.00</em></button>)}</div>
+    <button className="look-add" onClick={()=>onAddLook(shown.map(p=>p.id))}>Add the look to bag<Icon name="bag"/></button>
   </section>;
 }
 

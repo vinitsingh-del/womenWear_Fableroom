@@ -1457,3 +1457,90 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
   .merch-scarves .subcategories button{font-size:7.5px}
   .look-shop-rail>button em{font-size:11px}
 }
+
+/* ── Round 11 ────────────────────────────────────────────────────────────── */
+
+/* Reviews and the trust band share one inset rail at every width; neither bleeds. */
+.reviews{max-width:none;width:auto;margin:29px var(--edge) 0!important;padding:0!important;overflow:hidden}
+.review-score{padding:22px 26px 22px 0}
+@media(min-width:761px){
+  .trust-box{margin:0 var(--edge)!important;padding:22px 0!important}
+  .trust-box>span:first-child{padding-left:0}
+}
+
+/* Trust type was reading too small on desktop. */
+@media(min-width:761px){
+  .trust-box b{font-size:38px;line-height:.92}
+  .trust-copy small{font-size:8.5px;letter-spacing:.15em}
+  .trust-box>span{padding:14px 26px}
+  .trust-box>span:first-child{padding-left:0}
+}
+
+/* Diamond hero: a prominent zoom that overshoots, no rotation. */
+@keyframes hero-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.17)}}
+.merch-diamonds .feature-cutout img{animation:hero-breathe 3.8s cubic-bezier(.34,1.56,.64,1) infinite}
+
+/* Shop the look: cards fill the row, carry a price, and the whole look adds at once. */
+.look-shop-rail{display:grid!important;gap:14px!important;overflow:visible!important;margin:0 0 14px!important;padding:0!important}
+.look-shop-rail[data-count="1"]{grid-template-columns:minmax(0,420px)}
+.look-shop-rail[data-count="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+.look-shop-rail[data-count="3"]{grid-template-columns:repeat(3,minmax(0,1fr))}
+.look-shop-rail{justify-content:space-between}
+.look-shop-card{display:grid!important;grid-template-rows:auto auto auto;flex:none!important;padding:14px 14px 16px!important;border-radius:14px;background:rgba(255,250,243,.11);border:1px solid rgba(255,250,243,.24);text-align:left;transition:background .3s ease,border-color .3s ease,transform .3s cubic-bezier(.22,.75,.25,1)}
+.look-shop-card:hover{background:rgba(255,250,243,.11);border-color:rgba(255,250,243,.3);transform:translateY(-3px)}
+.look-shop-image{border-radius:9px;background:var(--ivory)}
+.look-shop-card b{min-height:0!important;padding-top:12px!important;-webkit-line-clamp:1!important;font-size:17px!important}
+.look-shop-card em{padding-top:4px}
+.look-add{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;min-height:48px;padding:0 22px;border:0;border-radius:999px;background:var(--rust-gold);color:#2b0817;font:700 9px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;position:relative;overflow:hidden;isolation:isolate;transition:transform .3s ease,filter .3s ease}
+.look-add:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.look-add .icon{width:15px;height:15px}
+.look-add::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.5) 50%,transparent 62%);transform:translateX(-130%);animation:cta-shine 3.6s ease-in-out infinite}
+
+/* Crops: portrait sources in landscape boxes were losing up to half the subject.
+   Taller tiles plus a focal point keep the piece in frame. */
+.edit-category-grid>a{height:236px}
+.edit-category-grid img{object-position:center 32%}
+.category-card img{object-position:center 34%}
+.merch-scarves .scarf-feature img{object-position:center 30%}
+.ugc-rail figure img{object-position:center 28%}
+.merch-bags .feature-media{object-position:center 38%}
+.merch-gemstones .feature-media{object-position:center 46%}
+
+/* Dead space: the quiz card floated in a half-empty column. */
+.finder-card{align-content:start}
+.finder-image img{height:100%}
+
+@media(max-width:760px){
+  .reviews{margin:19px var(--edge) 0!important}
+  .review-score{padding:14px 12px 14px 0}
+  .edit-category-grid>a,.edit-category-grid>a:last-child{height:172px}
+  .look-shop-rail{gap:8px!important}
+  .look-shop-card{padding:9px 9px 11px!important;border-radius:11px}
+  .look-shop-card b{font-size:12px!important;padding-top:8px!important}
+  .look-shop-card em{font-size:11px}
+  .look-add{min-height:42px;font-size:8px}
+  .look-stage-slide img{object-position:center 34%}
+}
+
+/* A 1:1 image at half column width made the cards enormous and grew the
+   section. A fixed image height keeps the block the same size at any count. */
+.look-shop-card .look-shop-image{aspect-ratio:auto!important;height:196px;display:block;overflow:hidden}
+.look-shop-card .look-shop-image img{width:100%;height:196px;object-fit:contain;padding:10px}
+@media(max-width:760px){.look-shop-card .look-shop-image img{height:124px;padding:7px}}
+@media(max-width:760px){.look-shop-card .look-shop-image{height:124px}}
+
+/* A square product inside a half-width card left dead space either side. On
+   desktop the card runs horizontally so the image and copy fill it; mobile
+   keeps the stacked reference layout. */
+@media(min-width:761px){
+  .look-shop-card{grid-template-columns:168px minmax(0,1fr);grid-template-rows:auto auto;align-items:center;column-gap:16px;padding:14px 18px 14px 14px!important}
+  .look-shop-card .look-shop-image{grid-row:1/3;height:168px}
+  .look-shop-card .look-shop-image img{height:168px}
+  .look-shop-card b{align-self:end;padding-top:0!important;font-size:19px!important}
+  .look-shop-card em{align-self:start;padding-top:5px}
+}
+
+/* `.look-shop-rail>button` outranks `.look-shop-card`, so the card surface was
+   never painted. Match the specificity. */
+.look-shop-rail>.look-shop-card{background:rgba(255,250,243,.11);border:1px solid rgba(255,250,243,.24)}
+.look-shop-rail>.look-shop-card:hover{background:rgba(255,250,243,.17);border-color:rgba(255,250,243,.4)}
