@@ -892,7 +892,7 @@ html,body,#root{width:100%;max-width:100%;overflow-x:hidden}
 .category-section{padding-bottom:18px!important}.trust-and-proof{padding-bottom:0!important}.material-wrap{margin-top:18px!important}.trust-box>span{border-left:1px solid rgba(255,247,235,.32)!important;border-right:0!important}.trust-box>span:last-child{border-right:0!important}
 @media(max-width:760px){.category-section{padding-bottom:18px!important}.trust-and-proof{padding:0 16px 0!important}.trust-box>span{border-left:1px solid rgba(255,247,235,.32)!important;border-right:0!important}.trust-box>span:nth-child(n+3){border-top:1px solid rgba(255,247,235,.32)!important}.material-wrap{margin-top:18px!important}}
 /* Requested content order — no section redesign. */
-main{display:flex;flex-direction:column}main>.announce{order:1}main>.header{order:2}main>.hero{order:3}main>.category-section{order:4}main>.trust-and-proof{order:5}main>.reviews{order:6}main>.merch-bags{order:7}main>.merch-diamonds{order:8}main>.merch-gemstones{order:9}main>.merch-scarves{order:10}main>.looks-premium{order:11}main>.finder{order:12}main>.recommended{order:13}main>.out-about{order:14}main>.trending{order:15}main>.faq{order:16}main>.newsletter{order:17}main>.site-footer{order:18}.reviews{min-height:142px}.review-score{padding:22px 26px}.review-score strong{font-size:46px}.review-track blockquote{min-height:142px;padding:18px 22px}.review-track p{font-size:17px;margin:8px 0 auto}.review-score>a{margin-top:8px}@media(max-width:760px){.reviews{min-height:106px}.review-score{padding:14px 12px}.review-score strong{font-size:32px}.review-track blockquote{min-height:106px;padding:13px 14px}.review-track p{font-size:13px}.review-score>a{display:none}}
+main{display:flex;flex-direction:column}main>.announce{order:1}main>.header{order:2}main>.hero{order:3}main>.category-section{order:4}main>.trust-and-proof{order:5}main>.reviews{order:6}main>.merch-bags{order:7}main>.merch-diamonds{order:8}main>.merch-gemstones{order:9}main>.merch-scarves{order:10}main>.looks-premium{order:11}main>.finder{order:12}main>.recommended{order:13}main>.trending{order:14}main>.out-about{order:15}main>.faq{order:16}main>.newsletter{order:17}main>.site-footer{order:18}.reviews{min-height:142px}.review-score{padding:22px 26px}.review-score strong{font-size:46px}.review-track blockquote{min-height:142px;padding:18px 22px}.review-track p{font-size:17px;margin:8px 0 auto}.review-score>a{margin-top:8px}@media(max-width:760px){.reviews{min-height:106px}.review-score{padding:14px 12px}.review-score strong{font-size:32px}.review-track blockquote{min-height:106px;padding:13px 14px}.review-track p{font-size:13px}.review-score>a{display:none}}
 
 /* Image-led edit cards: the category name is the CTA. */
 .edit-category-grid>a{height:184px;background:#eee7df;color:#fffaf3}
@@ -1064,4 +1064,37 @@ main>*{width:100%;align-self:stretch}
   .edit-category-grid>a{height:170px}
   .trust-box{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 0}
   .category-card h3{font-size:24px}
+}
+
+/* Proof block: the stat labels were sitting 22px off the band edge, so the photo
+   band cut hard into the flat aubergine below it. More breathing room inside the
+   band, a fade to solid at its base, and a clear gap before the proof heading. */
+.trust-box{min-height:150px;padding-top:40px!important;padding-bottom:40px!important}
+.trust-box::before{background:linear-gradient(180deg,rgba(75,15,36,.60) 0%,rgba(75,15,36,.74) 52%,rgba(75,15,36,.94) 86%,var(--aubergine) 100%),linear-gradient(90deg,rgba(49,8,27,.82),rgba(49,8,27,.26))}
+.material-wrap{padding-top:58px!important}
+
+/* Shop the look reads as a horizontal rail rather than a stacked mosaic. */
+.premium-look-board{display:flex!important;height:auto!important;grid-template-columns:none!important;grid-template-rows:none!important;gap:12px!important;overflow-x:auto!important;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 0 4px!important;margin:0!important}
+.premium-look-board::-webkit-scrollbar{display:none}
+.premium-look-board .look-tile,
+.premium-look-board .look-1,.premium-look-board .look-2,.premium-look-board .look-3,
+.premium-look-board .look-4,.premium-look-board .look-5{grid-column:auto!important;grid-row:auto!important;flex:0 0 clamp(250px,27%,320px)!important;height:470px!important;min-height:0;margin:0!important;scroll-snap-align:start}
+.premium-look-board .look-tile span{left:18px;right:18px;bottom:16px;grid-template-columns:auto minmax(0,1fr);column-gap:11px}
+.premium-look-board .look-tile small{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:7.5px;letter-spacing:.12em}
+.premium-look-board .look-tile b{font-size:23px;line-height:1.06}
+.premium-look-board .look-tile i{font-size:22px}
+
+@media(max-width:760px){
+  .trust-box{min-height:0;padding-top:26px!important;padding-bottom:26px!important}
+  .trust-box::before{background:linear-gradient(180deg,rgba(75,15,36,.66) 0%,rgba(75,15,36,.78) 55%,rgba(75,15,36,.95) 88%,var(--aubergine) 100%),linear-gradient(135deg,rgba(49,8,27,.7),rgba(49,8,27,.3))}
+  .material-wrap{padding-top:36px!important}
+
+  .premium-look-board{gap:8px!important;margin-right:calc(var(--edge) * -1)!important;padding-right:var(--edge)!important}
+  .premium-look-board .look-tile,
+  .premium-look-board .look-1,.premium-look-board .look-2,.premium-look-board .look-3,
+  .premium-look-board .look-4,.premium-look-board .look-5{flex:0 0 min(72vw,250px)!important;height:340px!important}
+  .premium-look-board .look-tile span{left:13px;right:13px;bottom:12px;column-gap:8px}
+  .premium-look-board .look-tile b{font-size:18px}
+  .premium-look-board .look-tile i{font-size:17px}
+  .premium-look-board .look-tile em{display:none}
 }
