@@ -1544,3 +1544,66 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
    never painted. Match the specificity. */
 .look-shop-rail>.look-shop-card{background:rgba(255,250,243,.11);border:1px solid rgba(255,250,243,.24)}
 .look-shop-rail>.look-shop-card:hover{background:rgba(255,250,243,.17);border-color:rgba(255,250,243,.4)}
+
+/* ── Round 12 ────────────────────────────────────────────────────────────── */
+
+/* Hero turns on its axis as you scroll instead of pulsing. */
+.merch-diamonds .feature-cutout img{animation:none;transform-origin:center;backface-visibility:hidden}
+.merch-diamonds .merch-feature.feature-cutout{perspective:900px}
+
+/* Trust and reviews: type was flush against the panel edge. */
+@media(min-width:761px){
+  .trust-box{padding:22px 30px!important}
+  .trust-box>span:first-child{padding-left:0}
+  .trust-box>span{padding:14px 30px}
+  .review-score{padding:24px 30px}
+}
+@media(max-width:760px){
+  .trust-box{padding:12px 18px!important}
+  .trust-box>span,.trust-box>span:nth-child(2n+1){padding:12px 14px}
+  .review-score{padding:16px 18px}
+}
+
+/* Mobile: the scarf banner swapped to a product cutout on touch, which read as
+   a broken, misaligned image. Keep the lifestyle banner on touch devices. */
+@media(hover:none),(pointer:coarse){
+  .scarf-feature.feature-active .feature-media,
+  .merch-feature.feature-active .feature-media{object-fit:cover!important;background:transparent!important;transform:none!important}
+}
+
+/* Desktop was running tall and the banners were cropping hard. Banners gain
+   height, the oversized product shots lose it. */
+.merch-feature,.merch-panorama .merch-feature,.merch-reverse .merch-feature,
+.merch-mosaic .merch-feature,.scarf-feature{height:412px}
+.scarf-image{height:404px!important}
+.look-stage{height:404px}
+.finder-image img{min-height:520px}
+.material-card>img,.material-card:nth-child(n)>img{height:262px!important}
+.material-visual{height:262px}
+.edit-category-grid>a{height:222px}
+
+@media(max-width:760px){
+  .merch-feature,.merch-panorama .merch-feature,.merch-reverse .merch-feature,
+  .merch-mosaic .merch-feature,.scarf-feature{height:242px!important}
+  .scarf-image{height:262px!important}
+  .look-stage{height:288px}
+  .material-card>img,.material-card:nth-child(n)>img{height:146px!important}
+  .material-visual{height:146px}
+  .edit-category-grid>a,.edit-category-grid>a:last-child{height:164px}
+  .finder-image img{min-height:0;height:280px}
+}
+
+/* Trim the tallest desktop sections further. */
+.scarf-image{height:352px!important}
+.finder-image img{min-height:0!important;height:460px!important}
+.finder{align-items:center}
+.merch-feature,.merch-panorama .merch-feature,.merch-reverse .merch-feature,
+.merch-mosaic .merch-feature,.scarf-feature{height:392px}
+@media(max-width:760px){
+  .scarf-image{height:250px!important}
+  .finder-image img{height:270px!important}
+}
+
+/* align-items:center centred the quiz image in the mobile flex column,
+   pushing it off the rail. */
+@media(max-width:760px){.finder{align-items:stretch}.finder-image,.finder-card{width:100%}}

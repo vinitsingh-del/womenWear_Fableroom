@@ -142,7 +142,9 @@ export default function Home(){
         if(box.bottom<-200||box.top>vh+200)return;
         const progress=(box.top+box.height/2-vh/2)/vh;
         if(node.dataset.parallax==="rotate"){
-          node.style.transform=`translate3d(0,${(progress*-7).toFixed(2)}%,0) rotate(${(progress*7).toFixed(2)}deg) scale(1.02)`;
+          // turn the product on its axis through the section rather than tilting it
+          const turn=Math.max(-1,Math.min(1,progress*1.6));
+          node.style.transform=`perspective(900px) rotateY(${(turn*40).toFixed(1)}deg) translate3d(0,${(progress*-5).toFixed(2)}%,0) scale(${(1.05-Math.abs(turn)*0.08).toFixed(3)})`;
           return;
         }
         node.style.transform=`translate3d(0,${(progress*-8).toFixed(2)}%,0) scale(1.2)`;
