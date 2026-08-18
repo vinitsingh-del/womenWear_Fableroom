@@ -114,7 +114,6 @@ export default function Home(){
   const [toast,setToast]=useState("");
   const [quizStep,setQuizStep]=useState(0);
   const [quiz,setQuiz]=useState<Record<string,string>>({});
-  const [zoomStep,setZoomStep]=useState(0);
 
   useEffect(()=>{const restore=window.setTimeout(()=>{try{setWish(JSON.parse(localStorage.getItem("fr-wish")||"[]"));setCart(JSON.parse(localStorage.getItem("fr-cart-v2")||"{}"));setViewed(JSON.parse(localStorage.getItem("fr-viewed")||"[]"))}catch{}},0);return()=>window.clearTimeout(restore)},[]);
   useEffect(()=>{localStorage.setItem("fr-wish",JSON.stringify(wish))},[wish]);
@@ -122,11 +121,6 @@ export default function Home(){
   useEffect(()=>{localStorage.setItem("fr-viewed",JSON.stringify(viewed))},[viewed]);
   useEffect(()=>{document.body.style.overflow=quick||cartOpen||menuOpen||searchOpen?"hidden":"";return()=>{document.body.style.overflow=""}},[quick,cartOpen,menuOpen,searchOpen]);
   useEffect(()=>{if(!toast)return;const t=setTimeout(()=>setToast(""),2200);return()=>clearTimeout(t)},[toast]);
-  useEffect(()=>{
-    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
-    const t=window.setInterval(()=>setZoomStep(s=>(s+1)%4),2600);
-    return()=>window.clearInterval(t);
-  },[]);
   useEffect(()=>{
     if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
     const nodes=Array.from(document.querySelectorAll<HTMLElement>("[data-parallax]"));
@@ -240,7 +234,7 @@ export default function Home(){
         <TrustStat icon="—" end={0} label="Middlemen markups"/>
       </div>
       <div className="section material-wrap"><div className="material-head"><div><p className="eyebrow">THE PROOF IS IN THE DETAIL</p><h2>Reasons to believe,<br/>seen up close.</h2></div><p>Non-clickable material studies explain what is specific and valuable about each collection—without creating another discovery layer.</p></div>
-        <div className="material-rail" data-zoom={zoomStep}>
+        <div className="material-rail">
           <Material image={`${A}/editorial/a-plus-leather.webp`} index="01" title="Full-grain leather and suede" copy="Visible grain, hand-finished edges and construction designed to develop character with use."/>
           <Material image={`${A}/generated/diamond-precision-setting.webp`} video={`${A}/motion/precision-brilliance.mp4`} index="02" title="Precision-set brilliance" copy="Lab-grown diamonds aligned in clean settings so proportion and light remain the focus."/>
           <Material image={`${A}/editorial/a-plus-jewellery.webp`} index="03" title="Each stone is individual" copy="Natural turquoise, moonstone, rose quartz and pearl retain the variation that makes them distinctive."/>
@@ -303,6 +297,8 @@ function ShopTheLook({onOpen,onAddLook}:{onOpen:(p:Product)=>void;onAddLook:(ids
     <div className="section-heading split"><div><p className="eyebrow">SHOP THE LOOK</p><h2>Ways to wear the edit.</h2></div><div><p>Search-led outfit ideas combining handbags, jewellery and scarves.</p><a className="underlink" href={LOOKS_PATH}>View all looks <Icon name="arrow"/></a></div></div>
     <div className="look-stage">
       {lookBanners.map((banner,i)=><button key={banner.src} className={`look-stage-slide ${i===slide?"is-on":""}`} onClick={()=>setSlide(i)} tabIndex={i===slide?0:-1} aria-hidden={i!==slide} aria-label={banner.alt}><img src={`${A}/${banner.src}.webp`} alt={banner.alt}/></button>)}
+      <button className="look-nav prev" onClick={()=>setSlide(s=>(s-1+lookBanners.length)%lookBanners.length)} aria-label="Previous look"><Icon name="arrow"/></button>
+      <button className="look-nav next" onClick={()=>setSlide(s=>(s+1)%lookBanners.length)} aria-label="Next look"><Icon name="arrow"/></button>
       <div className="look-stage-dots">{lookBanners.map((banner,i)=><button key={banner.src} className={i===slide?"on":""} onClick={()=>setSlide(i)} aria-label={`Look ${i+1}`}/>)}</div>
     </div>
     <div className="look-shop-rail" data-count={shown.length} key={slide}>{shown.map(p=><button key={p.id} className="look-shop-card" onClick={()=>onOpen(p)}><span className="look-shop-image"><img src={p.images[0]} alt={p.name} loading="lazy"/></span><b>{p.name}</b><em>£{p.price}.00</em></button>)}</div>
@@ -378,7 +374,7 @@ function CountUp({end,prefix="",suffix=""}:{end:number;prefix?:string;suffix?:st
 }
 function TrustStat({icon,end,prefix,suffix,label}:{icon:string;end:number;prefix?:string;suffix?:string;label:string}){return <span><i className="trust-icon" aria-hidden="true">{icon}</i><span className="trust-copy"><CountUp end={end} prefix={prefix} suffix={suffix}/><small>{label}</small></span></span>}
 function Material({image,images,video,index,title,copy}:{image?:string;images?:string[];video?:string;index:string;title:string;copy:string}){return <article className={`material-card ${video?"material-motion":""} ${images?.length?"material-card-pair":""}`}>{images?.length?<div className="material-visual-pair">{images.map((src,i)=><img key={src} src={src} alt={`${title} — ${i===0?"diamond setting in progress":"finished aligned diamonds"}`}/>)}</div>:video&&image?<span className="material-visual"><SmartVideo src={video} poster={image} ariaLabel={`${title} close-up film`} parallax/></span>:image?<img src={image} alt=""/>:null}<div className="material-copy"><small>{index} · MATERIAL NOTE</small><h3>{title}</h3><p>{copy}</p></div></article>}
-function CategoryEdit({id,variant,index,kicker,title,copy,category,subcategories,image,video,tileImages,cutout,products:items}:{id:string;variant:"panorama"|"reverse"|"mosaic";index:string;kicker:string;title:string;copy:string;category:Category;subcategories:string[][];image:string;video?:string;tileImages?:string[];cutout?:boolean;products:Product[]}){return <section className={`merch-category merch-${id} merch-${variant}`} id={id}><header><span>{index}</span><div><p className="eyebrow">{kicker}</p><h2>{title}</h2><p>{copy}</p></div></header><figure className={`merch-feature ${cutout?"feature-cutout":""}`}>{video?<SmartVideo src={video} poster={image} ariaLabel={`${title} collection film`}/>:<img className="feature-media" src={image} alt={`${title} lifestyle`} {...(cutout?{"data-parallax":"rotate"}:{})}/>}<a className="feature-cta" href={subcategories[0][1]}>Explore now<Icon name="arrow"/></a></figure><div className="edit-category-grid">{subcategories.map(([label,href],i)=>{const piece=items[i%items.length];return <a key={label} href={href}><img src={tileImages?.[i]||piece.images[0]} alt={`${label} in ${category}`}/><span><small>{String(i+1).padStart(2,"0")}</small><b><i>{label}</i><Icon name="arrow"/></b></span></a>})}</div></section>}
+function CategoryEdit({id,variant,index,kicker,title,copy,category,subcategories,image,video,tileImages,cutout,products:items}:{id:string;variant:"panorama"|"reverse"|"mosaic";index:string;kicker:string;title:string;copy:string;category:Category;subcategories:string[][];image:string;video?:string;tileImages?:string[];cutout?:boolean;products:Product[]}){return <section className={`merch-category merch-${id} merch-${variant}`} id={id}><header><span>{index}</span><div><p className="eyebrow">{kicker}</p><h2>{title}</h2><p>{copy}</p></div></header><figure className={`merch-feature ${cutout?"feature-cutout":""}`}>{video?<SmartVideo src={video} poster={image} ariaLabel={`${title} collection film`}/>:<img className="feature-media" src={image} alt={`${title} lifestyle`}/>}<a className="feature-cta" href={subcategories[0][1]}>Explore now<Icon name="arrow"/></a></figure><div className="edit-category-grid">{subcategories.map(([label,href],i)=>{const piece=items[i%items.length];return <a key={label} href={href}><img src={tileImages?.[i]||piece.images[0]} alt={`${label} in ${category}`}/><span><small>{String(i+1).padStart(2,"0")}</small><b><i>{label}</i><Icon name="arrow"/></b></span></a>})}</div></section>}
 const SCARF_SHOTS:Record<number,string>={15:`${A}/drive/scarf-1.webp`,16:`${A}/drive/scarf-4.webp`,17:`${A}/editorial/scarf-lifestyle.webp`,18:`${A}/lifestyle/look-cashmere-neutral.webp`};
 const SCARF_FILTERS:[string,(p:Product)=>boolean][]=[
   ["All Scarves",()=>true],

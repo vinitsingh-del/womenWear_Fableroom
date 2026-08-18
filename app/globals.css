@@ -1607,3 +1607,87 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 /* align-items:center centred the quiz image in the mobile flex column,
    pushing it off the rail. */
 @media(max-width:760px){.finder{align-items:stretch}.finder-image,.finder-card{width:100%}}
+
+/* ── Round 13 ────────────────────────────────────────────────────────────── */
+
+/* Hero turns front -> side -> front on its own, no scroll coupling. */
+@keyframes hero-turn{
+  0%,100%{transform:perspective(1000px) rotateY(0deg) scale(1)}
+  46%{transform:perspective(1000px) rotateY(66deg) scale(.93)}
+}
+.merch-diamonds .feature-cutout img{animation:hero-turn 6.5s cubic-bezier(.45,0,.55,1) infinite;will-change:transform}
+
+/* Product cutouts were being cropped by cover; contain shows the whole piece.
+   Lifestyle tiles keep cover, which frames them correctly. */
+.merch-bags .edit-category-grid img,
+.merch-gemstones .edit-category-grid img{object-fit:contain;object-position:center 42%;padding:6px 6px 26px}
+.merch-diamonds .edit-category-grid img{object-fit:cover;object-position:center 34%}
+.scarf-image img{object-position:center 16%}
+.product-image img,.recommended .product-image img,.look-shop-card .look-shop-image img{object-fit:contain}
+.trend-grid>a img{object-position:center 30%}
+
+/* Look stage gets prev / next alongside the dots. */
+.look-nav{position:absolute;z-index:5;top:50%;translate:0 -50%;display:grid;place-items:center;width:40px;height:40px;padding:0;border:1px solid rgba(255,250,243,.5);border-radius:999px;background:rgba(28,6,16,.42);color:#fffaf3;cursor:pointer;backdrop-filter:blur(4px);opacity:.75;transition:opacity .25s ease,background .25s ease,transform .25s ease}
+.look-nav:hover{opacity:1;background:rgba(28,6,16,.68);transform:translateY(-1px)}
+.look-nav .icon{width:15px;height:15px}
+.look-nav.prev{left:16px}
+.look-nav.prev .icon{transform:rotate(180deg)}
+.look-nav.next{right:16px}
+
+/* The add CTA read as a heavy gold slab; lighter and better proportioned. */
+.look-add{width:auto;min-width:0;min-height:46px;padding:0 34px;margin:2px auto 0;background:transparent;border:1px solid var(--rust-gold);color:var(--rust-gold);font-size:9.5px;letter-spacing:.2em}
+.look-add:hover{background:var(--rust-gold);color:#2b0817;filter:none}
+.look-add::after{background:linear-gradient(105deg,transparent 38%,rgba(214,160,99,.35) 50%,transparent 62%)}
+
+/* Jank: box-shadow and text-shadow were animating forever on many elements,
+   repainting on every frame. Only composited properties loop now. */
+@keyframes cta-glow{0%,100%{opacity:1}50%{opacity:1}}
+.feature-cta{animation:none;backdrop-filter:none;box-shadow:0 4px 16px rgba(36,7,19,.26)}
+@keyframes title-emphasis{0%,100%{text-shadow:none}}
+.hero h1,.section h2,.merch-category h2{animation:none!important}
+
+@media(max-width:760px){
+  .look-nav{width:34px;height:34px}
+  .look-nav.prev{left:10px}
+  .look-nav.next{right:10px}
+  .look-nav .icon{width:13px;height:13px}
+  .look-add{min-height:42px;padding:0 24px;font-size:8.5px}
+  .merch-bags .edit-category-grid img,
+  .merch-gemstones .edit-category-grid img{padding:5px 5px 22px}
+}
+
+/* Contain reveals the tile ground beside the cutout, so match it to the
+   product shot's own white and the panel reads as one surface. */
+.merch-bags .edit-category-grid>a,
+.merch-gemstones .edit-category-grid>a{background:#fff}
+
+/* inline-flex ignores auto margins for centring */
+.look-add{display:flex;width:fit-content;margin:2px auto 0}
+
+/* Proof images take turns pushing in, staggered in CSS so nothing re-renders. */
+@keyframes proof-zoom{0%,4%{transform:scale(1)}12%,20%{transform:scale(1.11)}30%,100%{transform:scale(1)}}
+.material-rail>.material-card>img{animation:proof-zoom 10.4s cubic-bezier(.33,.7,.35,1) infinite}
+.material-rail>.material-card:nth-child(2)>img{animation-delay:2.6s}
+.material-rail>.material-card:nth-child(3)>img{animation-delay:5.2s}
+.material-rail>.material-card:nth-child(4)>img{animation-delay:7.8s}
+.merch-diamonds .feature-cutout img{filter:none}
+@media(prefers-reduced-motion:reduce){.material-rail>.material-card>img{animation:none}}
+
+/* Scroll smoothness: clip-path and large-image scale transitions repaint on
+   every frame while several sections reveal at once. Headings move on cheap
+   composited properties, and only small tiles keep the image push-in. */
+html.motion-ready .motion-reveal :is(h2,h3.reveal-title){clip-path:none!important;transition:opacity .55s cubic-bezier(.22,.75,.25,1) .08s,transform .55s cubic-bezier(.22,.75,.25,1) .08s}
+html.motion-ready .motion-reveal.is-visible :is(h2,h3.reveal-title){clip-path:none!important}
+html.motion-ready .motion-reveal :is(.merch-feature,.scarf-feature,.category-card,.look-stage,.finder-image) :is(img,video){transform:none!important;transition:opacity .3s ease!important}
+html.motion-ready .motion-reveal :is(.product-image,.edit-category-grid>a,.scarf-image,.look-tile,.trend-grid>a,.ugc-rail figure) :is(img,video){transition-duration:.7s}
+html.motion-ready .motion-reveal>*{transition-duration:.5s}
+.category-card,.product-card,.edit-category-grid>a,.material-card,.look-shop-card,.trend-grid>a{contain:paint}
+
+/* Reveals were animating three layers at once — the section, every grid child,
+   and every image — so a hundred-plus elements transitioned together while
+   scrolling. Sections and headings still move; children and media arrive with
+   their parent. */
+html.motion-ready :is(.category-grid,.material-rail,.edit-category-grid,.product-grid,.scarf-style-grid,.trend-grid,.look-collage,.ugc-rail).motion-reveal>*{opacity:1!important;transform:none!important;transition:none!important}
+html.motion-ready .motion-reveal :is(img,video){transform:none!important;transition:none!important}
+html.motion-ready .motion-reveal{transition:opacity .5s cubic-bezier(.22,.75,.25,1),transform .5s cubic-bezier(.22,.75,.25,1)}
+html.motion-ready .motion-reveal :is(.merch-feature,.scarf-feature,.look-stage,.finder-image,.reviews,.trust-box,.material-rail,.ugc-rail){transform:none}
