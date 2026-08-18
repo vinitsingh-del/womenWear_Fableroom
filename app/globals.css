@@ -1328,3 +1328,41 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
   .site-footer{padding-top:34px;padding-bottom:34px}
   .merch-scarves+.trending{padding-top:34px!important}
 }
+
+/* ── Round 6 ─────────────────────────────────────────────────────────────── */
+
+/* 1 — The diamond banner was a stark white product shot next to warm-toned
+   tiles. Multiply against a warm backdrop knocks the white through to the
+   same tone as the grid below without touching the footage itself. */
+.merch-diamonds .merch-feature{background:#e7d6c6}
+.merch-diamonds .merch-feature img,
+.merch-diamonds .merch-feature video{mix-blend-mode:multiply;background:transparent}
+.merch-diamonds .merch-feature .feature-cta{mix-blend-mode:normal}
+
+/* 2 — Precision-set brilliance is a film now. Its own clipping frame keeps the
+   parallax transform off the card copy. */
+.material-visual{display:block;position:relative;width:100%;height:290px;overflow:hidden;background:#2b0817}
+.material-visual video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform;transform:scale(1.2)}
+
+/* 3 — Matching breathing room above and below the trust band. */
+.trust-box{margin-top:0!important;margin-bottom:0!important}
+.material-wrap{margin-top:52px!important}
+
+/* 4 — The FAQ heading had no desktop size rule at all and was rendering at
+   14px against 52px everywhere else. */
+.faq h2{font-size:clamp(38px,3.6vw,54px);line-height:1.02;margin:0 0 14px}
+.faq .eyebrow{margin-bottom:12px}
+.faq>div:first-child>p:last-child{font-size:14px;line-height:1.65;max-width:320px}
+
+@media(max-width:760px){
+  /* 5 — the row gap broke the divider lines into segments; a continuous cross
+     needs the cells to touch. */
+  .trust-box{gap:0!important;margin-top:0!important;margin-bottom:0!important}
+  .trust-box>span{padding:13px 12px}
+  .trust-box>span:nth-child(2n+1){padding-left:12px}
+
+  .material-wrap{margin-top:34px!important}
+  .material-visual{height:150px}
+  .faq h2{font-size:33px;margin-bottom:10px}
+  .faq>div:first-child>p:last-child{font-size:11.5px;max-width:none}
+}

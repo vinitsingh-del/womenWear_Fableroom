@@ -128,6 +128,29 @@ export default function Home(){
     return()=>window.clearInterval(t);
   },[]);
   useEffect(()=>{
+    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+    const nodes=Array.from(document.querySelectorAll<HTMLElement>("[data-parallax]"));
+    if(!nodes.length)return;
+    let frame=0;
+    const update=()=>{
+      frame=0;
+      const vh=window.innerHeight;
+      nodes.forEach(node=>{
+        const host=node.parentElement;
+        if(!host)return;
+        const box=host.getBoundingClientRect();
+        if(box.bottom<-200||box.top>vh+200)return;
+        const progress=(box.top+box.height/2-vh/2)/vh;
+        node.style.transform=`translate3d(0,${(progress*-8).toFixed(2)}%,0) scale(1.2)`;
+      });
+    };
+    const onScroll=()=>{if(!frame)frame=requestAnimationFrame(update)};
+    update();
+    window.addEventListener("scroll",onScroll,{passive:true});
+    window.addEventListener("resize",onScroll,{passive:true});
+    return()=>{window.removeEventListener("scroll",onScroll);window.removeEventListener("resize",onScroll);cancelAnimationFrame(frame)};
+  },[]);
+  useEffect(()=>{
     const onAnchorClick=(event:MouseEvent)=>{
       if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
       const anchor=(event.target as Element|null)?.closest<HTMLAnchorElement>('a[href^="#"]');
@@ -213,7 +236,7 @@ export default function Home(){
       <div className="section material-wrap"><div className="material-head"><div><p className="eyebrow">THE PROOF IS IN THE DETAIL</p><h2>Reasons to believe,<br/>seen up close.</h2></div><p>Non-clickable material studies explain what is specific and valuable about each collection—without creating another discovery layer.</p></div>
         <div className="material-rail" data-zoom={zoomStep}>
           <Material image={`${A}/editorial/a-plus-leather.webp`} index="01" title="Full-grain leather and suede" copy="Visible grain, hand-finished edges and construction designed to develop character with use."/>
-          <Material image={`${A}/generated/diamond-precision-setting.webp`} index="02" title="Precision-set brilliance" copy="Lab-grown diamonds aligned in clean settings so proportion and light remain the focus."/>
+          <Material image={`${A}/generated/diamond-precision-setting.webp`} video={`${A}/motion/precision-setting.mp4`} index="02" title="Precision-set brilliance" copy="Lab-grown diamonds aligned in clean settings so proportion and light remain the focus."/>
           <Material image={`${A}/editorial/a-plus-jewellery.webp`} index="03" title="Each stone is individual" copy="Natural turquoise, moonstone, rose quartz and pearl retain the variation that makes them distinctive."/>
           <Material image={`${A}/editorial/a-plus-scarf.webp`} index="04" title="Fine fibres, generous drape" copy="Cashmere and merino wool chosen for softness, warmth without bulk and a fluid everyday finish."/>
         </div>
@@ -281,7 +304,7 @@ function ShopTheLook({onOpen}:{onOpen:(p:Product)=>void}){
   </section>;
 }
 
-function SmartVideo({src,poster,ariaLabel,restartOnView=false}:{src:string;poster:string;ariaLabel:string;restartOnView?:boolean}){
+function SmartVideo({src,poster,ariaLabel,restartOnView=false,parallax=false}:{src:string;poster:string;ariaLabel:string;restartOnView?:boolean;parallax?:boolean}){
   const ref=useRef<HTMLVideoElement>(null);
   const hasPlayed=useRef(false);
   const hasLeftView=useRef(false);
@@ -308,7 +331,7 @@ function SmartVideo({src,poster,ariaLabel,restartOnView=false}:{src:string;poste
     start();
     return()=>{observer.disconnect();video.pause()};
   },[restartOnView]);
-  return <video ref={ref} src={src} poster={poster} muted playsInline loop autoPlay preload="auto" aria-label={ariaLabel}/>;
+  return <video ref={ref} src={src} poster={poster} muted playsInline loop autoPlay preload="auto" aria-label={ariaLabel} {...(parallax?{"data-parallax":""}:{})}/>;
 }
 function CategoryCard({href,title,copy,image,video}:{href:string;title:string;copy:string;image:string;video?:string}){return <a className={`category-card ${video?"category-motion":""}`} href={href}>{video?<SmartVideo src={video} poster={image} ariaLabel={`${title} product film`} restartOnView={title==="Diamond Jewellery"}/>:<img src={image} alt={title}/>}<span><h3>{title}</h3><p>{copy}</p><u>Explore Collection</u></span></a>}
 function CountUp({end,prefix="",suffix=""}:{end:number;prefix?:string;suffix?:string}){
@@ -348,7 +371,7 @@ function CountUp({end,prefix="",suffix=""}:{end:number;prefix?:string;suffix?:st
   return <b ref={ref}>{prefix}{value.toLocaleString("en-GB")}{suffix}</b>;
 }
 function TrustStat({icon,end,prefix,suffix,label}:{icon:string;end:number;prefix?:string;suffix?:string;label:string}){return <span><i className="trust-icon" aria-hidden="true">{icon}</i><span className="trust-copy"><CountUp end={end} prefix={prefix} suffix={suffix}/><small>{label}</small></span></span>}
-function Material({image,images,video,index,title,copy}:{image?:string;images?:string[];video?:string;index:string;title:string;copy:string}){return <article className={`material-card ${video?"material-motion":""} ${images?.length?"material-card-pair":""}`}>{images?.length?<div className="material-visual-pair">{images.map((src,i)=><img key={src} src={src} alt={`${title} — ${i===0?"diamond setting in progress":"finished aligned diamonds"}`}/>)}</div>:video&&image?<SmartVideo src={video} poster={image} ariaLabel={`${title} close-up film`}/>:image?<img src={image} alt=""/>:null}<div className="material-copy"><small>{index} · MATERIAL NOTE</small><h3>{title}</h3><p>{copy}</p></div></article>}
+function Material({image,images,video,index,title,copy}:{image?:string;images?:string[];video?:string;index:string;title:string;copy:string}){return <article className={`material-card ${video?"material-motion":""} ${images?.length?"material-card-pair":""}`}>{images?.length?<div className="material-visual-pair">{images.map((src,i)=><img key={src} src={src} alt={`${title} — ${i===0?"diamond setting in progress":"finished aligned diamonds"}`}/>)}</div>:video&&image?<span className="material-visual"><SmartVideo src={video} poster={image} ariaLabel={`${title} close-up film`} parallax/></span>:image?<img src={image} alt=""/>:null}<div className="material-copy"><small>{index} · MATERIAL NOTE</small><h3>{title}</h3><p>{copy}</p></div></article>}
 function CategoryEdit({id,variant,index,kicker,title,copy,category,subcategories,image,video,tileImages,products:items}:{id:string;variant:"panorama"|"reverse"|"mosaic";index:string;kicker:string;title:string;copy:string;category:Category;subcategories:string[][];image:string;video?:string;tileImages?:string[];products:Product[]}){return <section className={`merch-category merch-${id} merch-${variant}`} id={id}><header><span>{index}</span><div><p className="eyebrow">{kicker}</p><h2>{title}</h2><p>{copy}</p></div></header><figure className="merch-feature">{video?<SmartVideo src={video} poster={image} ariaLabel={`${title} collection film`}/>:<img className="feature-media" src={image} alt={`${title} lifestyle`}/>}<a className="feature-cta" href={subcategories[0][1]}>Explore now<Icon name="arrow"/></a></figure><div className="edit-category-grid">{subcategories.map(([label,href],i)=>{const piece=items[i%items.length];return <a key={label} href={href}><img src={tileImages?.[i]||piece.images[0]} alt={`${label} in ${category}`}/><span><small>{String(i+1).padStart(2,"0")}</small><b><i>{label}</i><Icon name="arrow"/></b></span></a>})}</div></section>}
 function ScarfEdit({products:items,wish,onWish,onOpen}:{products:Product[];wish:number[];onWish:(id:number)=>void;onOpen:(p:Product)=>void}){const images=[`${A}/drive/scarf-1.webp`,`${A}/drive/scarf-4.webp`,`${A}/editorial/scarf-lifestyle.webp`,`${A}/lifestyle/look-cashmere-neutral.webp`];const [active,setActive]=useState<number|null>(null);return <section className="merch-category merch-scarves" id="scarves"><header><span>04</span><div><p className="eyebrow">CASHMERE & MERINO WOOL</p><h2>The Scarf Edit</h2><p>With a focused collection, discovery moves directly to four styled pieces rather than another broad L‑2 layer.</p></div></header><nav className="subcategories"><a href={CP.scarves}>All Scarves</a><a href={CP.scarves}>Cashmere</a><a href={CP.scarves}>Merino Wool</a></nav><figure className={`scarf-feature ${active!==null?"feature-active":""}`}><img src={active===null?`${A}/editorial/scarf-lifestyle.webp`:items[active].images[0]} alt={active===null?"Cashmere and merino wool scarf styling":`${items[active].name} close-up`}/><a className="feature-cta" href={CP.scarves}>Explore now<Icon name="arrow"/></a></figure><div className="scarf-style-grid">{items.map((p,i)=><article key={p.id} onPointerEnter={()=>setActive(i)} onPointerLeave={()=>setActive(null)} onFocusCapture={()=>setActive(i)} onBlurCapture={()=>setActive(null)}><button className="scarf-image" onClick={()=>onOpen(p)}><img src={images[i]} alt={`${p.name} styled on a model`}/><span>View piece</span></button><div><small>{p.material}</small><h3>{p.name}</h3><b>£{p.price}.00</b><button className={`mini-wish ${wish.includes(p.id)?"wished":""}`} onClick={()=>onWish(p.id)} aria-label="Save scarf"><Icon name="heart"/></button></div></article>)}</div></section>}
 function ProductCard({product:p,wished,onWish,onOpen,onPreview,onPreviewEnd}:{product:Product;wished:boolean;onWish:()=>void;onOpen:()=>void;onPreview?:()=>void;onPreviewEnd?:()=>void}){return <article className="product-card" onPointerEnter={onPreview} onPointerLeave={onPreviewEnd} onFocusCapture={onPreview} onBlurCapture={onPreviewEnd}><button className="product-image" onClick={onOpen}><img className="primary" src={p.images[0]} alt={p.name} loading="lazy"/><img className="secondary" src={p.images[1]||p.images[0]} alt="" loading="lazy"/><span>Quick view</span></button><button className={`wish ${wished?"wished":""}`} onClick={onWish} aria-label="Save to wishlist"><Icon name="heart"/></button><div className="product-copy"><small>{p.category}</small><h3><button onClick={onOpen}>{p.name}</button></h3><p>{p.material}</p><div><b>£{p.price}.00</b><button onClick={onOpen}>View details</button></div></div></article>}
