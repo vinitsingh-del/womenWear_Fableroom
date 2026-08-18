@@ -140,19 +140,25 @@ export default function Home(){
   },[]);
   useEffect(()=>{
     const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const coarse=window.matchMedia("(max-width: 760px), (pointer: coarse)").matches;
     const selectors=[
       ".category-section .section-heading", ".category-grid", ".trust-box", ".material-head", ".material-rail",
       ".merch-category > header", ".subcategories", ".merch-feature", ".merch-category .product-grid", ".scarf-style-grid",
+      ".edit-category-grid", ".scarf-feature",
       ".trending .section-heading", ".trend-grid", ".looks .section-heading", ".look-collage", ".recommended .section-heading",
       ".recommended .product-grid", ".reviews", ".out-about .section-heading", ".ugc-rail", ".finder", ".faq", ".newsletter", ".site-footer"
     ];
     const nodes=Array.from(document.querySelectorAll<HTMLElement>(selectors.join(","))).filter(node=>!node.closest(".hero"));
     nodes.forEach((node,index)=>{node.classList.add("motion-reveal");node.style.setProperty("--reveal-delay",`${(index%4)*65}ms`)});
     document.documentElement.classList.add("motion-ready");
-    if(reduce||coarse){nodes.forEach(node=>node.classList.add("is-visible"));return()=>document.documentElement.classList.remove("motion-ready")}
+    if(reduce){nodes.forEach(node=>node.classList.add("is-visible"));return()=>document.documentElement.classList.remove("motion-ready")}
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("is-visible");observer.unobserve(entry.target)}}),{threshold:.1,rootMargin:"0px 0px -6% 0px"});
-    nodes.forEach(node=>observer.observe(node));
+    nodes.forEach(node=>{
+      // Anything already scrolled past is shown at once. Without this, a deep
+      // link or a restored scroll position leaves everything above the landing
+      // point stuck at opacity 0, because it never re-enters the viewport.
+      if(node.getBoundingClientRect().bottom<0){node.classList.add("is-visible");return}
+      observer.observe(node);
+    });
 
     return()=>{observer.disconnect();document.documentElement.classList.remove("motion-ready")};
   },[]);

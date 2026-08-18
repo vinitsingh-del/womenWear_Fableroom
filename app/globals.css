@@ -1069,9 +1069,9 @@ main>*{width:100%;align-self:stretch}
 /* Proof block: the stat labels were sitting 22px off the band edge, so the photo
    band cut hard into the flat aubergine below it. More breathing room inside the
    band, a fade to solid at its base, and a clear gap before the proof heading. */
-.trust-box{min-height:150px;padding-top:40px!important;padding-bottom:40px!important}
+.trust-box{min-height:132px;padding-top:26px!important;padding-bottom:26px!important}
 .trust-box::before{background:linear-gradient(180deg,rgba(75,15,36,.60) 0%,rgba(75,15,36,.74) 52%,rgba(75,15,36,.94) 86%,var(--aubergine) 100%),linear-gradient(90deg,rgba(49,8,27,.82),rgba(49,8,27,.26))}
-.material-wrap{padding-top:58px!important}
+.material-wrap{padding-top:32px!important}
 
 /* Shop the look reads as a horizontal rail rather than a stacked mosaic. */
 .premium-look-board{display:flex!important;height:auto!important;grid-template-columns:none!important;grid-template-rows:none!important;gap:12px!important;overflow-x:auto!important;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 0 4px!important;margin:0!important}
@@ -1085,9 +1085,9 @@ main>*{width:100%;align-self:stretch}
 .premium-look-board .look-tile i{font-size:22px}
 
 @media(max-width:760px){
-  .trust-box{min-height:0;padding-top:26px!important;padding-bottom:26px!important}
+  .trust-box{min-height:0;padding-top:18px!important;padding-bottom:18px!important}
   .trust-box::before{background:linear-gradient(180deg,rgba(75,15,36,.66) 0%,rgba(75,15,36,.78) 55%,rgba(75,15,36,.95) 88%,var(--aubergine) 100%),linear-gradient(135deg,rgba(49,8,27,.7),rgba(49,8,27,.3))}
-  .material-wrap{padding-top:36px!important}
+  .material-wrap{padding-top:24px!important}
 
   .premium-look-board{gap:8px!important;margin-right:calc(var(--edge) * -1)!important;padding-right:var(--edge)!important}
   .premium-look-board .look-tile,
@@ -1097,4 +1097,57 @@ main>*{width:100%;align-self:stretch}
   .premium-look-board .look-tile b{font-size:18px}
   .premium-look-board .look-tile i{font-size:17px}
   .premium-look-board .look-tile em{display:none}
+}
+
+/* ── Title and card image motion ─────────────────────────────────────────────
+   The old title-emphasis keyframes animated opacity forever, which meant an
+   animation always owned the property and any entrance transition on a heading
+   was silently ignored. Redefined here to glow only. */
+@keyframes title-emphasis{0%,100%{text-shadow:0 0 0 transparent}50%{text-shadow:0 0 18px rgba(184,131,66,.18)}}
+
+/* Titles rise out of a mask, with the eyebrow leading and the copy trailing. */
+html.motion-ready .motion-reveal :is(h2,h3.reveal-title){opacity:0;transform:translateY(20px);clip-path:inset(0 -12% 102% -12%);transition:opacity .82s cubic-bezier(.22,.75,.25,1),transform .82s cubic-bezier(.22,.75,.25,1),clip-path .82s cubic-bezier(.22,.75,.25,1);transition-delay:.10s}
+html.motion-ready .motion-reveal.is-visible :is(h2,h3.reveal-title){opacity:1;transform:none;clip-path:inset(-25% -12% -25% -12%)}
+html.motion-ready .motion-reveal .eyebrow{opacity:0;transform:translateY(9px);transition:opacity .5s ease,transform .5s cubic-bezier(.22,.75,.25,1)}
+html.motion-ready .motion-reveal.is-visible .eyebrow{opacity:1;transform:none}
+html.motion-ready .motion-reveal :is(.section-heading,.material-head,.merch-category>header)>p,
+html.motion-ready .motion-reveal :is(.section-heading,.material-head)>div>p{opacity:0;transform:translateY(12px);transition:opacity .7s ease .26s,transform .7s cubic-bezier(.22,.75,.25,1) .26s}
+html.motion-ready .motion-reveal.is-visible :is(.section-heading,.material-head,.merch-category>header)>p,
+html.motion-ready .motion-reveal.is-visible :is(.section-heading,.material-head)>div>p{opacity:1;transform:none}
+html.motion-ready .motion-reveal>span{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,.75,.25,1)}
+html.motion-ready .motion-reveal.is-visible>span{opacity:1;transform:none}
+
+/* Card images settle out of a slow push-in. */
+html.motion-ready .motion-reveal :is(.product-image,.edit-category-grid>a,.scarf-image,.category-card,.look-tile,.trend-grid>a,.ugc-rail figure,.merch-feature,.scarf-feature) :is(img,video){transform:scale(1.07);transition:transform 1.15s cubic-bezier(.22,.75,.25,1),opacity .35s ease}
+html.motion-ready .motion-reveal.is-visible :is(.product-image,.edit-category-grid>a,.scarf-image,.category-card,.look-tile,.trend-grid>a,.ugc-rail figure) :is(img,video),
+html.motion-ready .merch-feature.motion-reveal.is-visible :is(img,video),
+html.motion-ready .scarf-feature.motion-reveal.is-visible :is(img,video){transform:scale(1)}
+html.motion-ready .motion-reveal .product-image .secondary{transform:scale(1)}
+
+/* Cards inside a revealed grid stagger in rather than landing all at once. */
+html.motion-ready :is(.category-grid,.material-rail,.edit-category-grid,.product-grid,.scarf-style-grid,.trend-grid,.look-collage,.ugc-rail).motion-reveal>*{opacity:0;transform:translateY(22px);transition:opacity .72s cubic-bezier(.22,.75,.25,1),transform .72s cubic-bezier(.22,.75,.25,1)}
+html.motion-ready :is(.category-grid,.material-rail,.edit-category-grid,.product-grid,.scarf-style-grid,.trend-grid,.look-collage,.ugc-rail).motion-reveal.is-visible>*{opacity:1;transform:none}
+html.motion-ready .motion-reveal.is-visible>*:nth-child(1){transition-delay:.04s}
+html.motion-ready .motion-reveal.is-visible>*:nth-child(2){transition-delay:.12s}
+html.motion-ready .motion-reveal.is-visible>*:nth-child(3){transition-delay:.20s}
+html.motion-ready .motion-reveal.is-visible>*:nth-child(4){transition-delay:.28s}
+html.motion-ready .motion-reveal.is-visible>*:nth-child(n+5){transition-delay:.36s}
+html.motion-ready .product-card.motion-reveal.is-visible:hover,
+html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>*:hover{transform:translateY(-2px)}
+
+/* Touch devices were opted out of reveals entirely; re-enabled with a shorter
+   throw and no mask so it stays cheap on mobile GPUs. */
+@media(max-width:760px),(pointer:coarse){
+  html.motion-ready .motion-reveal{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.22,.75,.25,1),transform .6s cubic-bezier(.22,.75,.25,1);transition-delay:var(--reveal-delay,0ms)}
+  html.motion-ready .motion-reveal.is-visible{opacity:1;transform:none}
+  html.motion-ready .motion-reveal :is(h2,h3.reveal-title){transform:translateY(14px);clip-path:none;transition-duration:.62s}
+  html.motion-ready .motion-reveal.is-visible :is(h2,h3.reveal-title){clip-path:none}
+  html.motion-ready :is(.category-grid,.material-rail,.edit-category-grid,.product-grid,.scarf-style-grid,.trend-grid,.look-collage,.ugc-rail).motion-reveal>*{transform:translateY(16px);transition-duration:.58s}
+  html.motion-ready .motion-reveal :is(.product-image,.edit-category-grid>a,.scarf-image,.category-card,.look-tile,.trend-grid>a,.ugc-rail figure,.merch-feature,.scarf-feature) :is(img,video){transform:scale(1.05);transition-duration:.9s}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html.motion-ready .motion-reveal,
+  html.motion-ready .motion-reveal *,
+  html.motion-ready .motion-reveal.is-visible *{opacity:1!important;transform:none!important;clip-path:none!important;transition:none!important;animation:none!important}
 }
