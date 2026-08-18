@@ -114,6 +114,7 @@ export default function Home(){
   const [toast,setToast]=useState("");
   const [quizStep,setQuizStep]=useState(0);
   const [quiz,setQuiz]=useState<Record<string,string>>({});
+  const [zoomStep,setZoomStep]=useState(0);
 
   useEffect(()=>{const restore=window.setTimeout(()=>{try{setWish(JSON.parse(localStorage.getItem("fr-wish")||"[]"));setCart(JSON.parse(localStorage.getItem("fr-cart-v2")||"{}"));setViewed(JSON.parse(localStorage.getItem("fr-viewed")||"[]"))}catch{}},0);return()=>window.clearTimeout(restore)},[]);
   useEffect(()=>{localStorage.setItem("fr-wish",JSON.stringify(wish))},[wish]);
@@ -121,6 +122,11 @@ export default function Home(){
   useEffect(()=>{localStorage.setItem("fr-viewed",JSON.stringify(viewed))},[viewed]);
   useEffect(()=>{document.body.style.overflow=quick||cartOpen||menuOpen||searchOpen?"hidden":"";return()=>{document.body.style.overflow=""}},[quick,cartOpen,menuOpen,searchOpen]);
   useEffect(()=>{if(!toast)return;const t=setTimeout(()=>setToast(""),2200);return()=>clearTimeout(t)},[toast]);
+  useEffect(()=>{
+    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+    const t=window.setInterval(()=>setZoomStep(s=>(s+1)%4),2600);
+    return()=>window.clearInterval(t);
+  },[]);
   useEffect(()=>{
     const onAnchorClick=(event:MouseEvent)=>{
       if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
@@ -205,7 +211,7 @@ export default function Home(){
         <TrustStat icon="—" end={0} label="Middlemen markups"/>
       </div>
       <div className="section material-wrap"><div className="material-head"><div><p className="eyebrow">THE PROOF IS IN THE DETAIL</p><h2>Reasons to believe,<br/>seen up close.</h2></div><p>Non-clickable material studies explain what is specific and valuable about each collection—without creating another discovery layer.</p></div>
-        <div className="material-rail">
+        <div className="material-rail" data-zoom={zoomStep}>
           <Material image={`${A}/editorial/a-plus-leather.webp`} index="01" title="Full-grain leather and suede" copy="Visible grain, hand-finished edges and construction designed to develop character with use."/>
           <Material image={`${A}/generated/diamond-precision-setting.webp`} index="02" title="Precision-set brilliance" copy="Lab-grown diamonds aligned in clean settings so proportion and light remain the focus."/>
           <Material image={`${A}/editorial/a-plus-jewellery.webp`} index="03" title="Each stone is individual" copy="Natural turquoise, moonstone, rose quartz and pearl retain the variation that makes them distinctive."/>
@@ -246,20 +252,30 @@ export default function Home(){
   </main>;
 }
 
+// Each banner links to the product it shows. Images 1/3 are the same tote and
+// 4/5 the same backpack, so three products cover the five frames.
+const lookBanners=[
+  {src:"lookbanners/look-tote",productId:2,alt:"Model carrying an espresso leather shoulder bag"},
+  {src:"lookbanners/look-pendant",productId:12,alt:"Model wearing a gold pendant with a rose quartz stone"},
+  {src:"lookbanners/look-chain-tote",productId:2,alt:"Model in a tailored blazer carrying a chain-strap leather tote"},
+  {src:"lookbanners/look-backpack-held",productId:4,alt:"Model holding an embossed leather backpack"},
+  {src:"lookbanners/look-backpack-worn",productId:4,alt:"Model wearing an embossed leather backpack"},
+];
+
 function ShopTheLook({onOpen}:{onOpen:(p:Product)=>void}){
-  const banners=looks.slice(0,3);
   const shelf=[products[0],products[6],products[14],products[4],products[10],products[16],products[3],products[7]];
   const [slide,setSlide]=useState(0);
   useEffect(()=>{
     if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
-    const timer=window.setInterval(()=>setSlide(s=>(s+1)%banners.length),4600);
+    const timer=window.setInterval(()=>setSlide(s=>(s+1)%lookBanners.length),4600);
     return()=>window.clearInterval(timer);
-  },[banners.length]);
+  },[]);
+  const open=(id:number)=>{const match=products.find(p=>p.id===id);if(match)onOpen(match)};
   return <section className="section looks looks-premium" id="shop-the-look">
-    <div className="section-heading split"><div><p className="eyebrow">SHOP THE LOOK</p><h2>Ten ways to wear the edit.</h2></div><div><p>Search-led outfit ideas combining handbags, jewellery and scarves.</p><a className="underlink" href={LOOKS_PATH}>View all 10 looks <Icon name="arrow"/></a></div></div>
+    <div className="section-heading split"><div><p className="eyebrow">SHOP THE LOOK</p><h2>Ways to wear the edit.</h2></div><div><p>Search-led outfit ideas combining handbags, jewellery and scarves.</p><a className="underlink" href={LOOKS_PATH}>View all looks <Icon name="arrow"/></a></div></div>
     <div className="look-stage">
-      {banners.map((look,i)=><img key={look.id} className={i===slide?"is-on":""} src={look.image} alt={look.alt} aria-hidden={i!==slide}/>)}
-      <div className="look-stage-dots" aria-hidden="true">{banners.map((look,i)=><i key={look.id} className={i===slide?"on":""}/>)}</div>
+      {lookBanners.map((banner,i)=><button key={banner.src} className={`look-stage-slide ${i===slide?"is-on":""}`} onClick={()=>open(banner.productId)} tabIndex={i===slide?0:-1} aria-hidden={i!==slide} aria-label={`View ${products.find(p=>p.id===banner.productId)?.name??"product"}`}><img src={`${A}/${banner.src}.webp`} alt={banner.alt}/></button>)}
+      <div className="look-stage-dots" aria-hidden="true">{lookBanners.map((banner,i)=><i key={banner.src} className={i===slide?"on":""}/>)}</div>
     </div>
     <div className="look-shop-rail">{shelf.map(p=><button key={p.id} onClick={()=>onOpen(p)}><span className="look-shop-image"><img src={p.images[0]} alt={p.name} loading="lazy"/></span><b>{p.name}</b></button>)}</div>
   </section>;
@@ -317,9 +333,17 @@ function CountUp({end,prefix="",suffix=""}:{end:number;prefix?:string;suffix?:st
       };
       frame=requestAnimationFrame(animate);
     };
-    const observer=new IntersectionObserver(([entry])=>{if(entry.isIntersecting){run();observer.disconnect()}},{threshold:.08,rootMargin:"0px 0px -8%"});
+    let loop=0;
+    const observer=new IntersectionObserver(([entry])=>{
+      if(!entry.isIntersecting)return;
+      run();
+      if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){observer.disconnect();return}
+      // Recount on a loop so the proof stats keep reading as live numbers.
+      loop=window.setInterval(()=>{ran=false;setValue(0);run()},7000);
+      observer.disconnect();
+    },{threshold:.08,rootMargin:"0px 0px -8%"});
     observer.observe(node);
-    return()=>{observer.disconnect();cancelAnimationFrame(frame)};
+    return()=>{observer.disconnect();cancelAnimationFrame(frame);window.clearInterval(loop)};
   },[end]);
   return <b ref={ref}>{prefix}{value.toLocaleString("en-GB")}{suffix}</b>;
 }

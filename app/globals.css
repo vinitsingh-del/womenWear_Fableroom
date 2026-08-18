@@ -1234,3 +1234,97 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
    keep every card in the rail the same height. */
 .look-shop-rail b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(2 * 1.22em)}
 @media(max-width:760px){.look-shop-rail b{min-height:calc(2 * 1.22em)}}
+
+/* ── Round 5 ─────────────────────────────────────────────────────────────── */
+
+/* Trust strip: content and grid lines sit inside the gutter instead of running
+   to the page edge, and the whole block is ~20% shorter. */
+.trust-and-proof{padding:0!important;background:#fff!important}
+.trust-box{width:auto;max-width:none!important;margin:0 var(--edge)!important;padding:16px 0!important;min-height:0}
+.trust-box>span{padding:12px 22px}
+.trust-box>span:nth-child(n+2){border-left:1px solid rgba(255,247,235,.24)!important}
+.trust-box b{font-size:27px}
+.trust-copy small{font-size:6.5px;letter-spacing:.12em}
+.material-wrap{margin-top:24px!important;padding-top:38px!important}
+
+/* Proof images take turns pushing in, driven by data-zoom on the rail. */
+.material-rail>.material-card>img{transform-origin:center;transition:transform 2.4s cubic-bezier(.33,.7,.35,1),filter 2.4s ease}
+.material-rail[data-zoom="0"]>.material-card:nth-child(1)>img,
+.material-rail[data-zoom="1"]>.material-card:nth-child(2)>img,
+.material-rail[data-zoom="2"]>.material-card:nth-child(3)>img,
+.material-rail[data-zoom="3"]>.material-card:nth-child(4)>img{transform:scale(1.12)}
+.material-card{overflow:hidden}
+.material-card>img{will-change:transform}
+
+/* Every CTA carries the same shine sweep. */
+.button,.underlink,.category-card u,.trend-grid em,.newsletter button,.review-score>a,
+.product-copy>div button,.quiz-options button,.look-shop-rail>button b{position:relative;overflow:hidden;isolation:isolate}
+.button::after,.underlink::after,.category-card u::after,.trend-grid em::after,
+.newsletter button::after,.review-score>a::after,.product-copy>div button::after,
+.quiz-options button::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.55) 50%,transparent 62%);transform:translateX(-130%);animation:cta-shine 3.6s ease-in-out infinite}
+.button.dark::after,.newsletter button::after,.review-score>a::after,.trend-grid em::after,
+.category-card u::after{background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.5) 50%,transparent 62%)}
+.quiz-options button::after{background:linear-gradient(105deg,transparent 40%,rgba(214,160,99,.3) 50%,transparent 60%)}
+
+/* 15% smaller Explore now. */
+.feature-cta{min-height:25px;padding:0 10px;gap:5px;font-size:5.6px;letter-spacing:.15em}
+.feature-cta .icon{width:9px;height:9px}
+
+/* Card hover: moving between cards dims the ones you left. */
+@media(hover:hover) and (pointer:fine){
+  .category-grid:hover>.category-card:not(:hover),
+  .edit-category-grid:hover>a:not(:hover),
+  .product-grid:hover>.product-card:not(:hover),
+  .scarf-style-grid:hover>article:not(:hover),
+  .trend-grid:hover>a:not(:hover),
+  .look-shop-rail:hover>button:not(:hover),
+  .material-rail:hover>.material-card:not(:hover){opacity:.62;transition:opacity .4s ease}
+  .category-card,.edit-category-grid>a,.product-card,.scarf-style-grid article,
+  .trend-grid>a,.look-shop-rail>button,.material-card{transition:opacity .4s ease,transform .4s cubic-bezier(.22,.75,.25,1)}
+  .edit-category-grid>a:hover,.look-shop-rail>button:hover,.trend-grid>a:hover{transform:translateY(-3px)}
+  .material-rail:hover>.material-card:hover>img{transform:scale(1.12)}
+}
+
+@media(max-width:760px){
+  .trust-and-proof{padding:0!important}
+  .trust-box{margin:0 var(--edge)!important;padding:10px 0!important}
+  .trust-box>span{padding:9px 11px}
+  .trust-box>span:nth-child(2n+1){border-left:0!important;padding-left:14px}
+  .trust-box>span:nth-child(2n){border-left:1px solid rgba(255,247,235,.24)!important}
+  .trust-box>span:nth-child(n+3){border-top:1px solid rgba(255,247,235,.24)!important}
+  .trust-box b{font-size:20px}
+  .trust-copy small{font-size:5.6px;letter-spacing:.08em}
+  .material-wrap{margin-top:16px!important;padding-top:24px!important}
+
+  .feature-cta{min-height:22px;padding:0 9px;font-size:5.2px}
+  .feature-cta .icon{width:8px;height:8px}
+}
+
+/* Banners are buttons now (each opens its product), so the slide state lives on
+   the button rather than the image. */
+.look-stage-slide{position:absolute;inset:0;z-index:0;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer;opacity:0;pointer-events:none;transition:opacity 1.7s ease}
+.look-stage-slide.is-on{z-index:2;opacity:1;pointer-events:auto;transition:opacity .95s ease}
+.look-stage-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 58%;opacity:1;transform:scale(1.05);transition:transform 6.5s ease}
+.look-stage-slide.is-on img{transform:scale(1)}
+.look-stage-slide:hover img{transform:scale(1.03)}
+.look-stage-dots{z-index:4}
+
+/* One vertical rhythm. Several sections had drifted: trending sat at 22/46 from
+   a rule written when the scarf edit preceded it, and category-section,
+   recommended and looks-premium were each a few px off. */
+.category-section,.merch-category,.merch-reverse,.merch-mosaic,.merch-panorama,
+.merch-scarves,.looks-premium,.finder,.recommended,.trending,.out-about,.faq{
+  padding-top:52px!important;padding-bottom:52px!important}
+.newsletter{padding-top:64px;padding-bottom:64px}
+.site-footer{padding-top:52px;padding-bottom:52px}
+.trending{margin-top:0!important}
+.merch-scarves+.trending{padding-top:52px!important}
+
+@media(max-width:760px){
+  .category-section,.merch-category,.merch-reverse,.merch-mosaic,.merch-panorama,
+  .merch-scarves,.looks-premium,.finder,.recommended,.trending,.out-about,.faq{
+    padding-top:34px!important;padding-bottom:34px!important}
+  .newsletter{padding-top:44px;padding-bottom:44px}
+  .site-footer{padding-top:34px;padding-bottom:34px}
+  .merch-scarves+.trending{padding-top:34px!important}
+}
