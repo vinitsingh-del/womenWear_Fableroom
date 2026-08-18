@@ -916,3 +916,152 @@ main{display:flex;flex-direction:column}main>.announce{order:1}main>.header{orde
   .edit-category-grid b{font-size:17px;gap:5px}
   .edit-category-grid b .icon{width:12px;height:12px}
 }
+
+/* Alignment and symmetry pass — one shared content rail, symmetric cards, compact banner CTAs. */
+
+/* main is a flex column, so `margin:0 auto` was shrink-to-fit sizing every section
+   and giving each one a different left edge. A definite width restores one rail. */
+:root{--edge:max(30px,calc((100% - 1180px) / 2))}
+main>*{width:100%;align-self:stretch}
+
+/* 2 — Trust strip bleeds edge to edge like the reviews band, with no framing borders. */
+.trust-and-proof{padding:0!important;margin:0;background:var(--aubergine);border:0}
+.trust-box{max-width:none!important;width:100%;min-height:120px;margin:0!important;padding:22px var(--edge)!important;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:0;border-radius:0;overflow:hidden}
+.trust-box>span,.trust-box>span+span,.trust-box>span:first-child,.trust-box>span:last-child,.trust-box>span:nth-child(2n),.trust-box>span:nth-child(n+3){border:0!important}
+.trust-box>span{min-height:0;padding:8px 24px 8px 0;display:flex;align-items:center;justify-content:flex-start;background:transparent!important}
+.trust-box .trust-copy{gap:6px}
+.trust-box b{font:34px/.9 var(--serif);color:#fffaf3;letter-spacing:-.05em}
+.trust-copy small{color:#eadcd3;font:7.5px/1.2 var(--sans);letter-spacing:.13em;text-transform:uppercase}
+
+/* 1 — Reviews read as their own block again instead of merging into the proof strip. */
+.reviews{margin:30px 0 0!important;padding-left:var(--edge);border-top:0}
+.review-score{padding:26px 30px 26px 0}
+
+/* 5 — Collection grid: one title line, one subtitle line, one CTA on every card. */
+.category-card>span{display:flex;flex-direction:column;align-items:flex-start;gap:0}
+.category-card h3{display:block;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font:clamp(21px,1.95vw,31px)/1.06 var(--serif);margin:0 0 6px}
+.category-card p{display:block;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:11px;line-height:1.4;margin:0 0 10px}
+.category-card u{display:inline-block;margin:0}
+
+/* 3 + 6 — Every edit section shares the bag edit's rail, rhythm and grid. */
+.merch-category,.merch-bags,.merch-diamonds,.merch-gemstones,.merch-scarves,
+.merch-panorama,.merch-reverse,.merch-mosaic{max-width:none!important;margin:0!important;padding:52px var(--edge)!important}
+.merch-category>header{display:grid;grid-template-columns:78px minmax(0,780px);align-items:start;margin-bottom:18px}
+.merch-category>header>span{font:italic 46px/1 var(--serif)}
+.merch-category h2{font-size:clamp(38px,3.4vw,52px);margin:0 0 10px}
+.merch-feature,.merch-panorama .merch-feature,.merch-reverse .merch-feature,
+.merch-mosaic .merch-feature,.scarf-feature{height:360px;margin:0 0 12px}
+.edit-category-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.edit-category-grid>a{height:190px}
+
+/* 6 — Tiles are identical: index, one-line title, arrow pinned right. */
+.edit-category-grid span{position:absolute;left:16px;right:14px;bottom:13px;top:auto;display:block}
+.edit-category-grid span>small{display:block;margin-bottom:5px;font:700 7px/1 var(--sans);letter-spacing:.15em;color:#e6b980}
+.edit-category-grid b{display:flex;align-items:center;justify-content:space-between;gap:10px;font:20px/1.15 var(--serif);font-weight:400}
+.edit-category-grid b i{min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-style:normal}
+.edit-category-grid b .icon{display:block;width:14px;height:14px;flex:none;transition:transform .25s ease}
+.edit-category-grid>a:hover b .icon{transform:translateX(4px)}
+.edit-category-grid em{display:none}
+
+/* 7 — Banners carry a compact CTA instead of a large category caption box. */
+.merch-feature figcaption,.scarf-feature figcaption{display:none}
+.feature-cta{position:absolute;left:18px;bottom:18px;z-index:2;display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 15px;border-radius:999px;background:rgba(251,247,239,.94);color:var(--aubergine);font:700 8px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;backdrop-filter:blur(8px);transition:background .25s ease,transform .25s ease}
+.feature-cta:hover{background:#fff;transform:translateY(-2px)}
+.feature-cta .icon{width:12px;height:12px;flex:none;transition:transform .25s ease}
+.feature-cta:hover .icon{transform:translateX(3px)}
+
+/* 4 — Scarf edit nav sits centred and equally spaced. */
+.merch-scarves .subcategories{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:0!important;margin:0 0 14px!important;padding:15px 0!important;overflow:visible!important;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.merch-scarves .subcategories a{min-width:0;justify-self:center;text-align:center;font-size:9px;letter-spacing:.1em}
+
+/* 3 — Questionnaire shares the same rail as the edits. */
+.finder{max-width:none!important;margin:0!important;padding:52px var(--edge)!important;display:grid;grid-template-columns:50% 50%;align-items:stretch}
+.finder-image img{height:100%;min-height:600px}
+.finder-card{padding:52px}
+
+/* 8 — Matching rails for the remaining full-width sections.
+   These also need max-width cleared: percentage padding resolves against the
+   parent, so a 1240px cap plus a 130px gutter was insetting them twice. */
+.material-wrap,.looks-premium,.recommended,.site-footer{max-width:none!important;margin-left:0!important;margin-right:0!important;width:100%;padding-left:var(--edge)!important;padding-right:var(--edge)!important}
+.material-card:nth-child(1)>img,.material-card .material-visual-pair img{height:344px!important}
+.material-card:nth-child(3)>img,.material-card:nth-child(4)>img{height:344px}
+
+@media(max-width:760px){
+  :root{--edge:16px}
+
+  .trust-box{min-height:0;padding:14px var(--edge)!important;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 10px;overflow:visible;scroll-snap-type:none}
+  .trust-box>span{padding:0;flex:none;scroll-snap-align:none}
+  .trust-box b{font-size:24px}
+  .trust-copy small{font-size:6px;letter-spacing:.09em;white-space:normal}
+
+  .reviews{margin-top:18px!important;padding-left:var(--edge)}
+  .review-score{padding:16px 12px 16px 0}
+
+  .category-card h3{font-size:22px;margin-bottom:4px}
+  .category-card p{font-size:10px;margin-bottom:7px}
+
+  .merch-category,.merch-bags,.merch-diamonds,.merch-gemstones,.merch-scarves,
+  .merch-panorama,.merch-reverse,.merch-mosaic{padding:34px var(--edge)!important}
+  .merch-category>header{display:block;margin-bottom:12px}
+  .merch-category>header>span{display:block;margin-bottom:6px;font-size:30px}
+  .merch-category h2{font-size:31px}
+  .merch-feature,.merch-panorama .merch-feature,.merch-reverse .merch-feature,
+  .merch-mosaic .merch-feature,.scarf-feature{height:230px!important;margin-bottom:10px!important}
+  .edit-category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .edit-category-grid>a,.edit-category-grid>a:last-child{height:132px;grid-column:auto}
+  .edit-category-grid span{left:12px;right:11px;bottom:10px}
+  .edit-category-grid b{font-size:16px;gap:7px}
+  .edit-category-grid b .icon{width:12px;height:12px}
+
+  .feature-cta{left:12px;bottom:12px;min-height:32px;padding:0 12px;gap:6px;font-size:7px}
+  .feature-cta .icon{width:11px;height:11px}
+
+  .merch-scarves .subcategories{padding:12px 0!important;margin-bottom:10px!important}
+  .merch-scarves .subcategories a{font-size:7.5px;flex:none}
+
+  /* Scarf cards were a 4-column grid on a 390px screen, which forced page overflow. */
+  .scarf-style-grid{display:flex!important;gap:8px;width:100%;margin:0 calc(var(--edge) * -1) 0 0!important;padding-right:var(--edge)!important;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;justify-content:flex-start!important}
+  .scarf-style-grid::-webkit-scrollbar{display:none}
+  .scarf-style-grid article{flex:0 0 min(72vw,240px)!important;min-width:0;margin-top:0!important;scroll-snap-align:start}
+  .scarf-image{height:290px!important}
+
+  .finder{display:flex;flex-direction:column;padding:34px var(--edge)!important}
+  .finder-image img{height:300px;min-height:0}
+  .finder-card{padding:26px 0 0}
+}
+
+/* Legibility: tile titles were dark maroon over a dark scrim in the diamond edit.
+   One treatment for all four edits — stronger scrim, light type. */
+.edit-category-grid>a,.merch-reverse .edit-category-grid>a{background:#f4efe8;color:#fffaf3}
+.edit-category-grid>a::after{inset:32% 0 0;background:linear-gradient(transparent,rgba(36,7,19,.92))}
+.edit-category-grid b,.merch-reverse .edit-category-grid b{color:#fffaf3}
+.edit-category-grid span>small{color:#e8bf88}
+
+/* Mobile proof rail: the desktop image height above collided with an existing
+   !important mobile rule, leaving row 1 at 344px and row 2 at 92px. */
+@media(max-width:760px){
+  .material-card:nth-child(1)>img,
+  .material-card:nth-child(3)>img,
+  .material-card:nth-child(4)>img,
+  .material-card .material-visual-pair img{height:150px!important}
+  .material-card .material-visual-pair{gap:5px}
+  .material-card .material-copy{padding-top:10px}
+  .material-card h3{min-height:38px;font-size:15px;line-height:1.06}
+}
+
+/* Quiz options had a near-invisible border on a white card, so the tap targets
+   did not read as tappable. */
+.quiz-options button{border:1px solid #dcd0c3;background:#faf7f2;color:var(--ink)}
+.quiz-options button:hover,.quiz-options button:focus-visible{background:#fff;border-color:var(--aubergine)}
+.quiz-options .icon{color:var(--aubergine)}
+
+/* Mobile footer legal line ran the two links straight onto the copyright text. */
+@media(max-width:760px){.copyright>span{display:block;margin-top:6px}}
+
+/* Tablet: keep four edit tiles and four trust stats from crushing. */
+@media(max-width:1024px) and (min-width:761px){
+  .edit-category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .edit-category-grid>a{height:170px}
+  .trust-box{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 0}
+  .category-card h3{font-size:24px}
+}
