@@ -1386,3 +1386,31 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 @media(max-width:760px){
   .category-card u,.trend-grid em,.look-tile em,.underlink,.review-score>a{padding-bottom:3px}
 }
+
+/* ── Round 8 ─────────────────────────────────────────────────────────────── */
+
+/* Trending grid was 3 uneven columns with the lead spanning two rows (440 +
+   150), so the two right-hand cards left a 150px hole beneath them. Three
+   equal columns, one row, matching heights. */
+.trend-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;grid-template-rows:auto!important;gap:12px!important}
+.trend-grid>a,.trend-grid .trend-lead{grid-row:auto!important;grid-column:auto!important;height:520px!important;flex:none!important}
+
+/* Trust band bleeds on desktop only; mobile keeps its gutters. */
+@media(min-width:761px){
+  .trust-box{margin:0!important;padding:16px var(--edge)!important}
+  .trust-box>span:first-child{padding-left:0}
+}
+
+/* 20% less white above and below the band. */
+.category-section{padding-bottom:42px!important}
+.material-wrap{margin-top:42px!important}
+
+@media(max-width:760px){
+  .category-section{padding-bottom:27px!important}
+  .material-wrap{margin-top:27px!important}
+  /* mobile keeps the inset band */
+  .trust-box{margin:0 var(--edge)!important;padding:10px 0!important}
+
+  .trend-grid{display:flex!important;gap:8px!important}
+  .trend-grid>a,.trend-grid .trend-lead{flex:0 0 min(76vw,250px)!important;height:340px!important}
+}
