@@ -1366,3 +1366,23 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
   .faq h2{font-size:33px;margin-bottom:10px}
   .faq>div:first-child>p:last-child{font-size:11.5px;max-width:none}
 }
+
+/* ── Round 7 ─────────────────────────────────────────────────────────────── */
+
+/* The shine sweep needed overflow:hidden to clip its gradient, but the CTA
+   underline sits 5px below a 9.6px line box, so it was being clipped away —
+   some cards showed a partial rule, some none. A border draws on the element
+   itself rather than as clipped content, so it always renders in full. */
+.category-card u,.trend-grid em,.look-tile em,.underlink,.review-score>a{
+  text-decoration:none!important;
+  border-bottom:1px solid currentColor;
+  padding-bottom:4px;
+  width:max-content;
+  max-width:100%;
+}
+.underlink,.review-score>a{display:inline-flex;align-items:center}
+.trend-grid em,.look-tile em{justify-self:start}
+
+@media(max-width:760px){
+  .category-card u,.trend-grid em,.look-tile em,.underlink,.review-score>a{padding-bottom:3px}
+}
