@@ -199,16 +199,16 @@ button:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offs
 /* August 2026 refinement — one warm palette, editorial spacing and purposeful motion */
 :root{
   --ink:#241b18;
-  --chalk:#fbf7ef;
-  --ivory:#f5efe4;
-  --sand:#ded4c6;
+  --chalk:#fff;
+  --ivory:#fff;
+  --sand:#fff;
   --taupe:#756958;
   --wine:#4b0f24;
   --jewel:#4b0f24;
   --aubergine:#4b0f24;
   --rust:#a7623d;
   --rust-gold:#b88342;
-  --stone:#d8cfc2;
+  --stone:#fff;
   --line:#d6ccbe;
 }
 
@@ -549,4 +549,23 @@ video{contain:paint}
   .full-look ul{margin:14px 0}
   .looks-end{padding:44px 20px}
   .looks-end h2{font-size:36px;margin-bottom:18px}
+}
+
+/* Compact, icon-led proof strip for mobile. */
+.trust-icon,.trust-copy{position:relative;z-index:1}
+.trust-icon{display:none}
+.trust-copy{display:flex;flex-direction:column}
+.trust-copy small{font:inherit}
+
+body,main,.trust-and-proof,.merch-category,.merch-mosaic,.merch-scarves,.recommended,.finder-card,.site-footer{background:#fff}
+
+@media(max-width:760px){
+  .trust-box{display:flex;gap:8px;margin:0;min-height:74px;padding:0 16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .trust-box::-webkit-scrollbar{display:none}
+  .trust-box>span{flex:0 0 calc(50% - 12px);min-height:74px;padding:10px 9px;display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;border:0;background-color:var(--aubergine);background-image:none!important;scroll-snap-align:start}
+  .trust-box>span::after{display:none}
+  .trust-icon{display:grid;width:20px;height:20px;flex:0 0 20px;place-items:center;border:1px solid rgba(255,255,255,.5);border-radius:50%;color:var(--rust-gold);font:14px/1 var(--serif)}
+  .trust-copy{min-width:0;gap:1px}
+  .trust-box b{font:22px/.9 var(--serif);letter-spacing:-.04em;margin:0;color:#fff7eb}
+  .trust-copy small{font:7px/1.15 var(--sans);letter-spacing:.04em;color:#fff7eb;text-transform:uppercase}
 }
