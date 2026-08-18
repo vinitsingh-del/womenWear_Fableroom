@@ -1151,3 +1151,86 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
   html.motion-ready .motion-reveal *,
   html.motion-ready .motion-reveal.is-visible *{opacity:1!important;transform:none!important;clip-path:none!important;transition:none!important;animation:none!important}
 }
+
+/* ── Round 4 ─────────────────────────────────────────────────────────────── */
+
+/* 1 — Explore now: smaller, with a continuous glow and a shine sweep.
+   isolation + z-index:-1 keeps the sweep behind the label. */
+.feature-cta{min-height:29px;padding:0 12px;gap:6px;font:700 6.5px/1 var(--sans);letter-spacing:.16em;isolation:isolate;overflow:hidden;background:rgba(252,249,244,.9);animation:cta-glow 3.6s ease-in-out infinite}
+.feature-cta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 36%,rgba(255,255,255,.9) 50%,transparent 64%);transform:translateX(-130%);animation:cta-shine 3.6s ease-in-out infinite}
+.feature-cta .icon{width:10px;height:10px}
+@keyframes cta-shine{0%{transform:translateX(-130%)}55%,100%{transform:translateX(130%)}}
+@keyframes cta-glow{0%,100%{box-shadow:0 0 0 1px rgba(255,250,243,.4),0 4px 16px rgba(36,7,19,.24)}50%{box-shadow:0 0 0 1px rgba(255,250,243,.85),0 6px 24px rgba(214,160,99,.45)}}
+
+/* 2 — The trust strip is its own section: white gap beneath it, grid lines back. */
+.trust-and-proof{background:#fff!important}
+.trust-box{min-height:126px;padding-top:24px!important;padding-bottom:24px!important}
+.trust-box>span{padding:6px 26px}
+.trust-box>span:nth-child(n+2){border-left:1px solid rgba(255,247,235,.26)!important}
+.material-wrap{margin-top:30px!important;padding-top:44px!important}
+
+/* 3 + 6 — Proof block: four equal images, title sitting on its copy. */
+.material-rail{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px!important;align-items:start}
+.material-card,.material-card:nth-child(n){grid-column:auto!important;margin:0!important;min-width:0}
+.material-card>img,.material-card:nth-child(1)>img,.material-card:nth-child(2)>img,
+.material-card:nth-child(3)>img,.material-card:nth-child(4)>img{width:100%;height:290px!important;object-fit:cover;padding:0!important;background:#2b0817}
+.material-card .material-copy{padding:14px 0 0}
+.material-card h3{margin:0 0 5px;font-size:21px;line-height:1.08}
+.material-card p{margin:0;font-size:10.5px;line-height:1.5}
+
+/* 5 — Shop the look: an auto-rotating banner over a square product rail. */
+.look-stage{position:relative;width:100%;height:440px;margin:0 0 14px;overflow:hidden;background:#250814;isolation:isolate}
+.look-stage img{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.05);transition:opacity 1.7s ease,transform 6s ease}
+.look-stage img.is-on{z-index:2;opacity:1;transform:scale(1);transition:opacity .95s ease,transform 6s ease}
+.look-stage-dots{position:absolute;z-index:2;left:0;right:0;bottom:16px;display:flex;justify-content:center;gap:7px}
+.look-stage-dots i{width:22px;height:2px;background:rgba(255,250,243,.34);transition:background .4s ease}
+.look-stage-dots i.on{background:var(--rust-gold)}
+.look-shop-rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.look-shop-rail::-webkit-scrollbar{display:none}
+.look-shop-rail>button{flex:0 0 clamp(140px,15.5%,190px);min-width:0;padding:0;border:0;background:none;text-align:left;cursor:pointer;scroll-snap-align:start}
+.look-shop-image{display:block;width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--ivory)}
+.look-shop-image img{width:100%;height:100%;object-fit:contain;transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+.look-shop-rail>button:hover .look-shop-image img{transform:scale(1.05)}
+.look-shop-rail b{display:block;padding-top:10px;color:var(--ivory);font:400 15px/1.22 var(--serif);font-style:italic}
+
+@media(max-width:760px){
+  .feature-cta{min-height:26px;padding:0 10px;font-size:6px;letter-spacing:.14em}
+  .feature-cta .icon{width:9px;height:9px}
+
+  .trust-box{min-height:0;padding-top:16px!important;padding-bottom:16px!important}
+  .trust-box>span{padding:11px 13px}
+  .trust-box>span:nth-child(2n){border-left:1px solid rgba(255,247,235,.26)!important}
+  .trust-box>span:nth-child(2n+1){border-left:0!important}
+  .trust-box>span:nth-child(n+3){border-top:1px solid rgba(255,247,235,.26)!important}
+  .material-wrap{margin-top:20px!important;padding-top:28px!important}
+
+  .material-rail{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px 8px!important}
+  .material-card>img,.material-card:nth-child(1)>img,.material-card:nth-child(2)>img,
+  .material-card:nth-child(3)>img,.material-card:nth-child(4)>img{height:150px!important}
+  .material-card .material-copy{padding-top:9px}
+  .material-card h3{min-height:0;margin:0 0 4px;font-size:14px;line-height:1.1}
+  .material-card p{font-size:8.5px;line-height:1.4;-webkit-line-clamp:3}
+
+  .look-stage{height:300px;margin-bottom:11px}
+  .look-stage-dots{bottom:12px}
+  .look-shop-rail{gap:8px;margin-right:calc(var(--edge) * -1);padding-right:var(--edge)}
+  .look-shop-rail>button{flex:0 0 min(42vw,150px)}
+  .look-shop-rail b{padding-top:8px;font-size:13px}
+}
+
+@media(max-width:1024px) and (min-width:761px){
+  .material-rail{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .material-card>img,.material-card:nth-child(n)>img{height:240px!important}
+  .look-shop-rail>button{flex:0 0 clamp(150px,22%,200px)}
+  .look-stage{height:340px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .feature-cta,.feature-cta::before{animation:none!important}
+  .look-stage img{transition:none!important}
+}
+
+/* Rail titles wrap to one or two lines, so reserve the taller of the two to
+   keep every card in the rail the same height. */
+.look-shop-rail b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(2 * 1.22em)}
+@media(max-width:760px){.look-shop-rail b{min-height:calc(2 * 1.22em)}}
