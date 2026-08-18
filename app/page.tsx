@@ -255,7 +255,7 @@ export default function Home(){
 
     <section className="section trending" id="new"><div className="section-heading split"><div><p className="eyebrow">WHAT’S NEW & TRENDING</p><h2>A space for what comes next.</h2></div><p>Built to hold future drops, new arrivals and timely curated collections without rebuilding the page.</p></div><div className="trend-grid"><a className="trend-lead" href={CP.bags}><img src={`${A}/lifestyle/look-scarf-on-bag.webp`} alt="Scarf styled on a structured handbag"/><span><small>THE CURRENT NOTE</small><b>Scarf on the bag</b><em>Explore the collection</em></span></a><a href={CP.bags}><img src={`${A}/bags/apollo_02/01-08-2026-productshoot5356.webp`} alt="Tan suede shoulder bag"/><span><small>NEW MATERIAL</small><b>Suede, now</b></span></a><a href={CP.scarves}><img src={`${A}/drive/scarf-1.webp`} alt="Merlot scarf styled on a model"/><span><small>COLOUR EDIT</small><b>The merlot layer</b></span></a></div></section>
 
-    <ShopTheLook onOpen={openProduct}/>
+    <ShopTheLook onOpen={openProduct} onAddLook={ids=>{setCart(c=>{const n={...c};ids.forEach(id=>{n[id]=(n[id]||0)+1});return n});setToast("Look added to your bag")}}/>
 
     <section className="section recommended" id="recommended"><div className="section-heading split"><div><p className="eyebrow">RECOMMENDED FOR YOU</p><h2>{viewed.length?"More from what you viewed.":"A considered place to begin."}</h2></div><p>{viewed.length?"This rail adapts to product categories opened during this visit.":"Open a product and this selection will begin adapting to your browsing behaviour."}</p></div><div className="product-grid compact">{recommended.map(p=><ProductCard key={p.id} product={p} wished={wish.includes(p.id)} onWish={()=>toggleWish(p.id)} onOpen={()=>openProduct(p)}/>)}</div></section>
 
@@ -289,7 +289,7 @@ const lookBanners=[
   {src:"lookbanners/look-backpack-worn",productIds:[4],alt:"Model wearing an embossed leather backpack"},
 ];
 
-function ShopTheLook({onOpen}:{onOpen:(p:Product)=>void}){
+function ShopTheLook({onOpen,onAddLook}:{onOpen:(p:Product)=>void;onAddLook:(ids:number[])=>void}){
   const [slide,setSlide]=useState(0);
   useEffect(()=>{
     if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
