@@ -1785,3 +1785,53 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
   .merch-category>header>span{margin-bottom:5px}
   .merch-category>header .eyebrow{margin-bottom:6px}
 }
+
+/* ── Round 17 ────────────────────────────────────────────────────────────── */
+
+/* Reviews rebuilt. The old panels were full-bleed columns divided by hairlines,
+   so a quote could be clipped mid-word at the edge and a short one left a gap
+   between itself and the author. Discrete cards sized to a consistent height,
+   with the quote centred, fix both. Roughly 20% smaller throughout. */
+.reviews{grid-template-columns:minmax(240px,26%) minmax(0,74%)}
+.review-score{padding:26px 26px 26px 30px}
+.review-score .eyebrow{margin-bottom:8px;font-size:7.5px}
+.review-score strong{font-size:37px;line-height:.92}
+.review-score>div{margin:6px 0;font-size:11px;letter-spacing:.22em}
+.review-score>span{font-size:7.5px;line-height:1.5;letter-spacing:.07em;opacity:.82}
+.review-score>a{margin-top:12px;font-size:7.5px;padding-bottom:3px}
+
+.review-window{border-left:0;display:flex;align-items:center}
+.review-track{height:auto;align-items:stretch;gap:10px;padding:14px 0}
+.review-track blockquote{
+  width:228px;min-height:0;margin:0;padding:16px 18px;
+  display:grid;grid-template-rows:auto 1fr auto;gap:8px;
+  border:1px solid rgba(255,250,243,.16);border-right:1px solid rgba(255,250,243,.16);
+  border-radius:12px;background:rgba(255,250,243,.05);
+  transition:background .3s ease,border-color .3s ease}
+.review-track blockquote:hover{background:rgba(255,250,243,.1);border-color:rgba(255,250,243,.3)}
+.review-stars{font-style:normal;font-size:9px;letter-spacing:.16em;color:var(--rust-gold);line-height:1}
+.review-track p{max-width:none;margin:0;align-self:center;font:italic 14.5px/1.35 var(--serif);color:#fffaf3}
+.review-track footer{font-size:7px;letter-spacing:.11em;color:#cdbfb4}
+
+@media(max-width:760px){
+  .review-score{padding:18px 16px 16px 18px}
+  .review-score strong{font-size:30px}
+  .review-score>div{font-size:10px;margin:5px 0}
+  .review-score>span{font-size:6.6px}
+  .review-score>a{margin-top:10px;font-size:6.6px}
+  .review-track{gap:8px;padding:0 0 14px}
+  .review-track blockquote{width:190px;padding:13px 14px;gap:7px;border-radius:10px}
+  .review-track p{font-size:12.5px}
+  .review-stars{font-size:8px}
+  .review-track footer{font-size:6.2px}
+}
+
+/* Mobile: a 240px minimum on the score column left barely 100px for the rail.
+   Stack instead so the cards get the full width. */
+@media(max-width:760px){
+  .reviews{display:block!important}
+  .review-score{padding:16px 18px 12px;border-bottom:1px solid rgba(255,250,243,.16)}
+  .review-score>div{margin:4px 0}
+  .review-window{width:100%;border-top:0}
+  .review-track{padding:12px 0}
+}
