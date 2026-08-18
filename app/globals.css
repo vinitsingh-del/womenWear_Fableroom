@@ -1430,3 +1430,30 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
   .category-section{padding-bottom:19px!important}
   .material-wrap{margin-top:19px!important}
 }
+
+/* ── Round 10 ────────────────────────────────────────────────────────────── */
+
+/* Diamond hero is a transparent cutout now, so it sits on the section itself
+   rather than inside a photographic panel, and rotates gently on scroll. */
+.merch-diamonds .merch-feature.feature-cutout{background:transparent;box-shadow:none;overflow:hidden;display:grid;place-items:center;padding:20px 0}
+.merch-diamonds .feature-cutout img{width:auto;height:300px;max-width:90%;object-fit:contain;object-position:center;background:transparent;mix-blend-mode:normal;will-change:transform;filter:drop-shadow(0 22px 40px rgba(0,0,0,.45))}
+.merch-diamonds .feature-cutout .feature-cta{left:0;bottom:0}
+
+/* Scarf filters are buttons now. */
+.merch-scarves .subcategories button{min-width:0;justify-self:center;padding:4px 2px;border:0;background:none;color:var(--ink);font:700 9px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid transparent;transition:border-color .25s ease,opacity .25s ease;opacity:.55}
+.merch-scarves .subcategories button.is-on{opacity:1;border-bottom-color:currentColor}
+.merch-scarves .subcategories button:hover{opacity:1}
+
+/* Shop the look cards carry a price; dots are selectable. */
+.look-shop-rail>button em{display:block;padding-top:3px;color:var(--rust-gold);font:400 12px/1 var(--sans);font-style:normal;letter-spacing:.04em}
+.look-stage-dots button{width:22px;height:2px;padding:0;border:0;background:rgba(255,250,243,.34);cursor:pointer;transition:background .4s ease}
+.look-stage-dots button.on{background:var(--rust-gold)}
+.look-stage-dots{gap:7px}
+@keyframes rail-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.look-shop-rail{animation:rail-in .5s cubic-bezier(.22,.75,.25,1)}
+
+@media(max-width:760px){
+  .merch-diamonds .feature-cutout img{height:180px;max-width:80%}
+  .merch-scarves .subcategories button{font-size:7.5px}
+  .look-shop-rail>button em{font-size:11px}
+}
