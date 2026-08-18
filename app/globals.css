@@ -834,3 +834,9 @@ html,body,#root{width:100%;max-width:100%;overflow-x:hidden}
 .hero-copy>p:not(.eyebrow){animation:hero-subtitle 4.2s ease-in-out infinite}
 @media(max-width:760px){.hero-copy{bottom:28px}.hero h1{font-size:35px;line-height:.98}.hero-copy>p:not(.eyebrow){max-width:310px;font-size:10px;line-height:1.38;margin-top:8px}.scarf-feature{height:178px!important;margin-bottom:8px!important}.scarf-feature figcaption{left:14px;bottom:14px;padding:8px 11px;font-size:14px}.merch-scarves{padding-bottom:26px!important}.scarf-style-grid{gap:7px}.scarf-style-grid article{flex-basis:min(62vw,210px)!important}.scarf-image{height:250px!important}.scarf-style-grid h3{font-size:16px}.scarf-style-grid article>div{padding-top:8px}}
 @media(max-width:760px){.hero{height:calc(100svh - 79px)!important;min-height:0!important;max-height:none!important}.hero-copy{bottom:20px!important}.hero h1{font-size:29px!important;line-height:1.03!important;margin:0 0 8px!important}.hero-copy>.eyebrow{margin-bottom:7px}.hero-copy>p:not(.eyebrow){display:block!important;position:static!important;max-width:278px!important;font-size:9.5px!important;line-height:1.4!important;margin:0!important;color:#fff!important;opacity:1!important;transform:none!important;animation:hero-subtitle 4.2s ease-in-out infinite!important}}
+/* Remove residual hand-off gaps between edit sections. */
+.merch-category{margin-bottom:0}
+.merch-scarves{padding-bottom:22px!important}
+.merch-scarves+.trending{padding-top:22px!important}
+.trending{margin-top:0!important}
+@media(max-width:760px){.merch-category{padding-bottom:22px!important}.merch-scarves{padding-top:22px!important;padding-bottom:18px!important}.merch-scarves+.trending{padding-top:18px!important}.trending .section-heading{margin-bottom:14px}.trending,.out-about,.recommended{margin-top:0!important}}
