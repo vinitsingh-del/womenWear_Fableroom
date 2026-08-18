@@ -23,6 +23,7 @@ const CP = {
 
 const products: Product[] = [
   { id:1,name:"Apollo Crescent Suede Bag",category:"Bags",material:"Italian suede · Gold-tone studs",price:198,colour:"Tan",images:bag("apollo_02","01-08-2026-productshoot5356","01-08-2026-productshoot5357","01-08-2026-productshoot5361"),note:"Softly structured with an adjustable shoulder strap and hand-finished stud work.",occasion:["everyday","weekend","event"],mood:["relaxed","polished"],palette:["warm"] },
+
   { id:2,name:"Marlow Leather Hobo",category:"Bags",material:"Full-grain leather",price:229,colour:"Espresso",images:bag("apollo_01","01-08-2026-productshoot5323","01-08-2026-productshoot5326","01-08-2026-productshoot5337"),note:"A relaxed everyday shape, cut from full-grain leather that develops character with wear.",occasion:["everyday","work"],mood:["polished","minimal"],palette:["deep"] },
   { id:3,name:"Luna Suede Shoulder Bag",category:"Bags",material:"Brushed suede",price:189,colour:"Camel",images:bag("apollo_03","01-08-2026-productshoot5366","01-08-2026-productshoot5367","01-08-2026-productshoot5370"),note:"A compact curved silhouette with a tactile brushed finish and considered internal storage.",occasion:["weekend","event"],mood:["relaxed"],palette:["warm"] },
   { id:4,name:"Marlow Leather Backpack",category:"Bags",material:"Embossed full-grain leather",price:248,colour:"Chocolate",images:bag("apollo_11","01-08-2026-productshoot5484","01-08-2026-productshoot5492","01-08-2026-productshoot5500"),note:"A hands-free everyday shape with useful compartments and considered stitching.",occasion:["travel","work"],mood:["relaxed","minimal"],palette:["deep"] },
@@ -49,6 +50,7 @@ const Icon = ({name}:{name:"search"|"user"|"heart"|"bag"|"menu"|"close"|"arrow"|
   return <svg className="icon" viewBox="0 0 24 24" aria-hidden="true">{paths[name]}</svg>;
 };
 
+
 const quizQuestions = [
   { key:"category", prompt:"What are you looking for?", options:[["Bags","Leather & suede handbags"],["Diamond Jewellery","Diamond jewellery"],["Gemstone Jewellery","Gemstone jewellery"],["Scarves","Cashmere & merino wool scarves"]]},
   { key:"occasion", prompt:"Where will you wear it?", options:[["everyday","Everyday"],["work","Workday"],["event","Evening or occasion"],["travel","Weekend or travel"],["gift","A considered gift"]]},
@@ -73,6 +75,7 @@ function smoothScrollTo(target:HTMLElement){
   const distance=destination-start;
   if(reduce||Math.abs(distance)<2){window.scrollTo(0,destination);return}
   const duration=Math.min(620,Math.max(260,Math.abs(distance)*.16));
+
   const started=performance.now();
   let frame=0;
   const cleanup=()=>{
@@ -97,6 +100,7 @@ function smoothScrollTo(target:HTMLElement){
   cancelActiveScroll=cancel;
   frame=requestAnimationFrame(step);
 }
+
 
 export default function Home(){
   const [search,setSearch]=useState("");
@@ -123,6 +127,7 @@ export default function Home(){
       const anchor=(event.target as Element|null)?.closest<HTMLAnchorElement>('a[href^="#"]');
       if(!anchor)return;
       const hash=anchor.getAttribute("href");
+
       if(!hash||hash==="#")return;
       const target=document.getElementById(decodeURIComponent(hash.slice(1)));
       if(!target)return;
@@ -148,6 +153,7 @@ export default function Home(){
     if(reduce||coarse){nodes.forEach(node=>node.classList.add("is-visible"));return()=>document.documentElement.classList.remove("motion-ready")}
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("is-visible");observer.unobserve(entry.target)}}),{threshold:.1,rootMargin:"0px 0px -6% 0px"});
     nodes.forEach(node=>observer.observe(node));
+
     return()=>{observer.disconnect();document.documentElement.classList.remove("motion-ready")};
   },[]);
 
@@ -174,6 +180,7 @@ export default function Home(){
       <div className="hero-shade"/><div className="hero-copy"><p className="eyebrow light">THE AUGUST DROP</p><h1>From your rooms<br/>to your wardrobe.</h1><p>Diamond brilliance, real gemstones, tactile scarves and specialist-made leather. The FableRoom point of view, now in what you wear and carry.</p></div>
     </section>
 
+
     <section className="section category-section" id="collection">
       <div className="section-heading"><p className="eyebrow">FOUR WAYS TO WEAR FABLEROOM</p><h2>Start with the collection.</h2><p>Four distinct material stories, routed directly to their collections.</p></div>
       <div className="category-grid">
@@ -198,10 +205,11 @@ export default function Home(){
           <Material image={`${A}/editorial/a-plus-jewellery.webp`} index="03" title="Each stone is individual" copy="Natural turquoise, moonstone, rose quartz and pearl retain the variation that makes them distinctive."/>
           <Material image={`${A}/editorial/a-plus-scarf.webp`} index="04" title="Fine fibres, generous drape" copy="Cashmere and merino wool chosen for softness, warmth without bulk and a fluid everyday finish."/>
         </div>
+
       </div>
     </section>
 
-    <CategoryEdit id="bags" variant="panorama" index="01" kicker="PURE LEATHER & SUEDE" title="The Bag Edit" copy="Useful shapes and specialist craft, organised by the way you carry." category="Bags" subcategories={[["All Bags",CP.bags],["Totes",CP.bags],["Cross Body",CP.bags],["Clutches & Pochettes",CP.bags],["Duffel & Weekender Bags",CP.bags]]} image={`${A}/editorial/hero-women-fashion-lifestyle.webp`} products={products.filter(p=>p.category==="Bags")}/>
+    <CategoryEdit id="bags" variant="panorama" index="01" kicker="PURE LEATHER & SUEDE" title="The Bag Edit" copy="Useful shapes and specialist craft, organised by the way you carry." category="Bags" subcategories={[["Totes",CP.bags],["Cross Body",CP.bags],["Clutches & Pochettes",CP.bags],["Duffel & Weekender Bags",CP.bags]]} image={`${A}/editorial/hero-women-fashion-lifestyle.webp`} products={products.filter(p=>p.category==="Bags")}/>
     <CategoryEdit id="diamonds" variant="reverse" index="02" kicker="LAB-GROWN DIAMONDS" title="The Lab-Grown Diamond Edit" copy="Clean settings and modern scale, organised by jewellery type." category="Diamond Jewellery" subcategories={[["Necklaces",CP.diamond],["Bracelets",CP.diamond],["Earrings",CP.diamond],["Rings",CP.diamond]]} image={`${A}/drive/lab-1.webp`} video={`${A}/motion/diamond-showcase.mp4`} products={products.filter(p=>p.category==="Diamond Jewellery")}/>
     <CategoryEdit id="gemstones" variant="mosaic" index="03" kicker="RAW & NATURAL" title="The Gemstone Edit" copy="Individual colour, organic variation and pieces designed to layer." category="Gemstone Jewellery" subcategories={[["Earrings",CP.gemstone],["Pendants",CP.gemstone],["Cuffs",CP.gemstone],["Necklaces",CP.gemstone]]} image={`${A}/lifestyle/look-statement-gemstone.webp`} products={products.filter(p=>p.category==="Gemstone Jewellery")}/>
     <ScarfEdit products={products.filter(p=>p.category==="Scarves")} wish={wish} onWish={toggleWish} onOpen={openProduct}/>
@@ -222,6 +230,7 @@ export default function Home(){
 
     <section className="newsletter"><p className="eyebrow light">THE FABLEROOM EDIT</p><h2>Be first to see<br/>what comes next.</h2><p>New drops, maker stories and considered offers—sent occasionally.</p><form onSubmit={e=>{e.preventDefault();setToast("You’re on the list")}}><input type="email" required placeholder="Your email address" aria-label="Email address"/><button>Join the edit</button></form></section>
     <Footer/>
+
 
     {menuOpen&&<Overlay close={()=>setMenuOpen(false)}><div className="mobile-menu"><button className="panel-close" onClick={()=>setMenuOpen(false)}><Icon name="close"/></button><b className="wordmark">FABLEROOM</b><nav><a href="#collection" onClick={()=>setMenuOpen(false)}>Collections</a><a href="#proof" onClick={()=>setMenuOpen(false)}>The detail</a><a href="#bags" onClick={()=>setMenuOpen(false)}>The edits</a><a href="#shop-the-look" onClick={()=>setMenuOpen(false)}>Shop the look</a><a href="#quiz" onClick={()=>setMenuOpen(false)}>Find your piece</a></nav></div></Overlay>}
     {searchOpen&&<Overlay close={()=>setSearchOpen(false)}><div className="search-panel"><button className="panel-close" onClick={()=>setSearchOpen(false)}><Icon name="close"/></button><p className="eyebrow">SEARCH THE EDIT</p><div className="search-field"><Icon name="search"/><input autoFocus value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search bags, diamonds, gemstones, scarves..."/><button onClick={()=>setSearch("")}>Clear</button></div><div className="search-results">{products.filter(p=>`${p.name} ${p.category} ${p.material}`.toLowerCase().includes(search.toLowerCase())).slice(0,6).map(p=><button key={p.id} onClick={()=>{openProduct(p);setSearchOpen(false)}}><img src={p.images[0]} alt=""/><span><b>{p.name}</b><small>{p.category} · £{p.price}</small></span></button>)}</div></div></Overlay>}
@@ -248,6 +257,7 @@ function SmartVideo({src,poster,ariaLabel,restartOnView=false}:{src:string;poste
         if(restartOnView&&hasPlayed.current&&hasLeftView.current)restart();
         hasLeftView.current=false;
         hasPlayed.current=true;
+
         start();
       }else if(hasPlayed.current){
         hasLeftView.current=true;
@@ -273,6 +283,7 @@ function CountUp({end,prefix="",suffix=""}:{end:number;prefix?:string;suffix?:st
       if(ran)return;
       ran=true;
       if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){finish();return}
+
       const started=performance.now();
       const animate=(now:number)=>{
         const progress=Math.min((now-started)/1100,1);
@@ -289,7 +300,7 @@ function CountUp({end,prefix="",suffix=""}:{end:number;prefix?:string;suffix?:st
 }
 function TrustStat({icon,end,prefix,suffix,label}:{icon:string;end:number;prefix?:string;suffix?:string;label:string}){return <span><i className="trust-icon" aria-hidden="true">{icon}</i><span className="trust-copy"><CountUp end={end} prefix={prefix} suffix={suffix}/><small>{label}</small></span></span>}
 function Material({image,images,video,index,title,copy}:{image?:string;images?:string[];video?:string;index:string;title:string;copy:string}){return <article className={`material-card ${video?"material-motion":""} ${images?.length?"material-card-pair":""}`}>{images?.length?<div className="material-visual-pair">{images.map((src,i)=><img key={src} src={src} alt={`${title} — ${i===0?"diamond setting in progress":"finished aligned diamonds"}`}/>)}</div>:video&&image?<SmartVideo src={video} poster={image} ariaLabel={`${title} close-up film`}/>:image?<img src={image} alt=""/>:null}<div className="material-copy"><small>{index} · MATERIAL NOTE</small><h3>{title}</h3><p>{copy}</p></div></article>}
-function CategoryEdit({id,variant,index,kicker,title,copy,category,subcategories,image,video,products:items}:{id:string;variant:"panorama"|"reverse"|"mosaic";index:string;kicker:string;title:string;copy:string;category:Category;subcategories:string[][];image:string;video?:string;products:Product[]}){return <section className={`merch-category merch-${id} merch-${variant}`} id={id}><header><span>{index}</span><div><p className="eyebrow">{kicker}</p><h2>{title}</h2><p>{copy}</p></div></header><figure className="merch-feature">{video?<SmartVideo src={video} poster={image} ariaLabel={`${title} collection film`}/>:<img className="feature-media" src={image} alt={`${title} lifestyle`}/>}<figcaption><small>COLLECTION VIEW</small><b>{category}</b></figcaption></figure><div className="edit-category-grid">{subcategories.map(([label,href],i)=><a key={label} href={href}><span><small>{String(i+1).padStart(2,"0")}</small><b>{label}</b><em>Explore <Icon name="arrow"/></em></span></a>)}</div></section>}
+function CategoryEdit({id,variant,index,kicker,title,copy,category,subcategories,image,video,products:items}:{id:string;variant:"panorama"|"reverse"|"mosaic";index:string;kicker:string;title:string;copy:string;category:Category;subcategories:string[][];image:string;video?:string;products:Product[]}){return <section className={`merch-category merch-${id} merch-${variant}`} id={id}><header><span>{index}</span><div><p className="eyebrow">{kicker}</p><h2>{title}</h2><p>{copy}</p></div></header><figure className="merch-feature">{video?<SmartVideo src={video} poster={image} ariaLabel={`${title} collection film`}/>:<img className="feature-media" src={image} alt={`${title} lifestyle`}/>}<figcaption><small>COLLECTION VIEW</small><b>{category}</b></figcaption></figure><div className="edit-category-grid">{subcategories.map(([label,href],i)=>{const piece=items[i%items.length];return <a key={label} href={href}><img src={piece.images[0]} alt={`${label} in ${category}`}/><span><small>{String(i+1).padStart(2,"0")}</small><b>{label} <Icon name="arrow"/></b></span></a>})}</div></section>}
 function ScarfEdit({products:items,wish,onWish,onOpen}:{products:Product[];wish:number[];onWish:(id:number)=>void;onOpen:(p:Product)=>void}){const images=[`${A}/drive/scarf-1.webp`,`${A}/drive/scarf-4.webp`,`${A}/editorial/scarf-lifestyle.webp`,`${A}/lifestyle/look-cashmere-neutral.webp`];const [active,setActive]=useState<number|null>(null);return <section className="merch-category merch-scarves" id="scarves"><header><span>04</span><div><p className="eyebrow">CASHMERE & MERINO WOOL</p><h2>The Scarf Edit</h2><p>With a focused collection, discovery moves directly to four styled pieces rather than another broad L‑2 layer.</p></div></header><nav className="subcategories"><a href={CP.scarves}>All Scarves</a><a href={CP.scarves}>Cashmere</a><a href={CP.scarves}>Merino Wool</a></nav><figure className={`scarf-feature ${active!==null?"feature-active":""}`}><img src={active===null?`${A}/editorial/scarf-lifestyle.webp`:items[active].images[0]} alt={active===null?"Cashmere and merino wool scarf styling":`${items[active].name} close-up`}/><figcaption>{active===null?"THE SCARF EDIT":items[active].name}</figcaption></figure><div className="scarf-style-grid">{items.map((p,i)=><article key={p.id} onPointerEnter={()=>setActive(i)} onPointerLeave={()=>setActive(null)} onFocusCapture={()=>setActive(i)} onBlurCapture={()=>setActive(null)}><button className="scarf-image" onClick={()=>onOpen(p)}><img src={images[i]} alt={`${p.name} styled on a model`}/><span>View piece</span></button><div><small>{p.material}</small><h3>{p.name}</h3><b>£{p.price}.00</b><button className={`mini-wish ${wish.includes(p.id)?"wished":""}`} onClick={()=>onWish(p.id)} aria-label="Save scarf"><Icon name="heart"/></button></div></article>)}</div></section>}
 function ProductCard({product:p,wished,onWish,onOpen,onPreview,onPreviewEnd}:{product:Product;wished:boolean;onWish:()=>void;onOpen:()=>void;onPreview?:()=>void;onPreviewEnd?:()=>void}){return <article className="product-card" onPointerEnter={onPreview} onPointerLeave={onPreviewEnd} onFocusCapture={onPreview} onBlurCapture={onPreviewEnd}><button className="product-image" onClick={onOpen}><img className="primary" src={p.images[0]} alt={p.name} loading="lazy"/><img className="secondary" src={p.images[1]||p.images[0]} alt="" loading="lazy"/><span>Quick view</span></button><button className={`wish ${wished?"wished":""}`} onClick={onWish} aria-label="Save to wishlist"><Icon name="heart"/></button><div className="product-copy"><small>{p.category}</small><h3><button onClick={onOpen}>{p.name}</button></h3><p>{p.material}</p><div><b>£{p.price}.00</b><button onClick={onOpen}>View details</button></div></div></article>}
 function Faq({q,children}:{q:string;children:React.ReactNode}){return <details><summary>{q}</summary><p>{children}</p></details>}
