@@ -97,11 +97,10 @@ export default function LooksPage(){
 
   return <main className="looks-page">
     <header className="looks-header"><a href={ROOT} className="wordmark">FABLEROOM</a><a href={`${ROOT}#shop-the-look`} className="underlink">Back to Fashion & Lifestyle</a></header>
-    <section className="looks-hero"><p className="eyebrow">THE FABLEROOM LOOK BOOK</p><h1>Ways to wear the edit.</h1><p>Search-led outfit ideas combining bags, jewellery and scarves.</p></section>
+    <section className="looks-hero"><p className="eyebrow">EDITORIAL</p><h1>Ways to wear the edit.</h1><p>Search-led outfit ideas combining bags, jewellery and scarves.</p></section>
 
     {groups.map(group=><section className="lookbook-group" key={group.tone} aria-label={TONE_TITLES[group.tone]}>
       <header className="lookbook-group-head">
-        <p className="eyebrow">THE LOOK BOOK</p>
         <h2>{TONE_TITLES[group.tone]}</h2>
         <p>{TONE_COPY[group.tone]}</p>
       </header>
