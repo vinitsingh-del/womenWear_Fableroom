@@ -206,7 +206,7 @@ export default function Home(){
       <div className="section material-wrap"><div className="material-head"><div><p className="eyebrow">THE PROOF IS IN THE DETAIL</p><h2>Reasons to believe,<br/>seen up close.</h2></div><p>Non-clickable material studies explain what is specific and valuable about each collection—without creating another discovery layer.</p></div>
         <div className="material-rail">
           <Material image={`${A}/editorial/a-plus-leather.webp`} index="01" title="Full-grain leather and suede" copy="Visible grain, hand-finished edges and construction designed to develop character with use."/>
-          <Material image={`${A}/generated/diamond-precision-setting-tweezers.webp`} index="02" title="Precision-set brilliance" copy="Lab-grown diamonds aligned in clean settings so proportion and light remain the focus."/>
+          <Material image={`${A}/generated/diamond-precision-hq.webp`} index="02" title="Precision-set brilliance" copy="Lab-grown diamonds aligned in clean settings so proportion and light remain the focus."/>
           <Material image={`${A}/editorial/a-plus-jewellery.webp`} index="03" title="Each stone is individual" copy="Natural turquoise, moonstone, rose quartz and pearl retain the variation that makes them distinctive."/>
           <Material image={`${A}/editorial/a-plus-scarf.webp`} index="04" title="Fine fibres, generous drape" copy="Cashmere and merino wool chosen for softness, warmth without bulk and a fluid everyday finish."/>
         </div>
