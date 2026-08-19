@@ -2224,10 +2224,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .edit-category-grid b .icon{flex:none;width:14px;height:14px;color:#fffaf3;opacity:.9}
 
 /* 4 — Trust badge carries a slow moving black gradient. */
-@keyframes trust-sheen{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.trust-box{background-image:linear-gradient(120deg,#050505 0%,#1c1c22 26%,#000 52%,#23232a 74%,#050505 100%)!important;
-  background-size:280% 280%;animation:trust-sheen 14s ease-in-out infinite}
-@media(prefers-reduced-motion:reduce){.trust-box{animation:none}}
+
 
 /* 5 — Reviews stay on one line on mobile: score beside the card rail. */
 @media(max-width:760px){
@@ -2299,25 +2296,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 /* The review section background must animate like the trust badge — one
    continuous metallic gradient, no seams. The animation itself needs
    background-size >100% so the position keyframe actually moves the colours. */
-@keyframes metal-sweep{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-.trust-box,.reviews,.review-score,.review-track blockquote{
-  background:linear-gradient(130deg,#060606 0%,#1b1b22 22%,#0a0a0a 44%,#22222a 66%,#060606 100%)!important;
-  background-size:400% 400%!important;
-  animation:metal-sweep 12s ease-in-out infinite!important;
-  border-color:rgba(255,255,255,.1)!important}
-.review-track blockquote{box-shadow:none!important;border-radius:0!important;animation-delay:var(--d,0s)!important}
-.review-track blockquote:nth-child(1){--d:0s}
-.review-track blockquote:nth-child(2){--d:-2s}
-.review-track blockquote:nth-child(3){--d:-4s}
-.review-track blockquote:nth-child(n+4){--d:-6s}
-@media(prefers-reduced-motion:reduce){.trust-box,.reviews,.review-score,.review-track blockquote{animation:none!important}}
 
-/* 2 — Trust badge: same keyframe, continuous metallic sweep. The box needs
-   background-size >100% to make the position move visibly. */
-.trust-box{
-  background:linear-gradient(130deg,#060606 0%,#1b1b22 22%,#0a0a0a 44%,#22222a 66%,#060606 100%)!important;
-  background-size:400% 400%!important;
-  animation:metal-sweep 12s ease-in-out infinite!important}
 
 /* 3 — Looks page hero: pull it up near the nav, remove dead space. */
 .looks-hero{padding:20px 0 16px}
@@ -2329,3 +2308,65 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
   .looks-hero h1{font-size:clamp(26px,8vw,40px);margin:4px 0 8px}
   .looks-hero p{font-size:13px}
 }
+
+/* ── Round 25: metallic gradient that actually moves ─────────────────────── */
+/* The fix for the frozen gradient:
+   - background-image / background-size set with !important to win the cascade
+   - background-position is NOT set with !important — the animation must own it
+   - Colour stops go from near-black through silver so the sweep is visible     */
+@keyframes metallic-sweep{
+  0%  {background-position:0% 50%}
+  50% {background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+.trust-box,.reviews,.review-score,.review-track blockquote{
+  background-image:linear-gradient(
+    135deg,
+    #0a0a0a 0%,
+    #2b2b2b 14%,
+    #5a5a5a 24%,
+    #141414 36%,
+    #3d3d3d 50%,
+    #8a8a8a 58%,
+    #1c1c1c 68%,
+    #4a4a4a 78%,
+    #0a0a0a 100%
+  )!important;
+  background-size:350% 350%!important;
+  /* no !important here — animation must be able to override this */
+  background-position:0% 50%;
+  animation:metallic-sweep 8s ease-in-out infinite;
+  border-color:rgba(255,255,255,.1)!important}
+/* stagger cards */
+.review-track blockquote:nth-child(1){animation-delay:0s}
+.review-track blockquote:nth-child(2){animation-delay:-1.6s}
+.review-track blockquote:nth-child(3){animation-delay:-3.2s}
+.review-track blockquote:nth-child(n+4){animation-delay:-4.8s}
+.review-track blockquote{box-shadow:none!important;border-radius:0!important}
+@media(prefers-reduced-motion:reduce){.trust-box,.reviews,.review-score,.review-track blockquote{animation:none!important}}
+
+/* The background shorthand + !important locked background-position so the
+   keyframe animation could never move it. Pseudo-element approach sidesteps this
+   entirely — the ::before carries its own gradient and animates translate,
+   which is compositor-only and not affected by any parent !important. */
+.trust-box{position:relative;overflow:hidden;background:#090909!important;background-image:none!important;background-size:auto!important;animation:none!important}
+.reviews{background:#090909!important;background-image:none!important;background-size:auto!important;animation:none!important}
+.review-score{background:#060606!important;background-image:none!important;background-size:auto!important;animation:none!important}
+.review-track blockquote{background:#0d0d0d!important;background-image:none!important;background-size:auto!important;animation:none!important}
+@keyframes sheen{
+  0%{transform:translateX(-130%)}
+  60%,100%{transform:translateX(160%)}
+}
+.trust-box::before,.reviews::before,.review-score::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(105deg,
+    transparent 0%,transparent 28%,
+    rgba(200,200,218,.12) 34%,rgba(255,255,255,.45) 42%,rgba(220,220,235,.20) 47%,
+    rgba(255,255,255,.38) 50%,rgba(220,220,235,.14) 54%,
+    transparent 60%,transparent 100%);
+  transform:translateX(-130%);
+  animation:sheen 4s cubic-bezier(.4,0,.6,1) infinite}
+.reviews::before{animation-delay:-.8s}
+.review-score::before{animation-delay:-1.6s}
+.trust-box>*,.reviews>*,.review-score>*{position:relative;z-index:1}
+@media(prefers-reduced-motion:reduce){.trust-box::before,.reviews::before,.review-score::before{animation:none}}
