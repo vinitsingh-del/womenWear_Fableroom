@@ -2683,3 +2683,47 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
     text-align:center;
     line-height:1.25}
 }
+
+/* ── Round 32 ─────────────────────────────────────────────────────────────── */
+
+/* 1 — Proof card 2 (precision video via .material-visual) was 262px while all
+   other card images are also 262px. Ensure the visual wrapper matches. */
+.material-visual{height:262px!important}
+.material-visual video{object-fit:cover;width:100%;height:100%}
+
+/* 2 — FAQ: the ::after "+" was at right:4px inside a padded summary with no
+   explicit position:relative anchor on the list column, so the first 3 items
+   whose container inherited a different offset showed misaligned +. Force the
+   anchor and keep the + visually flush with the list right edge. */
+.faq-list summary{position:relative!important;padding-right:28px!important}
+.faq-list summary::after{position:absolute;top:50%;right:0;transform:translateY(-50%);font-size:18px;font-weight:300;line-height:1}
+
+/* 3 — Looks page modal: remove the dead space below the CTA button.
+   Desktop drawer: no flex bottom padding; body grows to fill; add button
+   stays at the natural end of content (not sticky). */
+@media(min-width:761px){
+  .look-modal.look-drawer{height:auto!important;min-height:0;max-height:92vh}
+  .look-modal-body{padding-bottom:28px!important;flex:0 1 auto!important;overflow:auto}
+  .look-modal .look-add{position:static;width:100%;border-radius:4px;margin-top:4px}
+}
+
+/* 4 — Looks page: tighten inner padding, consistent card aspect, no overflow. */
+.lookbook-group{padding-left:max(42px,calc((100% - 1180px)/2));padding-right:max(42px,calc((100% - 1180px)/2))}
+.look-tile-card{aspect-ratio:3/4;overflow:hidden}
+
+/* 5 — Trust badge: add even internal padding so the 4 stats breathe symmetrically. */
+@media(min-width:761px){
+  .trust-box>span{padding:20px 24px!important;display:flex;flex-direction:column;justify-content:center}
+  .trust-box>span:first-child{padding-left:0!important}
+  .trust-box>span:last-child{padding-right:0!important}
+}
+
+@media(max-width:760px){
+  /* Proof cards same height on mobile */
+  .material-visual{height:150px!important}
+  /* Look modal mobile compact */
+  .look-modal>figure{flex:0 0 140px!important;height:140px!important}
+  .look-modal-body{padding:14px 16px 72px!important}
+  /* Lookbook group mobile */
+  .lookbook-group{padding:0 var(--edge) 46px}
+}
