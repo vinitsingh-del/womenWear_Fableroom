@@ -3113,14 +3113,14 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
 
 /* ══ Round 46: Section boundary gaps + divider line alignment ══ */
 
-/* 1 — DIVIDER LINE: was full-bleed (0 → 1440) while content is inset by the
-   rail padding. Inset the border so it aligns with the content column. */
+/* 1 — DIVIDER LINE (Round 52): back to full-bleed edge-to-edge, same position
+   on every boundary (bags/diamonds/gemstones/scarves), desktop and mobile. */
 .merch-category,.merch-bags,.merch-diamonds,.merch-gemstones,.merch-scarves,
 .merch-panorama,.merch-reverse,.merch-mosaic{border-bottom:0!important;position:relative}
 .merch-category::after,.merch-bags::after,.merch-diamonds::after,
 .merch-gemstones::after,.merch-scarves::after{
   content:"";position:absolute;bottom:0;
-  left:var(--edge);right:var(--edge);
+  left:0;right:0;
   height:1px;background:var(--line);pointer-events:none}
 /* Round 50: scarves divider restored — was the one boundary missing the
    line entirely. Now present and aligned at var(--edge) like the other three. */
@@ -3194,6 +3194,12 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
   .reviews{margin-top:11.025px!important;margin-bottom:11.025px!important}
   .newsletter{padding-top:11.025px!important;padding-bottom:11.025px!important}
   .site-footer{padding-top:11.025px!important;padding-bottom:11.025px!important}
+}
+
+/* ══ Round 53: hero → category-section gap +10% (was too tight under the video) ══ */
+.category-section,.category-section.section{padding-top:20.24px!important}
+@media(max-width:760px){
+  .category-section,.category-section.section{padding-top:12.13px!important}
 }
 
 /* ══ Round 49: desktop 10% zoom bump — verified, no overflow/wrapping ══ */
