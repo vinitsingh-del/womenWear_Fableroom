@@ -2573,3 +2573,69 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
   /* also reduce the section vertical padding so it doesn't loom */
   .trust-and-proof{padding:0!important}
 }
+
+
+
+/* ── Hover zoom on all card images — desktop pointer only ─────────────────── */
+@media(hover:hover) and (pointer:fine){
+  .scarf-image,.edit-category-grid>a,.category-card,.product-image,
+  .trend-grid>a,.material-card,.look-stage-slide,.ugc-rail figure{overflow:hidden}
+
+  .scarf-image img,.edit-category-grid>a img,.category-card img,
+  .product-image img,.trend-grid>a img,.material-card>img,
+  .look-stage-slide img,.ugc-rail figure img{
+    transition:transform .55s cubic-bezier(.25,.46,.45,.94)!important}
+
+  .scarf-image:hover img,.edit-category-grid>a:hover img,.category-card:hover img,
+  .product-image:hover img,.trend-grid>a:hover img,.material-card:hover>img,
+  .look-stage-slide:hover img,.ugc-rail figure:hover img{
+    transform:scale(1.08)!important}
+}
+
+/* ── Hover zoom — specificity-correct version ─────────────────────────────── */
+/* The motion-reveal system has html.motion-ready .motion-reveal :not(.cutout) img
+   {transition:none!important} (3 classes + 1 element). All image containers
+   live inside .motion-reveal, so we need to match that specificity with a
+   :hover pseudo-class to win the cascade. */
+@media(hover:hover) and (pointer:fine){
+  html .scarf-image:hover img,
+  html .edit-category-grid>a:hover img,
+  html .category-card:hover img,
+  html .product-image:hover img,
+  html .trend-grid>a:hover img,
+  html .look-stage-slide:hover img,
+  html .ugc-rail figure:hover img{
+    transition:transform .55s cubic-bezier(.25,.46,.45,.94)!important;
+    transform:scale(1.08)!important}
+  html .material-card:hover>img{
+    transition:transform .55s cubic-bezier(.25,.46,.45,.94)!important;
+    transform:scale(1.08)!important}
+}
+
+/* Definitive hover zoom — 5-class specificity to beat html.motion-ready
+   .motion-reveal.is-visible ... (0,0,4,2). Needs 0,0,5,2. */
+@media(hover:hover) and (pointer:fine){
+  html.motion-ready .motion-reveal.is-visible .scarf-image:hover img,
+  html.motion-ready .motion-reveal.is-visible .edit-category-grid>a:hover img,
+  html.motion-ready .motion-reveal.is-visible .category-card:hover img,
+  html.motion-ready .motion-reveal.is-visible .product-image:hover img,
+  html.motion-ready .motion-reveal.is-visible .trend-grid>a:hover img,
+  html.motion-ready .motion-reveal.is-visible .ugc-rail figure:hover img,
+  html.motion-ready .motion-reveal.is-visible .material-card:hover>img,
+  html.motion-ready .motion-reveal.is-visible .look-stage-slide:hover img{
+    transform:scale(1.08)!important;
+    transition:transform .55s cubic-bezier(.25,.46,.45,.94)!important}
+}
+
+/* When the grid ITSELF is .motion-reveal (edit-category-grid, trend-grid, etc.)
+   the previous selector's .motion-reveal ancestor is the grid, so we need the
+   compound class on the grid element rather than a separate ancestor. */
+@media(hover:hover) and (pointer:fine){
+  html.motion-ready .edit-category-grid.motion-reveal.is-visible>a:hover img,
+  html.motion-ready .trend-grid.motion-reveal.is-visible>a:hover img,
+  html.motion-ready .category-grid.motion-reveal.is-visible>.category-card:hover img,
+  html.motion-ready .product-grid.motion-reveal.is-visible>.product-card .product-image:hover img,
+  html.motion-ready .ugc-rail.motion-reveal.is-visible figure:hover img{
+    transform:scale(1.08)!important;
+    transition:transform .55s cubic-bezier(.25,.46,.45,.94)!important}
+}
