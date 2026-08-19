@@ -2521,3 +2521,35 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .review-track blockquote:hover{
   background:rgba(255,255,255,.08)!important;
   border-color:rgba(255,255,255,.15)!important}
+
+/* ── Round 30 ─────────────────────────────────────────────────────────────── */
+
+/* Trust badge: the inner .trust-box must be completely invisible — no border,
+   no shadow, no background. The gradient lives on .trust-and-proof only. */
+.trust-box{
+  border:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  background-image:none!important}
+/* stat dividers only */
+.trust-box>span:nth-child(n+2){
+  border-left:1px solid rgba(255,255,255,.10)!important;
+  border-top:0!important}
+@media(max-width:760px){
+  .trust-box>span:nth-child(2n+1){border-left:0!important}
+  .trust-box>span:nth-child(2n){border-left:1px solid rgba(255,255,255,.10)!important}
+  .trust-box>span:nth-child(n+3){border-top:1px solid rgba(255,255,255,.10)!important;border-left:0!important}
+  .trust-box>span:nth-child(4){border-left:1px solid rgba(255,255,255,.10)!important}
+}
+
+/* Scarf edit hearts: apply the exact same 2-column grid as the bag edit. */
+.merch-scarves .scarf-style-grid article div{
+  display:grid!important;
+  grid-template-columns:1fr 40px!important;
+  grid-template-rows:auto auto auto!important;
+  align-items:end!important;
+  padding:12px 0!important}
+.merch-scarves .scarf-style-grid article div>small{grid-column:1!important;grid-row:1!important;align-self:start!important}
+.merch-scarves .scarf-style-grid article div>h3{grid-column:1!important;grid-row:2!important;margin-right:0!important}
+.merch-scarves .scarf-style-grid article div>b{grid-column:1!important;grid-row:3!important;align-self:center!important}
+.merch-scarves .scarf-style-grid .mini-wish{position:static!important;grid-column:2!important;grid-row:1/4!important;align-self:end!important;justify-self:end!important;margin-bottom:4px!important}
