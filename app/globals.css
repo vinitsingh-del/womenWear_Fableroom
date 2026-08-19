@@ -3086,3 +3086,27 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
 /* Force trending: 3-class specificity (0,0,3,0) beats adjacent-sibling (0,0,2,0) */
 .section.trending.trending{padding-top:26px!important;padding-bottom:26px!important}
 @media(max-width:760px){.section.trending.trending{padding-top:17px!important;padding-bottom:17px!important}}
+
+/* ══ Round 45: Target remaining internal dead space ══ */
+/* Diamond feature-cutout: 20px padding was adding 40px to internal height */
+.merch-diamonds .feature-cutout,.merch-diamonds .merch-feature.feature-cutout{
+  padding:8px 0!important}
+/* Feature banner heights: reduce from 392px to help section compactness */
+.merch-feature,.merch-panorama .merch-feature,.merch-reverse .merch-feature,
+.merch-mosaic .merch-feature,.scarf-feature{height:360px!important}
+/* Bag + Scarf product image card height: a bit taller than needed */
+.merch-bags .scarf-image{height:320px!important}
+.merch-scarves .scarf-image{height:320px!important}
+/* Section heading bottom margin reduction */
+.merch-category>header{margin-bottom:10px!important}
+/* Hero: has 269px of empty video below copy on desktop — reduce height */
+@media(min-width:761px){
+  .hero{height:min(84vh,750px)!important}
+}
+@media(max-width:760px){
+  .merch-feature,.merch-panorama .merch-feature,.merch-reverse .merch-feature,
+  .merch-mosaic .merch-feature,.scarf-feature{height:220px!important}
+  .merch-bags .scarf-image{height:230px!important}
+  .merch-scarves .scarf-image{height:230px!important}
+  .merch-category>header{margin-bottom:8px!important}
+}
