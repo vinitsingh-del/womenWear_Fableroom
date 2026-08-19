@@ -3132,6 +3132,9 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
    mobile so gap above == gap below on every boundary. */
 /* Round 50: scarves divider restored — was the one boundary missing the
    line entirely. Now present and aligned at var(--edge) like the other three. */
+/* Round 57: removed again — scarves -> Shop the Look boundary specifically
+   should have no divider line. Bags/diamonds/gemstones dividers unchanged. */
+.merch-scarves::after{display:none!important}
 
 /* 2 — Section boundary gaps: 24+24+1 = 49px → 14+14+1 = 29px desktop.
    Mobile: 16+16+1 = 33px → 10+10+1 = 21px. */
@@ -3221,4 +3224,10 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
      cancels the parent's 1.1 so these overlays measure against the true
      viewport again. */
   .overlay{zoom:0.90909}
+}
+
+/* ══ Round 58: trust-box -> Proof section gap +10% (this boundary only) ══ */
+.material-wrap{padding-top:20.24px!important}
+@media(max-width:760px){
+  .material-wrap{padding-top:12.13px!important}
 }
