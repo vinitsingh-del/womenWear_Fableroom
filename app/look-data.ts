@@ -11,6 +11,11 @@ export type Look = {
   copy: string;
   pieces: string[];
   tone: "light" | "warm" | "dark" | "jewel";
+  // Real catalogue product ids this look maps to (see products-data.ts).
+  // Some pieces text (e.g. "rings", "cuff", "chains", "diamond pendant")
+  // don't have an exact matching SKU in the current catalogue — those are
+  // represented by the closest real product instead of an invented one.
+  productIds: number[];
 };
 
 export const looks: Look[] = [
@@ -23,6 +28,7 @@ export const looks: Look[] = [
     copy: "A useful tote, fine layered jewellery and a soft scarf detail for polished everyday dressing.",
     pieces: ["Work tote", "Layered jewellery", "Floral scarf"],
     tone: "light",
+    productIds: [2, 8, 16],
   },
   {
     id: "scarf-on-the-bag",
@@ -33,6 +39,7 @@ export const looks: Look[] = [
     copy: "A printed scarf becomes the colour note on a structured leather handbag, finished with warm gold.",
     pieces: ["Top-handle bag", "Patterned scarf", "Gold pendant"],
     tone: "jewel",
+    productIds: [3, 11, 15],
   },
   {
     id: "statement-gemstone",
@@ -43,6 +50,7 @@ export const looks: Look[] = [
     copy: "Natural colour and confident scale, balanced by a quiet bag and an unfussy scarf.",
     pieces: ["Gemstone pendant", "Sculptural rings", "Neutral scarf"],
     tone: "dark",
+    productIds: [12, 18],
   },
   {
     id: "gold-and-cashmere",
@@ -53,6 +61,7 @@ export const looks: Look[] = [
     copy: "Soft ivory cashmere with warm, layered gold for a relaxed look that still feels considered.",
     pieces: ["Ivory scarf", "Gold hoops", "Layered pendant"],
     tone: "warm",
+    productIds: [16, 14, 13],
   },
   {
     id: "neutral-cashmere",
@@ -63,6 +72,7 @@ export const looks: Look[] = [
     copy: "A generous neutral wrap, one sculptural cuff and a restrained ring stack.",
     pieces: ["Cashmere wrap", "Statement cuff", "Minimal rings"],
     tone: "warm",
+    productIds: [18, 13],
   },
   {
     id: "suede-weekend",
@@ -73,6 +83,7 @@ export const looks: Look[] = [
     copy: "Soft suede and relaxed layers for coffee runs, weekends away and every plan in between.",
     pieces: ["Suede shoulder bag", "Neutral scarf", "Diamond hoops"],
     tone: "warm",
+    productIds: [3, 18, 7],
   },
   {
     id: "layered-gemstones",
@@ -83,6 +94,7 @@ export const looks: Look[] = [
     copy: "Fine chains, individual stones and an easy mix of proportions made for everyday layering.",
     pieces: ["Gemstone charms", "Fine chains", "Stacking rings"],
     tone: "light",
+    productIds: [11, 12],
   },
   {
     id: "cashmere-commute",
@@ -93,6 +105,7 @@ export const looks: Look[] = [
     copy: "A substantial scarf, a hands-free bag and small jewellery that moves easily from commute to dinner.",
     pieces: ["Merino-cashmere scarf", "Crossbody bag", "Small hoops"],
     tone: "dark",
+    productIds: [17, 5, 10],
   },
   {
     id: "merlot-colour-note",
@@ -103,6 +116,7 @@ export const looks: Look[] = [
     copy: "A single saturated scarf changes a neutral wardrobe without changing its point of view.",
     pieces: ["Merlot scarf", "Dark hobo bag", "Diamond studs"],
     tone: "jewel",
+    productIds: [15, 6, 8],
   },
   {
     id: "winter-white",
@@ -113,6 +127,6 @@ export const looks: Look[] = [
     copy: "Tonal ivory, clean jewellery and a softly structured leather bag for a calm, polished finish.",
     pieces: ["Ivory scarf", "Leather hobo", "Diamond pendant"],
     tone: "light",
+    productIds: [16, 2, 8],
   },
 ];
-
