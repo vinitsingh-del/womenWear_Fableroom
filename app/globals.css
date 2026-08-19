@@ -2727,3 +2727,39 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
   /* Lookbook group mobile */
   .lookbook-group{padding:0 var(--edge) 46px}
 }
+
+/* ── Round 33 ─────────────────────────────────────────────────────────────── */
+
+/* 1 — Dead space in look modal below CTA. The look-add button was sticky/fixed
+   leaving whitespace below. Remove stickiness and let it flow naturally. */
+.look-modal .look-add{position:static!important;margin-top:16px;border-radius:4px;width:100%}
+.look-modal-body{padding-bottom:24px!important}
+
+/* 2 — Dark dead band between trust-box and material-wrap.
+   The trust-and-proof section wraps both, and any gap between the children
+   shows the dark gradient background. Eliminate the top margin on material-wrap
+   so the white background is flush, and clip the section background to the
+   trust-box height by giving the parent overflow:clip with an explicit height
+   anchored by the trust-box. */
+.trust-and-proof{overflow:visible!important}
+.material-wrap{margin-top:0!important;padding-top:46px!important}
+.trust-box{margin-bottom:0!important}
+
+/* 3 — Trust badge text: centre all four stats horizontally and vertically. */
+.trust-box>span{display:flex;flex-direction:column;align-items:center!important;justify-content:center!important;text-align:center!important}
+.trust-box .trust-copy{align-items:center;text-align:center}
+.trust-box b{text-align:center!important}
+.trust-copy small{text-align:center!important}
+@media(max-width:760px){
+  .trust-box>span{align-items:center!important;text-align:center!important}
+  .trust-box b,.trust-copy small{text-align:center!important}
+}
+
+/* 4 — Edit category tile arrows: the icon colour was #fffaf3 (correct ivory).
+   Ensure it stays white across ALL edit sections. */
+.edit-category-grid b .icon,.edit-category-grid b i,.edit-category-grid b svg{color:#fff!important;fill:#fff!important;stroke:none}
+
+/* 5 — Proof card 2 (material-visual) height must match the other img cards.
+   The video inside the material-visual div is the content. */
+.material-visual{height:262px!important;width:100%;display:block;position:relative;overflow:hidden}
+.material-visual video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
