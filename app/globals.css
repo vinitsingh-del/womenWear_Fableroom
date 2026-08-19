@@ -1955,3 +1955,83 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 
 /* The trust band's surround stays white; only the badge card carries colour. */
 .trust-and-proof{background:#fff!important}
+
+/* ── Client edits, 2026-08-19 ──────────────────────────────────────────────
+   1) Whitewash: page goes white except Customer Reviews + Trust Banner,
+      which keep colour but in a lighter shade than the previous charcoal.
+   2) Bag Edit restructured to reuse the Scarf Edit's filter+grid markup —
+      no new component-specific overrides needed beyond an empty state.
+   3) Subcategory tile dark scrim removed across all category edits.
+   4) Shop the Look now opens a full "shop this look" modal.
+   ────────────────────────────────────────────────────────────────────── */
+
+:root{
+  --charcoal-light:#4d4238;
+  --charcoal-light-grad:linear-gradient(168deg,#5c5044 0%,#463c33 52%,#39312a 100%);
+}
+
+/* Everything that was on the charcoal-grad goes back to a plain white page,
+   except .reviews (and its .review-score panel) and .trust-box, which keep
+   colour at a lighter value than before. */
+.material-wrap,.merch-reverse,.looks-premium,.newsletter,.bag-subcategories,
+.scarf-feature,.look-stage,.material-visual{background:#fff!important}
+.material-wrap{color:var(--ink)!important}
+.material-wrap .eyebrow,.material-wrap h2{color:var(--ink)!important}
+.material-wrap>.material-head>p{color:#655f56!important}
+.material-card h3{color:var(--ink)!important}
+.material-card p{color:#655f56!important}
+.merch-reverse{color:var(--ink)!important}
+.merch-reverse .subcategories a,
+.merch-reverse .product-copy h3 button,.merch-reverse .product-copy>div button{color:var(--ink)!important}
+.looks-premium{color:var(--ink)!important}
+.look-shop-rail b{color:var(--ink)!important}
+.newsletter{color:var(--ink)!important}
+.newsletter .eyebrow.light{color:var(--taupe)!important}
+.newsletter>p:not(.eyebrow){color:#655f56!important}
+.newsletter form{border-bottom-color:var(--line)!important}
+.newsletter input{color:var(--ink)!important}
+.newsletter input::placeholder{color:#8a8175}
+.newsletter button{color:var(--ink)!important}
+
+.reviews,.review-score{background:var(--charcoal-light-grad)!important}
+.trust-box{background:var(--charcoal-light)!important}
+
+/* Remove the black overlay scrim from subcategory tiles in every category
+   edit (Bag / Diamond / Gemstone). Tiles now sit on a plain light surface
+   with dark ink text instead of white-on-scrim. */
+.edit-category-grid>a::after{content:none!important;background:none!important}
+.edit-category-grid>a,.merch-reverse .edit-category-grid>a,
+.merch-bags .edit-category-grid>a,.merch-gemstones .edit-category-grid>a{background:#f4efe8!important}
+.edit-category-grid b,.merch-reverse .edit-category-grid b{color:var(--ink)!important}
+.edit-category-grid span>small{color:var(--taupe)!important}
+.edit-category-grid b .icon{stroke:var(--ink)}
+
+/* Bag Edit empty-state (a subcategory with no matching SKUs yet) */
+.bag-empty{padding:60px 0;text-align:center;color:#8a8175;font-size:12px}
+
+/* Shop the Look modal */
+.overlay:has(.look-modal){justify-content:center;align-items:center}
+.look-modal{width:min(720px,92vw);max-height:88vh;margin:auto;align-self:center;overflow:auto;position:relative;background:var(--chalk);box-shadow:0 30px 80px rgba(10,8,6,.35)}
+.look-modal>figure{margin:0;height:260px;overflow:hidden;background:#e7e1d8}
+.look-modal>figure img{width:100%;height:100%;object-fit:cover}
+.look-modal-body{padding:32px 34px 34px}
+.look-modal-body>h2{font:32px var(--serif);letter-spacing:-.02em;margin:6px 0 22px}
+.look-modal-list{display:grid;gap:14px;margin-bottom:24px}
+.look-modal-list article{display:grid;grid-template-columns:70px 1fr auto;gap:14px;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.look-modal-thumb{width:70px;height:86px;border:0;padding:0;background:#eee9e1;cursor:pointer}
+.look-modal-thumb img{width:100%;height:100%;object-fit:contain}
+.look-modal-list small{font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:#756e65}
+.look-modal-list h3{font:16px var(--serif);margin:3px 0;font-weight:400}
+.look-modal-list h3 button{border:0;background:none;padding:0;text-align:left;font:inherit;cursor:pointer;color:inherit}
+.look-modal-list b{font-size:12px}
+.look-modal-actions{display:flex;align-items:center;gap:8px}
+.look-modal-actions .mini-wish{position:static;width:32px;height:32px}
+.look-modal-actions .button{min-height:34px;padding:0 14px;font-size:8px}
+.look-modal .look-add{width:100%;justify-content:center}
+@media(max-width:760px){
+  .look-modal{width:100%;max-height:100dvh;height:100dvh}
+  .look-modal>figure{height:170px}
+  .look-modal-body{padding:22px 18px 100px}
+  .look-modal-list article{grid-template-columns:56px 1fr auto;gap:10px}
+  .look-modal-thumb{width:56px;height:70px}
+}

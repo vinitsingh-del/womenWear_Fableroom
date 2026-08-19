@@ -244,14 +244,14 @@ export default function Home(){
       </div>
     </section>
 
-    <CategoryEdit id="bags" variant="panorama" index="01" kicker="PURE LEATHER & SUEDE" title="The Bag Edit" copy="Useful shapes and specialist craft, organised by the way you carry." category="Bags" subcategories={[["Totes",CP.bags],["Cross Body",CP.bags],["Clutches",CP.bags],["Weekenders",CP.bags]]} image={`${A}/editorial/hero-women-fashion-lifestyle.webp`} products={products.filter(p=>p.category==="Bags")}/>
+    <BagEdit products={products.filter(p=>p.category==="Bags")} wish={wish} onWish={toggleWish} onOpen={openProduct}/>
     <CategoryEdit id="diamonds" variant="reverse" index="02" kicker="LAB-GROWN DIAMONDS" title="The Lab-Grown Diamond Edit" copy="Clean settings and modern scale, organised by jewellery type." category="Diamond Jewellery" subcategories={[["Necklaces",CP.diamond],["Bracelets",CP.diamond],["Earrings",CP.diamond],["Rings",CP.diamond]]} cutout image={`${A}/diamond/hero-earrings.webp`} tileImages={[`${A}/diamond/necklaces.webp`,`${A}/diamond/bracelets.webp`,`${A}/diamond/earrings.webp`,`${A}/diamond/rings.webp`]} products={products.filter(p=>p.category==="Diamond Jewellery")}/>
     <CategoryEdit id="gemstones" variant="mosaic" index="03" kicker="RAW & NATURAL" title="The Gemstone Edit" copy="Individual colour, organic variation and pieces designed to layer." category="Gemstone Jewellery" subcategories={[["Earrings",CP.gemstone],["Pendants",CP.gemstone],["Cuffs",CP.gemstone],["Necklaces",CP.gemstone]]} image={`${A}/lifestyle/look-statement-gemstone.webp`} products={products.filter(p=>p.category==="Gemstone Jewellery")}/>
     <ScarfEdit products={products.filter(p=>p.category==="Scarves")} wish={wish} onWish={toggleWish} onOpen={openProduct}/>
 
     <section className="section trending" id="new"><div className="section-heading split"><div><p className="eyebrow">WHAT’S NEW & TRENDING</p><h2>A space for what comes next.</h2></div><p>Built to hold future drops, new arrivals and timely curated collections without rebuilding the page.</p></div><div className="trend-grid"><a className="trend-lead" href={CP.bags}><img src={`${A}/lifestyle/look-scarf-on-bag.webp`} alt="Scarf styled on a structured handbag"/><span><small>THE CURRENT NOTE</small><b>Scarf on the bag</b><em>Explore the collection</em></span></a><a href={CP.bags}><img src={`${A}/bags/apollo_02/01-08-2026-productshoot5356.webp`} alt="Tan suede shoulder bag"/><span><small>NEW MATERIAL</small><b>Suede, now</b></span></a><a href={CP.scarves}><img src={`${A}/drive/scarf-1.webp`} alt="Merlot scarf styled on a model"/><span><small>COLOUR EDIT</small><b>The merlot layer</b></span></a></div></section>
 
-    <ShopTheLook onOpen={openProduct} onAddLook={ids=>{setCart(c=>{const n={...c};ids.forEach(id=>{n[id]=(n[id]||0)+1});return n});setToast("Look added to your bag")}}/>
+    <ShopTheLook onOpen={openProduct} onAddLook={ids=>{setCart(c=>{const n={...c};ids.forEach(id=>{n[id]=(n[id]||0)+1});return n});setToast("Look added to your bag")}} wish={wish} onWish={toggleWish} onAddOne={add}/>
 
     <section className="section recommended" id="recommended"><div className="section-heading split"><div><p className="eyebrow">RECOMMENDED FOR YOU</p><h2>{viewed.length?"More from what you viewed.":"A considered place to begin."}</h2></div><p>{viewed.length?"This rail adapts to product categories opened during this visit.":"Open a product and this selection will begin adapting to your browsing behaviour."}</p></div><div className="product-grid compact">{recommended.map(p=><ProductCard key={p.id} product={p} wished={wish.includes(p.id)} onWish={()=>toggleWish(p.id)} onOpen={()=>openProduct(p)}/>)}</div></section>
 
@@ -285,8 +285,9 @@ const lookBanners=[
   {src:"lookbanners/look-backpack-worn",productIds:[4],alt:"Model wearing an embossed leather backpack"},
 ];
 
-function ShopTheLook({onOpen,onAddLook}:{onOpen:(p:Product)=>void;onAddLook:(ids:number[])=>void}){
+function ShopTheLook({onOpen,onAddLook,wish,onWish,onAddOne}:{onOpen:(p:Product)=>void;onAddLook:(ids:number[])=>void;wish:number[];onWish:(id:number)=>void;onAddOne:(id:number)=>void}){
   const [slide,setSlide]=useState(0);
+  const [modalOpen,setModalOpen]=useState(false);
   useEffect(()=>{
     if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
     const timer=window.setInterval(()=>setSlide(s=>(s+1)%lookBanners.length),5200);
@@ -301,9 +302,29 @@ function ShopTheLook({onOpen,onAddLook}:{onOpen:(p:Product)=>void;onAddLook:(ids
       <button className="look-nav next" onClick={()=>setSlide(s=>(s+1)%lookBanners.length)} aria-label="Next look"><Icon name="arrow"/></button>
       <div className="look-stage-dots">{lookBanners.map((banner,i)=><button key={banner.src} className={i===slide?"on":""} onClick={()=>setSlide(i)} aria-label={`Look ${i+1}`}/>)}</div>
     </div>
-    <div className="look-shop-rail" data-count={shown.length} key={slide}>{shown.map(p=><button key={p.id} className="look-shop-card" onClick={()=>onOpen(p)}><span className="look-shop-image"><img src={p.images[0]} alt={p.name} loading="lazy"/></span><b>{p.name}</b><em>£{p.price}.00</em></button>)}</div>
+    <div className="look-shop-rail" data-count={shown.length} key={slide}>{shown.map(p=><button key={p.id} className="look-shop-card" onClick={()=>setModalOpen(true)}><span className="look-shop-image"><img src={p.images[0]} alt={p.name} loading="lazy"/></span><b>{p.name}</b><em>£{p.price}.00</em></button>)}</div>
     <button className="look-add" onClick={()=>onAddLook(shown.map(p=>p.id))}>Add the look to bag<Icon name="bag"/></button>
+    {modalOpen&&<Overlay close={()=>setModalOpen(false)}><LookModal banner={`${A}/${lookBanners[slide].src}.webp`} alt={lookBanners[slide].alt} items={shown} wish={wish} onWish={onWish} onOpen={p=>{onOpen(p);setModalOpen(false)}} onAddOne={onAddOne} onAddAll={()=>{onAddLook(shown.map(p=>p.id));setModalOpen(false)}} onClose={()=>setModalOpen(false)}/></Overlay>}
   </section>;
+}
+function LookModal({banner,alt,items,wish,onWish,onOpen,onAddOne,onAddAll,onClose}:{banner:string;alt:string;items:Product[];wish:number[];onWish:(id:number)=>void;onOpen:(p:Product)=>void;onAddOne:(id:number)=>void;onAddAll:()=>void;onClose:()=>void}){
+  return <div className="look-modal">
+    <button className="panel-close" onClick={onClose}><Icon name="close"/></button>
+    <figure><img src={banner} alt={alt}/></figure>
+    <div className="look-modal-body">
+      <p className="eyebrow">SHOP THIS LOOK</p>
+      <h2>{items.length} {items.length===1?"piece":"pieces"} in this edit</h2>
+      <div className="look-modal-list">{items.map(p=><article key={p.id}>
+        <button className="look-modal-thumb" onClick={()=>onOpen(p)}><img src={p.images[0]} alt={p.name}/></button>
+        <div><small>{p.category}</small><h3><button onClick={()=>onOpen(p)}>{p.name}</button></h3><b>£{p.price}.00</b></div>
+        <div className="look-modal-actions">
+          <button className={`mini-wish ${wish.includes(p.id)?"wished":""}`} onClick={()=>onWish(p.id)} aria-label="Save to wishlist"><Icon name="heart"/></button>
+          <button className="button dark" onClick={()=>onAddOne(p.id)}>Add</button>
+        </div>
+      </article>)}</div>
+      <button className="look-add" onClick={onAddAll}>Add the look to bag<Icon name="bag"/></button>
+    </div>
+  </div>;
 }
 
 function SmartVideo({src,poster,ariaLabel,restartOnView=false,parallax=false}:{src:string;poster:string;ariaLabel:string;restartOnView?:boolean;parallax?:boolean}){
@@ -400,6 +421,40 @@ function ScarfEdit({products:items,wish,onWish,onOpen}:{products:Product[];wish:
       <a className="feature-cta" href={CP.scarves}>Explore now<Icon name="arrow"/></a>
     </figure>
     <div className="scarf-style-grid">{shown.map((p,i)=><article key={p.id} onPointerEnter={()=>preview(i)} onPointerLeave={()=>preview(null)} onFocusCapture={()=>preview(i)} onBlurCapture={()=>preview(null)}><button className="scarf-image" onClick={()=>onOpen(p)}><img src={SCARF_SHOTS[p.id]||p.images[0]} alt={`${p.name} styled on a model`}/><span>View piece</span></button><div><small>{p.material}</small><h3>{p.name}</h3><b>£{p.price}.00</b><button className={`mini-wish ${wish.includes(p.id)?"wished":""}`} onClick={()=>onWish(p.id)} aria-label="Save scarf"><Icon name="heart"/></button></div></article>)}</div>
+  </section>;
+}
+// Best-guess mapping of the current 6 bag SKUs onto the new subcategory set.
+// Totes and Clutches have no true match yet in the catalogue — those tabs
+// will show an empty state until real SKUs are tagged. Flagging this rather
+// than inventing product data.
+const BAG_SUBCATEGORY:Record<number,string>={1:"Shoulder Bags",2:"Shoulder Bags",3:"Shoulder Bags",4:"Totes",5:"Pouches",6:"Shoulder Bags"};
+const BAG_FILTERS:[string,(p:Product)=>boolean][]=[
+  ["All Bags",()=>true],
+  ["Totes",p=>BAG_SUBCATEGORY[p.id]==="Totes"],
+  ["Clutches",p=>BAG_SUBCATEGORY[p.id]==="Clutches"],
+  ["Shoulder Bags",p=>BAG_SUBCATEGORY[p.id]==="Shoulder Bags"],
+  ["Pouches",p=>BAG_SUBCATEGORY[p.id]==="Pouches"],
+];
+
+function BagEdit({products:items,wish,onWish,onOpen}:{products:Product[];wish:number[];onWish:(id:number)=>void;onOpen:(p:Product)=>void}){
+  const [filter,setFilter]=useState(0);
+  const [active,setActive]=useState<number|null>(null);
+  // Touch devices fire pointerenter while scrolling the rail, which swapped the
+  // lifestyle banner for a product cutout. Only hover-capable pointers preview.
+  const [canHover,setCanHover]=useState(false);
+  useEffect(()=>{setCanHover(window.matchMedia("(hover: hover) and (pointer: fine)").matches)},[]);
+  const preview=(i:number|null)=>{if(canHover)setActive(i)};
+  const shown=items.filter(BAG_FILTERS[filter][1]);
+  useEffect(()=>{setActive(null)},[filter]);
+  return <section className="merch-category merch-bags" id="bags">
+    <header><span>01</span><div><p className="eyebrow">PURE LEATHER &amp; SUEDE</p><h2>The Bag Edit</h2><p>Useful shapes and specialist craft, organised by the way you carry.</p></div></header>
+    <nav className="subcategories" aria-label="Filter bags">{BAG_FILTERS.map(([label],i)=><button key={label} className={i===filter?"is-on":""} aria-pressed={i===filter} onClick={()=>setFilter(i)}>{label}</button>)}</nav>
+    <figure className={`scarf-feature ${active!==null?"feature-active":""}`}>
+      <img src={active!==null&&shown[active]?shown[active].images[0]:`${A}/lifestyle/look-bag-scarf-white.webp`} alt={active!==null&&shown[active]?`${shown[active].name} close-up`:"Leather bag styled with a cashmere scarf"}/>
+      <a className="feature-cta" href={CP.bags}>Explore now<Icon name="arrow"/></a>
+    </figure>
+    {shown.length?<div className="scarf-style-grid">{shown.map((p,i)=><article key={p.id} onPointerEnter={()=>preview(i)} onPointerLeave={()=>preview(null)} onFocusCapture={()=>preview(i)} onBlurCapture={()=>preview(null)}><button className="scarf-image" onClick={()=>onOpen(p)}><img src={p.images[0]} alt={`${p.name}`}/><span>View piece</span></button><div><small>{p.material}</small><h3>{p.name}</h3><b>£{p.price}.00</b><button className={`mini-wish ${wish.includes(p.id)?"wished":""}`} onClick={()=>onWish(p.id)} aria-label="Save bag"><Icon name="heart"/></button></div></article>)}</div>
+    :<p className="bag-empty">New pieces for this category are on the way.</p>}
   </section>;
 }
 function ProductCard({product:p,wished,onWish,onOpen,onPreview,onPreviewEnd}:{product:Product;wished:boolean;onWish:()=>void;onOpen:()=>void;onPreview?:()=>void;onPreviewEnd?:()=>void}){return <article className="product-card" onPointerEnter={onPreview} onPointerLeave={onPreviewEnd} onFocusCapture={onPreview} onBlurCapture={onPreviewEnd}><button className="product-image" onClick={onOpen}><img className="primary" src={p.images[0]} alt={p.name} loading="lazy"/><img className="secondary" src={p.images[1]||p.images[0]} alt="" loading="lazy"/><span>Quick view</span></button><button className={`wish ${wished?"wished":""}`} onClick={onWish} aria-label="Save to wishlist"><Icon name="heart"/></button><div className="product-copy"><small>{p.category}</small><h3><button onClick={onOpen}>{p.name}</button></h3><p>{p.material}</p><div><b>£{p.price}.00</b><button onClick={onOpen}>View details</button></div></div></article>}
