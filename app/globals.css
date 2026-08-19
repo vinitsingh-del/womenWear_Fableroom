@@ -2886,3 +2886,24 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
   .merch-panorama,.merch-reverse,.merch-mosaic{
     padding-top:24px!important;padding-bottom:24px!important}
 }
+
+/* ── Round 37 ─────────────────────────────────────────────────────────────── */
+
+/* 1 — Numbered badges removed from look tiles and modal eyebrow. */
+.look-tile-number{display:none!important}
+
+/* 2 — Equalise the two gaps and reduce both by 10%.
+   Desktop: category→trust was 29px → 26px; trust→proof was 46px → 26px.
+   Mobile:  category→trust was 19px → 17px; trust→proof was 46px → 17px. */
+.category-section,.category-section.section{padding-bottom:26px!important}
+.material-wrap{padding-top:26px!important}
+@media(max-width:760px){
+  .category-section,.category-section.section{padding-bottom:17px!important}
+  .material-wrap{padding-top:17px!important}
+}
+
+/* 3 — Looks page desktop: reduce dead space between hero and first look group. */
+.looks-hero{padding:14px 0 10px!important}
+.looks-hero h1{margin:4px 0 8px!important;font-size:clamp(36px,4.6vw,60px)!important;line-height:1.02!important}
+.lookbook-group{padding-bottom:40px!important}
+@media(min-width:761px){.lookbook-group:first-child{padding-top:8px!important}}

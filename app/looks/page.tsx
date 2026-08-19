@@ -63,7 +63,7 @@ function LookDetailModal({look,index,onClose,onToast}:{look:Look;index:number;on
       <button className="panel-close" onClick={onClose}><CloseIcon/></button>
       <figure><img src={look.image} alt={look.alt}/></figure>
       <div className="look-modal-body">
-        <p className="eyebrow">{String(index+1).padStart(2,"0")} · POPULAR SEARCH · {look.searchTerm.toUpperCase()}</p>
+        <p className="eyebrow">POPULAR SEARCH · {look.searchTerm.toUpperCase()}</p>
         <h2>{look.title}</h2>
         <p className="look-modal-copy">{look.copy}</p>
         <div className="look-modal-list">{items.map(p=><article key={p.id}>
@@ -82,7 +82,7 @@ function LookDetailModal({look,index,onClose,onToast}:{look:Look;index:number;on
 
 function LookTile({look,index,onOpen}:{look:Look;index:number;onOpen:()=>void}){
   return <button className="look-tile-card" onClick={onOpen}>
-    <span className="look-tile-number">{String(index+1).padStart(2,"0")}</span>
+    
     <img src={look.image} alt={look.alt}/>
     <span className="look-tile-label">Shop the look</span>
   </button>;
