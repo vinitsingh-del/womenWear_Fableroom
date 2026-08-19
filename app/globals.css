@@ -2970,3 +2970,27 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .reviews{margin-top:20px!important}
 .merch-bags,.merch-bags.merch-category{padding-top:20px!important}
 /* Same for mobile AND desktop — no breakpoint split */
+
+/* ── Round 40 ─────────────────────────────────────────────────────────────── */
+
+/* 1 — Look modal hero image +20% height (desktop only). */
+@media(min-width:761px){
+  .look-modal.look-drawer>figure{flex:0 0 240px!important;height:240px!important}
+}
+
+/* 2 — Post-review sections: reduce all padding by 20% uniformly, desktop+mobile. */
+/* Desktop: 52px→42px, 64px→51px */
+.out-about{padding-top:21px!important;padding-bottom:42px!important}
+.section.trending,.section.trending.section{padding-top:42px!important;padding-bottom:42px!important}
+.faq,.faq.section{padding-top:42px!important;padding-bottom:42px!important}
+.newsletter{padding-top:51px!important;padding-bottom:51px!important}
+.site-footer{padding-top:42px!important;padding-bottom:42px!important}
+
+/* Mobile: 34px→27px, 44px→35px */
+@media(max-width:760px){
+  .out-about{padding-top:14px!important;padding-bottom:27px!important}
+  .section.trending,.section.trending.section{padding-top:27px!important;padding-bottom:27px!important}
+  .faq,.faq.section{padding-top:27px!important;padding-bottom:27px!important}
+  .newsletter{padding-top:35px!important;padding-bottom:35px!important}
+  .site-footer{padding-top:27px!important;padding-bottom:27px!important}
+}
