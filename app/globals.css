@@ -3110,3 +3110,46 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
   .merch-scarves .scarf-image{height:230px!important}
   .merch-category>header{margin-bottom:8px!important}
 }
+
+/* ══ Round 46: Section boundary gaps + divider line alignment ══ */
+
+/* 1 — DIVIDER LINE: was full-bleed (0 → 1440) while content is inset by the
+   rail padding. Inset the border so it aligns with the content column. */
+.merch-category,.merch-bags,.merch-diamonds,.merch-gemstones,.merch-scarves,
+.merch-panorama,.merch-reverse,.merch-mosaic{border-bottom:0!important;position:relative}
+.merch-category::after,.merch-bags::after,.merch-diamonds::after,
+.merch-gemstones::after,.merch-scarves::after{
+  content:"";position:absolute;bottom:0;
+  left:var(--edge);right:var(--edge);
+  height:1px;background:var(--line);pointer-events:none}
+.merch-scarves::after{display:none}
+
+/* 2 — Section boundary gaps: 24+24+1 = 49px → 14+14+1 = 29px desktop.
+   Mobile: 16+16+1 = 33px → 10+10+1 = 21px. */
+.merch-bags,.merch-bags.merch-category,
+.merch-diamonds,.merch-gemstones,.merch-scarves,
+.merch-diamonds.merch-category,.merch-gemstones.merch-category,.merch-scarves.merch-category{
+  padding-top:14px!important;padding-bottom:14px!important}
+
+/* 3 — Shop Look / Quiz / Recommended boundaries: 30+30 = 60px → 18+18 = 36px */
+.looks-premium,.looks-premium.section,
+.finder,.finder.section,
+.recommended,.recommended.section{padding-top:18px!important;padding-bottom:18px!important}
+
+/* 4 — Reviews block (sits between Trust and Bag Edit via flex order) */
+.reviews{margin-top:14px!important;margin-bottom:14px!important}
+
+/* 5 — Proof section bottom */
+.material-wrap{padding-bottom:14px!important}
+
+@media(max-width:760px){
+  .merch-bags,.merch-bags.merch-category,
+  .merch-diamonds,.merch-gemstones,.merch-scarves,
+  .merch-diamonds.merch-category,.merch-gemstones.merch-category,.merch-scarves.merch-category{
+    padding-top:10px!important;padding-bottom:10px!important}
+  .looks-premium,.looks-premium.section,
+  .finder,.finder.section,
+  .recommended,.recommended.section{padding-top:12px!important;padding-bottom:12px!important}
+  .reviews{margin-top:10px!important;margin-bottom:10px!important}
+  .material-wrap{padding-bottom:10px!important}
+}
