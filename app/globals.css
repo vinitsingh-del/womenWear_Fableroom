@@ -2183,3 +2183,98 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
   box-shadow:0 2px 4px rgba(20,16,12,.05),0 18px 36px rgba(20,16,12,.1)!important;
 }
 .look-shop-rail b{color:var(--ink)!important}
+
+/* ── Round 23 ────────────────────────────────────────────────────────────── */
+
+/* 1 — Five bag filters wrapped onto two rows on mobile. One scrollable line. */
+@media(max-width:760px){
+  .merch-bags .subcategories,.merch-scarves .subcategories{
+    display:flex!important;grid-template-columns:none!important;
+    gap:20px!important;overflow-x:auto!important;flex-wrap:nowrap;
+    scrollbar-width:none;-webkit-overflow-scrolling:touch;
+    scroll-snap-type:x proximity;padding:11px 0!important}
+  .subcategories::-webkit-scrollbar{display:none}
+  .subcategories button{flex:0 0 auto;justify-self:auto;white-space:nowrap;scroll-snap-align:start}
+}
+
+/* 2 — The diamond CTA sat flush against the rail while every other edit inset
+   it. Same offset everywhere. */
+.merch-diamonds .feature-cutout .feature-cta,
+.merch-diamonds .merch-feature .feature-cta{left:18px;bottom:18px}
+@media(max-width:760px){
+  .merch-diamonds .feature-cutout .feature-cta,
+  .merch-diamonds .merch-feature .feature-cta{left:12px;bottom:12px}
+}
+
+/* 3 — Caption belongs inside the tile. A bottom scrim only, so the label reads
+   without the full-tile black overlay, and the arrow stays inside the padding. */
+.edit-category-grid>a{position:relative;overflow:hidden;height:238px}
+.edit-category-grid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.edit-category-grid>a::after{display:block;content:"";position:absolute;left:0;right:0;bottom:0;top:auto;height:56%;
+  background:linear-gradient(to top,rgba(6,6,8,.82) 0%,rgba(6,6,8,.42) 46%,rgba(6,6,8,0) 100%);pointer-events:none}
+.edit-category-grid span,
+.merch-reverse .edit-category-grid span,
+.merch-mosaic .edit-category-grid span{position:absolute;left:16px;right:16px;bottom:13px;top:auto;display:block;padding:0;z-index:2}
+.edit-category-grid span>small{display:block;margin-bottom:4px;color:#e8bf88;font:700 7px/1 var(--sans);letter-spacing:.15em}
+.edit-category-grid b,
+.merch-reverse .edit-category-grid b,
+.merch-mosaic .edit-category-grid b{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:0;color:#fffaf3;font:400 20px/1.15 var(--serif)}
+.edit-category-grid b i{min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-style:normal}
+.edit-category-grid b .icon{flex:none;width:14px;height:14px;color:#fffaf3;opacity:.9}
+
+/* 4 — Trust badge carries a slow moving black gradient. */
+@keyframes trust-sheen{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.trust-box{background-image:linear-gradient(120deg,#050505 0%,#1c1c22 26%,#000 52%,#23232a 74%,#050505 100%)!important;
+  background-size:280% 280%;animation:trust-sheen 14s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.trust-box{animation:none}}
+
+/* 5 — Reviews stay on one line on mobile: score beside the card rail. */
+@media(max-width:760px){
+  .reviews{display:grid!important;grid-template-columns:minmax(104px,31%) minmax(0,69%);align-items:stretch}
+  .review-score{padding:12px 12px 12px 14px;border-bottom:0;border-right:1px solid rgba(255,255,255,.14)}
+  .review-score .eyebrow{margin-bottom:4px;font-size:4.8px;letter-spacing:.13em}
+  .review-score strong{font-size:19px}
+  .review-score>div{margin:2px 0;font-size:6px}
+  .review-score>span{font-size:4.6px;line-height:1.45}
+  .review-score>a{margin-top:6px;font-size:4.6px}
+  .review-window{width:auto;border-top:0}
+  .review-track{padding:10px 0}
+}
+
+/* Both the image and the caption are absolute now, so the tile needs an
+   explicit height at every breakpoint or it collapses. */
+.edit-category-grid>a,
+.merch-reverse .edit-category-grid>a,
+.merch-mosaic .edit-category-grid>a{height:238px}
+@media(max-width:760px){
+  .edit-category-grid>a,.edit-category-grid>a:last-child,
+  .merch-reverse .edit-category-grid>a,
+  .merch-mosaic .edit-category-grid>a{height:166px}
+  .edit-category-grid img{height:100%}
+  .edit-category-grid span{left:12px;right:12px;bottom:10px}
+  .edit-category-grid b{font-size:15px}
+  .edit-category-grid b .icon{width:12px;height:12px}
+}
+
+/* The overlay removal set content:none!important on the tile ::after, so the
+   scrim cannot live there. Put it on the caption itself, which is a real
+   element, and force the label colour past the same !important rules. */
+.edit-category-grid span,
+.merch-reverse .edit-category-grid span,
+.merch-mosaic .edit-category-grid span{
+  left:0!important;right:0!important;bottom:0!important;top:auto!important;
+  padding:30px 16px 13px!important;
+  background:linear-gradient(to top,rgba(6,6,8,.86) 0%,rgba(6,6,8,.5) 52%,rgba(6,6,8,0) 100%)!important}
+.edit-category-grid b,
+.merch-reverse .edit-category-grid b,
+.merch-mosaic .edit-category-grid b,
+.edit-category-grid>a,
+.merch-reverse .edit-category-grid>a{color:#fffaf3!important}
+.edit-category-grid b .icon{color:#fffaf3!important}
+.edit-category-grid span>small{color:#e8bf88!important}
+@media(max-width:760px){
+  .edit-category-grid span,
+  .merch-reverse .edit-category-grid span,
+  .merch-mosaic .edit-category-grid span{padding:24px 12px 10px!important}
+}
