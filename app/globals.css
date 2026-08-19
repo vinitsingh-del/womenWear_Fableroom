@@ -2553,3 +2553,23 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .merch-scarves .scarf-style-grid article div>h3{grid-column:1!important;grid-row:2!important;margin-right:0!important}
 .merch-scarves .scarf-style-grid article div>b{grid-column:1!important;grid-row:3!important;align-self:center!important}
 .merch-scarves .scarf-style-grid .mini-wish{position:static!important;grid-column:2!important;grid-row:1/4!important;align-self:end!important;justify-self:end!important;margin-bottom:4px!important}
+
+/* ── Round 31: Trust badge side-crop = reviews, mobile 20% smaller ───────── */
+/* .reviews has margin: 0 var(--edge), trust-and-proof had margin:0 (full bleed).
+   Now both sections inset identically. */
+.trust-and-proof{
+  margin:0 var(--edge)!important;
+  width:auto!important;
+  border-radius:0}
+/* The trust-box fills the full width of the inset parent */
+.trust-box{width:100%!important;margin:0!important}
+
+/* Mobile: 20% smaller — numbers, labels, cell height */
+@media(max-width:760px){
+  .trust-box b{font-size:20px!important;line-height:.94}   /* was 20px already */
+  .trust-copy small{font-size:5.6px!important;letter-spacing:.08em}
+  .trust-box>span{min-height:0!important;padding:9px 12px!important}
+  .trust-box{padding:0!important}
+  /* also reduce the section vertical padding so it doesn't loom */
+  .trust-and-proof{padding:0!important}
+}
