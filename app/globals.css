@@ -213,9 +213,9 @@ button:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offs
   --ivory:#fff;
   --sand:#fff;
   --taupe:#756958;
-  --wine:#4b0f24;
-  --jewel:#4b0f24;
-  --aubergine:#4b0f24;
+  --wine:#1e1e21;
+  --jewel:#1e1e21;
+  --aubergine:#1e1e21;
   --rust:#a7623d;
   --rust-gold:#b88342;
   --stone:#fff;
@@ -241,7 +241,7 @@ button:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offs
 .trust-and-proof{background:var(--ivory);border-color:var(--line)}
 .trust-box{max-width:none;min-height:230px;background:var(--aubergine);overflow:hidden}
 .trust-box span{min-height:230px;position:relative;isolation:isolate;overflow:hidden;background-size:cover;background-position:center;border-right:1px solid rgba(255,255,255,.22);font:17px var(--serif)}
-.trust-box span::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(75,15,36,.1),rgba(75,15,36,.22))}
+.trust-box span::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(30,30,33,.1),rgba(30,30,33,.22))}
 .trust-box b{font-family:var(--serif);font-style:italic;color:#fff7eb;font-variant-numeric:tabular-nums}
 
 .material-wrap{max-width:none;background:var(--aubergine);color:var(--ivory);padding-left:max(42px,calc((100vw - 1236px)/2));padding-right:max(42px,calc((100vw - 1236px)/2));padding-bottom:92px}
@@ -250,7 +250,7 @@ button:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offs
 .material-card,.material-card:nth-child(n){background:transparent;box-shadow:none;margin-top:0}
 .material-card:nth-child(even){margin-top:44px}
 
-.material-card img,.material-card video,.material-card:nth-child(n) img{width:100%;height:330px;padding:0;object-fit:cover;background:#2b0817}
+.material-card img,.material-card video,.material-card:nth-child(n) img{width:100%;height:330px;padding:0;object-fit:cover;background:#141417}
 .material-card:nth-child(2) video{height:270px;object-fit:cover}
 .material-card div{padding:20px 0 0}
 .material-card small{color:var(--rust-gold)}
@@ -278,8 +278,8 @@ button:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offs
 .merch-reverse>header p:last-child{color:#d9ccc3}
 .merch-reverse .subcategories{border-color:rgba(255,255,255,.2)}
 .merch-reverse .subcategories a{color:var(--ivory)}
-.merch-reverse .merch-feature{background:#250814;box-shadow:0 28px 80px rgba(20,3,11,.28)}
-.merch-reverse .merch-feature img,.merch-reverse .merch-feature video,.merch-diamonds .merch-feature img{object-fit:cover;padding:0;background:#250814}
+.merch-reverse .merch-feature{background:#101013;box-shadow:0 28px 80px rgba(20,3,11,.28)}
+.merch-reverse .merch-feature img,.merch-reverse .merch-feature video,.merch-diamonds .merch-feature img{object-fit:cover;padding:0;background:#101013}
 .merch-reverse .merch-feature.feature-active img{object-fit:contain;background:var(--ivory)}
 .merch-reverse .product-copy small,.merch-reverse .product-copy>p{color:#cdbfb5}
 .merch-reverse .product-copy h3 button,.merch-reverse .product-copy>div button{color:var(--ivory)}
@@ -299,13 +299,13 @@ button:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offs
 .scarf-feature{height:520px;margin:0 0 24px;position:relative;overflow:hidden;background:var(--aubergine)}
 .scarf-feature img{width:100%;height:100%;object-fit:cover;object-position:center 42%;transition:transform .85s cubic-bezier(.2,.7,.2,1),object-position .5s ease}
 .scarf-feature.feature-active img{object-fit:contain;background:var(--ivory);transform:scale(1.08)}
-.scarf-feature figcaption{position:absolute;left:20px;bottom:20px;padding:11px 14px;background:rgba(75,15,36,.9);color:var(--ivory);font:italic 18px var(--serif)}
+.scarf-feature figcaption{position:absolute;left:20px;bottom:20px;padding:11px 14px;background:rgba(30,30,33,.9);color:var(--ivory);font:italic 18px var(--serif)}
 
 .looks-premium{max-width:none;background:var(--aubergine);color:var(--ivory);padding-left:max(42px,calc((100vw - 1236px)/2));padding-right:max(42px,calc((100vw - 1236px)/2));padding-top:92px;padding-bottom:104px}
 .looks-premium .section-heading>p:last-child,.looks-premium .section-heading.split>div:last-child p{color:#d9ccc3}
 .looks-premium .eyebrow{color:var(--rust-gold)}
 .premium-look-board{height:980px;grid-template-columns:1.15fr .85fr .85fr;grid-template-rows:1.15fr .85fr;gap:12px}
-.premium-look-board .look-tile{background:#250814}
+.premium-look-board .look-tile{background:#101013}
 .premium-look-board .look-tile::after{inset:35% 0 0;background:linear-gradient(transparent,rgba(30,5,16,.86))}
 .premium-look-board .look-tile span{grid-template-columns:auto 1fr;column-gap:12px;align-items:end}
 .premium-look-board .look-tile i{grid-row:1/5;align-self:start;color:var(--rust-gold);font:italic 24px var(--serif)}
@@ -316,7 +316,7 @@ button:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offs
 
 .recommended{background:var(--ivory)}
 .reviews{max-width:none;grid-template-columns:minmax(300px,31%) minmax(0,69%);background:var(--aubergine);overflow:hidden}
-.review-score{padding-left:max(42px,calc((100vw - 1236px)/2));background:linear-gradient(135deg,var(--aubergine),#351020)}
+.review-score{padding-left:max(42px,calc((100vw - 1236px)/2));background:linear-gradient(135deg,var(--aubergine),#26262b)}
 .review-score strong{font-style:italic}
 .review-score>div{color:var(--rust-gold)}
 .review-window{min-width:0;overflow:hidden;border-left:1px solid rgba(255,255,255,.18)}
@@ -450,7 +450,7 @@ video{contain:paint}
 .material-card:nth-child(4){grid-column:7/13}
 .material-card:nth-child(1)>img{height:360px}
 .material-visual-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0!important;overflow:hidden}
-.material-card .material-visual-pair img{height:360px!important;min-width:0;object-fit:cover;background:#2b0817}
+.material-card .material-visual-pair img{height:360px!important;min-width:0;object-fit:cover;background:#141417}
 .material-card .material-copy{padding:20px 0 0}
 
 @media(max-width:980px) and (min-width:761px){
@@ -601,7 +601,7 @@ body,main,.trust-and-proof,.merch-category,.merch-mosaic,.merch-scarves,.recomme
 /* Shared proof strip: compact reference-card rhythm on every screen. */
 .trust-and-proof{padding:14px 0;background:var(--aubergine);border:0}
 .trust-box{max-width:1260px;min-height:82px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;background:transparent;overflow:visible}
-.trust-box>span{min-height:82px;padding:12px 14px;display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:11px;border:1px solid rgba(36,27,24,.12);border-radius:13px;background:#fff!important;background-image:none!important;color:var(--ink);scroll-snap-align:none}
+.trust-box>span{min-height:82px;padding:12px 14px;display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:11px;border:1px solid rgba(26,26,29,.12);border-radius:13px;background:#fff!important;background-image:none!important;color:var(--ink);scroll-snap-align:none}
 .trust-box>span::after{display:none}
 .trust-box .trust-copy{position:relative;z-index:1;min-width:0;min-height:0;padding:0;border:0;background:transparent;display:flex;flex-direction:column;gap:3px;font:inherit}
 .trust-icon{display:grid;width:26px;height:26px;flex:0 0 26px;place-items:center;border:1px solid var(--line);border-radius:50%;color:var(--aubergine);font:16px/1 var(--serif)}
@@ -729,8 +729,8 @@ html,body,#root{width:100%;max-width:100%;overflow-x:hidden}
 
 /* Final editorial recompose: full mobile hero, proof in one view and category-led edits. */
 .trust-and-proof{padding:0;background:#fff}
-.trust-box{position:relative;isolation:isolate;max-width:1240px;min-height:118px;margin:0 auto;padding:0 18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;background-color:#4b0f24;background-size:cover;background-position:center;overflow:hidden}
-.trust-box::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(49,8,27,.88),rgba(75,15,36,.72)),rgba(49,8,27,.2)}
+.trust-box{position:relative;isolation:isolate;max-width:1240px;min-height:118px;margin:0 auto;padding:0 18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;background-color:#1e1e21;background-size:cover;background-position:center;overflow:hidden}
+.trust-box::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(19,19,22,.88),rgba(30,30,33,.72)),rgba(19,19,22,.2)}
 .trust-box>span{position:relative;z-index:1;min-width:0;min-height:118px;padding:22px 26px;display:flex;align-items:center;justify-content:flex-start;background:transparent!important;border:0;border-radius:0}
 
 .trust-box>span+span{border-left:1px solid rgba(255,247,235,.28)}
@@ -759,7 +759,7 @@ html,body,#root{width:100%;max-width:100%;overflow-x:hidden}
 .merch-reverse .merch-feature{order:initial}
 .edit-category-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
 .edit-category-grid>a{min-width:0;height:184px;position:relative;overflow:hidden;background:#ede7e0;color:#fffaf3;text-decoration:none}
-.edit-category-grid>a::after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(transparent,rgba(47,12,27,.84))}
+.edit-category-grid>a::after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(transparent,rgba(21,21,24,.84))}
 .edit-category-grid img{width:100%;height:100%;display:block;object-fit:contain;background:#f6f1eb;transition:transform .45s ease}
 .merch-bags .edit-category-grid img{object-fit:cover}
 .edit-category-grid>a:hover img{transform:scale(1.035)}
@@ -796,7 +796,7 @@ html,body,#root{width:100%;max-width:100%;overflow-x:hidden}
   .trust-and-proof{padding:12px 16px;background:#fff}
   .trust-box{min-height:188px;width:100%;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;overflow:hidden;background-size:cover;background-position:center}
 
-  .trust-box::before{background:linear-gradient(135deg,rgba(49,8,27,.82),rgba(75,15,36,.67))}
+  .trust-box::before{background:linear-gradient(135deg,rgba(19,19,22,.82),rgba(30,30,33,.67))}
   .trust-box>span{min-height:94px;padding:13px 12px;display:flex;align-items:center;justify-content:flex-start;scroll-snap-align:none}
   .trust-box>span:nth-child(2n){border-left:1px solid rgba(255,247,235,.28)}
   .trust-box>span:nth-child(n+3){border-top:1px solid rgba(255,247,235,.28)}
@@ -1033,7 +1033,7 @@ main>*{width:100%;align-self:stretch}
 /* Legibility: tile titles were dark maroon over a dark scrim in the diamond edit.
    One treatment for all four edits — stronger scrim, light type. */
 .edit-category-grid>a,.merch-reverse .edit-category-grid>a{background:#f4efe8;color:#fffaf3}
-.edit-category-grid>a::after{inset:32% 0 0;background:linear-gradient(transparent,rgba(36,7,19,.92))}
+.edit-category-grid>a::after{inset:32% 0 0;background:linear-gradient(transparent,rgba(16,16,19,.92))}
 .edit-category-grid b,.merch-reverse .edit-category-grid b{color:#fffaf3}
 .edit-category-grid span>small{color:#e8bf88}
 
@@ -1070,7 +1070,7 @@ main>*{width:100%;align-self:stretch}
    band cut hard into the flat aubergine below it. More breathing room inside the
    band, a fade to solid at its base, and a clear gap before the proof heading. */
 .trust-box{min-height:132px;padding-top:26px!important;padding-bottom:26px!important}
-.trust-box::before{background:linear-gradient(180deg,rgba(75,15,36,.60) 0%,rgba(75,15,36,.74) 52%,rgba(75,15,36,.94) 86%,var(--aubergine) 100%),linear-gradient(90deg,rgba(49,8,27,.82),rgba(49,8,27,.26))}
+.trust-box::before{background:linear-gradient(180deg,rgba(30,30,33,.60) 0%,rgba(30,30,33,.74) 52%,rgba(30,30,33,.94) 86%,var(--aubergine) 100%),linear-gradient(90deg,rgba(19,19,22,.82),rgba(19,19,22,.26))}
 .material-wrap{padding-top:32px!important}
 
 /* Shop the look reads as a horizontal rail rather than a stacked mosaic. */
@@ -1086,7 +1086,7 @@ main>*{width:100%;align-self:stretch}
 
 @media(max-width:760px){
   .trust-box{min-height:0;padding-top:18px!important;padding-bottom:18px!important}
-  .trust-box::before{background:linear-gradient(180deg,rgba(75,15,36,.66) 0%,rgba(75,15,36,.78) 55%,rgba(75,15,36,.95) 88%,var(--aubergine) 100%),linear-gradient(135deg,rgba(49,8,27,.7),rgba(49,8,27,.3))}
+  .trust-box::before{background:linear-gradient(180deg,rgba(30,30,33,.66) 0%,rgba(30,30,33,.78) 55%,rgba(30,30,33,.95) 88%,var(--aubergine) 100%),linear-gradient(135deg,rgba(19,19,22,.7),rgba(19,19,22,.3))}
   .material-wrap{padding-top:24px!important}
 
   .premium-look-board{gap:8px!important;margin-right:calc(var(--edge) * -1)!important;padding-right:var(--edge)!important}
@@ -1160,7 +1160,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 .feature-cta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 36%,rgba(255,255,255,.9) 50%,transparent 64%);transform:translateX(-130%);animation:cta-shine 3.6s ease-in-out infinite}
 .feature-cta .icon{width:10px;height:10px}
 @keyframes cta-shine{0%{transform:translateX(-130%)}55%,100%{transform:translateX(130%)}}
-@keyframes cta-glow{0%,100%{box-shadow:0 0 0 1px rgba(255,250,243,.4),0 4px 16px rgba(36,7,19,.24)}50%{box-shadow:0 0 0 1px rgba(255,250,243,.85),0 6px 24px rgba(214,160,99,.45)}}
+@keyframes cta-glow{0%,100%{box-shadow:0 0 0 1px rgba(255,250,243,.4),0 4px 16px rgba(16,16,19,.24)}50%{box-shadow:0 0 0 1px rgba(255,250,243,.85),0 6px 24px rgba(214,160,99,.45)}}
 
 /* 2 — The trust strip is its own section: white gap beneath it, grid lines back. */
 .trust-and-proof{background:#fff!important}
@@ -1173,13 +1173,13 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 .material-rail{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px!important;align-items:start}
 .material-card,.material-card:nth-child(n){grid-column:auto!important;margin:0!important;min-width:0}
 .material-card>img,.material-card:nth-child(1)>img,.material-card:nth-child(2)>img,
-.material-card:nth-child(3)>img,.material-card:nth-child(4)>img{width:100%;height:290px!important;object-fit:cover;padding:0!important;background:#2b0817}
+.material-card:nth-child(3)>img,.material-card:nth-child(4)>img{width:100%;height:290px!important;object-fit:cover;padding:0!important;background:#141417}
 .material-card .material-copy{padding:14px 0 0}
 .material-card h3{margin:0 0 5px;font-size:21px;line-height:1.08}
 .material-card p{margin:0;font-size:10.5px;line-height:1.5}
 
 /* 5 — Shop the look: an auto-rotating banner over a square product rail. */
-.look-stage{position:relative;width:100%;height:440px;margin:0 0 14px;overflow:hidden;background:#250814;isolation:isolate}
+.look-stage{position:relative;width:100%;height:440px;margin:0 0 14px;overflow:hidden;background:#101013;isolation:isolate}
 .look-stage img{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.05);transition:opacity 1.7s ease,transform 6s ease}
 .look-stage img.is-on{z-index:2;opacity:1;transform:scale(1);transition:opacity .95s ease,transform 6s ease}
 .look-stage-dots{position:absolute;z-index:2;left:0;right:0;bottom:16px;display:flex;justify-content:center;gap:7px}
@@ -1341,7 +1341,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 
 /* 2 — Precision-set brilliance is a film now. Its own clipping frame keeps the
    parallax transform off the card copy. */
-.material-visual{display:block;position:relative;width:100%;height:290px;overflow:hidden;background:#2b0817}
+.material-visual{display:block;position:relative;width:100%;height:290px;overflow:hidden;background:#141417}
 .material-visual video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform;transform:scale(1.2)}
 
 /* 3 — Matching breathing room above and below the trust band. */
@@ -1419,7 +1419,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 
 /* The diamond hero is now a maroon-ground still, so the warm multiply that was
    knocking back a white product shot is no longer needed. */
-.merch-diamonds .merch-feature{background:#2a0a18}
+.merch-diamonds .merch-feature{background:#131316}
 .merch-diamonds .merch-feature img,
 .merch-diamonds .merch-feature video{mix-blend-mode:normal;object-position:center center}
 
@@ -1491,7 +1491,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 .look-shop-image{border-radius:9px;background:var(--ivory)}
 .look-shop-card b{min-height:0!important;padding-top:12px!important;-webkit-line-clamp:1!important;font-size:17px!important}
 .look-shop-card em{padding-top:4px}
-.look-add{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;min-height:48px;padding:0 22px;border:0;border-radius:999px;background:var(--rust-gold);color:#2b0817;font:700 9px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;position:relative;overflow:hidden;isolation:isolate;transition:transform .3s ease,filter .3s ease}
+.look-add{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;min-height:48px;padding:0 22px;border:0;border-radius:999px;background:var(--rust-gold);color:#141417;font:700 9px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;position:relative;overflow:hidden;isolation:isolate;transition:transform .3s ease,filter .3s ease}
 .look-add:hover{transform:translateY(-2px);filter:brightness(1.06)}
 .look-add .icon{width:15px;height:15px}
 .look-add::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.5) 50%,transparent 62%);transform:translateX(-130%);animation:cta-shine 3.6s ease-in-out infinite}
@@ -1627,8 +1627,8 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 .trend-grid>a img{object-position:center 30%}
 
 /* Look stage gets prev / next alongside the dots. */
-.look-nav{position:absolute;z-index:5;top:50%;translate:0 -50%;display:grid;place-items:center;width:40px;height:40px;padding:0;border:1px solid rgba(255,250,243,.5);border-radius:999px;background:rgba(28,6,16,.42);color:#fffaf3;cursor:pointer;backdrop-filter:blur(4px);opacity:.75;transition:opacity .25s ease,background .25s ease,transform .25s ease}
-.look-nav:hover{opacity:1;background:rgba(28,6,16,.68);transform:translateY(-1px)}
+.look-nav{position:absolute;z-index:5;top:50%;translate:0 -50%;display:grid;place-items:center;width:40px;height:40px;padding:0;border:1px solid rgba(255,250,243,.5);border-radius:999px;background:rgba(13,13,15,.42);color:#fffaf3;cursor:pointer;backdrop-filter:blur(4px);opacity:.75;transition:opacity .25s ease,background .25s ease,transform .25s ease}
+.look-nav:hover{opacity:1;background:rgba(13,13,15,.68);transform:translateY(-1px)}
 .look-nav .icon{width:15px;height:15px}
 .look-nav.prev{left:16px}
 .look-nav.prev .icon{transform:rotate(180deg)}
@@ -1636,13 +1636,13 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 
 /* The add CTA read as a heavy gold slab; lighter and better proportioned. */
 .look-add{width:auto;min-width:0;min-height:46px;padding:0 34px;margin:2px auto 0;background:transparent;border:1px solid var(--rust-gold);color:var(--rust-gold);font-size:9.5px;letter-spacing:.2em}
-.look-add:hover{background:var(--rust-gold);color:#2b0817;filter:none}
+.look-add:hover{background:var(--rust-gold);color:#141417;filter:none}
 .look-add::after{background:linear-gradient(105deg,transparent 38%,rgba(214,160,99,.35) 50%,transparent 62%)}
 
 /* Jank: box-shadow and text-shadow were animating forever on many elements,
    repainting on every frame. Only composited properties loop now. */
 @keyframes cta-glow{0%,100%{opacity:1}50%{opacity:1}}
-.feature-cta{animation:none;backdrop-filter:none;box-shadow:0 4px 16px rgba(36,7,19,.26)}
+.feature-cta{animation:none;backdrop-filter:none;box-shadow:0 4px 16px rgba(16,16,19,.26)}
 @keyframes title-emphasis{0%,100%{text-shadow:none}}
 .hero h1,.section h2,.merch-category h2{animation:none!important}
 
@@ -1868,3 +1868,43 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
   .review-score>span{font-size:5.4px;line-height:1.5}
   .review-score>a{margin-top:8px;font-size:5.4px;padding-bottom:2px}
 }
+
+/* ── Round 20: aubergine to charcoal ─────────────────────────────────────── */
+
+:root{
+  --aubergine:#1e1e21;
+  --wine:#1e1e21;
+  --jewel:#1e1e21;
+  --charcoal-deep:#0e0e10;
+  --charcoal-lift:#26262b;
+  /* a slight top-to-bottom lift keeps the dark surfaces from reading as flat black */
+  --charcoal-grad:linear-gradient(168deg,#26262b 0%,#1a1a1d 46%,#111113 100%);
+}
+
+.trust-and-proof,.material-wrap,.merch-reverse,.looks-premium,
+.reviews,.newsletter,.bag-subcategories{background:var(--charcoal-grad)!important}
+.trust-box{background:var(--charcoal-deep)}
+.merch-diamonds .merch-feature.feature-cutout{background:transparent}
+.scarf-feature,.look-stage,.material-visual{background:var(--charcoal-deep)}
+
+/* Panels that sat on aubergine now sit on charcoal. */
+.look-shop-rail>.look-shop-card{background:rgba(255,255,255,.055);border-color:rgba(255,255,255,.14)}
+.look-shop-rail>.look-shop-card:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.26)}
+.review-track blockquote{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.13)}
+.review-track blockquote:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.24)}
+.trust-box>span:nth-child(n+2),
+.trust-box>span:nth-child(2n),
+.trust-box>span:nth-child(n+3){border-color:rgba(255,255,255,.16)!important}
+.reviews,.review-score{border-color:rgba(255,255,255,.16)}
+.merch-reverse .edit-category-grid>a{background:#1a1a1d}
+.edit-category-grid>a{background:#1a1a1d}
+.merch-bags .edit-category-grid>a,
+.merch-gemstones .edit-category-grid>a{background:#fff}
+.edit-category-grid>a::after{background:linear-gradient(transparent,rgba(8,8,10,.92))}
+.look-add{border-color:var(--rust-gold);color:var(--rust-gold)}
+.look-add:hover{color:#141417}
+.look-nav{background:rgba(10,10,12,.46);border-color:rgba(255,255,255,.42)}
+.look-nav:hover{background:rgba(10,10,12,.72)}
+
+/* The score panel carried its own plum gradient stop. */
+.review-score{background:linear-gradient(135deg,#26262b,#141417)}
