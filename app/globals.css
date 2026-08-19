@@ -2278,3 +2278,54 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
   .merch-reverse .edit-category-grid span,
   .merch-mosaic .edit-category-grid span{padding:24px 12px 10px!important}
 }
+
+/* ── Round 24 ────────────────────────────────────────────────────────────── */
+
+/* 1 — Reviews: 15% bigger overall on mobile, same single-line geometry.
+   The background needs a gradient animation so it reads as one continuous
+   metallic surface, not a flat black. */
+@media(max-width:760px){
+  .reviews{grid-template-columns:minmax(120px,33%) minmax(0,67%)}
+  .review-score{padding:14px 14px 14px 16px}
+  .review-score .eyebrow{font-size:5.5px;letter-spacing:.14em;margin-bottom:5px}
+  .review-score strong{font-size:21px}
+  .review-score>div{margin:3px 0;font-size:6.5px}
+  .review-score>span{font-size:5.2px;line-height:1.48}
+  .review-score>a{margin-top:7px;font-size:5.2px}
+  .review-track{padding:11px 0}
+  .review-track blockquote{width:104px!important;padding:7px 8px!important}
+}
+
+/* The review section background must animate like the trust badge — one
+   continuous metallic gradient, no seams. The animation itself needs
+   background-size >100% so the position keyframe actually moves the colours. */
+@keyframes metal-sweep{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.trust-box,.reviews,.review-score,.review-track blockquote{
+  background:linear-gradient(130deg,#060606 0%,#1b1b22 22%,#0a0a0a 44%,#22222a 66%,#060606 100%)!important;
+  background-size:400% 400%!important;
+  animation:metal-sweep 12s ease-in-out infinite!important;
+  border-color:rgba(255,255,255,.1)!important}
+.review-track blockquote{box-shadow:none!important;border-radius:0!important;animation-delay:var(--d,0s)!important}
+.review-track blockquote:nth-child(1){--d:0s}
+.review-track blockquote:nth-child(2){--d:-2s}
+.review-track blockquote:nth-child(3){--d:-4s}
+.review-track blockquote:nth-child(n+4){--d:-6s}
+@media(prefers-reduced-motion:reduce){.trust-box,.reviews,.review-score,.review-track blockquote{animation:none!important}}
+
+/* 2 — Trust badge: same keyframe, continuous metallic sweep. The box needs
+   background-size >100% to make the position move visibly. */
+.trust-box{
+  background:linear-gradient(130deg,#060606 0%,#1b1b22 22%,#0a0a0a 44%,#22222a 66%,#060606 100%)!important;
+  background-size:400% 400%!important;
+  animation:metal-sweep 12s ease-in-out infinite!important}
+
+/* 3 — Looks page hero: pull it up near the nav, remove dead space. */
+.looks-hero{padding:20px 0 16px}
+.looks-hero h1{font-size:clamp(30px,5.6vw,62px);margin:6px 0 10px;line-height:1.05}
+.looks-hero p{max-width:52ch}
+.looks-hero .eyebrow{margin-bottom:4px}
+@media(max-width:760px){
+  .looks-hero{padding:14px 0 12px}
+  .looks-hero h1{font-size:clamp(26px,8vw,40px);margin:4px 0 8px}
+  .looks-hero p{font-size:13px}
+}

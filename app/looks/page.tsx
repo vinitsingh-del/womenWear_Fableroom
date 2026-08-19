@@ -97,7 +97,7 @@ export default function LooksPage(){
 
   return <main className="looks-page">
     <header className="looks-header"><a href={ROOT} className="wordmark">FABLEROOM</a><a href={`${ROOT}#shop-the-look`} className="underlink">Back to Fashion & Lifestyle</a></header>
-    <section className="looks-hero"><p className="eyebrow">THE FABLEROOM LOOK BOOK</p><h1>Ten ways to wear<br/>the everyday edit.</h1><p>Search-led combinations of bags, jewellery and scarves—built around how customers describe the outfit they want, not around campaign names.</p></section>
+    <section className="looks-hero"><p className="eyebrow">THE FABLEROOM LOOK BOOK</p><h1>Ways to wear<br/>the everyday edit.</h1><p>Search-led outfit ideas combining bags, jewellery and scarves.</p></section>
 
     {groups.map(group=><section className="lookbook-group" key={group.tone} aria-label={TONE_TITLES[group.tone]}>
       <header className="lookbook-group-head">
