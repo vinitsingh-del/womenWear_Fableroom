@@ -1461,7 +1461,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 /* ── Round 11 ────────────────────────────────────────────────────────────── */
 
 /* Reviews and the trust band share one inset rail at every width; neither bleeds. */
-.reviews{max-width:none;width:auto;margin:29px var(--edge) 0!important;padding:0!important;overflow:hidden}
+.reviews{max-width:none;width:auto;margin:29px var(--edge) 0!important;padding:0!important;overflow:hidden;position:relative}
 .review-score{padding:22px 26px 22px 0}
 @media(min-width:761px){
   .trust-box{margin:0 var(--edge)!important;padding:22px 0!important}
