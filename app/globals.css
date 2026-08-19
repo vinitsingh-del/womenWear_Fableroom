@@ -2866,3 +2866,23 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 @media(max-width:760px){
   .material-card>img,.material-card:nth-child(n)>img{height:150px!important}
 }
+
+/* ── Round 36 ─────────────────────────────────────────────────────────────── */
+
+/* 1 — FAQ + alignment. The percentage columns (34%/66%) + gap 70px overflowed
+   the section by 40px, pushing the ::after outside the visible area.
+   Switching to fr units makes the gap auto-subtracted before column sizing. */
+.faq{grid-template-columns:0.52fr 1fr!important;overflow:visible!important}
+.faq-list summary{padding-right:24px!important;overflow:hidden}
+.faq-list summary::after{right:0!important;font-size:20px;font-weight:300}
+
+/* 2 — Dead space between edit sections (01 Bags, 02 Diamonds, 03 Gemstones,
+   04 Scarves). Reduce top/bottom padding on every merch-category section. */
+.merch-category,.merch-bags,.merch-diamonds,.merch-gemstones,.merch-scarves,
+.merch-panorama,.merch-reverse,.merch-mosaic{
+  padding-top:36px!important;padding-bottom:36px!important}
+@media(max-width:760px){
+  .merch-category,.merch-bags,.merch-diamonds,.merch-gemstones,.merch-scarves,
+  .merch-panorama,.merch-reverse,.merch-mosaic{
+    padding-top:24px!important;padding-bottom:24px!important}
+}
