@@ -3016,3 +3016,16 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
   .lookbook-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important}
   .look-tile-card{aspect-ratio:3/4.4!important}
 }
+
+/* ── Round 43: Crop optimisation ─────────────────────────────────────────── */
+/* All three feature banners use 0.80 portrait images in landscape containers.
+   Shift focal point to keep the primary subject (bag/pendant/model) centred. */
+.merch-bags .feature-media{object-position:center 55%!important}
+.merch-gemstones .feature-media{object-position:center 68%!important}
+.merch-scarves .scarf-feature img{object-position:center 22%!important}
+/* Mobile: same focal shift */
+@media(max-width:760px){
+  .merch-bags .feature-media{object-position:center 52%!important}
+  .merch-gemstones .merch-feature .feature-media{object-position:center 66%!important}
+  .merch-scarves .scarf-feature img{object-position:center 20%!important}
+}
