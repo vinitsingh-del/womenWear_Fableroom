@@ -3153,3 +3153,42 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
   .reviews{margin-top:10px!important;margin-bottom:10px!important}
   .material-wrap{padding-bottom:10px!important}
 }
+
+/* ══ Round 47: Uniform section boundary gap — 28px desktop / 18px mobile ══ */
+/* Every section boundary = padB + padT. For 28px total: 14 + 14.
+   For 18px total on mobile: 9 + 9. Applied to ALL sections uniformly. */
+.merch-category,.merch-bags,.merch-diamonds,.merch-gemstones,.merch-scarves,
+.merch-panorama,.merch-reverse,.merch-mosaic,
+.merch-bags.merch-category,.merch-diamonds.merch-category,
+.merch-gemstones.merch-category,.merch-scarves.merch-category,
+.looks-premium,.looks-premium.section,
+.finder,.finder.section,
+.recommended,.recommended.section,
+.section.trending,.section.trending.trending,
+.faq,.faq.section,
+.out-about,.section.out-about,
+.category-section,.category-section.section{
+  padding-top:14px!important;padding-bottom:14px!important}
+.material-wrap{padding-top:14px!important;padding-bottom:14px!important}
+.reviews{margin-top:14px!important;margin-bottom:14px!important}
+.newsletter{padding-top:14px!important;padding-bottom:14px!important}
+.site-footer{padding-top:14px!important;padding-bottom:14px!important}
+
+@media(max-width:760px){
+  .merch-category,.merch-bags,.merch-diamonds,.merch-gemstones,.merch-scarves,
+  .merch-panorama,.merch-reverse,.merch-mosaic,
+  .merch-bags.merch-category,.merch-diamonds.merch-category,
+  .merch-gemstones.merch-category,.merch-scarves.merch-category,
+  .looks-premium,.looks-premium.section,
+  .finder,.finder.section,
+  .recommended,.recommended.section,
+  .section.trending,.section.trending.trending,
+  .faq,.faq.section,
+  .out-about,.section.out-about,
+  .category-section,.category-section.section{
+    padding-top:9px!important;padding-bottom:9px!important}
+  .material-wrap{padding-top:9px!important;padding-bottom:9px!important}
+  .reviews{margin-top:9px!important;margin-bottom:9px!important}
+  .newsletter{padding-top:9px!important;padding-bottom:9px!important}
+  .site-footer{padding-top:9px!important;padding-bottom:9px!important}
+}
