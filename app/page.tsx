@@ -444,7 +444,7 @@ function BagEdit({products:items,wish,onWish,onOpen}:{products:Product[];wish:nu
   const [canHover,setCanHover]=useState(false);
   useEffect(()=>{setCanHover(window.matchMedia("(hover: hover) and (pointer: fine)").matches)},[]);
   const preview=(i:number|null)=>{if(canHover)setActive(i)};
-  const shown=items.filter(BAG_FILTERS[filter][1]);
+  const shown=items.filter(BAG_FILTERS[filter][1]).slice(0,4);
   useEffect(()=>{setActive(null)},[filter]);
   return <section className="merch-category merch-bags" id="bags">
     <header><span>01</span><div><p className="eyebrow">PURE LEATHER &amp; SUEDE</p><h2>The Bag Edit</h2><p>Useful shapes and specialist craft, organised by the way you carry.</p></div></header>

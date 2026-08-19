@@ -2070,3 +2070,67 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .look-modal-links{display:flex;flex-direction:column;gap:10px}
 .look-modal-links a{display:inline-flex;align-items:center;justify-content:space-between;border:1px solid var(--ink);padding:12px 16px;color:var(--ink);text-decoration:none;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:background .2s ease,color .2s ease}
 .look-modal-links a:hover{background:var(--ink);color:#fff}
+
+/* ── Round 22 ────────────────────────────────────────────────────────────── */
+
+/* The filter nav styling was scoped to .merch-scarves, so the bag edit rendered
+   its buttons at browser defaults. Same treatment for every edit section. */
+.subcategories{display:grid!important;gap:0!important;padding:15px 0!important;margin:0 0 14px!important;
+  overflow:visible!important;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.merch-bags .subcategories{grid-template-columns:repeat(5,minmax(0,1fr))}
+.merch-scarves .subcategories{grid-template-columns:repeat(3,minmax(0,1fr))}
+.subcategories button{min-width:0;justify-self:center;text-align:center;padding:4px 2px;border:0;background:none;
+  color:var(--ink);font:700 9px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+  border-bottom:1px solid transparent;opacity:.55;transition:border-color .25s ease,opacity .25s ease}
+.subcategories button.is-on{opacity:1;border-bottom-color:currentColor}
+.subcategories button:hover{opacity:1}
+
+/* Bag cards match the scarf card frame so both rows read as one system. */
+.merch-bags .scarf-style-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.merch-bags .scarf-image{background:var(--ivory)}
+.merch-bags .scarf-image img{object-fit:contain;padding:22px}
+
+/* Tile captions sit under the image instead of over it, so removing the black
+   overlay does not leave the label camouflaged against the photograph. */
+.edit-category-grid>a{height:auto;background:transparent;display:block}
+.edit-category-grid>a::after{display:none}
+.edit-category-grid img{position:static;width:100%;height:238px;object-fit:cover;background:var(--ivory)}
+.edit-category-grid span{position:static;display:grid;gap:3px;padding:12px 2px 0;left:auto;right:auto;bottom:auto}
+.edit-category-grid span>small{margin:0;color:var(--rust-gold);font:700 7px/1 var(--sans);letter-spacing:.15em}
+.edit-category-grid b{color:var(--ink);font:400 20px/1.15 var(--serif);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.edit-category-grid b .icon{color:var(--ink);opacity:.55}
+.edit-category-grid>a:hover b .icon{opacity:1}
+
+@media(max-width:760px){
+  .merch-bags .subcategories{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:8px!important}
+  .subcategories button{font-size:7.5px}
+  .merch-bags .scarf-image img{padding:14px}
+  .edit-category-grid img{height:150px}
+  .edit-category-grid span{padding:9px 1px 0}
+  .edit-category-grid b{font-size:15px}
+}
+
+/* Text colours left over from the dark theme were rendering near-white on the
+   whitewashed sections: the diamond edit copy and every subcategory tile label. */
+.merch-reverse,.merch-reverse h2,.merch-reverse>header>div>p{color:var(--ink)}
+.merch-reverse>header>div>p:last-child,
+.merch-mosaic>header>div>p:last-child,
+.merch-panorama>header>div>p:last-child{color:var(--stone-ink,#665b51)}
+.merch-reverse .eyebrow{color:var(--ink)}
+.edit-category-grid>a,.edit-category-grid span,.edit-category-grid b{color:var(--ink)}
+.edit-category-grid span>small{color:var(--rust-gold)}
+
+/* `.merch-reverse .edit-category-grid > a` outranks the unscoped rule, so the
+   tile anchor kept its ivory colour. Match the specificity. */
+.merch-reverse .edit-category-grid>a,
+.merch-mosaic .edit-category-grid>a,
+.merch-reverse .edit-category-grid b,
+.merch-mosaic .edit-category-grid b{color:var(--ink)}
+.merch-reverse .edit-category-grid>a{background:transparent}
+
+/* The caption sits outside the image now, so the tile must not clip or tint it. */
+.edit-category-grid>a,
+.merch-reverse .edit-category-grid>a,
+.merch-mosaic .edit-category-grid>a{background:transparent!important;overflow:visible;height:auto}
+.edit-category-grid span{padding:12px 0 0}
+.edit-category-grid b{padding-bottom:2px}
