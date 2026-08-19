@@ -3122,7 +3122,8 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
   content:"";position:absolute;bottom:0;
   left:var(--edge);right:var(--edge);
   height:1px;background:var(--line);pointer-events:none}
-.merch-scarves::after{display:none}
+/* Round 50: scarves divider restored — was the one boundary missing the
+   line entirely. Now present and aligned at var(--edge) like the other three. */
 
 /* 2 — Section boundary gaps: 24+24+1 = 49px → 14+14+1 = 29px desktop.
    Mobile: 16+16+1 = 33px → 10+10+1 = 21px. */
@@ -3154,9 +3155,11 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
   .material-wrap{padding-bottom:10px!important}
 }
 
-/* ══ Round 48: +15% breathing space on the uniform section boundary ══ */
-/* Was 28px desktop (14+14) / 18px mobile (9+9). +15% = 32px desktop (16+16)
-   / 21px mobile (10.5+10.5). Applied to ALL sections uniformly. */
+/* ══ Round 48+51: breathing space on the uniform section boundary ══ */
+/* Original 28px desktop (14+14) / 18px mobile (9+9).
+   Round 48: +15% -> 32px desktop (16+16) / 21px mobile (10.5+10.5).
+   Round 51: another +15% desktop / +5% mobile on top of Round 48 ->
+   36.8px desktop (18.4+18.4) / 22.05px mobile (11.025+11.025). */
 .merch-category,.merch-bags,.merch-diamonds,.merch-gemstones,.merch-scarves,
 .merch-panorama,.merch-reverse,.merch-mosaic,
 .merch-bags.merch-category,.merch-diamonds.merch-category,
@@ -3168,11 +3171,11 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
 .faq,.faq.section,
 .out-about,.section.out-about,
 .category-section,.category-section.section{
-  padding-top:16px!important;padding-bottom:16px!important}
-.material-wrap{padding-top:16px!important;padding-bottom:16px!important}
-.reviews{margin-top:16px!important;margin-bottom:16px!important}
-.newsletter{padding-top:16px!important;padding-bottom:16px!important}
-.site-footer{padding-top:16px!important;padding-bottom:16px!important}
+  padding-top:18.4px!important;padding-bottom:18.4px!important}
+.material-wrap{padding-top:18.4px!important;padding-bottom:18.4px!important}
+.reviews{margin-top:18.4px!important;margin-bottom:18.4px!important}
+.newsletter{padding-top:18.4px!important;padding-bottom:18.4px!important}
+.site-footer{padding-top:18.4px!important;padding-bottom:18.4px!important}
 
 @media(max-width:760px){
   .merch-category,.merch-bags,.merch-diamonds,.merch-gemstones,.merch-scarves,
@@ -3186,11 +3189,11 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
   .faq,.faq.section,
   .out-about,.section.out-about,
   .category-section,.category-section.section{
-    padding-top:10.5px!important;padding-bottom:10.5px!important}
-  .material-wrap{padding-top:10.5px!important;padding-bottom:10.5px!important}
-  .reviews{margin-top:10.5px!important;margin-bottom:10.5px!important}
-  .newsletter{padding-top:10.5px!important;padding-bottom:10.5px!important}
-  .site-footer{padding-top:10.5px!important;padding-bottom:10.5px!important}
+    padding-top:11.025px!important;padding-bottom:11.025px!important}
+  .material-wrap{padding-top:11.025px!important;padding-bottom:11.025px!important}
+  .reviews{margin-top:11.025px!important;margin-bottom:11.025px!important}
+  .newsletter{padding-top:11.025px!important;padding-bottom:11.025px!important}
+  .site-footer{padding-top:11.025px!important;padding-bottom:11.025px!important}
 }
 
 /* ══ Round 49: desktop 10% zoom bump — verified, no overflow/wrapping ══ */
