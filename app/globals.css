@@ -2370,3 +2370,12 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .review-score::before{animation-delay:-1.6s}
 .trust-box>*,.reviews>*,.review-score>*{position:relative;z-index:1}
 @media(prefers-reduced-motion:reduce){.trust-box::before,.reviews::before,.review-score::before{animation:none}}
+
+/* ── Round 26: wishlist icon alignment ──────────────────────────────────── */
+/* Icon was position:absolute;top:12px which floated it mid-title for
+   products with a two-line name. Pin it to the price row instead. */
+.scarf-style-grid article div{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto auto;align-items:end}
+.scarf-style-grid article div>small{grid-column:1;grid-row:1}
+.scarf-style-grid article div>h3{grid-column:1;grid-row:2}
+.scarf-style-grid article div>b{grid-column:1;grid-row:3;align-self:center}
+.scarf-style-grid .mini-wish{position:static;grid-column:2;grid-row:1/4;align-self:end;justify-self:end;margin-bottom:2px}
