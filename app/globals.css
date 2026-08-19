@@ -2469,3 +2469,55 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
    text reads directly on the glass surface. */
 .trust-box>span,.trust-box>span:nth-child(n){background:none!important;background-image:none!important}
 .review-score{background:rgba(20,20,24,.72)!important;backdrop-filter:blur(8px)}
+
+/* ── Round 29: trust + reviews — definitive gradient glass, zero animation ─ */
+/* Kill every animation and sheen from all prior rounds */
+.trust-box,.reviews,.review-score,.review-track blockquote,
+.trust-box::before,.reviews::before,.review-score::before{
+  animation:none!important;transition:none!important}
+.trust-box::before,.reviews::before,.review-score::before{
+  content:none!important;display:none!important}
+
+/* Unified deep gradient-black glass for both sections.
+   No text background, no cell boxes — pure glass surface. */
+.trust-and-proof,.reviews{
+  background:linear-gradient(175deg,#1c1c20 0%,#111114 40%,#0a0a0c 100%)!important;
+  border-top:1px solid rgba(255,255,255,.07);
+  border-bottom:1px solid rgba(255,255,255,.07)}
+.trust-box{
+  background:transparent!important;
+  background-image:none!important}
+.trust-box>span,
+.trust-box>span:nth-child(n),
+.trust-box>span:first-child,
+.trust-box>span:last-child{
+  background:none!important;
+  background-image:none!important;
+  box-shadow:none!important}
+/* stat dividers — hairline only */
+.trust-box>span:nth-child(n+2){
+  border-left:1px solid rgba(255,255,255,.10)!important}
+.trust-box b{color:#f5f0e8!important;text-shadow:none!important}
+.trust-copy small{color:rgba(245,240,232,.55)!important}
+
+/* Reviews panel */
+.reviews{
+  background:linear-gradient(175deg,#1c1c20 0%,#111114 40%,#0a0a0c 100%)!important}
+.review-score{
+  background:transparent!important;
+  background-image:none!important;
+  box-shadow:none!important}
+.review-score strong,.review-score a,
+.review-score .eyebrow,.review-score span{
+  background:none!important;
+  text-shadow:none!important}
+/* review cards */
+.review-track blockquote{
+  background:rgba(255,255,255,.05)!important;
+  background-image:none!important;
+  border:1px solid rgba(255,255,255,.09)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08)!important;
+  border-radius:8px!important}
+.review-track blockquote:hover{
+  background:rgba(255,255,255,.08)!important;
+  border-color:rgba(255,255,255,.15)!important}
