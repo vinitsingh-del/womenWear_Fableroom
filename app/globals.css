@@ -2994,3 +2994,25 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
   .newsletter{padding-top:35px!important;padding-bottom:35px!important}
   .site-footer{padding-top:27px!important;padding-bottom:27px!important}
 }
+
+/* ── Round 41 ─────────────────────────────────────────────────────────────── */
+
+/* 1 — Reviews → Bag Edit gap +10% on desktop only (20px → 22px). */
+@media(min-width:761px){
+  .merch-bags,.merch-bags.merch-category{padding-top:22px!important}
+}
+
+/* 2 — Recommended product card title font to match bag edit (21px serif). */
+.recommended .product-copy h3,.recommended .product-copy h3 button{
+  font-size:21px!important;font-family:var(--serif)!important;font-weight:400!important}
+
+/* 3 — Looks page desktop: full-width from left alignment, editorial.
+   Remove the inner group padding so images and headings both start at the
+   page content edge (same left as the looks-hero). */
+@media(min-width:761px){
+  .looks-hero{padding-left:0!important;padding-right:max(42px,calc((100% - 1180px)/2))!important}
+  .lookbook-group{padding-left:0!important;padding-right:0!important}
+  .lookbook-group-head{padding-left:0!important;margin-left:0!important}
+  .lookbook-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important}
+  .look-tile-card{aspect-ratio:3/4.4!important}
+}
