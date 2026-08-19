@@ -2907,3 +2907,25 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .looks-hero h1{margin:4px 0 8px!important;font-size:clamp(36px,4.6vw,60px)!important;line-height:1.02!important}
 .lookbook-group{padding-bottom:40px!important}
 @media(min-width:761px){.lookbook-group:first-child{padding-top:8px!important}}
+
+/* ── Round 38 ─────────────────────────────────────────────────────────────── */
+
+/* 1 — Looks hero: add the same left/right padding as the lookbook-group so the
+   hero title aligns with the group headings and look grid below.
+   Remove the br-forced line break since we shortened the title. */
+.looks-hero{
+  padding-left:max(42px,calc((100% - 1180px)/2))!important;
+  padding-right:max(42px,calc((100% - 1180px)/2))!important}
+.looks-hero h1{font-size:clamp(32px,3.8vw,54px)!important;line-height:1.04!important}
+@media(max-width:760px){
+  .looks-hero{padding-left:var(--edge)!important;padding-right:var(--edge)!important}
+  .looks-hero h1{font-size:clamp(26px,7.5vw,38px)!important}
+}
+
+/* 2 — Reviews section: match the 26px / 17px gap used by trust→proof. */
+.reviews{margin-top:26px!important;margin-bottom:0!important}
+.out-about{padding-top:26px!important}
+@media(max-width:760px){
+  .reviews{margin-top:17px!important}
+  .out-about{padding-top:17px!important}
+}
