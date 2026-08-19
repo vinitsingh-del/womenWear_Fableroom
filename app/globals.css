@@ -3029,3 +3029,60 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
   .merch-gemstones .merch-feature .feature-media{object-position:center 66%!important}
   .merch-scarves .scarf-feature img{object-position:center 20%!important}
 }
+
+/* ══ Round 44: Dead space removal — systematic reduction across all sections ══ */
+/* Strategy: sections with 52px padding → 30px; 42px → 26px; 36px → 24px.
+   Applied with !important to beat any earlier accumulated rules.
+   Mobile: same proportional reduction. */
+
+/* — Collection Grid — 52/26 → 30/16 */
+.category-section,.category-section.section{padding-top:30px!important;padding-bottom:16px!important}
+
+/* — Edit sections 01-04: top already at 22-36px. Standardise 24/24 — */
+.merch-bags,.merch-bags.merch-category{padding-top:24px!important;padding-bottom:24px!important}
+.merch-diamonds,.merch-gemstones,.merch-scarves,
+.merch-diamonds.merch-category,.merch-gemstones.merch-category,.merch-scarves.merch-category{
+  padding-top:24px!important;padding-bottom:24px!important}
+
+/* — Shop the Look + Category Quiz + Recommended: 52/52 → 30/30 — */
+.looks-premium,.looks-premium.section{padding-top:30px!important;padding-bottom:30px!important}
+.finder,.finder.section{padding-top:30px!important;padding-bottom:30px!important}
+.recommended,.recommended.section{padding-top:30px!important;padding-bottom:30px!important}
+
+/* — Out & About: 21/42 → 14/26 — */
+.out-about,.section.out-about{padding-top:14px!important;padding-bottom:26px!important}
+
+/* — Trending + FAQ: 42/42 → 26/26 — */
+.section.trending{padding-top:26px!important;padding-bottom:26px!important}
+.faq,.faq.section{padding-top:26px!important;padding-bottom:26px!important}
+
+/* — Newsletter: 51/51 → 32/32 — */
+.newsletter{padding-top:32px!important;padding-bottom:32px!important}
+
+/* — Footer: 42/42 → 26/26 — */
+.site-footer{padding-top:26px!important;padding-bottom:26px!important}
+
+/* ── Mobile: same logic, proportionally smaller ─────────────────────── */
+@media(max-width:760px){
+  .category-section,.category-section.section{padding-top:20px!important;padding-bottom:10px!important}
+  .merch-bags,.merch-bags.merch-category,
+  .merch-diamonds,.merch-gemstones,.merch-scarves,
+  .merch-diamonds.merch-category,.merch-gemstones.merch-category,.merch-scarves.merch-category{
+    padding-top:16px!important;padding-bottom:16px!important}
+  .looks-premium,.looks-premium.section{padding-top:20px!important;padding-bottom:20px!important}
+  .finder,.finder.section{padding-top:20px!important;padding-bottom:20px!important}
+  .recommended,.recommended.section{padding-top:20px!important;padding-bottom:20px!important}
+  .out-about,.section.out-about{padding-top:10px!important;padding-bottom:17px!important}
+  .section.trending{padding-top:17px!important;padding-bottom:17px!important}
+  .faq,.faq.section{padding-top:17px!important;padding-bottom:17px!important}
+  .newsletter{padding-top:22px!important;padding-bottom:22px!important}
+  .site-footer{padding-top:17px!important;padding-bottom:17px!important}
+}
+
+/* Trending selector override — add body prefix for specificity */
+body .trending,body .section.trending,body .trending.section{padding-top:26px!important;padding-bottom:26px!important}
+@media(max-width:760px){body .trending,body .section.trending,body .trending.section{padding-top:17px!important;padding-bottom:17px!important}}
+
+/* Force trending: 3-class specificity (0,0,3,0) beats adjacent-sibling (0,0,2,0) */
+.section.trending.trending{padding-top:26px!important;padding-bottom:26px!important}
+@media(max-width:760px){.section.trending.trending{padding-top:17px!important;padding-bottom:17px!important}}
