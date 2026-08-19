@@ -2414,3 +2414,58 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .review-track blockquote:hover{
   background:rgba(42,42,50,.88)!important;
   border-color:rgba(255,255,255,.18)!important}
+
+/* ── Round 28 ────────────────────────────────────────────────────────────── */
+
+/* 1 — Hearts: align to the price baseline regardless of title length.
+   The grid approach from round 26 must also apply to the desktop view where
+   the product grid is 4-column rather than a scroll rail. */
+.scarf-style-grid article div{
+  display:grid!important;grid-template-columns:1fr 40px;
+  grid-template-rows:auto auto auto;align-items:end;padding:12px 0}
+.scarf-style-grid article div>small{grid-column:1;grid-row:1;align-self:start}
+.scarf-style-grid article div>h3{grid-column:1;grid-row:2;margin-right:0!important}
+.scarf-style-grid article div>b{grid-column:1;grid-row:3;align-self:center}
+.scarf-style-grid .mini-wish{position:static!important;grid-column:2;grid-row:1/4;align-self:end!important;justify-self:end;margin-bottom:4px}
+
+/* 2 — Desktop: side drawer from the right instead of a centred modal. */
+@media(min-width:761px){
+  .overlay.look-drawer-overlay{justify-content:flex-end;align-items:stretch}
+  .look-modal.look-drawer{width:min(520px,46vw);max-height:100dvh;height:100dvh;margin:0;border-radius:0;overflow:auto;display:flex;flex-direction:column}
+  .look-modal.look-drawer>figure{flex:0 0 240px;height:240px}
+}
+
+/* 3 — Mobile: fit all products in one view without scrolling. */
+@media(max-width:760px){
+  .look-modal{display:flex;flex-direction:column;max-height:100dvh;height:100dvh}
+  .look-modal>figure{flex:0 0 120px;height:120px}
+  .look-modal-body{flex:1;overflow:auto;padding:16px 18px 80px}
+  .look-modal-body h2{font-size:20px;margin:4px 0}
+  .look-modal-copy{font-size:11px;margin:0 0 12px}
+  .look-modal-list article{gap:10px;padding:8px 0}
+  .look-modal-list article h3{font-size:13px;margin:2px 0}
+  .look-modal-list article b{font-size:11px}
+  .look-modal-list .look-modal-thumb img{width:44px;height:44px}
+  .look-modal-list .look-modal-thumb{min-width:44px}
+  .look-modal .look-add{position:sticky;bottom:0;width:100%;justify-content:center;margin:0;border-radius:0}
+}
+
+/* 4 — Looks page hero text overflow on mobile. */
+@media(max-width:760px){
+  .looks-hero{padding:12px 16px 14px!important;overflow:visible}
+  .looks-hero h1{font-size:clamp(24px,7.5vw,38px)!important;word-break:break-word;overflow-wrap:break-word}
+}
+
+/* 5 — Mobile subcategory nav: equal spacing across all edit sections. */
+@media(max-width:760px){
+  .subcategories{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;
+    gap:0!important;padding:11px 16px!important;margin:0 -16px 14px!important;scrollbar-width:none}
+  .subcategories::-webkit-scrollbar{display:none}
+  .subcategories button,.subcategories a{flex:1 0 auto;min-width:0;text-align:center;padding:5px 12px!important;white-space:nowrap}
+  .merch-bags .subcategories button{flex:1 0 auto}
+}
+
+/* 6 — Trust badge and review-score: remove individual cell backgrounds,
+   text reads directly on the glass surface. */
+.trust-box>span,.trust-box>span:nth-child(n){background:none!important;background-image:none!important}
+.review-score{background:rgba(20,20,24,.72)!important;backdrop-filter:blur(8px)}

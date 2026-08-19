@@ -58,8 +58,8 @@ function LookDetailModal({look,index,onClose,onToast}:{look:Look;index:number;on
   const toggleWish=(id:number)=>setWish(w=>{const n=w.includes(id)?w.filter(x=>x!==id):[...w,id];writeWish(n);return n});
   const addOne=(id:number)=>{const cart=readCart();cart[id]=(cart[id]||0)+1;writeCart(cart);onToast("Added to your bag")};
   const addAll=()=>{const cart=readCart();items.forEach(p=>{cart[p.id]=(cart[p.id]||0)+1});writeCart(cart);onToast("Look added to your bag")};
-  return <div className="overlay" onMouseDown={e=>e.currentTarget===e.target&&onClose()}>
-    <div className="look-modal">
+  return <div className="overlay look-drawer-overlay" onMouseDown={e=>e.currentTarget===e.target&&onClose()}>
+    <div className="look-modal look-drawer">
       <button className="panel-close" onClick={onClose}><CloseIcon/></button>
       <figure><img src={look.image} alt={look.alt}/></figure>
       <div className="look-modal-body">
