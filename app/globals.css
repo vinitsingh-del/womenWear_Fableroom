@@ -1881,7 +1881,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
   --charcoal-grad:linear-gradient(168deg,#14161c 0%,#0a0c11 46%,#04050a 100%);
 }
 
-.trust-and-proof,.material-wrap,.merch-reverse,.looks-premium,
+.material-wrap,.merch-reverse,.looks-premium,
 .reviews,.newsletter,.bag-subcategories{background:var(--charcoal-grad)!important}
 .trust-box{background:var(--charcoal-deep)}
 .merch-diamonds .merch-feature.feature-cutout{background:transparent}
@@ -1923,7 +1923,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
   --glass-panel:linear-gradient(158deg,rgba(255,255,255,.085) 0%,rgba(255,255,255,.028) 100%);
 }
 
-.trust-and-proof,.material-wrap,.merch-reverse,.looks-premium,
+.material-wrap,.merch-reverse,.looks-premium,
 .reviews,.newsletter,.bag-subcategories{background:var(--charcoal-grad)!important}
 .trust-box{background:var(--charcoal-deep)}
 .review-score{background:linear-gradient(150deg,#14161c 0%,#07080d 100%)}
@@ -1952,3 +1952,6 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .edit-category-grid>a::after{background:linear-gradient(transparent,rgba(2,3,7,.94))}
 .look-nav{background:rgba(4,5,10,.5);border-color:rgba(255,255,255,.4)}
 .look-nav:hover{background:rgba(4,5,10,.76)}
+
+/* The trust band's surround stays white; only the badge card carries colour. */
+.trust-and-proof{background:#fff!important}
