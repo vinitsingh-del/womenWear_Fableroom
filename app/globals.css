@@ -2639,3 +2639,47 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
     transform:scale(1.08)!important;
     transition:transform .55s cubic-bezier(.25,.46,.45,.94)!important}
 }
+
+/* ── Round 32: remove nav divider lines; bag nav shows all options ─────────── */
+
+/* 1 — The subcategory nav has border-top and border-bottom that appear as
+   standalone lines when there is white space around the nav. Remove them so
+   the section reads as one continuous block. */
+.subcategories{border-top:0!important;border-bottom:0!important}
+/* Also strip any section-level lines that aren't intentional dividers. */
+.trust-and-proof{border-top:0!important;border-bottom:0!important}
+.reviews{border-top:0!important}
+
+/* 2 — Bag nav: 5 columns in a fixed grid, nothing scrolls or bleeds.
+   Font reduced to fit all five labels on narrow screens. */
+.merch-bags .subcategories{
+  display:grid!important;
+  grid-template-columns:repeat(5,minmax(0,1fr))!important;
+  overflow-x:visible!important;
+  overflow:visible!important;
+  flex-wrap:nowrap;
+  margin:0 0 14px!important;
+  padding:12px 0!important}
+.merch-bags .subcategories button{
+  flex:none!important;
+  white-space:nowrap;
+  justify-self:center;
+  font-size:8px!important;
+  letter-spacing:.09em!important}
+
+@media(max-width:760px){
+  .merch-bags .subcategories{
+    display:grid!important;
+    grid-template-columns:repeat(5,minmax(0,1fr))!important;
+    overflow-x:visible!important;
+    gap:0!important;
+    padding:10px 0!important;
+    margin:0 0 10px!important}
+  .merch-bags .subcategories button{
+    font-size:6.5px!important;
+    letter-spacing:.07em!important;
+    padding:4px 2px!important;
+    white-space:normal;
+    text-align:center;
+    line-height:1.25}
+}
