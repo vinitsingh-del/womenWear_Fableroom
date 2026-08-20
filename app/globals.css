@@ -3006,13 +3006,13 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .recommended .product-copy h3,.recommended .product-copy h3 button{
   font-size:21px!important;font-family:var(--serif)!important;font-weight:400!important}
 
-/* 3 — Looks page desktop: full-width from left alignment, editorial.
-   Remove the inner group padding so images and headings both start at the
-   page content edge (same left as the looks-hero). */
+/* 3 — Looks page desktop: text and images share ONE consistent 1320px
+   content column (same convention as the rest of the site), so there's a
+   single source of truth for the left/right edge and no separate full-bleed
+   calc() formula to fall out of sync with. Base rules for .looks-hero and
+   .lookbook-group already set max-width:1320px;margin:auto;padding:42px —
+   this just keeps the grid at 3 columns on desktop. */
 @media(min-width:431px){
-  .looks-hero{max-width:none!important;margin:0!important;padding-left:max(42px,calc((100vw - 1320px)/2 + 42px))!important;padding-right:max(42px,calc((100vw - 1180px)/2))!important}
-  .lookbook-group{max-width:none!important;margin:0!important;padding-left:0!important;padding-right:0!important}
-  .lookbook-group-head{padding-left:max(42px,calc((100vw - 1320px)/2 + 42px))!important;margin-left:0!important}
   .lookbook-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important}
   .look-tile-card{aspect-ratio:3/4.4!important}
 }
@@ -3519,3 +3519,27 @@ html{scroll-behavior:smooth}
 }
 .lookbook-group-head.lookbook-group-head{margin-bottom:18px!important}
 .lookbook-group.lookbook-group:first-of-type{padding-top:6px!important}
+
+/* Tighten the gap between the hero block and the first Look Book group —
+   was reading as two separate, loosely-spaced header blocks. Desktop only. */
+@media(min-width:431px){
+  .looks-hero.looks-hero{padding-bottom:28px!important}
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   DEFINITIVE Look Book desktop alignment — single source of truth.
+   This file has accumulated several competing padding formulas for
+   .looks-hero (base rule, Round 38 at ~1180px basis, Round 41 at ~1320px
+   basis) that individually looked plausible but disagreed with each other,
+   so the visible result depended on which one happened to win the cascade.
+   This block is appended last and uses one canonical formula — identical
+   on header, hero, and each group — so text and images share exactly one
+   left/right edge, matching the site's standard 1320px content column.
+   Mobile (max-width:430px) is untouched.
+   ══════════════════════════════════════════════════════════════════════ */
+@media(min-width:431px){
+  .looks-header.looks-header{padding-left:max(42px,calc((100vw - 1320px)/2 + 42px))!important;padding-right:max(42px,calc((100vw - 1320px)/2 + 42px))!important}
+  .looks-hero.looks-hero{max-width:none!important;margin:0!important;padding-left:max(42px,calc((100vw - 1320px)/2 + 42px))!important;padding-right:max(42px,calc((100vw - 1320px)/2 + 42px))!important}
+  .lookbook-group.lookbook-group{max-width:none!important;margin:0!important;padding-left:max(42px,calc((100vw - 1320px)/2 + 42px))!important;padding-right:max(42px,calc((100vw - 1320px)/2 + 42px))!important}
+  .lookbook-group-head.lookbook-group-head{padding-left:0!important;margin-left:0!important}
+}
