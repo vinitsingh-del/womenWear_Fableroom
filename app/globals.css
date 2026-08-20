@@ -3471,3 +3471,17 @@ html{scroll-behavior:smooth}
 @media(max-width:430px){
   .merch-scarves .scarf-style-grid article>div{padding-bottom:4px!important}
 }
+
+/* ══ Round 78: DESKTOP gap spec — rows 2,3,10,15 to 42.3 rendered ══ */
+/* CSS 36.783 = 42.3 / 1.15 zoom. Rows 1 and 16 already on target; rows
+   4-9 and 11-14 already 42.3. Mobile untouched. */
+@media(min-width:431px){
+  .category-section.category-section{padding-bottom:36.783px!important}
+  .material-wrap.material-wrap{padding-top:36.783px!important}
+  /* r10: the 84px remainder was the image column being vertically centred
+     against a taller quiz card (grid align-items). Top-align the columns and
+     carry the boundary on looks-premium padding-bottom. */
+  .finder.finder{padding-top:0!important;align-items:start}
+  .looks-premium.looks-premium{padding-bottom:36.75px!important}
+  .faq.faq{padding-bottom:36.783px!important}
+}
