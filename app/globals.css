@@ -3281,3 +3281,16 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
    anchored inside the text block instead of the card. Release it (scarves
    only) so the article anchors the heart over the image top-right. */
 .merch-scarves .scarf-style-grid article>div{position:static!important}
+
+/* ══ Round 62: scarf cards match the product-card reference; reviews +20% mobile ══ */
+/* 1) Scarf Edit cards match the attached product-card render: no always-on
+   pill on the image — the action label becomes the full-width black bar that
+   slides up on hover, exactly like the product cards. Heart top-right, label,
+   serif title, price bottom-left already in place from rounds 60/61. */
+.merch-scarves .scarf-image span{left:0;right:0;bottom:0;min-height:42px;display:grid;place-items:center;background:var(--ink);color:#fff;padding:0;transform:translateY(100%);transition:transform .25s}
+.merch-scarves .scarf-image:hover span{transform:none}
+/* 2) Reviews section reads too small on mobile: +20% via zoom, orientation
+   (horizontal marquee) untouched. */
+@media(max-width:430px){
+  .reviews{zoom:1.2}
+}
