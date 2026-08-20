@@ -3237,7 +3237,7 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
    padding; measured visual gap was 6px vs the 22px standard. +16px margin
    restores the rhythm regardless of the overflow anomaly. Mobile only. */
 @media(max-width:430px){
-  .merch-scarves .scarf-style-grid{margin-bottom:14px}
+  .merch-scarves .scarf-style-grid{margin-bottom:0}
 }
 
 /* ══ Round 60: mobile scarf cards — even bottom line, gap -5% ══ */
@@ -3249,7 +3249,7 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
 @media(max-width:430px){
   .merch-scarves .scarf-style-grid article>div{grid-template-rows:auto auto 1fr!important}
   .merch-scarves .scarf-style-grid article div>b{align-self:end!important}
-  .looks-premium,.looks-premium.section{padding-top:10px!important}
+  .looks-premium,.looks-premium.section{padding-top:8.2px!important}
 }
 
 /* ══ Round 61: zoom bump + card heart repositions ══ */
@@ -3323,8 +3323,11 @@ html{scroll-behavior:smooth}
 @media(max-width:430px){
   .category-section,.category-section.section{padding-top:25.926px!important;padding-bottom:25.926px!important}
   .material-wrap{padding-top:25.926px!important}
-  .merch-bags.merch-bags,.merch-diamonds.merch-diamonds,.merch-gemstones.merch-gemstones{padding-bottom:14.9px!important}
-  .merch-scarves.merch-scarves{padding-bottom:15.926px!important}
+  /* Round 77b: boundary re-based to the VISIBLE metric (price -> next numeral
+     = 28 rendered): 11.9 now lives inside the card (icon half + 4 padding),
+     so the section pair carries the remaining 16.1 (11.025 + 3.885). */
+  .merch-bags.merch-bags,.merch-diamonds.merch-diamonds,.merch-gemstones.merch-gemstones{padding-bottom:3.885px!important}
+  .merch-scarves.merch-scarves{padding-bottom:0px!important}
   /* Round 76: Shop-look -> Quiz to 30px rendered (CSS 16.753+11.025=27.778 x1.08) */
   .looks-premium,.looks-premium.section{padding-bottom:16.753px!important}
 }
@@ -3443,4 +3446,25 @@ html{scroll-behavior:smooth}
    shorter material line was lifting its price 16px above the others. */
 @media(max-width:430px){
   .scarf-style-grid article div>small{min-height:32px!important}
+}
+
+/* ══ Round 77: kill the dead space INSIDE the card below the price ══ */
+/* The box-edge boundary was 28 as specced, but the 40px ATC icon stretched
+   the price row (price top-aligned in it) and the div padding added more —
+   ~28px of trapped space under the price made the visible gap ~56. Price now
+   centers with the icon and the card bottom padding is trimmed on mobile. */
+.scarf-style-grid article div>b{align-self:center!important}
+@media(max-width:430px){
+  .scarf-style-grid article>div{padding-bottom:4px!important}
+}
+/* Round 77c: the round-60 scarves-scoped grid-template-rows (auto auto 1fr)
+   was still winning over the general reset and stretching the price row in
+   the Scarf Edit only. Match bags. */
+@media(max-width:430px){
+  .merch-scarves .scarf-style-grid article>div{grid-template-rows:auto auto auto!important}
+}
+/* Round 77d: a scarves-scoped padding rule was keeping the card bottom at
+   12px while bags sat at 4px — the last of the extra space. Match bags. */
+@media(max-width:430px){
+  .merch-scarves .scarf-style-grid article>div{padding-bottom:4px!important}
 }
