@@ -3326,7 +3326,10 @@ html{scroll-behavior:smooth}
   /* Round 77b: boundary re-based to the VISIBLE metric (price -> next numeral
      = 28 rendered): 11.9 now lives inside the card (icon half + 4 padding),
      so the section pair carries the remaining 16.1 (11.025 + 3.885). */
-  .merch-bags.merch-bags,.merch-diamonds.merch-diamonds,.merch-gemstones.merch-gemstones{padding-bottom:3.885px!important}
+  .merch-bags.merch-bags{padding-bottom:3.885px!important}
+  /* diamonds/gemstones end in tile grids (no internal card space) so they
+     keep the full boundary padding. */
+  .merch-diamonds.merch-diamonds,.merch-gemstones.merch-gemstones{padding-bottom:14.9px!important}
   .merch-scarves.merch-scarves{padding-bottom:0px!important}
   /* Round 76: Shop-look -> Quiz to 30px rendered (CSS 16.753+11.025=27.778 x1.08) */
   .looks-premium,.looks-premium.section{padding-bottom:16.753px!important}
