@@ -39,7 +39,7 @@ let cancelActiveScroll: null | (()=>void) = null;
 function smoothScrollTo(target:HTMLElement){
   cancelActiveScroll?.();
   const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const headerOffset=window.matchMedia("(max-width: 410px)").matches?55:68;
+  const headerOffset=window.matchMedia("(max-width: 430px)").matches?55:68;
   const start=window.scrollY;
   const destination=Math.max(0,target.getBoundingClientRect().top+start-headerOffset);
   const distance=destination-start;

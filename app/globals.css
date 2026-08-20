@@ -9,7 +9,7 @@
 
 .hero{width:100%;height:calc(100svh - 96px);min-height:590px;max-height:820px;position:relative;overflow:hidden;background:#bbaa96}.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}.hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,14,10,.68),rgba(17,14,10,.14) 57%,transparent)}.hero-copy{position:absolute;left:var(--edge);top:50%;transform:translateY(-50%);z-index:2;color:#fff;max-width:540px}.hero h1,.section h2,.merch-category h2,.newsletter h2,.finder h2,.faq h2,.looks-page h1,.looks-page h2{font-family:var(--serif);font-weight:400;letter-spacing:-.04em}.hero h1{font-size:clamp(52px,5.2vw,78px);line-height:.96;margin:0 0 20px}.hero-copy>p:not(.eyebrow){max-width:470px;font-size:15px;line-height:1.65;margin:0}
 
-.section{max-width:1320px;margin:0 auto;padding:76px 42px}.section-heading{max-width:410px;margin-bottom:30px}.section-heading h2{font-size:clamp(42px,4vw,60px);line-height:1.02;margin:0 0 12px}.section-heading>p:last-child,.section-heading.split>p,.section-heading.split>div:last-child p{color:#665f55;line-height:1.7}.section-heading.split{max-width:none;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.7fr);gap:70px;align-items:end}.section-heading.split>p,.section-heading.split>div:last-child p{margin:0}.category-section{padding-top:68px;padding-bottom:72px}.category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.category-card{height:490px;position:relative;overflow:hidden;background:#d9d1c6;color:#fff;text-decoration:none}.category-card:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.73))}.category-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}.category-card.listing img{object-fit:contain;background:#eee9e1;padding:15% 8%}.category-card:hover img{transform:scale(1.025)}.category-card>span{position:absolute;left:24px;right:24px;bottom:24px;z-index:2}.category-card h3{font:31px/1.02 var(--serif);letter-spacing:-.03em;margin:0 0 8px}.category-card p{font-size:11px;line-height:1.5;margin:0 0 14px}.category-card u{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-underline-offset:5px}
+.section{max-width:1320px;margin:0 auto;padding:76px 42px}.section-heading{max-width:430px;margin-bottom:30px}.section-heading h2{font-size:clamp(42px,4vw,60px);line-height:1.02;margin:0 0 12px}.section-heading>p:last-child,.section-heading.split>p,.section-heading.split>div:last-child p{color:#665f55;line-height:1.7}.section-heading.split{max-width:none;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.7fr);gap:70px;align-items:end}.section-heading.split>p,.section-heading.split>div:last-child p{margin:0}.category-section{padding-top:68px;padding-bottom:72px}.category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.category-card{height:490px;position:relative;overflow:hidden;background:#d9d1c6;color:#fff;text-decoration:none}.category-card:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.73))}.category-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}.category-card.listing img{object-fit:contain;background:#eee9e1;padding:15% 8%}.category-card:hover img{transform:scale(1.025)}.category-card>span{position:absolute;left:24px;right:24px;bottom:24px;z-index:2}.category-card h3{font:31px/1.02 var(--serif);letter-spacing:-.03em;margin:0 0 8px}.category-card p{font-size:11px;line-height:1.5;margin:0 0 14px}.category-card u{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-underline-offset:5px}
 
 .trust-and-proof{background:#f3eee7;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.trust-box{max-width:1320px;min-height:184px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);align-items:stretch;color:#fff;background-color:#3b281f;background-position:center;background-size:cover}.trust-box span{display:flex;flex-direction:column;justify-content:center;padding:28px 36px;border-right:1px solid rgba(255,255,255,.22);font:18px var(--serif)}.trust-box span:last-child{border:0}.trust-box b{font:clamp(44px,4.5vw,68px)/.95 var(--sans);letter-spacing:-.06em;margin-bottom:14px}.material-wrap{padding-top:68px}.material-head{display:grid;grid-template-columns:1fr minmax(300px,.55fr);gap:70px;align-items:end;margin-bottom:28px}.material-head h2{font:clamp(42px,4vw,58px)/1.02 var(--serif);letter-spacing:-.04em;margin:0}.material-head>p{color:#655f56;line-height:1.7;margin:0}.material-rail{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.material-card{margin:0;background:#fff;min-width:0}.material-card img{width:100%;height:300px;object-fit:cover}.material-card:nth-child(2) img{object-fit:contain;background:#eee9e1;padding:8%}.material-card div{padding:22px}.material-card small{font-size:8px;font-weight:700;letter-spacing:.13em;color:#7b6c5c}.material-card h3{font:25px/1.05 var(--serif);margin:10px 0}.material-card p{font-size:11px;line-height:1.65;color:#655f56;margin:0}
 
@@ -26,7 +26,7 @@
 
 @media(max-width:980px){.desktop-nav{gap:15px}.desktop-nav a{font-size:8px}.category-grid{grid-template-columns:1fr 1fr}.material-rail{grid-template-columns:1fr 1fr}.merch-layout{grid-template-columns:38% 62%}.product-image{height:320px}.review-list{grid-template-columns:1fr}.review-list blockquote{min-height:180px}.review-list blockquote:not(:last-child){border-bottom:1px solid #494641}.look-collage{height:800px}.finder-card{padding:45px}.full-look>div{padding:40px}}
 
-@media(max-width:410px){
+@media(max-width:430px){
   html{scroll-padding-top:55px}.announce{height:24px;padding:0 10px;font-size:7px;white-space:nowrap}.announce i,.announce span:last-child{display:none}.header{height:55px;grid-template-columns:44px minmax(0,1fr) 88px;padding:0 6px}.mobile-only{display:block}.desktop-nav,.desktop-icon{display:none}.wordmark{font-size:20px;text-align:center}.header-actions{gap:0}.header-actions button,.icon-button{width:44px;height:44px;padding:11px}.hero{height:calc(100svh - 79px);min-height:590px;max-height:760px}.hero-video{object-position:63% center}.hero-shade{background:linear-gradient(180deg,rgba(15,12,9,.02) 22%,rgba(15,12,9,.18) 48%,rgba(15,12,9,.88) 100%)}.hero-copy{left:16px;right:16px;top:auto;bottom:68px;transform:none;max-width:360px}.hero h1{font-size:38px;margin-bottom:10px}.hero-copy>p:not(.eyebrow){font-size:11px;line-height:1.5}.eyebrow{font-size:8px;margin-bottom:9px}.section{padding:48px 16px}.section-heading{margin-bottom:22px}.section-heading h2{font-size:36px;line-height:1.04}.section-heading>p:last-child{font-size:12px}.section-heading.split{display:block}.section-heading.split>p,.section-heading.split>div:last-child{margin-top:12px}.category-section{padding-top:46px}.category-grid{display:flex;overflow-x:auto;gap:10px;margin-right:-16px;padding-right:16px;scroll-snap-type:x mandatory;scrollbar-width:none}.category-grid::-webkit-scrollbar{display:none}.category-card{flex:0 0 min(86%,350px);height:430px;scroll-snap-align:start}.category-card h3{font-size:30px}.category-card>span{left:20px;right:20px;bottom:20px}.trust-box{margin:0 16px;min-height:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory}.trust-box span{flex:0 0 72%;min-height:128px;padding:24px;scroll-snap-align:start;font-size:15px}.trust-box b{font-size:45px;margin-bottom:10px}.material-wrap{padding-top:44px}.material-head{display:block;margin-bottom:20px}.material-head h2{font-size:36px}.material-head>p{font-size:11px;margin-top:12px}.material-rail{display:flex;overflow-x:auto;gap:10px;margin-right:-16px;padding-right:16px;scroll-snap-type:x mandatory;scrollbar-width:none}.material-rail::-webkit-scrollbar{display:none}.material-card{flex:0 0 min(76%,285px);scroll-snap-align:start}.material-card img{height:190px}.material-card div{padding:16px}.material-card h3{font-size:22px;margin:7px 0}.material-card p{font-size:10px;line-height:1.5}.merch-category{padding:48px 16px;scroll-margin-top:55px}.merch-category>header{display:block;margin-bottom:18px}.merch-category>header>span{display:block;font-size:28px;margin-bottom:10px}.merch-category h2{font-size:38px}.merch-category>header p:last-child{font-size:11px;line-height:1.55}.subcategories{flex-wrap:nowrap;overflow-x:auto;gap:24px;margin:0 -16px 22px;padding:16px;scrollbar-width:none}.subcategories::-webkit-scrollbar{display:none}.subcategories a{flex:0 0 auto;font-size:8.5px}.merch-layout{display:block}.merch-feature{height:300px;margin-bottom:22px}.merch-diamonds .merch-feature img{padding:6%}.product-grid,.product-grid.compact{display:flex;overflow-x:auto;gap:10px;margin-right:-16px;padding-right:16px;scroll-snap-type:x mandatory;scrollbar-width:none}.product-grid::-webkit-scrollbar{display:none}.product-grid>.product-card{flex:0 0 min(72%,275px);scroll-snap-align:start}.product-image{height:auto;aspect-ratio:4/5}.product-image span{transform:none;min-height:40px}.wish{width:44px;height:44px}.product-copy{min-height:130px;display:flex;flex-direction:column}.product-copy h3{font-size:19px;min-height:45px}.product-copy>p{font-size:9.5px;white-space:normal}.product-copy>div{margin-top:auto}.scarf-style-grid{display:flex;overflow-x:auto;gap:10px;margin-right:-16px;padding-right:16px;scroll-snap-type:x mandatory;scrollbar-width:none}.scarf-style-grid::-webkit-scrollbar{display:none}.scarf-style-grid article{flex:0 0 min(80%,305px);scroll-snap-align:start}.scarf-image{height:405px}.trending{padding-top:52px}.trend-grid{display:flex;overflow-x:auto;gap:10px;margin-right:-16px;padding-right:16px;scroll-snap-type:x mandatory;scrollbar-width:none}.trend-grid>a,.trend-grid .trend-lead{flex:0 0 min(84%,330px);height:460px;scroll-snap-align:start}.look-collage{height:auto;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:none;gap:8px}.look-tile,.look-1,.look-2{grid-column:auto;grid-row:auto;height:310px}.look-1{grid-column:1/3;height:455px}.look-2{grid-column:1/3;height:330px}.look-tile b{font-size:20px}.recommended{padding-left:16px;padding-right:16px}.reviews{display:block;margin:0 16px}.review-score{padding:36px 24px}.review-score strong{font-size:70px}.review-list{display:flex;overflow-x:auto;border-left:0;scroll-snap-type:x mandatory}.review-list blockquote{flex:0 0 82%;min-height:240px;padding:30px 24px;border-right:1px solid #494641;border-bottom:0!important;scroll-snap-align:start}.review-list p{font-size:23px}.out-about{padding-top:54px}.ugc-rail figure{flex-basis:76%}.ugc-rail img{height:400px}.finder{display:flex;flex-direction:column;padding:0 16px 48px}.finder-image img{height:430px}.finder-card{padding:34px 22px}.finder-card h2{font-size:38px}.quiz-question{font-size:23px}.quiz-options button{min-height:52px}.quiz-products{display:flex;overflow-x:auto;margin-right:-22px;padding-right:22px}.quiz-products button{flex:0 0 78%}.faq{display:block;padding-top:52px}.faq>div:first-child{margin-bottom:20px}.faq h2{font-size:38px}.faq-list summary{min-height:62px;font-size:18px}.faq-list p{font-size:11px;line-height:1.6}.newsletter{padding:58px 20px}.newsletter h2{font-size:42px}.site-footer{grid-template-columns:1fr 1fr;padding:42px 20px;gap:26px 18px}.footer-brand,.copyright{grid-column:1/-1}.copyright{display:block}.overlay{align-items:stretch}.mobile-menu,.pdp-view,.cart-drawer{width:100%;height:100dvh}.search-panel{height:100dvh;padding:65px 18px}.search-field input{font-size:17px;padding:14px 8px}.search-results{grid-template-columns:1fr}.search-results>button{display:flex;gap:12px;min-height:80px}.search-results img{width:70px;height:80px}.pdp-main{display:block}.pdp-gallery{height:46dvh;min-height:330px;padding:16px}.pdp-gallery>img{height:calc(100% - 62px);min-height:0}.pdp-gallery>div{height:58px}.pdp-copy{padding:30px 20px 90px}.pdp-copy h2{font-size:35px}.pdp-actions{position:sticky;bottom:0;background:rgba(252,250,246,.97);margin:22px -20px -90px;padding:12px 20px}.pdp-style{display:block}.pdp-style img{height:380px}.pdp-style>div{padding:34px 22px}.cart-lines{padding:0 18px}.cart-bottom{padding:18px}.looks-header{height:64px;padding:0 16px}.looks-header .underlink{font-size:7px}.looks-hero{padding:62px 16px 44px}.looks-hero h1{font-size:49px}.looks-hero>p:last-child{font-size:12px}.all-looks{padding:0 16px 60px}.full-look,.full-look:nth-child(even){display:flex;flex-direction:column;min-height:0}.full-look:nth-child(even) figure{order:0}.full-look figure{height:480px}.full-look>div{padding:32px 4px 45px}.full-look h2{font-size:37px}.full-look nav{gap:13px;flex-wrap:wrap}.looks-end{padding:60px 20px}.looks-end h2{font-size:43px}.looks-end>div{display:grid;gap:15px}
 }
 
@@ -135,7 +135,7 @@ html.motion-ready .category-card.motion-reveal.is-visible:hover img,html.motion-
 .underlink:hover .icon{transform:translateX(4px)}
 button:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offset:4px}
 
-@media(max-width:980px) and (min-width:411px){
+@media(max-width:980px) and (min-width:431px){
   .category-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:430px 330px 390px}
   .category-card:nth-child(1){grid-column:1/-1;grid-row:1}
   .category-card:nth-child(2){grid-column:1;grid-row:2}
@@ -150,7 +150,7 @@ button:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offs
   .merch-mosaic .merch-feature{height:690px}
 }
 
-@media(max-width:410px){
+@media(max-width:430px){
   .category-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:390px 285px 345px;gap:8px;margin:0;padding:0;overflow:visible;scroll-snap-type:none;overscroll-behavior-inline:auto}
   .category-card,.category-card:nth-child(n){min-width:0;max-width:none;flex:none;height:auto;margin-top:0;grid-row:auto}
   .category-card:nth-child(1){grid-column:1/-1;grid-row:1}
@@ -334,12 +334,12 @@ button:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offs
 .site-footer{background:var(--ivory)}
 
 
-@media(max-width:980px) and (min-width:411px){
+@media(max-width:980px) and (min-width:431px){
   .premium-look-board{height:820px}
   .review-track blockquote{width:340px}
 }
 
-@media(max-width:410px){
+@media(max-width:430px){
   .material-wrap,.merch-reverse,.looks-premium{padding-left:16px;padding-right:16px}
   .trust-box{margin:0;min-height:170px}
   .trust-box span{flex-basis:82%;min-height:170px}
@@ -431,7 +431,7 @@ body,button,input,textarea,select{font-family:var(--sans)}
 }
 video{contain:paint}
 
-@media(max-width:410px), (pointer:coarse){
+@media(max-width:430px), (pointer:coarse){
   .header{backdrop-filter:none}
   html.motion-ready .motion-reveal,
   html.motion-ready .motion-reveal.is-visible{opacity:1;transform:none;transition:none}
@@ -453,7 +453,7 @@ video{contain:paint}
 .material-card .material-visual-pair img{height:360px!important;min-width:0;object-fit:cover;background:#07080d}
 .material-card .material-copy{padding:20px 0 0}
 
-@media(max-width:980px) and (min-width:411px){
+@media(max-width:980px) and (min-width:431px){
   .material-rail{grid-template-columns:repeat(12,minmax(0,1fr))}
   .material-card:nth-child(1){grid-column:1/6}
   .material-card:nth-child(2){grid-column:6/13}
@@ -463,7 +463,7 @@ video{contain:paint}
   .material-card .material-visual-pair img{height:320px!important}
 }
 
-@media(max-width:410px){
+@media(max-width:430px){
   .material-rail{display:grid;grid-template-columns:1fr;gap:30px;overflow:visible;margin:0;padding:0;scroll-snap-type:none;overscroll-behavior-inline:auto}
   .material-card,.material-card:nth-child(n){grid-column:1;display:block;min-width:0;max-width:none;flex:none;margin:0}
   .material-card:nth-child(1)>img,.material-card:nth-child(3)>img,.material-card:nth-child(4)>img{height:260px}
@@ -473,7 +473,7 @@ video{contain:paint}
 }
 
 /* Mobile density cleanup — one final responsive layer keeps every section compact. */
-@media(max-width:410px){
+@media(max-width:430px){
   html{scroll-padding-top:55px}
   body{font-size:13px}
   .hero{height:min(72svh,560px);min-height:500px;max-height:none}
@@ -587,7 +587,7 @@ video{contain:paint}
 body,main,.trust-and-proof,.merch-category,.merch-mosaic,.merch-scarves,.recommended,.finder-card,.site-footer{background:#fff}
 
 
-@media(max-width:410px){
+@media(max-width:430px){
   .trust-box{display:flex;gap:8px;margin:0;min-height:74px;padding:0 16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
   .trust-box::-webkit-scrollbar{display:none}
   .trust-box>span{flex:0 0 calc(50% - 12px);min-height:74px;padding:10px 9px;display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;border:0;background-color:var(--aubergine);background-image:none!important;scroll-snap-align:start}
@@ -639,7 +639,7 @@ body,main,.trust-and-proof,.merch-category,.merch-mosaic,.merch-scarves,.recomme
 .review-track p{margin:12px 0 auto;font-size:20px;line-height:1.22}
 .review-track footer{font-size:7px}
 
-@media(max-width:410px){
+@media(max-width:430px){
   .trust-and-proof{padding:8px 0;background:var(--aubergine)}
   .trust-box{display:flex;gap:7px;min-height:64px;margin:0;padding:0 12px;overflow-x:auto;scroll-snap-type:x mandatory}
   .trust-box>span{flex:0 0 calc(50% - 10px);min-height:64px;padding:8px 9px;gap:7px;border-radius:10px;scroll-snap-align:start}
@@ -687,7 +687,7 @@ body,main,.trust-and-proof,.merch-category,.merch-mosaic,.merch-scarves,.recomme
 .trust-box b{color:#fff7eb;font:28px/.9 var(--serif);letter-spacing:-.055em}
 .trust-copy small{color:#e5d8d1;font:7px/1.2 var(--sans);letter-spacing:.12em;text-transform:uppercase}
 
-@media(max-width:410px){
+@media(max-width:430px){
   .trust-and-proof{padding:10px 0}
   .trust-box{min-height:64px;gap:0;padding:0 14px;scroll-snap-type:x mandatory}
 
@@ -713,7 +713,7 @@ html,body,#root{width:100%;max-width:100%;overflow-x:hidden}
 .product-image,.product-image img{max-width:100%}
 
 
-@media(max-width:410px){
+@media(max-width:430px){
   .trust-box{min-height:74px;padding:0 12px;display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
   .trust-box::-webkit-scrollbar{display:none}
   .trust-box>span{flex:0 0 50%;min-height:74px;padding:12px 13px;scroll-snap-align:start}
@@ -780,14 +780,14 @@ html,body,#root{width:100%;max-width:100%;overflow-x:hidden}
 .premium-look-board .look-5{grid-column:2/4;grid-row:3}
 .premium-look-board .look-tile b{font-size:clamp(21px,2vw,30px)}
 
-@media(min-width:411px){
+@media(min-width:431px){
   .section{max-width:1240px;padding:58px 30px}
   .section-heading{margin-bottom:24px}
   .section-heading h2{font-size:clamp(38px,3.6vw,54px)}
   .category-section{padding-top:52px;padding-bottom:54px}
 }
 
-@media(max-width:410px){
+@media(max-width:430px){
   .hero{height:100svh;min-height:100svh;max-height:none}
   .hero-video{object-position:58% center}
   .hero-copy{bottom:34px}
@@ -865,7 +865,7 @@ html,body,#root{width:100%;max-width:100%;overflow-x:hidden}
 .recommended{padding-top:44px;padding-bottom:46px}
 .out-about{padding-top:46px}
 .faq{padding-top:48px;padding-bottom:48px}
-@media(max-width:410px){.section{padding-top:32px;padding-bottom:34px}.category-section{padding-top:32px;padding-bottom:34px}.material-wrap{padding-top:24px!important;padding-bottom:26px!important}.merch-category,.merch-reverse{padding-top:30px;padding-bottom:32px}.trending,.out-about{padding-top:34px}.looks-premium{padding-top:32px!important;padding-bottom:34px!important}.recommended{padding-top:32px;padding-bottom:34px}.faq{padding-top:34px;padding-bottom:34px}.edit-category-grid{gap:6px}.edit-category-grid>a{border:0}}
+@media(max-width:430px){.section{padding-top:32px;padding-bottom:34px}.category-section{padding-top:32px;padding-bottom:34px}.material-wrap{padding-top:24px!important;padding-bottom:26px!important}.merch-category,.merch-reverse{padding-top:30px;padding-bottom:32px}.trending,.out-about{padding-top:34px}.looks-premium{padding-top:32px!important;padding-bottom:34px!important}.recommended{padding-top:32px;padding-bottom:34px}.faq{padding-top:34px;padding-bottom:34px}.edit-category-grid{gap:6px}.edit-category-grid>a{border:0}}
 
 /* Final mobile copy and title-motion refinement. */
 .edit-toggle{display:none!important}
@@ -873,26 +873,26 @@ html,body,#root{width:100%;max-width:100%;overflow-x:hidden}
 .hero h1,.section h2,.merch-category h2,.material-head h2,.newsletter h2,.finder h2,.faq h2,.scarf-feature figcaption,.look-tile b{animation:title-emphasis 4.8s ease-in-out infinite}
 @keyframes hero-subtitle{0%,12%,100%{opacity:.55;transform:translateY(4px)}24%,76%{opacity:1;transform:translateY(0)}}
 .hero-copy>p:not(.eyebrow){animation:hero-subtitle 4.2s ease-in-out infinite}
-@media(max-width:410px){.hero-copy{bottom:28px}.hero h1{font-size:35px;line-height:.98}.hero-copy>p:not(.eyebrow){max-width:310px;font-size:10px;line-height:1.38;margin-top:8px}.scarf-feature{height:178px!important;margin-bottom:8px!important}.scarf-feature figcaption{left:14px;bottom:14px;padding:8px 11px;font-size:14px}.merch-scarves{padding-bottom:26px!important}.scarf-style-grid{gap:7px}.scarf-style-grid article{flex-basis:min(62vw,210px)!important}.scarf-image{height:250px!important}.scarf-style-grid h3{font-size:16px}.scarf-style-grid article>div{padding-top:8px;min-height:125px}}
-@media(max-width:410px){.hero{height:calc(100svh - 79px)!important;min-height:0!important;max-height:none!important}.hero-copy{bottom:20px!important}.hero h1{font-size:29px!important;line-height:1.03!important;margin:0 0 8px!important}.hero-copy>.eyebrow{margin-bottom:7px}.hero-copy>p:not(.eyebrow){display:block!important;position:static!important;max-width:278px!important;font-size:9.5px!important;line-height:1.4!important;margin:0!important;color:#fff!important;opacity:1!important;transform:none!important;animation:hero-subtitle 4.2s ease-in-out infinite!important}}
+@media(max-width:430px){.hero-copy{bottom:28px}.hero h1{font-size:35px;line-height:.98}.hero-copy>p:not(.eyebrow){max-width:310px;font-size:10px;line-height:1.38;margin-top:8px}.scarf-feature{height:178px!important;margin-bottom:8px!important}.scarf-feature figcaption{left:14px;bottom:14px;padding:8px 11px;font-size:14px}.merch-scarves{padding-bottom:26px!important}.scarf-style-grid{gap:7px}.scarf-style-grid article{flex-basis:min(62vw,210px)!important}.scarf-image{height:250px!important}.scarf-style-grid h3{font-size:16px}.scarf-style-grid article>div{padding-top:8px;min-height:125px}}
+@media(max-width:430px){.hero{height:calc(100svh - 79px)!important;min-height:0!important;max-height:none!important}.hero-copy{bottom:20px!important}.hero h1{font-size:29px!important;line-height:1.03!important;margin:0 0 8px!important}.hero-copy>.eyebrow{margin-bottom:7px}.hero-copy>p:not(.eyebrow){display:block!important;position:static!important;max-width:278px!important;font-size:9.5px!important;line-height:1.4!important;margin:0!important;color:#fff!important;opacity:1!important;transform:none!important;animation:hero-subtitle 4.2s ease-in-out infinite!important}}
 /* Remove residual hand-off gaps between edit sections. */
 .merch-category{margin-bottom:0}
 .merch-scarves{padding-bottom:22px!important}
 .merch-scarves+.trending{padding-top:22px!important}
 
 .trending{margin-top:0!important}
-@media(max-width:410px){.merch-category{padding-bottom:22px!important}.merch-scarves{padding-top:22px!important;padding-bottom:18px!important}.merch-scarves+.trending{padding-top:18px!important}.trending .section-heading{margin-bottom:14px}.trending,.out-about,.recommended{margin-top:0!important}}
+@media(max-width:430px){.merch-category{padding-bottom:22px!important}.merch-scarves{padding-top:22px!important;padding-bottom:18px!important}.merch-scarves+.trending{padding-top:18px!important}.trending .section-heading{margin-bottom:14px}.trending,.out-about,.recommended{margin-top:0!important}}
 /* One compact type rhythm for all collection grids. */
 .category-card>span{display:flex;flex-direction:column;align-items:flex-start;gap:0}.category-card h3{margin:0 0 5px}.category-card p{margin:0 0 8px;line-height:1.35}.category-card u,.edit-category-grid em{font:8px/1.2 var(--sans);font-weight:700;letter-spacing:.105em;text-transform:uppercase;text-underline-offset:5px;text-decoration:underline}.edit-category-grid em{text-decoration:none}.edit-category-grid em .icon{margin-left:3px}.edit-category-grid span{gap:3px}
-@media(max-width:410px){.category-card h3{margin-bottom:4px}.category-card p{margin-bottom:6px;font-size:10px}.category-card u{font-size:7px}.edit-category-grid em{font-size:6px}}
+@media(max-width:430px){.category-card h3{margin-bottom:4px}.category-card p{margin-bottom:6px;font-size:10px}.category-card u{font-size:7px}.edit-category-grid em{font-size:6px}}
 /* Final compact rhythm and text-only category grids. */
 .category-card h3{margin-bottom:2px}.category-card p{margin-bottom:3px}.category-card u{margin-top:0}.category-section{padding-bottom:34px}.trust-and-proof{margin-top:0;padding-top:0;padding-bottom:28px}.trust-box>span:last-child{border-right:1px solid rgba(255,247,235,.28)}.material-wrap{margin-top:28px}.material-card small{display:none}.edit-category-grid>a{background:var(--aubergine);height:94px}.merch-reverse .edit-category-grid>a{background:#fff8f0;color:var(--aubergine)}.edit-category-grid span{top:0;bottom:0;left:16px;right:16px;align-content:center}.edit-category-grid b{font-size:20px}.scarf-style-grid{justify-content:center}.merch-scarves .subcategories{justify-content:center;gap:28px}.merch-scarves .subcategories a{min-width:86px;text-align:center}
-@media(max-width:410px){.category-section{padding-bottom:25px}.trust-and-proof{padding-bottom:20px}.material-wrap{margin-top:20px}.category-card h3{margin-bottom:1px}.category-card p{margin-bottom:2px}.edit-category-grid{grid-template-columns:repeat(2,1fr)}.edit-category-grid>a,.edit-category-grid>a:last-child{height:84px;grid-column:auto}.edit-category-grid b{font-size:18px}.merch-scarves .subcategories{display:flex;justify-content:space-evenly;gap:0;margin-left:0;margin-right:0;padding-left:0;padding-right:0}.merch-scarves .subcategories a{min-width:0;flex:1}}
+@media(max-width:430px){.category-section{padding-bottom:25px}.trust-and-proof{padding-bottom:20px}.material-wrap{margin-top:20px}.category-card h3{margin-bottom:1px}.category-card p{margin-bottom:2px}.edit-category-grid{grid-template-columns:repeat(2,1fr)}.edit-category-grid>a,.edit-category-grid>a:last-child{height:84px;grid-column:auto}.edit-category-grid b{font-size:18px}.merch-scarves .subcategories{display:flex;justify-content:space-evenly;gap:0;margin-left:0;margin-right:0;padding-left:0;padding-right:0}.merch-scarves .subcategories a{min-width:0;flex:1}}
 /* Locked spacing and all four trust divider rules. */
 .category-section{padding-bottom:18px!important}.trust-and-proof{padding-bottom:0!important}.material-wrap{margin-top:18px!important}.trust-box>span{border-left:1px solid rgba(255,247,235,.32)!important;border-right:0!important}.trust-box>span:last-child{border-right:0!important}
-@media(max-width:410px){.category-section{padding-bottom:18px!important}.trust-and-proof{padding:0 16px 0!important}.trust-box>span{border-left:1px solid rgba(255,247,235,.32)!important;border-right:0!important}.trust-box>span:nth-child(n+3){border-top:1px solid rgba(255,247,235,.32)!important}.material-wrap{margin-top:18px!important}}
+@media(max-width:430px){.category-section{padding-bottom:18px!important}.trust-and-proof{padding:0 16px 0!important}.trust-box>span{border-left:1px solid rgba(255,247,235,.32)!important;border-right:0!important}.trust-box>span:nth-child(n+3){border-top:1px solid rgba(255,247,235,.32)!important}.material-wrap{margin-top:18px!important}}
 /* Requested content order — no section redesign. */
-main{display:flex;flex-direction:column}main>.announce{order:1}main>.header{order:2}main>.hero{order:3}main>.category-section{order:4}main>.trust-and-proof{order:5}main>.reviews{order:6}main>.merch-bags{order:7}main>.merch-diamonds{order:8}main>.merch-gemstones{order:9}main>.merch-scarves{order:10}main>.looks-premium{order:11}main>.finder{order:12}main>.recommended{order:13}main>.trending{order:14}main>.out-about{order:15}main>.faq{order:16}main>.newsletter{order:17}main>.site-footer{order:18}.reviews{min-height:142px}.review-score{padding:22px 26px}.review-score strong{font-size:46px}.review-track blockquote{min-height:142px;padding:18px 22px}.review-track p{font-size:17px;margin:8px 0 auto}.review-score>a{margin-top:8px}@media(max-width:410px){.reviews{min-height:106px}.review-score{padding:14px 12px}.review-score strong{font-size:32px}.review-track blockquote{min-height:106px;padding:13px 14px}.review-track p{font-size:13px}.review-score>a{display:none}}
+main{display:flex;flex-direction:column}main>.announce{order:1}main>.header{order:2}main>.hero{order:3}main>.category-section{order:4}main>.trust-and-proof{order:5}main>.reviews{order:6}main>.merch-bags{order:7}main>.merch-diamonds{order:8}main>.merch-gemstones{order:9}main>.merch-scarves{order:10}main>.looks-premium{order:11}main>.finder{order:12}main>.recommended{order:13}main>.trending{order:14}main>.out-about{order:15}main>.faq{order:16}main>.newsletter{order:17}main>.site-footer{order:18}.reviews{min-height:142px}.review-score{padding:22px 26px}.review-score strong{font-size:46px}.review-track blockquote{min-height:142px;padding:18px 22px}.review-track p{font-size:17px;margin:8px 0 auto}.review-score>a{margin-top:8px}@media(max-width:430px){.reviews{min-height:106px}.review-score{padding:14px 12px}.review-score strong{font-size:32px}.review-track blockquote{min-height:106px;padding:13px 14px}.review-track p{font-size:13px}.review-score>a{display:none}}
 
 /* Image-led edit cards: the category name is the CTA. */
 .edit-category-grid>a{height:184px;background:#eee7df;color:#fffaf3}
@@ -910,7 +910,7 @@ main{display:flex;flex-direction:column}main>.announce{order:1}main>.header{orde
 .trust-and-proof{padding-bottom:0!important}
 .reviews{margin:0;max-width:none;background:var(--aubergine);border-top:1px solid rgba(255,247,235,.24)}
 
-@media(max-width:410px){
+@media(max-width:430px){
   .edit-category-grid>a,.edit-category-grid>a:last-child{height:142px;grid-column:auto}
   .edit-category-grid span{left:10px;right:10px;bottom:10px}
   .edit-category-grid b{font-size:17px;gap:5px}
@@ -986,7 +986,7 @@ main>*{width:100%;align-self:stretch}
 .material-card:nth-child(1)>img,.material-card .material-visual-pair img{height:344px!important}
 .material-card:nth-child(3)>img,.material-card:nth-child(4)>img{height:344px}
 
-@media(max-width:410px){
+@media(max-width:430px){
   :root{--edge:16px}
 
   .trust-box{min-height:0;padding:14px var(--edge)!important;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 10px;overflow:visible;scroll-snap-type:none}
@@ -1039,7 +1039,7 @@ main>*{width:100%;align-self:stretch}
 
 /* Mobile proof rail: the desktop image height above collided with an existing
    !important mobile rule, leaving row 1 at 344px and row 2 at 92px. */
-@media(max-width:410px){
+@media(max-width:430px){
   .material-card:nth-child(1)>img,
   .material-card:nth-child(3)>img,
   .material-card:nth-child(4)>img,
@@ -1056,10 +1056,10 @@ main>*{width:100%;align-self:stretch}
 .quiz-options .icon{color:var(--aubergine)}
 
 /* Mobile footer legal line ran the two links straight onto the copyright text. */
-@media(max-width:410px){.copyright>span{display:block;margin-top:6px}}
+@media(max-width:430px){.copyright>span{display:block;margin-top:6px}}
 
 /* Tablet: keep four edit tiles and four trust stats from crushing. */
-@media(max-width:1024px) and (min-width:411px){
+@media(max-width:1024px) and (min-width:431px){
   .edit-category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .edit-category-grid>a{height:170px}
   .trust-box{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 0}
@@ -1084,7 +1084,7 @@ main>*{width:100%;align-self:stretch}
 .premium-look-board .look-tile b{font-size:23px;line-height:1.06}
 .premium-look-board .look-tile i{font-size:22px}
 
-@media(max-width:410px){
+@media(max-width:430px){
   .trust-box{min-height:0;padding-top:18px!important;padding-bottom:18px!important}
   .trust-box::before{background:linear-gradient(180deg,rgba(11,13,18,.66) 0%,rgba(11,13,18,.78) 55%,rgba(11,13,18,.95) 88%,var(--aubergine) 100%),linear-gradient(135deg,rgba(6,7,12,.7),rgba(6,7,12,.3))}
   .material-wrap{padding-top:24px!important}
@@ -1137,7 +1137,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 
 /* Touch devices were opted out of reveals entirely; re-enabled with a shorter
    throw and no mask so it stays cheap on mobile GPUs. */
-@media(max-width:410px),(pointer:coarse){
+@media(max-width:430px),(pointer:coarse){
   html.motion-ready .motion-reveal{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.22,.75,.25,1),transform .6s cubic-bezier(.22,.75,.25,1);transition-delay:var(--reveal-delay,0ms)}
   html.motion-ready .motion-reveal.is-visible{opacity:1;transform:none}
   html.motion-ready .motion-reveal :is(h2,h3.reveal-title){transform:translateY(14px);clip-path:none;transition-duration:.62s}
@@ -1193,7 +1193,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 .look-shop-rail>button:hover .look-shop-image img{transform:scale(1.05)}
 .look-shop-rail b{display:block;padding-top:10px;color:var(--ivory);font:400 15px/1.22 var(--serif);font-style:italic}
 
-@media(max-width:410px){
+@media(max-width:430px){
   .feature-cta{min-height:26px;padding:0 10px;font-size:6px;letter-spacing:.14em}
   .feature-cta .icon{width:9px;height:9px}
 
@@ -1218,7 +1218,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
   .look-shop-rail b{padding-top:8px;font-size:13px}
 }
 
-@media(max-width:1024px) and (min-width:411px){
+@media(max-width:1024px) and (min-width:431px){
   .material-rail{grid-template-columns:repeat(2,minmax(0,1fr))!important}
   .material-card>img,.material-card:nth-child(n)>img{height:240px!important}
   .look-shop-rail>button{flex:0 0 clamp(150px,22%,200px)}
@@ -1233,7 +1233,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 /* Rail titles wrap to one or two lines, so reserve the taller of the two to
    keep every card in the rail the same height. */
 .look-shop-rail b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(2 * 1.22em)}
-@media(max-width:410px){.look-shop-rail b{min-height:calc(2 * 1.22em)}}
+@media(max-width:430px){.look-shop-rail b{min-height:calc(2 * 1.22em)}}
 
 /* ── Round 5 ─────────────────────────────────────────────────────────────── */
 
@@ -1285,7 +1285,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
   .material-rail:hover>.material-card:hover>img{transform:scale(1.12)}
 }
 
-@media(max-width:410px){
+@media(max-width:430px){
   .trust-and-proof{padding:0!important}
   .trust-box{margin:0 var(--edge)!important;padding:10px 0!important}
   .trust-box>span{padding:9px 11px}
@@ -1320,7 +1320,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 .trending{margin-top:0!important}
 .merch-scarves+.trending{padding-top:52px!important}
 
-@media(max-width:410px){
+@media(max-width:430px){
   .category-section,.merch-category,.merch-reverse,.merch-mosaic,.merch-panorama,
   .merch-scarves,.looks-premium,.finder,.recommended,.trending,.out-about,.faq{
     padding-top:34px!important;padding-bottom:34px!important}
@@ -1354,7 +1354,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 .faq .eyebrow{margin-bottom:12px}
 .faq>div:first-child>p:last-child{font-size:14px;line-height:1.65;max-width:320px}
 
-@media(max-width:410px){
+@media(max-width:430px){
   /* 5 — the row gap broke the divider lines into segments; a continuous cross
      needs the cells to touch. */
   .trust-box{gap:0!important;margin-top:0!important;margin-bottom:0!important}
@@ -1383,7 +1383,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 .underlink,.review-score>a{display:inline-flex;align-items:center}
 .trend-grid em,.look-tile em{justify-self:start}
 
-@media(max-width:410px){
+@media(max-width:430px){
   .category-card u,.trend-grid em,.look-tile em,.underlink,.review-score>a{padding-bottom:3px}
 }
 
@@ -1396,7 +1396,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 .trend-grid>a,.trend-grid .trend-lead{grid-row:auto!important;grid-column:auto!important;height:520px!important;flex:none!important}
 
 /* Trust band bleeds on desktop only; mobile keeps its gutters. */
-@media(min-width:411px){
+@media(min-width:431px){
   .trust-box{margin:0!important;padding:16px var(--edge)!important}
   .trust-box>span:first-child{padding-left:0}
 }
@@ -1405,7 +1405,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 .category-section{padding-bottom:42px!important}
 .material-wrap{margin-top:42px!important}
 
-@media(max-width:410px){
+@media(max-width:430px){
   .category-section{padding-bottom:27px!important}
   .material-wrap{margin-top:27px!important}
   /* mobile keeps the inset band */
@@ -1426,7 +1426,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 /* Another 30% off the gap either side of the trust band. */
 .category-section{padding-bottom:29px!important}
 .material-wrap{margin-top:29px!important}
-@media(max-width:410px){
+@media(max-width:430px){
   .category-section{padding-bottom:19px!important}
   .material-wrap{margin-top:19px!important}
 }
@@ -1452,7 +1452,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 @keyframes rail-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .look-shop-rail{animation:rail-in .5s cubic-bezier(.22,.75,.25,1)}
 
-@media(max-width:410px){
+@media(max-width:430px){
   .merch-diamonds .feature-cutout img{height:180px;max-width:80%}
   .merch-scarves .subcategories button{font-size:7.5px}
   .look-shop-rail>button em{font-size:11px}
@@ -1463,13 +1463,13 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 /* Reviews and the trust band share one inset rail at every width; neither bleeds. */
 .reviews{max-width:none;width:auto;margin:29px var(--edge) 0!important;padding:0!important;overflow:hidden;position:relative}
 .review-score{padding:22px 26px 22px 0}
-@media(min-width:411px){
+@media(min-width:431px){
   .trust-box{margin:0 var(--edge)!important;padding:22px 0!important}
   .trust-box>span:first-child{padding-left:0}
 }
 
 /* Trust type was reading too small on desktop. */
-@media(min-width:411px){
+@media(min-width:431px){
   .trust-box b{font-size:38px;line-height:.92}
   .trust-copy small{font-size:8.5px;letter-spacing:.15em}
   .trust-box>span{padding:14px 26px}
@@ -1510,7 +1510,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 .finder-card{align-content:start}
 .finder-image img{height:100%}
 
-@media(max-width:410px){
+@media(max-width:430px){
   .reviews{margin:19px var(--edge) 0!important}
   .review-score{padding:14px 12px 14px 0}
   .edit-category-grid>a,.edit-category-grid>a:last-child{height:172px}
@@ -1526,13 +1526,13 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
    section. A fixed image height keeps the block the same size at any count. */
 .look-shop-card .look-shop-image{aspect-ratio:auto!important;height:196px;display:block;overflow:hidden}
 .look-shop-card .look-shop-image img{width:100%;height:196px;object-fit:contain;padding:10px}
-@media(max-width:410px){.look-shop-card .look-shop-image img{height:124px;padding:7px}}
-@media(max-width:410px){.look-shop-card .look-shop-image{height:124px}}
+@media(max-width:430px){.look-shop-card .look-shop-image img{height:124px;padding:7px}}
+@media(max-width:430px){.look-shop-card .look-shop-image{height:124px}}
 
 /* A square product inside a half-width card left dead space either side. On
    desktop the card runs horizontally so the image and copy fill it; mobile
    keeps the stacked reference layout. */
-@media(min-width:411px){
+@media(min-width:431px){
   .look-shop-card{grid-template-columns:168px minmax(0,1fr);grid-template-rows:auto auto;align-items:center;column-gap:16px;padding:14px 18px 14px 14px!important}
   .look-shop-card .look-shop-image{grid-row:1/3;height:168px}
   .look-shop-card .look-shop-image img{height:168px}
@@ -1552,13 +1552,13 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 .merch-diamonds .merch-feature.feature-cutout{perspective:900px}
 
 /* Trust and reviews: type was flush against the panel edge. */
-@media(min-width:411px){
+@media(min-width:431px){
   .trust-box{padding:22px 30px!important}
   .trust-box>span:first-child{padding-left:0}
   .trust-box>span{padding:14px 30px}
   .review-score{padding:24px 30px}
 }
-@media(max-width:410px){
+@media(max-width:430px){
   .trust-box{padding:12px 18px!important}
   .trust-box>span,.trust-box>span:nth-child(2n+1){padding:12px 14px}
   .review-score{padding:16px 18px}
@@ -1582,7 +1582,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 .material-visual{height:262px}
 .edit-category-grid>a{height:222px}
 
-@media(max-width:410px){
+@media(max-width:430px){
   .merch-feature,.merch-panorama .merch-feature,.merch-reverse .merch-feature,
   .merch-mosaic .merch-feature,.scarf-feature{height:242px!important}
   .scarf-image{height:262px!important}
@@ -1599,14 +1599,14 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 .finder{align-items:center}
 .merch-feature,.merch-panorama .merch-feature,.merch-reverse .merch-feature,
 .merch-mosaic .merch-feature,.scarf-feature{height:392px}
-@media(max-width:410px){
+@media(max-width:430px){
   .scarf-image{height:250px!important}
   .finder-image img{height:270px!important}
 }
 
 /* align-items:center centred the quiz image in the mobile flex column,
    pushing it off the rail. */
-@media(max-width:410px){.finder{align-items:stretch}.finder-image,.finder-card{width:100%}}
+@media(max-width:430px){.finder{align-items:stretch}.finder-image,.finder-card{width:100%}}
 
 /* ── Round 13 ────────────────────────────────────────────────────────────── */
 
@@ -1646,7 +1646,7 @@ html.motion-ready :is(.product-grid,.scarf-style-grid).motion-reveal.is-visible>
 @keyframes title-emphasis{0%,100%{text-shadow:none}}
 .hero h1,.section h2,.merch-category h2{animation:none!important}
 
-@media(max-width:410px){
+@media(max-width:430px){
   .look-nav{width:34px;height:34px}
   .look-nav.prev{left:10px}
   .look-nav.next{right:10px}
@@ -1703,7 +1703,7 @@ html.motion-ready .motion-reveal :is(.merch-feature,.scarf-feature,.look-stage,.
 /* Mobile crops in the edit sections. A portrait shot in a near-square card
    loses a third of the frame, so narrowing the card matches the source aspect
    instead of adding height — the rail gets more compact, not less. */
-@media(max-width:410px){
+@media(max-width:430px){
   .scarf-style-grid article{flex:0 0 min(50vw,182px)!important}
   .scarf-image{height:252px!important}
   .scarf-image img{object-position:center 22%}
@@ -1718,7 +1718,7 @@ html.motion-ready .motion-reveal :is(.merch-feature,.scarf-feature,.look-stage,.
    alignment pins the last card to the left at the end of the scroll, leaving a
    wide empty strip, and a trailing pad stopped the rail short of the rail edge.
    Proximity snapping plus an end-aligned last card lands it flush. */
-@media(max-width:410px){
+@media(max-width:430px){
   .scarf-style-grid,.trend-grid,.ugc-rail,
   .merch-category .product-grid,.recommended .product-grid,.look-collage{
     scroll-snap-type:x proximity!important;
@@ -1749,7 +1749,7 @@ html.motion-ready .motion-reveal :is(.merch-feature,.scarf-feature,.look-stage,.
 .merch-category>header .eyebrow{margin-bottom:7px}
 .merch-category>header>div>p:last-child{margin:0;line-height:1.5}
 
-@media(max-width:410px){
+@media(max-width:430px){
   .merch-category>header{margin-bottom:9px}
   .merch-category>header>span{margin-bottom:1px;font-size:26px}
   .merch-category>header .eyebrow{margin-bottom:4px}
@@ -1781,7 +1781,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 
 /* The eyebrow had collapsed onto the numeral on mobile; restore a hairline of
    separation without giving back the space that was removed. */
-@media(max-width:410px){
+@media(max-width:430px){
   .merch-category>header>span{margin-bottom:5px}
   .merch-category>header .eyebrow{margin-bottom:6px}
 }
@@ -1813,7 +1813,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .review-track p{max-width:none;margin:0;align-self:center;font:italic 14.5px/1.35 var(--serif);color:#fffaf3}
 .review-track footer{font-size:7px;letter-spacing:.11em;color:#cdbfb4}
 
-@media(max-width:410px){
+@media(max-width:430px){
   .review-score{padding:18px 16px 16px 18px}
   .review-score strong{font-size:30px}
   .review-score>div{font-size:10px;margin:5px 0}
@@ -1828,7 +1828,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 
 /* Mobile: a 240px minimum on the score column left barely 100px for the rail.
    Stack instead so the cards get the full width. */
-@media(max-width:410px){
+@media(max-width:430px){
   .reviews{display:block!important}
   .review-score{padding:16px 18px 12px;border-bottom:1px solid rgba(255,250,243,.16)}
   .review-score>div{margin:4px 0}
@@ -1842,12 +1842,12 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
    different shape from the two-up. Match the two-up column exactly and centre
    it, so the card ratio never changes with the count. */
 .look-shop-rail[data-count="1"]{grid-template-columns:minmax(0,calc((100% - 14px) / 2));justify-content:center}
-@media(max-width:410px){
+@media(max-width:430px){
   .look-shop-rail[data-count="1"]{grid-template-columns:minmax(0,calc((100% - 8px) / 2))}
 }
 
 /* Review cards 30% smaller on mobile. Card only, the score panel is unchanged. */
-@media(max-width:410px){
+@media(max-width:430px){
   .review-track{gap:6px;padding:10px 0}
   .review-track blockquote{width:134px;padding:9px 10px;gap:5px;border-radius:8px}
   .review-track p{font-size:9.5px;line-height:1.3}
@@ -1860,7 +1860,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 /* Only the cards were reduced last round, so the score panel stayed scaled for
    the old size and dominated the block. Bring the whole thing down to the same
    proportion the desktop uses (score ~2.5x the quote). */
-@media(max-width:410px){
+@media(max-width:430px){
   .review-score{padding:13px 16px 11px}
   .review-score .eyebrow{margin-bottom:6px;font-size:5.6px;letter-spacing:.16em}
   .review-score strong{font-size:22px;line-height:.94}
@@ -2029,7 +2029,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .look-modal-actions .mini-wish{position:static;width:32px;height:32px}
 .look-modal-actions .button{min-height:34px;padding:0 14px;font-size:8px}
 .look-modal .look-add{width:100%;justify-content:center}
-@media(max-width:410px){
+@media(max-width:430px){
   .look-modal{width:100%;max-height:100dvh;height:100dvh}
   .look-modal>figure{height:170px}
   .look-modal-body{padding:22px 18px 100px}
@@ -2063,7 +2063,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .look-tile-label{position:absolute;left:0;right:0;bottom:0;min-height:38px;display:grid;place-items:center;background:var(--ink);color:#fff;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transform:translateY(100%);transition:transform .25s}
 .look-tile-card:hover .look-tile-label,.look-tile-card:focus-visible .look-tile-label{transform:none}
 @media(min-width:900px){.lookbook-grid{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:410px){.lookbook-group{padding:0 16px 46px}.lookbook-grid{gap:7px}}
+@media(max-width:430px){.lookbook-group{padding:0 16px 46px}.lookbook-grid{gap:7px}}
 
 .look-modal-copy{color:#655f56;line-height:1.7;margin:0 0 18px}
 .look-modal-pieces{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 22px}
@@ -2102,7 +2102,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .edit-category-grid b .icon{color:var(--ink);opacity:.55}
 .edit-category-grid>a:hover b .icon{opacity:1}
 
-@media(max-width:410px){
+@media(max-width:430px){
   .merch-bags .subcategories{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:8px!important}
   .subcategories button{font-size:7.5px}
   .merch-bags .scarf-image img{padding:14px}
@@ -2157,7 +2157,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .looks-premium .section-heading>p:last-child,
 .looks-premium .section-heading.split>div:last-child p{color:#655f56!important}
 
-@media(max-width:410px){
+@media(max-width:430px){
   .reviews{min-height:0!important}
   .review-score{padding:6px 10px 6px!important}
   .review-score .eyebrow{margin-bottom:3px!important}
@@ -2187,7 +2187,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 /* ── Round 23 ────────────────────────────────────────────────────────────── */
 
 /* 1 — Five bag filters wrapped onto two rows on mobile. One scrollable line. */
-@media(max-width:410px){
+@media(max-width:430px){
   .merch-bags .subcategories,.merch-scarves .subcategories{
     display:flex!important;grid-template-columns:none!important;
     gap:20px!important;overflow-x:auto!important;flex-wrap:nowrap;
@@ -2201,7 +2201,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
    it. Same offset everywhere. */
 .merch-diamonds .feature-cutout .feature-cta,
 .merch-diamonds .merch-feature .feature-cta{left:18px;bottom:18px}
-@media(max-width:410px){
+@media(max-width:430px){
   .merch-diamonds .feature-cutout .feature-cta,
   .merch-diamonds .merch-feature .feature-cta{left:12px;bottom:12px}
 }
@@ -2227,7 +2227,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 
 
 /* 5 — Reviews stay on one line on mobile: score beside the card rail. */
-@media(max-width:410px){
+@media(max-width:430px){
   .reviews{display:grid!important;grid-template-columns:minmax(104px,31%) minmax(0,69%);align-items:stretch}
   .review-score{padding:12px 12px 12px 14px;border-bottom:0;border-right:1px solid rgba(255,255,255,.14)}
   .review-score .eyebrow{margin-bottom:4px;font-size:4.8px;letter-spacing:.13em}
@@ -2244,7 +2244,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .edit-category-grid>a,
 .merch-reverse .edit-category-grid>a,
 .merch-mosaic .edit-category-grid>a{height:238px}
-@media(max-width:410px){
+@media(max-width:430px){
   .edit-category-grid>a,.edit-category-grid>a:last-child,
   .merch-reverse .edit-category-grid>a,
   .merch-mosaic .edit-category-grid>a{height:166px}
@@ -2270,7 +2270,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .merch-reverse .edit-category-grid>a{color:#fffaf3!important}
 .edit-category-grid b .icon{color:#fffaf3!important}
 .edit-category-grid span>small{color:#e8bf88!important}
-@media(max-width:410px){
+@media(max-width:430px){
   .edit-category-grid span,
   .merch-reverse .edit-category-grid span,
   .merch-mosaic .edit-category-grid span{padding:24px 12px 10px!important}
@@ -2281,7 +2281,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 /* 1 — Reviews: 15% bigger overall on mobile, same single-line geometry.
    The background needs a gradient animation so it reads as one continuous
    metallic surface, not a flat black. */
-@media(max-width:410px){
+@media(max-width:430px){
   .reviews{grid-template-columns:minmax(120px,33%) minmax(0,67%)}
   .review-score{padding:14px 14px 14px 16px}
   .review-score .eyebrow{font-size:5.5px;letter-spacing:.14em;margin-bottom:5px}
@@ -2303,7 +2303,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .looks-hero h1{font-size:clamp(30px,5.6vw,62px);margin:6px 0 10px;line-height:1.05}
 .looks-hero p{max-width:52ch}
 .looks-hero .eyebrow{margin-bottom:4px}
-@media(max-width:410px){
+@media(max-width:430px){
   .looks-hero{padding:14px 0 12px}
   .looks-hero h1{font-size:clamp(26px,8vw,40px);margin:4px 0 8px}
   .looks-hero p{font-size:13px}
@@ -2429,14 +2429,14 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .scarf-style-grid .mini-wish{position:static!important;grid-column:2;grid-row:1/4;align-self:end!important;justify-self:end;margin-bottom:4px}
 
 /* 2 — Desktop: side drawer from the right instead of a centred modal. */
-@media(min-width:411px){
+@media(min-width:431px){
   .overlay.look-drawer-overlay{justify-content:flex-end;align-items:stretch}
   .look-modal.look-drawer{width:min(520px,46vw);max-height:100dvh;height:100dvh;margin:0;border-radius:0;overflow:auto;display:flex;flex-direction:column}
   .look-modal.look-drawer>figure{flex:0 0 240px;height:240px}
 }
 
 /* 3 — Mobile: fit all products in one view without scrolling. */
-@media(max-width:410px){
+@media(max-width:430px){
   .look-modal{display:flex;flex-direction:column;max-height:100dvh;height:100dvh}
   .look-modal>figure{flex:0 0 120px;height:120px}
   .look-modal-body{flex:1;overflow:auto;padding:16px 18px 80px}
@@ -2451,13 +2451,13 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 }
 
 /* 4 — Looks page hero text overflow on mobile. */
-@media(max-width:410px){
+@media(max-width:430px){
   .looks-hero{padding:12px 16px 14px!important;overflow:visible}
   .looks-hero h1{font-size:clamp(24px,7.5vw,38px)!important;word-break:break-word;overflow-wrap:break-word}
 }
 
 /* 5 — Mobile subcategory nav: equal spacing across all edit sections. */
-@media(max-width:410px){
+@media(max-width:430px){
   .subcategories{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;
     gap:0!important;padding:11px 16px!important;margin:0 -16px 14px!important;scrollbar-width:none}
   .subcategories::-webkit-scrollbar{display:none}
@@ -2535,7 +2535,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .trust-box>span:nth-child(n+2){
   border-left:1px solid rgba(255,255,255,.10)!important;
   border-top:0!important}
-@media(max-width:410px){
+@media(max-width:430px){
   .trust-box>span:nth-child(2n+1){border-left:0!important}
   .trust-box>span:nth-child(2n){border-left:1px solid rgba(255,255,255,.10)!important}
   .trust-box>span:nth-child(n+3){border-top:1px solid rgba(255,255,255,.10)!important;border-left:0!important}
@@ -2565,7 +2565,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .trust-box{width:100%!important;margin:0!important}
 
 /* Mobile: 20% smaller — numbers, labels, cell height */
-@media(max-width:410px){
+@media(max-width:430px){
   .trust-box b{font-size:20px!important;line-height:.94}   /* was 20px already */
   .trust-copy small{font-size:5.6px!important;letter-spacing:.08em}
   .trust-box>span{min-height:0!important;padding:9px 12px!important}
@@ -2667,7 +2667,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
   font-size:8px!important;
   letter-spacing:.09em!important}
 
-@media(max-width:410px){
+@media(max-width:430px){
   .merch-bags .subcategories{
     display:grid!important;
     grid-template-columns:repeat(5,minmax(0,1fr))!important;
@@ -2701,7 +2701,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 /* 3 — Looks page modal: remove the dead space below the CTA button.
    Desktop drawer: no flex bottom padding; body grows to fill; add button
    stays at the natural end of content (not sticky). */
-@media(min-width:411px){
+@media(min-width:431px){
   .look-modal.look-drawer{height:auto!important;min-height:0;max-height:92vh}
   .look-modal-body{padding-bottom:28px!important;flex:0 1 auto!important;overflow:auto}
   .look-modal .look-add{position:static;width:100%;border-radius:4px;margin-top:4px}
@@ -2712,13 +2712,13 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .look-tile-card{aspect-ratio:3/4;overflow:hidden}
 
 /* 5 — Trust badge: add even internal padding so the 4 stats breathe symmetrically. */
-@media(min-width:411px){
+@media(min-width:431px){
   .trust-box>span{padding:20px 24px!important;display:flex;flex-direction:column;justify-content:center}
   .trust-box>span:first-child{padding-left:0!important}
   .trust-box>span:last-child{padding-right:0!important}
 }
 
-@media(max-width:410px){
+@media(max-width:430px){
   /* Proof cards same height on mobile */
   .material-visual{height:150px!important}
   /* Look modal mobile compact */
@@ -2750,7 +2750,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .trust-box .trust-copy{align-items:center;text-align:center}
 .trust-box b{text-align:center!important}
 .trust-copy small{text-align:center!important}
-@media(max-width:410px){
+@media(max-width:430px){
   .trust-box>span{align-items:center!important;text-align:center!important}
   .trust-box b,.trust-copy small{text-align:center!important}
 }
@@ -2774,7 +2774,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 
 /* 2 — Look modal mobile: dead space below CTA was 231px because the modal
    forced height:100dvh even when content is shorter. Shrink to content. */
-@media(max-width:410px){
+@media(max-width:430px){
   .look-modal{
     height:auto!important;
     min-height:0!important;
@@ -2806,7 +2806,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .look-modal .look-add{overflow:hidden}
 
 /* Desktop drawer: tighter so it never needs to scroll at 900px+ viewports. */
-@media(min-width:411px){
+@media(min-width:431px){
   .look-modal.look-drawer>figure{flex:0 0 180px;height:180px}
   .look-modal-body{padding:22px 28px 22px!important}
   .look-modal-body h2{font-size:26px;margin:4px 0 14px}
@@ -2837,7 +2837,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 
 /* 2 — Desktop drawer: show all content without scrolling.
    Let the panel grow to fit its content up to 92vh; figure is compact. */
-@media(min-width:411px){
+@media(min-width:431px){
   .look-modal.look-drawer{
     height:auto!important;max-height:92vh!important;
     overflow:hidden!important;
@@ -2855,7 +2855,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 }
 
 /* 3 — Mobile: same no-animation, no-scroll rule. */
-@media(max-width:410px){
+@media(max-width:430px){
   .look-modal,.look-modal *{animation:none!important;transition:none!important}
   .overlay.look-drawer-overlay{animation:none!important;transition:none!important}
 }
@@ -2863,7 +2863,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 /* 4 — Diamond proof card: all 4 proof images must be identical. */
 .material-card>img,.material-card:nth-child(n)>img{
   height:262px!important;width:100%;object-fit:cover;animation:none!important;transform:none!important}
-@media(max-width:410px){
+@media(max-width:430px){
   .material-card>img,.material-card:nth-child(n)>img{height:150px!important}
 }
 
@@ -2881,7 +2881,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .merch-category,.merch-bags,.merch-diamonds,.merch-gemstones,.merch-scarves,
 .merch-panorama,.merch-reverse,.merch-mosaic{
   padding-top:36px!important;padding-bottom:36px!important}
-@media(max-width:410px){
+@media(max-width:430px){
   .merch-category,.merch-bags,.merch-diamonds,.merch-gemstones,.merch-scarves,
   .merch-panorama,.merch-reverse,.merch-mosaic{
     padding-top:24px!important;padding-bottom:24px!important}
@@ -2897,7 +2897,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
    Mobile:  category→trust was 19px → 17px; trust→proof was 46px → 17px. */
 .category-section,.category-section.section{padding-bottom:26px!important}
 .material-wrap{padding-top:26px!important}
-@media(max-width:410px){
+@media(max-width:430px){
   .category-section,.category-section.section{padding-bottom:17px!important}
   .material-wrap{padding-top:17px!important}
 }
@@ -2906,7 +2906,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .looks-hero{padding:14px 0 10px!important}
 .looks-hero h1{margin:4px 0 8px!important;font-size:clamp(36px,4.6vw,60px)!important;line-height:1.02!important}
 .lookbook-group{padding-bottom:40px!important}
-@media(min-width:411px){.lookbook-group:first-child{padding-top:8px!important}}
+@media(min-width:431px){.lookbook-group:first-child{padding-top:8px!important}}
 
 /* ── Round 38 ─────────────────────────────────────────────────────────────── */
 
@@ -2917,7 +2917,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
   padding-left:max(42px,calc((100% - 1180px)/2))!important;
   padding-right:max(42px,calc((100% - 1180px)/2))!important}
 .looks-hero h1{font-size:clamp(32px,3.8vw,54px)!important;line-height:1.04!important}
-@media(max-width:410px){
+@media(max-width:430px){
   .looks-hero{padding-left:var(--edge)!important;padding-right:var(--edge)!important}
   .looks-hero h1{font-size:clamp(26px,7.5vw,38px)!important}
 }
@@ -2925,7 +2925,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 /* 2 — Reviews section: match the 26px / 17px gap used by trust→proof. */
 .reviews{margin-top:26px!important;margin-bottom:0!important}
 .out-about{padding-top:26px!important}
-@media(max-width:410px){
+@media(max-width:430px){
   .reviews{margin-top:17px!important}
   .out-about{padding-top:17px!important}
 }
@@ -2933,7 +2933,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 /* ── Round 39: desktop-only looks, modal left, section spacing ─────────────── */
 
 /* ─ Task 1: Looks page desktop — bigger tiles, editorial, compact ─ */
-@media(min-width:411px){
+@media(min-width:431px){
   /* Tighter group spacing, more editorial feel */
   .lookbook-group{padding-bottom:28px!important;padding-top:4px!important}
   .lookbook-group:first-child{padding-top:0!important}
@@ -2974,7 +2974,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 /* ── Round 40 ─────────────────────────────────────────────────────────────── */
 
 /* 1 — Look modal hero image +20% height (desktop only). */
-@media(min-width:411px){
+@media(min-width:431px){
   .look-modal.look-drawer>figure{flex:0 0 240px!important;height:240px!important}
 }
 
@@ -2987,7 +2987,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .site-footer{padding-top:42px!important;padding-bottom:42px!important}
 
 /* Mobile: 34px→27px, 44px→35px */
-@media(max-width:410px){
+@media(max-width:430px){
   .out-about{padding-top:14px!important;padding-bottom:27px!important}
   .section.trending,.section.trending.section{padding-top:27px!important;padding-bottom:27px!important}
   .faq,.faq.section{padding-top:27px!important;padding-bottom:27px!important}
@@ -2998,7 +2998,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 /* ── Round 41 ─────────────────────────────────────────────────────────────── */
 
 /* 1 — Reviews → Bag Edit gap +10% on desktop only (20px → 22px). */
-@media(min-width:411px){
+@media(min-width:431px){
   .merch-bags,.merch-bags.merch-category{padding-top:22px!important}
 }
 
@@ -3009,7 +3009,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 /* 3 — Looks page desktop: full-width from left alignment, editorial.
    Remove the inner group padding so images and headings both start at the
    page content edge (same left as the looks-hero). */
-@media(min-width:411px){
+@media(min-width:431px){
   .looks-hero{padding-left:0!important;padding-right:max(42px,calc((100% - 1180px)/2))!important}
   .lookbook-group{padding-left:0!important;padding-right:0!important}
   .lookbook-group-head{padding-left:0!important;margin-left:0!important}
@@ -3024,7 +3024,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .merch-gemstones .feature-media{object-position:center 68%!important}
 .merch-scarves .scarf-feature img{object-position:center 22%!important}
 /* Mobile: same focal shift */
-@media(max-width:410px){
+@media(max-width:430px){
   .merch-bags .feature-media{object-position:center 52%!important}
   .merch-gemstones .merch-feature .feature-media{object-position:center 66%!important}
   .merch-scarves .scarf-feature img{object-position:center 20%!important}
@@ -3063,7 +3063,7 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 .site-footer{padding-top:26px!important;padding-bottom:26px!important}
 
 /* ── Mobile: same logic, proportionally smaller ─────────────────────── */
-@media(max-width:410px){
+@media(max-width:430px){
   .category-section,.category-section.section{padding-top:20px!important;padding-bottom:10px!important}
   .merch-bags,.merch-bags.merch-category,
   .merch-diamonds,.merch-gemstones,.merch-scarves,
@@ -3081,11 +3081,11 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
 
 /* Trending selector override — add body prefix for specificity */
 body .trending,body .section.trending,body .trending.section{padding-top:26px!important;padding-bottom:26px!important}
-@media(max-width:410px){body .trending,body .section.trending,body .trending.section{padding-top:17px!important;padding-bottom:17px!important}}
+@media(max-width:430px){body .trending,body .section.trending,body .trending.section{padding-top:17px!important;padding-bottom:17px!important}}
 
 /* Force trending: 3-class specificity (0,0,3,0) beats adjacent-sibling (0,0,2,0) */
 .section.trending.trending{padding-top:26px!important;padding-bottom:26px!important}
-@media(max-width:410px){.section.trending.trending{padding-top:17px!important;padding-bottom:17px!important}}
+@media(max-width:430px){.section.trending.trending{padding-top:17px!important;padding-bottom:17px!important}}
 
 /* ══ Round 45: Target remaining internal dead space ══ */
 /* Diamond feature-cutout: 20px padding was adding 40px to internal height */
@@ -3100,10 +3100,10 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
 /* Section heading bottom margin reduction */
 .merch-category>header{margin-bottom:10px!important}
 /* Hero: has 269px of empty video below copy on desktop — reduce height */
-@media(min-width:411px){
+@media(min-width:431px){
   .hero{height:min(84vh,750px)!important}
 }
-@media(max-width:410px){
+@media(max-width:430px){
   .merch-feature,.merch-panorama .merch-feature,.merch-reverse .merch-feature,
   .merch-mosaic .merch-feature,.scarf-feature{height:220px!important}
   .merch-bags .scarf-image{height:230px!important}
@@ -3122,7 +3122,7 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
   content:"";position:absolute;bottom:-32px;
   left:0;right:0;
   height:1px;background:var(--line);pointer-events:none}
-@media(max-width:410px){
+@media(max-width:430px){
   .merch-category::after,.merch-bags::after,.merch-diamonds::after,
   .merch-gemstones::after,.merch-scarves::after{bottom:-23px}
 }
@@ -3154,7 +3154,7 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
 /* 5 — Proof section bottom */
 .material-wrap{padding-bottom:14px!important}
 
-@media(max-width:410px){
+@media(max-width:430px){
   .merch-bags,.merch-bags.merch-category,
   .merch-diamonds,.merch-gemstones,.merch-scarves,
   .merch-diamonds.merch-category,.merch-gemstones.merch-category,.merch-scarves.merch-category{
@@ -3188,7 +3188,7 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
 .newsletter{padding-top:18.4px!important;padding-bottom:18.4px!important}
 .site-footer{padding-top:18.4px!important;padding-bottom:18.4px!important}
 
-@media(max-width:410px){
+@media(max-width:430px){
   .merch-category,.merch-bags,.merch-diamonds,.merch-gemstones,.merch-scarves,
   .merch-panorama,.merch-reverse,.merch-mosaic,
   .merch-bags.merch-category,.merch-diamonds.merch-category,
@@ -3210,12 +3210,12 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
 /* ══ Round 53: hero → category-section gap +10% (was too tight under the video) ══ */
 /* ══ Round 55: another +10% on top of round 53 ══ */
 .category-section,.category-section.section{padding-top:22.264px!important}
-@media(max-width:410px){
+@media(max-width:430px){
   .category-section,.category-section.section{padding-top:13.343px!important}
 }
 
 /* ══ Round 49: desktop 10% zoom bump — verified, no overflow/wrapping ══ */
-@media(min-width:411px){
+@media(min-width:431px){
   body{zoom:1.1}
   /* Round 56: full-viewport overlays (look modal, cart, mobile menu, search,
      PDP view) use 100dvh internally. zoom + dvh interact badly in Chromium —
@@ -3228,6 +3228,6 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
 
 /* ══ Round 58: trust-box -> Proof section gap +10% (this boundary only) ══ */
 .material-wrap{padding-top:20.24px!important}
-@media(max-width:410px){
+@media(max-width:430px){
   .material-wrap{padding-top:12.13px!important}
 }
