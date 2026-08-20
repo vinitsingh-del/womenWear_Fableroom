@@ -3327,3 +3327,13 @@ html{scroll-behavior:smooth}
   .merch-scarves.merch-scarves{padding-bottom:15.455px!important}
   .looks-premium,.looks-premium.section{padding-bottom:14.43px!important}
 }
+
+/* ══ Round 67: card consistency — hearts top-right of image, all 3 sections ══ */
+/* Recommended / Bag Edit / Scarf Edit: heart at the same spot on every card,
+   10px inset top-right over the image, white chip. Recommended's round-61
+   title-line placement neutralised; bags/scarves hearts lifted out of the
+   text block (article anchors, text div released). */
+.recommended .product-card .wish{top:10px!important;right:10px!important;bottom:auto!important;background:rgba(255,255,255,.9)!important}
+.merch-bags .scarf-style-grid article,.merch-scarves .scarf-style-grid article{position:relative}
+.merch-bags .scarf-style-grid article>div,.merch-scarves .scarf-style-grid article>div{position:static!important}
+.merch-bags .scarf-style-grid .mini-wish,.merch-scarves .scarf-style-grid .mini-wish{position:absolute!important;top:10px!important;right:10px!important;bottom:auto!important;background:rgba(255,255,255,.9)!important;grid-area:auto!important;width:40px;height:40px}
