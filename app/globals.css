@@ -3292,5 +3292,5 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
 /* 2) Reviews section reads too small on mobile: +20% via zoom, orientation
    (horizontal marquee) untouched. */
 @media(max-width:430px){
-  .reviews{zoom:1.2}
+  .reviews{zoom:1.32}
 }
