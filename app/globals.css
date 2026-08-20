@@ -3315,3 +3315,15 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
 
 /* ══ Round 64: smooth scrolling, desktop and mobile ══ */
 html{scroll-behavior:smooth}
+
+/* ══ Round 66: mobile gap normalisation — the 8 flagged boundaries to 28px ══ */
+/* Rendered targets (x1.1 body zoom): CSS 25.455 per boundary. Per-section
+   overrides, not the shared uniform rule, so unlisted boundaries
+   (proof->reviews, reviews->01, quiz->rec, faq/newsletter/footer) stay put. */
+@media(max-width:430px){
+  .category-section,.category-section.section{padding-top:25.455px!important;padding-bottom:25.455px!important}
+  .material-wrap{padding-top:25.455px!important}
+  .merch-bags.merch-bags,.merch-diamonds.merch-diamonds,.merch-gemstones.merch-gemstones{padding-bottom:14.43px!important}
+  .merch-scarves.merch-scarves{padding-bottom:15.455px!important}
+  .looks-premium,.looks-premium.section{padding-bottom:14.43px!important}
+}
