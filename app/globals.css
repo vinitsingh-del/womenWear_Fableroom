@@ -3403,7 +3403,9 @@ html{scroll-behavior:smooth}
    fixed height + hidden overflow from an earlier round cut the caption.
    Let both levels size to content on mobile. */
 @media(max-width:430px){
-  .trust-box>span{height:auto!important;min-height:96px!important;overflow:visible!important;padding:16px 20px!important}
+  /* Round 74: chips -20% on mobile (box only, fonts untouched):
+     min-height 96->77, padding 16/20 -> 13/16. */
+  .trust-box>span{height:auto!important;min-height:77px!important;overflow:visible!important;padding:13px 16px!important}
   .trust-box>span *{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important;line-height:1.35}
 }
 
