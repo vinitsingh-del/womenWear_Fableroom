@@ -3294,3 +3294,21 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
 @media(max-width:430px){
   .reviews{zoom:1.32}
 }
+
+/* ══ Round 63: Scarf Edit cards = Bag Edit cards (the attached reference) ══ */
+/* Mirrors the bags treatment onto scarves and neutralises rounds 61/61b/62:
+   contain-fit product image on ivory, white VIEW PIECE pill at image
+   bottom-left (static, no hover bar), heart back beside the price at the
+   text-block bottom right — identical to the attached card. */
+.merch-scarves .scarf-image{background:var(--ivory);height:320px!important}
+.merch-scarves .scarf-image img{object-fit:contain;padding:22px}
+.merch-scarves .scarf-image span{position:absolute;left:12px;right:auto;bottom:12px;min-height:0;display:inline-block;background:#fff;color:var(--ink);padding:9px 12px;transform:none;transition:none}
+.merch-scarves .scarf-style-grid article>div{position:relative!important}
+.merch-scarves .scarf-style-grid .mini-wish{position:static!important;top:auto!important;right:auto!important;bottom:auto!important;background:transparent!important;grid-area:1/2/4!important;align-self:end!important}
+@media(max-width:430px){
+  .merch-scarves .scarf-image{height:230px!important}
+  .merch-scarves .scarf-image img{padding:14px}
+}
+
+/* ══ Round 64: smooth scrolling, desktop and mobile ══ */
+html{scroll-behavior:smooth}
