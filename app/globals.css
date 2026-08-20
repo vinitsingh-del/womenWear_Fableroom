@@ -3337,3 +3337,33 @@ html{scroll-behavior:smooth}
 .merch-bags .scarf-style-grid article,.merch-scarves .scarf-style-grid article{position:relative}
 .merch-bags .scarf-style-grid article>div,.merch-scarves .scarf-style-grid article>div{position:static!important}
 .merch-bags .scarf-style-grid .mini-wish,.merch-scarves .scarf-style-grid .mini-wish{position:absolute!important;top:10px!important;right:10px!important;bottom:auto!important;background:rgba(255,255,255,.9)!important;grid-area:auto!important;width:40px;height:40px}
+
+/* ══ Round 68: mobile rows 11-16 to 28px (CSS 25.455 = 28/1.1) ══ */
+@media(max-width:430px){
+  .finder.finder{padding-bottom:14.43px!important}
+  .recommended.recommended{padding-top:11.025px!important;padding-bottom:14.43px!important}
+  .section.trending.trending{padding-top:11.025px!important;padding-bottom:14.43px!important}
+  .out-about.out-about{padding-top:11.025px!important;padding-bottom:14.43px!important}
+  /* faq->newsletter and newsletter->footer measure to box edges, so the gap
+     is one-sided: previous section padding-bottom / next section padding-top. */
+  .faq.faq{padding-top:11.025px!important;padding-bottom:25.455px!important}
+  .newsletter.newsletter{padding-top:11.025px!important;padding-bottom:11.025px!important}
+  .site-footer.site-footer{padding-top:25.455px!important}
+}
+
+/* ══ Round 69: black ATC icon on all product cards ══ */
+.atc-ic{border:0;background:none;padding:0;cursor:pointer;width:40px;height:40px;display:grid;place-items:center;color:var(--ink)}
+.atc-ic .icon{width:18px}
+.merch-bags .scarf-style-grid .atc-ic,.merch-scarves .scarf-style-grid .atc-ic{grid-column:2;grid-row:1/4;align-self:end;justify-self:end}
+
+/* ══ Round 70: quiz section compact on mobile, same theme ══ */
+@media(max-width:430px){
+  .finder-image img{height:230px}
+  .finder-card{padding:24px 18px}
+  .finder-card h2{font-size:29px;margin-bottom:12px}
+  .finder-card .eyebrow{margin-bottom:6px}
+  .quiz-progress{margin:4px 0 16px}
+  .quiz-question{font-size:18px;margin-bottom:12px}
+  .quiz-options{gap:6px}
+  .quiz-options button{min-height:44px;font-size:12px;padding:0 13px}
+}
