@@ -3543,3 +3543,21 @@ html{scroll-behavior:smooth}
   .lookbook-group.lookbook-group{max-width:none!important;margin:0!important;padding-left:max(42px,calc((100vw - 1320px)/2 + 42px))!important;padding-right:max(42px,calc((100vw - 1320px)/2 + 42px))!important}
   .lookbook-group-head.lookbook-group-head{padding-left:0!important;margin-left:0!important}
 }
+
+/* ══════════════════════════════════════════════════════════════════════
+   DEFINITIVE card image ratio — 3:4, desktop and mobile, no exceptions.
+   .scarf-image has accumulated a dozen conflicting fixed-height values
+   across rounds (500/520/420/355/404/352/320/290/262/252/250/230px) at
+   different breakpoints and section scopes, so the rendered ratio depended
+   on which rule happened to win. Recommended now also uses this same class
+   (see ProductCard rewrite), so this one rule governs Bag Edit, Scarf
+   Edit, and Recommended identically. Appended last, unconditional (no
+   media query — 3:4 applies at every width), doubled-class + !important
+   to beat every prior single-class rule regardless of source order.
+   ══════════════════════════════════════════════════════════════════════ */
+.scarf-image.scarf-image,
+.merch-bags .scarf-image.scarf-image,
+.merch-scarves .scarf-image.scarf-image{
+  height:auto!important;
+  aspect-ratio:3/4!important;
+}
