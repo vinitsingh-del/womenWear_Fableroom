@@ -3010,9 +3010,9 @@ html.motion-ready .merch-category>header.motion-reveal.is-visible>div>p:last-chi
    Remove the inner group padding so images and headings both start at the
    page content edge (same left as the looks-hero). */
 @media(min-width:431px){
-  .looks-hero{padding-left:0!important;padding-right:max(42px,calc((100% - 1180px)/2))!important}
+  .looks-hero{padding-left:max(42px,calc((100% - 1320px)/2 + 42px))!important;padding-right:max(42px,calc((100% - 1180px)/2))!important}
   .lookbook-group{padding-left:0!important;padding-right:0!important}
-  .lookbook-group-head{padding-left:0!important;margin-left:0!important}
+  .lookbook-group-head{padding-left:max(42px,calc((100% - 1320px)/2 + 42px))!important;margin-left:0!important}
   .lookbook-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important}
   .look-tile-card{aspect-ratio:3/4.4!important}
 }
@@ -3428,7 +3428,7 @@ html{scroll-behavior:smooth}
    no 1fr pinning, no reserved dead space; symmetry comes from a 2-line
    title reservation like the recommended cards. */
 .scarf-style-grid article>div{min-height:0!important;grid-template-rows:auto auto auto!important;align-content:start!important}
-.scarf-style-grid article div>h3{grid-row:1!important;grid-column:1!important;min-height:2.2em;margin:0 0 2px!important}
+.scarf-style-grid article div>h3{grid-row:1!important;grid-column:1!important;min-height:0!important;margin:0 0 2px!important}
 .scarf-style-grid article div>small{grid-row:2!important;grid-column:1!important;margin:0!important}
 .scarf-style-grid article div>b{grid-row:3!important;grid-column:1!important;align-self:start!important;margin-top:8px}
 .merch-bags .scarf-style-grid .atc-ic,.merch-scarves .scarf-style-grid .atc-ic{grid-column:2!important;grid-row:3!important;align-self:center!important;justify-self:end!important}
@@ -3443,12 +3443,12 @@ html{scroll-behavior:smooth}
 /* Round 75c: mobile title reservation must cover a true 2-line title at the
    16px mobile size, else wrapped titles push the price line unevenly. */
 @media(max-width:430px){
-  .scarf-style-grid article div>h3{line-height:1.2!important;min-height:2.4em!important}
+  .scarf-style-grid article div>h3{line-height:1.2!important;min-height:0!important}
 }
 /* Round 75d: subtitle row also reserves two lines on mobile — one card's
    shorter material line was lifting its price 16px above the others. */
 @media(max-width:430px){
-  .scarf-style-grid article div>small{min-height:32px!important}
+  .scarf-style-grid article div>small{min-height:0!important}
 }
 
 /* ══ Round 77: kill the dead space INSIDE the card below the price ══ */
@@ -3484,4 +3484,12 @@ html{scroll-behavior:smooth}
   .finder.finder{padding-top:0!important;align-items:start}
   .looks-premium.looks-premium{padding-bottom:36.75px!important}
   .faq.faq{padding-bottom:36.783px!important}
+}
+
+/* Boundary spec #1: Hero → "Four Ways to Wear FableRoom" gap = 45px, desktop only.
+   Measured resting gap (post motion-reveal settle) was 25.6px; appended at
+   true end of file with doubled-class specificity since this file has many
+   layered !important overrides on .category-section padding-top. */
+@media(min-width:431px){
+  .category-section.category-section{padding-top:38.25px!important}
 }

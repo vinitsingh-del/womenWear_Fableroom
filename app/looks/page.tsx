@@ -20,9 +20,8 @@ const CART_KEY = "fr-cart-v2";
 const WISH_KEY = "fr-wish";
 
 // Grouping uses the existing mood/tone field already in look-data.ts.
-// PLACEHOLDER COPY: titles/descriptions below are stand-ins — replace with
-// final section copy (per client direction, section titles will be supplied
-// separately rather than invented here).
+// Section titles (TONE_TITLES) and one-line descriptions (TONE_COPY) below
+// are the current live copy — edit here to change what's shown.
 const TONE_ORDER: Look["tone"][] = ["light", "jewel", "dark", "warm"];
 const TONE_TITLES: Record<Look["tone"], string> = {
   light: "Light & Neutral",
@@ -31,10 +30,10 @@ const TONE_TITLES: Record<Look["tone"], string> = {
   warm: "Warm & Layered",
 };
 const TONE_COPY: Record<Look["tone"], string> = {
-  light: "Placeholder intro copy for this group.",
-  jewel: "Placeholder intro copy for this group.",
-  dark: "Placeholder intro copy for this group.",
-  warm: "Placeholder intro copy for this group.",
+  light: "Soft neutrals and easy layering for everyday dressing.",
+  jewel: "Saturated colour and warm gold, worn as the outfit's focal point.",
+  dark: "Richer tones and sculptural pieces for evenings and low light.",
+  warm: "Camel, cashmere and gold-tone pieces layered for everyday wear.",
 };
 
 function CloseIcon(){return <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="m5 5 14 14M19 5 5 19"/></svg>}
