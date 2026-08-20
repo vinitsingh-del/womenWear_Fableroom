@@ -3231,3 +3231,11 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
 @media(max-width:430px){
   .material-wrap{padding-top:12.13px!important}
 }
+
+/* ══ Round 59: mobile 04 -> SHOP THE LOOK gap normalised to 22px rhythm ══ */
+/* Scarf grid was overflowing its section bottom (~5px) and eating the
+   padding; measured visual gap was 6px vs the 22px standard. +16px margin
+   restores the rhythm regardless of the overflow anomaly. Mobile only. */
+@media(max-width:430px){
+  .merch-scarves .scarf-style-grid{margin-bottom:16px}
+}
