@@ -3321,11 +3321,11 @@ html{scroll-behavior:smooth}
    overrides, not the shared uniform rule, so unlisted boundaries
    (proof->reviews, reviews->01, quiz->rec, faq/newsletter/footer) stay put. */
 @media(max-width:430px){
-  .category-section,.category-section.section{padding-top:25.455px!important;padding-bottom:25.455px!important}
-  .material-wrap{padding-top:25.455px!important}
-  .merch-bags.merch-bags,.merch-diamonds.merch-diamonds,.merch-gemstones.merch-gemstones{padding-bottom:14.43px!important}
-  .merch-scarves.merch-scarves{padding-bottom:15.455px!important}
-  .looks-premium,.looks-premium.section{padding-bottom:14.43px!important}
+  .category-section,.category-section.section{padding-top:25.926px!important;padding-bottom:25.926px!important}
+  .material-wrap{padding-top:25.926px!important}
+  .merch-bags.merch-bags,.merch-diamonds.merch-diamonds,.merch-gemstones.merch-gemstones{padding-bottom:14.9px!important}
+  .merch-scarves.merch-scarves{padding-bottom:15.926px!important}
+  .looks-premium,.looks-premium.section{padding-bottom:14.9px!important}
 }
 
 /* ══ Round 67: card consistency — hearts top-right of image, all 3 sections ══ */
@@ -3340,15 +3340,15 @@ html{scroll-behavior:smooth}
 
 /* ══ Round 68: mobile rows 11-16 to 28px (CSS 25.455 = 28/1.1) ══ */
 @media(max-width:430px){
-  .finder.finder{padding-bottom:14.43px!important}
-  .recommended.recommended{padding-top:11.025px!important;padding-bottom:14.43px!important}
-  .section.trending.trending{padding-top:11.025px!important;padding-bottom:14.43px!important}
-  .out-about.out-about{padding-top:11.025px!important;padding-bottom:14.43px!important}
+  .finder.finder{padding-bottom:14.9px!important}
+  .recommended.recommended{padding-top:11.025px!important;padding-bottom:14.9px!important}
+  .section.trending.trending{padding-top:11.025px!important;padding-bottom:14.9px!important}
+  .out-about.out-about{padding-top:11.025px!important;padding-bottom:14.9px!important}
   /* faq->newsletter and newsletter->footer measure to box edges, so the gap
      is one-sided: previous section padding-bottom / next section padding-top. */
-  .faq.faq{padding-top:11.025px!important;padding-bottom:25.455px!important}
+  .faq.faq{padding-top:11.025px!important;padding-bottom:25.926px!important}
   .newsletter.newsletter{padding-top:11.025px!important;padding-bottom:11.025px!important}
-  .site-footer.site-footer{padding-top:25.455px!important}
+  .site-footer.site-footer{padding-top:25.926px!important}
 }
 
 /* ══ Round 69: black ATC icon on all product cards ══ */
@@ -3382,3 +3382,33 @@ html{scroll-behavior:smooth}
 }
 
 /* ══ Round 72: mobile zoom 1.10 -> 1.08; hero exactly full-viewport ══ */
+
+/* ══ Round 73: mobile polish set ══ */
+@media(max-width:430px){
+  /* trust badge labels were clipping at the bottom of the fixed-height chips */
+  .trust-box span{min-height:150px;padding:20px 24px;justify-content:center}
+  .trust-box b{font-size:38px;margin-bottom:8px}
+  /* Start with the collection: title and subtitle closer */
+  .category-section .section-heading{margin-bottom:16px}
+  .category-section .section-heading h2{margin-bottom:2px}
+  .category-section .section-heading>p:last-child{margin-top:4px}
+  /* Proof cards: titles on one line, symmetric title/sub spacing */
+  .material-card h3{font-size:18px;line-height:1.15;margin:8px 0 5px;min-height:2.3em}
+  .material-card p{min-height:0}
+}
+/* Bag/Scarf card subtitle: below the title, lowercase, both breakpoints */
+.scarf-style-grid small{text-transform:lowercase;letter-spacing:.02em;font-size:10px;color:#756e65;display:block;margin-top:2px}
+.scarf-style-grid h3{margin-top:0}
+/* Round 73b: the clip was the nested label span inside each trust chip —
+   fixed height + hidden overflow from an earlier round cut the caption.
+   Let both levels size to content on mobile. */
+@media(max-width:430px){
+  .trust-box>span{height:auto!important;min-height:96px!important;overflow:visible!important;padding:16px 20px!important}
+  .trust-box>span *{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important;line-height:1.35}
+}
+
+/* Round 73c: proof-card symmetry also in the 431-980 band — titles reserve
+   two lines so subtitles start on the same row in every card. */
+@media(min-width:431px) and (max-width:980px){
+  .material-card h3{min-height:2.15em}
+}

@@ -203,7 +203,7 @@ export default function Home(){
         <TrustStat icon="✦" end={100} suffix="%" label="Responsibly sourced"/>
         <TrustStat icon="—" end={0} label="Middlemen markups"/>
       </div>
-      <div className="section material-wrap"><div className="material-head"><div><p className="eyebrow">THE PROOF IS IN THE DETAIL</p><h2>Reasons to believe,<br/>seen up close.</h2></div><p>Non-clickable material studies explain what is specific and valuable about each collection—without creating another discovery layer.</p></div>
+      <div className="section material-wrap"><div className="material-head"><div><p className="eyebrow">THE PROOF IS IN THE DETAIL</p><h2>Reasons to believe, seen up close.</h2></div><p>Non-clickable material studies explain what is specific and valuable about each collection—without creating another discovery layer.</p></div>
         <div className="material-rail">
           <Material image={`${A}/editorial/a-plus-leather.webp`} index="01" title="Full-grain leather and suede" copy="Visible grain, hand-finished edges and construction designed to develop character with use."/>
           <Material image={`${A}/generated/diamond-precision-hq.webp`} index="02" title="Precision-set brilliance" copy="Lab-grown diamonds aligned in clean settings so proportion and light remain the focus."/>
@@ -390,7 +390,7 @@ function ScarfEdit({products:items,wish,onWish,onOpen,onAdd}:{products:Product[]
       <img src={active!==null&&shown[active]?shown[active].images[0]:`${A}/editorial/scarf-lifestyle.webp`} alt={active!==null&&shown[active]?`${shown[active].name} close-up`:"Cashmere and merino wool scarf styling"}/>
       <a className="feature-cta" href={CP.scarves}>Explore now<Icon name="arrow"/></a>
     </figure>
-    <div className="scarf-style-grid">{shown.map((p,i)=><article key={p.id} onPointerEnter={()=>preview(i)} onPointerLeave={()=>preview(null)} onFocusCapture={()=>preview(i)} onBlurCapture={()=>preview(null)}><button className="scarf-image" onClick={()=>onOpen(p)}><img src={SCARF_SHOTS[p.id]||p.images[0]} alt={`${p.name} styled on a model`}/><span>View piece</span></button><div><small>{p.material}</small><h3>{p.name}</h3><b>£{p.price}.00</b><button className={`mini-wish ${wish.includes(p.id)?"wished":""}`} onClick={()=>onWish(p.id)} aria-label="Save scarf"><Icon name="heart"/></button><button className="atc-ic" onClick={()=>onAdd(p.id)} aria-label="Add to cart"><Icon name="bag"/></button></div></article>)}</div>
+    <div className="scarf-style-grid">{shown.map((p,i)=><article key={p.id} onPointerEnter={()=>preview(i)} onPointerLeave={()=>preview(null)} onFocusCapture={()=>preview(i)} onBlurCapture={()=>preview(null)}><button className="scarf-image" onClick={()=>onOpen(p)}><img src={SCARF_SHOTS[p.id]||p.images[0]} alt={`${p.name} styled on a model`}/><span>View piece</span></button><div><h3>{p.name}</h3><small>{p.material}</small><b>£{p.price}.00</b><button className={`mini-wish ${wish.includes(p.id)?"wished":""}`} onClick={()=>onWish(p.id)} aria-label="Save scarf"><Icon name="heart"/></button><button className="atc-ic" onClick={()=>onAdd(p.id)} aria-label="Add to cart"><Icon name="bag"/></button></div></article>)}</div>
   </section>;
 }
 // Best-guess mapping of the current 6 bag SKUs onto the new subcategory set.
@@ -423,7 +423,7 @@ function BagEdit({products:items,wish,onWish,onOpen,onAdd}:{products:Product[];w
       <img src={active!==null&&shown[active]?shown[active].images[0]:`${A}/lifestyle2/bag-tan-outdoor.webp`} alt={active!==null&&shown[active]?`${shown[active].name} close-up`:"Leather bag styled with a cashmere scarf"}/>
       <a className="feature-cta" href={CP.bags}>Explore now<Icon name="arrow"/></a>
     </figure>
-    {shown.length?<div className="scarf-style-grid">{shown.map((p,i)=><article key={p.id} onPointerEnter={()=>preview(i)} onPointerLeave={()=>preview(null)} onFocusCapture={()=>preview(i)} onBlurCapture={()=>preview(null)}><button className="scarf-image" onClick={()=>onOpen(p)}><img src={p.images[0]} alt={`${p.name}`}/><span>View piece</span></button><div><small>{p.material}</small><h3>{p.name}</h3><b>£{p.price}.00</b><button className={`mini-wish ${wish.includes(p.id)?"wished":""}`} onClick={()=>onWish(p.id)} aria-label="Save bag"><Icon name="heart"/></button><button className="atc-ic" onClick={()=>onAdd(p.id)} aria-label="Add to cart"><Icon name="bag"/></button></div></article>)}</div>
+    {shown.length?<div className="scarf-style-grid">{shown.map((p,i)=><article key={p.id} onPointerEnter={()=>preview(i)} onPointerLeave={()=>preview(null)} onFocusCapture={()=>preview(i)} onBlurCapture={()=>preview(null)}><button className="scarf-image" onClick={()=>onOpen(p)}><img src={p.images[0]} alt={`${p.name}`}/><span>View piece</span></button><div><h3>{p.name}</h3><small>{p.material}</small><b>£{p.price}.00</b><button className={`mini-wish ${wish.includes(p.id)?"wished":""}`} onClick={()=>onWish(p.id)} aria-label="Save bag"><Icon name="heart"/></button><button className="atc-ic" onClick={()=>onAdd(p.id)} aria-label="Add to cart"><Icon name="bag"/></button></div></article>)}</div>
     :<p className="bag-empty">New pieces for this category are on the way.</p>}
   </section>;
 }
