@@ -3251,3 +3251,33 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
   .merch-scarves .scarf-style-grid article div>b{align-self:end!important}
   .looks-premium,.looks-premium.section{padding-top:10px!important}
 }
+
+/* ══ Round 61: zoom bump + card heart repositions ══ */
+/* 1) Everything reads too small: desktop zoom 1.1 -> 1.15, mobile gets 1.05.
+   Overlay counter-zooms updated to match (1/1.15, 1/1.05) so full-viewport
+   overlays (look modal, cart, menu, search) keep measuring the true dvh. */
+@media(min-width:431px){
+  body{zoom:1.15}
+  .overlay{zoom:0.86957}
+}
+@media(max-width:430px){
+  body{zoom:1.05}
+  .overlay{zoom:0.95238}
+}
+/* 2) Scarf Edit card matches the attached reference: heart at top-right over
+   the image (like the recommended card render), CSS only, no logic change. */
+.merch-scarves .scarf-style-grid article{position:relative}
+.merch-scarves .scarf-style-grid .mini-wish{position:absolute!important;top:10px!important;right:10px!important;bottom:auto!important;background:rgba(255,255,255,.9)!important;grid-area:auto!important}
+/* 3) Recommended-for-you hearts follow the Bag Edit position: right side of
+   the text block at the title line, transparent, not floating on the image. */
+.recommended .product-card .wish{top:auto;bottom:auto;background:transparent}
+@media(min-width:431px){
+  .recommended .product-card .wish{top:440px;right:2px}
+}
+@media(max-width:430px){
+  .recommended .product-card .wish{top:346px;right:2px}
+}
+/* Round 61b: the text div was the positioned ancestor, so the scarf heart
+   anchored inside the text block instead of the card. Release it (scarves
+   only) so the article anchors the heart over the image top-right. */
+.merch-scarves .scarf-style-grid article>div{position:static!important}
