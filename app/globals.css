@@ -3237,5 +3237,17 @@ body .trending,body .section.trending,body .trending.section{padding-top:26px!im
    padding; measured visual gap was 6px vs the 22px standard. +16px margin
    restores the rhythm regardless of the overflow anomaly. Mobile only. */
 @media(max-width:430px){
-  .merch-scarves .scarf-style-grid{margin-bottom:16px}
+  .merch-scarves .scarf-style-grid{margin-bottom:14px}
+}
+
+/* ══ Round 60: mobile scarf cards — even bottom line, gap -5% ══ */
+/* Prices sat at different heights (1-line vs 2-line titles) with 12-16px of
+   trapped blank space below them before the card end, so the space between
+   the card text and SHOP THE LOOK read uneven. Prices now pin to the card
+   bottom (same line as the hearts) on every card. Gap trimmed 22 -> 21px
+   via the round 59 margin (16 -> 15). Mobile only, scarves section only. */
+@media(max-width:430px){
+  .merch-scarves .scarf-style-grid article>div{grid-template-rows:auto auto 1fr!important}
+  .merch-scarves .scarf-style-grid article div>b{align-self:end!important}
+  .looks-premium,.looks-premium.section{padding-top:10px!important}
 }
