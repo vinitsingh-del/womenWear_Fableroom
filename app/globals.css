@@ -3414,3 +3414,31 @@ html{scroll-behavior:smooth}
 @media(min-width:431px) and (max-width:980px){
   .material-card h3{min-height:2.15em}
 }
+
+/* ══ Round 75: bag/scarf card copy = recommended stack; ATC underline fix ══ */
+/* Explicit rows so the visual order is guaranteed title > subtitle > price,
+   no 1fr pinning, no reserved dead space; symmetry comes from a 2-line
+   title reservation like the recommended cards. */
+.scarf-style-grid article>div{min-height:0!important;grid-template-rows:auto auto auto!important;align-content:start!important}
+.scarf-style-grid article div>h3{grid-row:1!important;grid-column:1!important;min-height:2.2em;margin:0 0 2px!important}
+.scarf-style-grid article div>small{grid-row:2!important;grid-column:1!important;margin:0!important}
+.scarf-style-grid article div>b{grid-row:3!important;grid-column:1!important;align-self:start!important;margin-top:8px}
+.merch-bags .scarf-style-grid .atc-ic,.merch-scarves .scarf-style-grid .atc-ic{grid-column:2!important;grid-row:3!important;align-self:center!important;justify-self:end!important}
+/* Recommended ATC icon: base .product-copy>div button carries a bottom
+   border (the old text-link underline) — kill it for the icon button. */
+.product-copy>div button.atc-ic{border:0!important;padding:0!important}
+/* Round 75b: scarves-scoped legacy rows at line ~2552 pinned small to row 1 /
+   h3 to row 2 with !important — out-specific them so scarves match bags. */
+.merch-scarves .scarf-style-grid article div>h3{grid-row:1!important;grid-column:1!important}
+.merch-scarves .scarf-style-grid article div>small{grid-row:2!important;grid-column:1!important;align-self:start!important}
+.merch-scarves .scarf-style-grid article div>b{grid-row:3!important;grid-column:1!important;align-self:start!important}
+/* Round 75c: mobile title reservation must cover a true 2-line title at the
+   16px mobile size, else wrapped titles push the price line unevenly. */
+@media(max-width:430px){
+  .scarf-style-grid article div>h3{line-height:1.2!important;min-height:2.4em!important}
+}
+/* Round 75d: subtitle row also reserves two lines on mobile — one card's
+   shorter material line was lifting its price 16px above the others. */
+@media(max-width:430px){
+  .scarf-style-grid article div>small{min-height:32px!important}
+}
