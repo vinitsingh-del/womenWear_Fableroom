@@ -3561,3 +3561,33 @@ html{scroll-behavior:smooth}
   height:auto!important;
   aspect-ratio:3/4!important;
 }
+
+/* ══════════════════════════════════════════════════════════════════════
+   DEFINITIVE heart/cart position on product cards — same rule, no
+   media query, applied unscoped so it covers Bag Edit, Scarf Edit, and
+   Recommended identically ("across the page").
+   Heart: pinned to the top-right corner of the card image (currently it
+   was rendering detached, floating above the whole row of images, since
+   an earlier round's position:absolute was resolving against the wrong
+   ancestor). Cart (atc-ic): right-aligned on the same row as the price
+   instead of centred underneath it.
+   ══════════════════════════════════════════════════════════════════════ */
+.scarf-style-grid article.scarf-style-grid article,
+.scarf-style-grid>article{position:relative!important}
+.scarf-style-grid article>div{position:static!important}
+.scarf-style-grid .mini-wish{
+  position:absolute!important;
+  top:10px!important;right:10px!important;left:auto!important;bottom:auto!important;
+  background:rgba(255,255,255,.92)!important;
+  grid-area:auto!important;
+  z-index:2;
+}
+.scarf-style-grid article>div{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 40px!important;
+  grid-template-rows:auto auto auto!important;
+}
+.scarf-style-grid article>div>h3{grid-column:1!important;grid-row:1!important}
+.scarf-style-grid article>div>small{grid-column:1!important;grid-row:2!important}
+.scarf-style-grid article>div>b{grid-column:1!important;grid-row:3!important;align-self:center!important}
+.scarf-style-grid article>div>.atc-ic{grid-column:2!important;grid-row:3!important;justify-self:end!important;align-self:center!important}
