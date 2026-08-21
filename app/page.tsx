@@ -253,6 +253,7 @@ const lookBanners=[
   {src:"lookbanners/look-pendant",productIds:[12,11],alt:"Model wearing a gold pendant with a rose quartz stone"},
   {src:"lookbanners/look-chain-tote",productIds:[2,17],alt:"Model in a tailored blazer carrying a chain-strap leather tote"},
   {src:"lookbanners/look-backpack-worn",productIds:[4],alt:"Model wearing an embossed leather backpack"},
+  {src:"lookbanners/look-chain-hobo-scarf",productIds:[2,18],alt:"Model holding an espresso leather hobo bag with a chain-link strap and a soft wrap scarf tied to the handle"},
 ];
 
 function ShopTheLook({onOpen,onAddLook,wish,onWish,onAddOne}:{onOpen:(p:Product)=>void;onAddLook:(ids:number[])=>void;wish:number[];onWish:(id:number)=>void;onAddOne:(id:number)=>void}){
