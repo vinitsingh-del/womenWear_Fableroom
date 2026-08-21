@@ -3591,3 +3591,57 @@ html{scroll-behavior:smooth}
 .scarf-style-grid article>div>small{grid-column:1!important;grid-row:2!important}
 .scarf-style-grid article>div>b{grid-column:1!important;grid-row:3!important;align-self:center!important}
 .scarf-style-grid article>div>.atc-ic{grid-column:2!important;grid-row:3!important;justify-self:end!important;align-self:center!important}
+
+/* ══════════════════════════════════════════════════════════════════════
+   Shop the Look — banner ratio + side-by-side layout.
+   1) Banner (.look-stage) is now a fixed 1000:900 aspect ratio instead of
+      per-breakpoint fixed pixel heights (there were 6 different height
+      values across rounds — replaced with one ratio, same at every width).
+   2) Desktop (>900px): product card(s) sit to the RIGHT of the banner
+      instead of stacked underneath it. New wrapper divs (.look-shop-layout,
+      .look-shop-side) added in the JSX to support this; .look-stage and
+      .look-shop-rail keep their existing classes so scroll-reveal and all
+      prior styling still applies unchanged.
+   3) Mobile (<=900px): unchanged stacking (banner full-width on top, cards
+      in a horizontal scroll row below) — just gets the same fixed ratio.
+   ══════════════════════════════════════════════════════════════════════ */
+.look-stage.look-stage{
+  aspect-ratio:1000/900!important;
+  height:auto!important;
+  margin:0!important;
+}
+@media(min-width:901px){
+  .look-shop-layout{
+    display:grid!important;
+    grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr)!important;
+    gap:28px!important;
+    align-items:start!important;
+  }
+  .look-shop-side{display:flex!important;flex-direction:column!important;gap:16px!important}
+  .look-shop-rail.look-shop-rail{
+    display:flex!important;
+    flex-direction:column!important;
+    overflow:visible!important;
+    gap:12px!important;
+    margin:0!important;
+    padding:0!important;
+  }
+  .look-shop-card.look-shop-card{
+    display:grid!important;
+    grid-template-columns:96px minmax(0,1fr)!important;
+    grid-template-rows:none!important;
+    align-items:center!important;
+    column-gap:16px!important;
+    padding:14px!important;
+  }
+  .look-shop-card .look-shop-image{
+    aspect-ratio:1/1!important;
+    height:auto!important;
+    width:96px!important;
+  }
+  .look-add.look-add{margin-top:auto!important;width:100%!important}
+}
+@media(max-width:900px){
+  .look-shop-layout{display:block}
+  .look-shop-side{display:block}
+}

@@ -266,14 +266,18 @@ function ShopTheLook({onOpen,onAddLook,wish,onWish,onAddOne}:{onOpen:(p:Product)
   const shown=lookBanners[slide].productIds.map(id=>products.find(p=>p.id===id)).filter(Boolean) as Product[];
   return <section className="section looks looks-premium" id="shop-the-look">
     <div className="section-heading split"><div><p className="eyebrow">SHOP THE LOOK</p><h2>Ways to wear the edit.</h2></div><div><p>Search-led outfit ideas combining handbags, jewellery and scarves.</p><a className="underlink" href={LOOKS_PATH}>View all looks <Icon name="arrow"/></a></div></div>
-    <div className="look-stage">
-      {lookBanners.map((banner,i)=><button key={banner.src} className={`look-stage-slide ${i===slide?"is-on":""}`} onClick={()=>setSlide(i)} tabIndex={i===slide?0:-1} aria-hidden={i!==slide} aria-label={banner.alt}><img src={`${A}/${banner.src}.webp`} alt={banner.alt}/></button>)}
-      <button className="look-nav prev" onClick={()=>setSlide(s=>(s-1+lookBanners.length)%lookBanners.length)} aria-label="Previous look"><Icon name="arrow"/></button>
-      <button className="look-nav next" onClick={()=>setSlide(s=>(s+1)%lookBanners.length)} aria-label="Next look"><Icon name="arrow"/></button>
-      <div className="look-stage-dots">{lookBanners.map((banner,i)=><button key={banner.src} className={i===slide?"on":""} onClick={()=>setSlide(i)} aria-label={`Look ${i+1}`}/>)}</div>
+    <div className="look-shop-layout">
+      <div className="look-stage">
+        {lookBanners.map((banner,i)=><button key={banner.src} className={`look-stage-slide ${i===slide?"is-on":""}`} onClick={()=>setSlide(i)} tabIndex={i===slide?0:-1} aria-hidden={i!==slide} aria-label={banner.alt}><img src={`${A}/${banner.src}.webp`} alt={banner.alt}/></button>)}
+        <button className="look-nav prev" onClick={()=>setSlide(s=>(s-1+lookBanners.length)%lookBanners.length)} aria-label="Previous look"><Icon name="arrow"/></button>
+        <button className="look-nav next" onClick={()=>setSlide(s=>(s+1)%lookBanners.length)} aria-label="Next look"><Icon name="arrow"/></button>
+        <div className="look-stage-dots">{lookBanners.map((banner,i)=><button key={banner.src} className={i===slide?"on":""} onClick={()=>setSlide(i)} aria-label={`Look ${i+1}`}/>)}</div>
+      </div>
+      <div className="look-shop-side">
+        <div className="look-shop-rail" data-count={shown.length} key={slide}>{shown.map(p=><button key={p.id} className="look-shop-card" onClick={()=>setModalOpen(true)}><span className="look-shop-image"><img src={p.images[0]} alt={p.name} loading="lazy"/></span><b>{p.name}</b><em>£{p.price}.00</em></button>)}</div>
+        <button className="look-add" onClick={()=>onAddLook(shown.map(p=>p.id))}>Add the look to bag<Icon name="bag"/></button>
+      </div>
     </div>
-    <div className="look-shop-rail" data-count={shown.length} key={slide}>{shown.map(p=><button key={p.id} className="look-shop-card" onClick={()=>setModalOpen(true)}><span className="look-shop-image"><img src={p.images[0]} alt={p.name} loading="lazy"/></span><b>{p.name}</b><em>£{p.price}.00</em></button>)}</div>
-    <button className="look-add" onClick={()=>onAddLook(shown.map(p=>p.id))}>Add the look to bag<Icon name="bag"/></button>
     {modalOpen&&<Overlay close={()=>setModalOpen(false)}><LookModal banner={`${A}/${lookBanners[slide].src}.webp`} alt={lookBanners[slide].alt} items={shown} wish={wish} onWish={onWish} onOpen={p=>{onOpen(p);setModalOpen(false)}} onAddOne={onAddOne} onAddAll={()=>{onAddLook(shown.map(p=>p.id));setModalOpen(false)}} onClose={()=>setModalOpen(false)}/></Overlay>}
   </section>;
 }
